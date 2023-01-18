@@ -30,6 +30,12 @@ typedef struct {
     union settings current;
 
     int16_t gripper;    //!< wartosc wypelnienia do sterowania chwytakiem
+
+    // Smart kutong extension
+    struct __attribute__((packed)) {
+        uint16_t temperature;
+        uint16_t humidity;
+    } kutong;
 } arm_6dof_controller_t;
 
 

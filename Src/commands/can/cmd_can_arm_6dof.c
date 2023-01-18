@@ -2,6 +2,8 @@
 #include "can_cmd.h"
 #include "hw/hw.h"
 
+//TODO: rename
+
 /*
  *  RX Frames
  */
@@ -14,6 +16,10 @@ void Cmd_Bus_Arm6DOF_GetPos1(uint8_t *data) {
 
 void Cmd_Bus_Arm6DOF_GetPos2(uint8_t *data) {
     memcpy((void*)&bus_arm_6dof.current.position+CAN_ARG_ARM_6DOF_SET_POS1, data, 8);
+}
+
+void Cmd_Bus_Arm6DOF_GetSmartKutongData(uint8_t *data) {
+    memcpy((void*) &(bus_arm_6dof.kutong), data, sizeof(bus_arm_6dof.kutong));
 }
 
 /*
@@ -84,6 +90,15 @@ void Cmd_Bus_Arm6DOF_SetActualPos(uint8_t ID, uint8_t MSB, uint8_t LSB) {
         .cmd = CAN_CMD_ARM_6DOF_SET_ACTUAL_POS,
         .arg_count = CAN_ARG_ARM_6DOF_SET_ACTUAL_POS,
         .args = {ID, MSB, LSB},
+    };
+
+    Queues_SendCANFrame(&msg);
+}
+
+void Bus_Arm6DOF_SmartKutongToggle() {
+    can_packet_t msg = {
+        .cmd = CAN_CMD_ARM_6DOF_SMART_KUTONG_TOGGLE,
+        .arg_count = CAN_ARG_ARM_6DOF_SMART_KUTONG_TOGGLE,
     };
 
     Queues_SendCANFrame(&msg);

@@ -75,6 +75,11 @@ const can_packet_def_t can_packet_defs[] = {
         .arg_count = CAN_ARG_ARM_6DOF_GET_POS2,
         .execute = Cmd_Bus_Arm6DOF_GetPos2,
     },
+    {
+        .cmd = CAN_CMD_ARM_6DOF_SMART_KUTONG_DATA,
+        .arg_count = CAN_ARG_ARM_6DOF_SMART_KUTONG_DATA,
+        .execute = Cmd_Bus_Arm6DOF_GetSmartKutongData,
+    },
 
     // --- Universal ---
     {

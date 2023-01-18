@@ -131,6 +131,11 @@ uart_packet_def_t uart_packet_defs[] = {
             .arg_count = UART_ARG_ARM_6DOF_SET_ACTUAL_POS,
             .execute = Cmd_UART_Arm6DOF_SetActualPos,
         },
+        {
+            .cmd = UART_CMD_ARM_6DOF_GET_PROBE_REQUEST,
+            .arg_count = UART_ARG_ARM_6DOF_GET_PROBE_REQUEST,
+            .execute = Cmd_UART_Arm6DOF_GetProbeRequest,
+        },
 
         // --- Universal ---
         {

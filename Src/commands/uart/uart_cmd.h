@@ -47,6 +47,7 @@ void Cmd_UART_Arm6DOF_GetPos(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Arm6DOF_PositioningStart(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Arm6DOF_PositioningAbort(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Arm6DOF_SetActualPos(uint8_t* data, uart_packet_link_t link);
+void Cmd_UART_Arm6DOF_GetProbeRequest(uint8_t* data, uart_packet_link_t link_type);
 
 // --- Universal ---
 void Cmd_UART_Universal_SetBridge(uint8_t* data, uart_packet_link_t link);

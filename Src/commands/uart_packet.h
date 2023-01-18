@@ -83,6 +83,8 @@ typedef enum {
     UART_CMD_ARM_6DOF_POSITIONING_START      = 0xF4,     //!< [TX]
     UART_CMD_ARM_6DOF_POSITIONING_ABORT      = 0xF5,     //!< [TX]
     UART_CMD_ARM_6DOF_SET_ACTUAL_POS         = 0xF6,     //!< [TX]
+    UART_CMD_ARM_6DOF_GET_PROBE_REQUEST      = 0xF5,     //!< [TX]
+    UART_CMD_ARM_6DOF_GET_PROBE              = 0xF6,     //!< [RX]
 
     //analog visiom mux
     UART_CMD_MUX_SET_CAM                     = 0xB1,     //!< [TX]
@@ -171,6 +173,8 @@ typedef enum {
     UART_ARG_ARM_6DOF_POSITIONING_START    = 1,
     UART_ARG_ARM_6DOF_POSITIONING_ABORT    = 0,
     UART_ARG_ARM_6DOF_SET_ACTUAL_POS       = 3,
+    UART_ARG_ARM_6DOF_GET_PROBE_REQUEST    = 0,
+    UART_ARG_ARM_6DOF_GET_PROBE            = 4,
 
 
     //analog visiom mux

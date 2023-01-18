@@ -120,6 +120,20 @@ void Cmd_UART_Arm6DOF_SetActualPos(uint8_t *data, uart_packet_link_t link_type) 
     GpioExpander_SetLed(LED_DEBUG1, on, 50);
 }
 
+void Cmd_UART_Arm6DOF_GetProbeRequest(uint8_t* data, uart_packet_link_t link_type) {
+    if ((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) {
+        uart_packet_t msg = {
+                .cmd = UART_CMD_ARM_6DOF_GET_PROBE,
+                .arg_count = UART_ARG_ARM_6DOF_GET_PROBE,
+                .origin = link_type,
+        };
+
+        memcpy(msg.args, (void*) &(bus_arm_6dof.kutong), sizeof(bus_arm_6dof.kutong));
+
+        Queues_SendUARTFrame(&msg);
+    }
+}
+
 /*
  *  TX Frames
  */

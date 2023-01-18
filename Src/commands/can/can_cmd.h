@@ -27,6 +27,7 @@ void Cmd_Bus_Arm_DebugRx(uint8_t *data);
 // --- Arm 6DoF ---
 void Cmd_Bus_Arm6DOF_GetPos1(uint8_t *data);
 void Cmd_Bus_Arm6DOF_GetPos2(uint8_t *data);
+void Cmd_Bus_Arm6DOF_GetSmartKutongData(uint8_t *data);
 
 // --- Universal ---
 void Cmd_Bus_Universal_GetWeight(uint8_t* data);
@@ -75,6 +76,7 @@ void Cmd_Bus_Arm6DOF_SetParams();
 void Cmd_Bus_Arm6DOF_PositioningStart(uint8_t ID);
 void Cmd_Bus_Arm6DOF_PositioningAbort();
 void Cmd_Bus_Arm6DOF_SetActualPos(uint8_t ID, uint8_t MSB, uint8_t LSB);
+void Bus_Arm6DOF_SmartKutongToggle();
 
 // --- Party ---
 void Cmd_Bus_Party_SetIgniters(uint8_t flags);
