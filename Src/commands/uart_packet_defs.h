@@ -221,6 +221,8 @@ uart_packet_def_t uart_packet_defs[] = {
         },
 
         // --- Custom ---
+        //TODO: handling temporarily moved to handler
+        /*
         {
             .cmd = UART_CMD_CUSTOM_TO_RF,
             .arg_count = UART_ARG_MAX_CMD_CUSTOM_RF,
@@ -230,7 +232,7 @@ uart_packet_def_t uart_packet_defs[] = {
             .cmd = UART_CMD_CUSTOM_TO_UART,
             .arg_count = UART_ARG_MAX_CMD_CUSTOM_UART,
             .execute = Cmd_UART_CustomToUART,
-        },
+        },*/
 };
 
 #endif //KALMAN_ELECTRONICS_MASTER_V3_UART_PACKET_DEFS_H

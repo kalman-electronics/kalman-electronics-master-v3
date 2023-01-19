@@ -22,6 +22,18 @@ void UARTHandler_Task() {
 }
 
 void UARTHandler_ProcessPacket(uart_packet_t* msg) {
+    // Custom frames support
+    //TODO: ugly af, add len to callbacks and merge with other commands
+    if (msg->cmd == UART_CMD_CUSTOM_TO_RF) {
+        Cmd_UART_CustomToRF(msg->args, msg->arg_count);
+        return;
+    }
+
+    if (msg->cmd == UART_CMD_CUSTOM_TO_UART) {
+        Cmd_UART_CustomToUART(msg->args, msg->arg_count);
+        return;
+    }
+
     // Find and validate handler
     for (int i = 0; i < UART_PACKET_DEFS_LEN; i ++) {
         if (uart_packet_defs[i].cmd == msg->cmd) {
