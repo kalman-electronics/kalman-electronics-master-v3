@@ -20,7 +20,6 @@ cmake-build-*/
 Debug/
 Release/
 *.launch
-*.ld
 
 .settings/
 .idea/
