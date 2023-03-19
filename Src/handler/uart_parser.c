@@ -114,8 +114,9 @@ void UARTParser_ParseBuf(uart_parser_t* parser) {
                 if (crc == PARSER_READ_BYTE()) {
                 	parser->packet.origin = UARTPacket_UARTIDToLink(parser->uart->id);
 
-					//TODO: overflow handling
-					xQueueSend(uart_handler_incoming_packet_queue, &(parser->packet), 0);
+					if (!xQueueSend(uart_handler_incoming_packet_queue, &(parser->packet), 0))
+						debug_printf("UART msg queue full\n");
+
 
                 } else {
 					debug_printf("CRC Error\n");

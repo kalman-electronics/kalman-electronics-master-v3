@@ -32,6 +32,8 @@ typedef struct {
 	uint16_t rx_parser_buf_tail;
 } uart_parser_t;
 
+extern uart_parser_t parser_defs[UART_DEFS_COUNT];
+
 void UARTParser_Task();
 
 #endif //KALMAN_ELECTRONICS_MASTER_V3_UART_PARSER_H

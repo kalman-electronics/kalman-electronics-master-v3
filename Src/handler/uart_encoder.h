@@ -23,6 +23,8 @@ typedef struct {
     uint16_t tx_dma_buf_tail;
 } uart_encoder_t;
 
+extern uart_encoder_t encoder_defs[UART_DEFS_COUNT];
+
 void UARTEncoder_Task();
 
 #endif //KALMAN_ELECTRONICS_MASTER_V3_UART_ENCODER_H

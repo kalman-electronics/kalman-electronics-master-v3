@@ -15,8 +15,18 @@ void Queues_Init() {
 }
 
 BaseType_t Queues_SendCANFrame(can_packet_t* packet) {
-    return xQueueSend(can_handler_outgoing_packet_queue, packet, 0);
+    BaseType_t res = xQueueSend(can_handler_outgoing_packet_queue, packet, 0);
+
+    if(!res)
+    	debug_printf("CAN encode queue full\n");
+
+    return res;
 }
 BaseType_t Queues_SendUARTFrame(uart_packet_t* packet) {
-    return xQueueSend(uart_handler_outgoing_packet_queue, packet, 0);
+	BaseType_t res = xQueueSend(uart_handler_outgoing_packet_queue, packet, 0);
+
+    if(!res)
+    	debug_printf("UART encode queue full\n");
+
+    return res;
 }
