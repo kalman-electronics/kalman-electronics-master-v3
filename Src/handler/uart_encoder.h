@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include "shared/common.h"
 
-#define UART_ENCODER_DMA_BUF_SIZE 2048
+#define UART_ENCODER_DMA_BUF_SIZE 8192
 
 typedef enum {
     UART_ENCODER_IDLE = 0,

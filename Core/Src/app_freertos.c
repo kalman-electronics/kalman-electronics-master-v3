@@ -83,8 +83,6 @@ void StatusTask() {
 		debug_printf("Queue backlog RX: %d TX: %d\n", (int)uxQueueMessagesWaiting(uart_handler_incoming_packet_queue), (int)uxQueueMessagesWaiting(uart_handler_outgoing_packet_queue));
 		debug_printf("Parser  [0] head: %d tail: %d\n", parser_defs[0].rx_parser_buf_head, parser_defs[0].rx_parser_buf_tail);
 		debug_printf("Encoder [0] head: %d tail: %d\n", encoder_defs[0].tx_dma_buf_head, encoder_defs[0].tx_dma_buf_tail);
-		debug_printf("RX rate: %d\n", count * 2);
-		count = 0;
 
 		vTaskDelay(500 / portTICK_PERIOD_MS);
 	}

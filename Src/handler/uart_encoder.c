@@ -89,6 +89,7 @@ void UARTEncoder_EncodePacket(uart_encoder_t* encoder, uart_packet_t* msg) {
     // Abort transaction if there is no space in tx buffer
     if (encoder->tx_dma_buf_head + packet_len >= UART_ENCODER_DMA_BUF_SIZE) {
         debug_printf("TX buffer overrun\n");
+        taskEXIT_CRITICAL();
         return;
     }
 
