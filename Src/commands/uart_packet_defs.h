@@ -137,6 +137,18 @@ uart_packet_def_t uart_packet_defs[] = {
             .execute = Cmd_UART_Arm6DOF_GetProbeRequest,
         },
 
+        // --- UEUOS v2 ---
+        {
+            .cmd = UART_CMD_UEUOS_SET_STATE,
+            .arg_count = UART_ARG_UEUOS_SET_STATE,
+            .execute = Cmd_UART_Ueuos_SetState,
+        },
+        {
+                .cmd = UART_CMD_UEUOS_SET_COLOR,
+                .arg_count = UART_ARG_UEUOS_SET_COLOR,
+                .execute = Cmd_UART_Ueuos_SetColor,
+        },
+
         // --- Universal ---
         {
             .cmd = UART_CMD_UNIVERSAL_SET_BRIDGE,

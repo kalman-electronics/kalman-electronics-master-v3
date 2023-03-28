@@ -52,6 +52,10 @@ typedef enum {
     UART_CMD_ARM_GET_VOLTAGE                 = 0x5E,     //!< [RX]
     UART_CMD_ARM_GET_POS                     = 0x5F,     //!< [RX]
 
+    //UEUOS v2
+    UART_CMD_UEUOS_SET_STATE                 = 0x60,     //!< [TX]
+    UART_CMD_UEUOS_SET_COLOR                 = 0x61,     //!< [TX]
+
     //Universal Module
     UART_CMD_UNIVERSAL_SET_BRIDGE            = 0x70,     //!< [TX]
     UART_CMD_UNIVERSAL_SET_SERVO             = 0x71,     //!< [TX]
@@ -141,6 +145,10 @@ typedef enum {
     UART_ARG_LIDAR_GET_SPEED_POS_REQUEST     = 0,
     UART_ARG_LIDAR_GET_SPEED_POS             = 4,
     UART_ARG_LIDAR_GET_POS                   = 2,
+
+    //Ueuos v2
+    UART_ARG_UEUOS_SET_STATE                 = 1,
+    UART_ARG_UEUOS_SET_COLOR                 = 3,
 
     //Universal Module
     UART_ARG_UNIVERSAL_SET_BRIDGE            = 6,

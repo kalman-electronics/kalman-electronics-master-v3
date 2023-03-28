@@ -49,6 +49,10 @@ void Cmd_UART_Arm6DOF_PositioningAbort(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Arm6DOF_SetActualPos(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Arm6DOF_GetProbeRequest(uint8_t* data, uart_packet_link_t link_type);
 
+// --- UEUOS v2 ---
+void Cmd_UART_Ueuos_SetState(uint8_t* data, uart_packet_link_t link);
+void Cmd_UART_Ueuos_SetColor(uint8_t* data, uart_packet_link_t link);
+
 // --- Universal ---
 void Cmd_UART_Universal_SetBridge(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Universal_SetServo(uint8_t* data, uart_packet_link_t link);

@@ -85,6 +85,10 @@ void Cmd_Bus_Party_SetRgb(uint8_t anim);
 void Cmd_Bus_Party_SetPower(uint8_t flags);
 void Cmd_Bus_Party_DebugTx(uint8_t* data);
 
+// --- UEUOS v2 ---
+void Cmd_Bus_Ueuos_SetState(const uint8_t* data);
+void Cmd_Bus_Ueuos_SetColor(const uint8_t* data);
+
 // --- Universal ---
 void Cmd_Bus_Universal_SetBridge(uint8_t id, uint8_t flags, uint8_t* data);
 void Cmd_Bus_Universal_SetServo(uint8_t id, uint8_t flags, uint8_t* data);

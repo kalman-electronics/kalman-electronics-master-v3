@@ -54,6 +54,9 @@ typedef enum {
     CAN_CMD_PARTY_GET_STATUS =       0x5E,
     CAN_CMD_PARTY_DEBUG_RX =         0x5F,
 
+    CAN_CMD_UEUOS_SET_STATE =        0x60,
+    CAN_CMD_UEUOS_SET_COLOR =        0x61,
+
     CAN_CMD_UNIVERSAL_SET_BRIDGE =   0x80,
     CAN_CMD_UNIVERSAL_SET_SERVO =    0x81,
     CAN_CMD_UNIVERSAL_SET_PWM =      0x82,
@@ -183,6 +186,9 @@ typedef enum {
 #define CAN_ARG_PARTY_DEBUG_TX          8
 #define CAN_ARG_PARTY_GET_STATUS        6
 #define CAN_ARG_PARTY_DEBUG_RX          8
+
+#define CAN_ARG_UEUOS_SET_STATE         1
+#define CAN_ARG_UEUOS_SET_COLOR         3
 
 #define CAN_ARG_UNIVERSAL_SET_BRIDGE    6
 #define CAN_ARG_UNIVERSAL_SET_SERVO     6
