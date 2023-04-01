@@ -16,6 +16,7 @@ void Cmd_Bus_Motor_GetWheels1(uint8_t *data);
 void Cmd_Bus_Motor_GetWheels2(uint8_t *data);
 void Cmd_Bus_Motor_GetStatus(uint8_t* data);
 void Cmd_Bus_Motor_DebugRx(uint8_t* data);
+void Cmd_Bus_Motor_GetTemperature(uint8_t* data);
 
 // --- Arm ---
 void Cmd_Bus_Arm_GetPos1(uint8_t* data);

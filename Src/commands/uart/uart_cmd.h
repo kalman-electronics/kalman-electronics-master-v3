@@ -32,6 +32,7 @@ void Cmd_UART_Master_SetPtzMove(uint8_t* data, uart_packet_link_t link);
 // --- Motor ---
 void Cmd_UART_Motor_SetWheels(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Motor_Calibrate(uint8_t* data, uart_packet_link_t link);
+void Cmd_UART_Motor_GetTemperature(void);
 
 // --- Arm ---
 void Cmd_UART_Arm_SetPos(uint8_t* data, uart_packet_link_t link);

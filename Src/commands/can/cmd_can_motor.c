@@ -120,3 +120,15 @@ void Cmd_Bus_Motor_DebugTx(uint8_t* data) {
 
     Queues_SendCANFrame(&msg);
 }
+
+/**
+ * Odczytywanie temperatury z termistorow w napedach
+ * @param data      wskaznik na bufor odebranych danych
+ * @param count     ilosc odebranych danych w ramce
+ */
+void Cmd_Bus_Motor_GetTemperature(uint8_t *data){
+    memcpy((void*)&bus_motor.motor_temperature, data, CAN_ARG_MOTOR_GET_TEMPERATURE);
+
+    GpioExpander_SetLed(LED_MOTOR, on, 20);
+}
+

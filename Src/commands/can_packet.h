@@ -13,6 +13,7 @@ typedef enum {
     CAN_CMD_MOTOR_SET_WHEELS =       0x10,
     CAN_CMD_MOTOR_CALIBRATE =        0x11,
     CAN_CMD_MOTOR_DEBUG_TX =         0x12,
+    CAN_CMD_MOTOR_GET_TEMPERATURE =  0x13,
     CAN_CMD_MOTOR_GET_WHEELS1 =      0x1C,
     CAN_CMD_MOTOR_GET_WHEELS2 =      0x1D,
     CAN_CMD_MOTOR_GET_STATUS =       0x1E,
@@ -126,6 +127,7 @@ typedef enum {
 #define CAN_ARG_MOTOR_SET_WHEELS        8
 #define CAN_ARG_MOTOR_CALIBRATE         6
 #define CAN_ARG_MOTOR_DEBUG_TX          8
+#define CAN_ARG_MOTOR_GET_TEMPERATURE   8
 #define CAN_ARG_MOTOR_GET_WHEELS1       8
 #define CAN_ARG_MOTOR_GET_WHEELS2       4
 #define CAN_ARG_MOTOR_GET_STATUS        4

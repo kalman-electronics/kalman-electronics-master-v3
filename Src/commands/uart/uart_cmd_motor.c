@@ -80,3 +80,21 @@ void Cmd_UART_Motor_GetWheels(void) {
 
     Queues_SendUARTFrame(&msg);
 }
+
+/**
+ * Zwracanie ostatniego odczytu z temperatury silnikow
+ * */
+void Cmd_UART_Motor_GetTemperature(void) {
+    uart_packet_t msg = {
+        .cmd = UART_CMD_MOTOR_GET_TEMPERATURE,
+        .arg_count = UART_ARG_MOTOR_GET_TEMPERATURE,
+        .origin = logic.link_type | LINK_RF_UART, // When using autonomy mode, send a frame onto rf channel as well
+    };
+
+    for(uint8_t i = 0; i < 4; i++)
+        msg.args[i] = bus_motor.motor_temperature.propulsion_temperature[i];
+    for(uint8_t i = 0; i < 4; i++)
+        msg.args[4 + i] = bus_motor.motor_temperature.turn_temperature[i];
+
+    Queues_SendUARTFrame(&msg);
+}

@@ -36,6 +36,11 @@ const can_packet_def_t can_packet_defs[] = {
         .arg_count = CAN_ARG_MOTOR_DEBUG_RX,
         .execute = Cmd_Bus_Motor_DebugRx,
     },
+    {
+        .cmd = CAN_CMD_MOTOR_GET_TEMPERATURE,
+        .arg_count = CAN_ARG_MOTOR_GET_TEMPERATURE,
+        .execute = Cmd_Bus_Motor_GetTemperature,
+    },
 
     // --- Arm ---
     {
