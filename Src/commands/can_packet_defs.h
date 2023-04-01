@@ -135,6 +135,13 @@ const can_packet_def_t can_packet_defs[] = {
         .execute = Cmd_Bus_Science_DebugRx,
     },
 
+    // --- Mobilab v2 ---
+    {
+            .cmd = CAN_CMD_MOBILAB_GET_TEMPERATURE,
+            .arg_count = CAN_ARG_MOBILAB_GET_TEMPERATURE,
+            .execute = Cmd_Bus_Mobilab_GetTemperature,
+    },
+
     // --- Fallback handlers ---
     //TODO: uh, how
     #warning "Frame 0xBE is discarded, because for some reason we receive it"

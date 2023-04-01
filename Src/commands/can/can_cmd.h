@@ -43,6 +43,9 @@ void Cmd_Bus_Science_GetWeight(uint8_t* data);
 void Cmd_Bus_Science_GetStatus(uint8_t* data);
 void Cmd_Bus_Science_DebugRx(uint8_t* data);
 
+// --- Mobilab v2 ---
+void Cmd_Bus_Mobilab_GetTemperature(uint8_t* data);
+
 // --- Fallback handlers ---
 void Cmd_Bus_UnknownHandler(can_packet_t* msg);
 void Cmd_Bus_EmptyHandler(uint8_t* msg);
@@ -99,6 +102,13 @@ void Cmd_Bus_Universal_DebugTx(uint8_t* data);
 // --- Science ---
 void Cmd_Bus_Science_Poll(uint8_t id);
 void Cmd_Bus_Science_DebugTx(uint8_t* data);
+
+// --- Mobilab v2 ---
+void Cmd_Bus_Mobilab_SetPump(const uint8_t* data);
+void Cmd_Bus_Mobilab_SetHeater(const uint8_t* data);
+void Cmd_Bus_Mobilab_SetBacklight(const uint8_t* data);
+void Cmd_Bus_Mobilab_SetAux(const uint8_t* data);
+void Cmd_Bus_Mobilab_SetServo(const uint8_t* data);
 
 // --- Mux --
 void Cmd_Bus_Mux_SetChannel(uint8_t vtx, uint8_t channel);

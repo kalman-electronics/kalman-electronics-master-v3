@@ -12,7 +12,9 @@ const uint8_t canlib_rx_list[CANLIB_RX_LIST_COUNT] = {
         CAN_FILTER_ID_UNIVERSAL,
         CAN_FILTER_ID_SCIENCE,
         CAN_FILTER_ID_MUX,
-        CAN_FILTER_ID_6DOF
+        CAN_FILTER_ID_6DOF,
+        CAN_FILTER_ID_MOBILAB,
+        CAN_FILTER_ID_UEUOS
 };
 
 void CanManager_FilterConfig();

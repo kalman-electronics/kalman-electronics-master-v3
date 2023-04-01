@@ -37,6 +37,13 @@ void Timer_Init() {
             0,
             Timer_UART_TrafficMotor);
 
+    timer_defs[TIMER_UART_TRAFFIC_MOBILAB] = xTimerCreate(
+            "UART_TrafficMobilab",
+            1000 / portTICK_PERIOD_MS,
+            pdTRUE,
+            0,
+            Timer_UART_TrafficMobilab);
+
     // --- Timeouts ---
 
     timer_defs[TIMER_MOTOR_TIMEOUT] = xTimerCreate(
@@ -125,6 +132,12 @@ void Timer_UART_TrafficStatus() {
 
 void Timer_UART_TrafficMotor() {
     Cmd_UART_Motor_GetWheels();
+}
+
+void Timer_UART_TrafficMobilab(){
+    Cmd_UART_Mobilab_GetTemperature(0);
+    Cmd_UART_Mobilab_GetTemperature(1);
+    Cmd_UART_Mobilab_GetTemperature(2);
 }
 
 // --- Timeouts ---

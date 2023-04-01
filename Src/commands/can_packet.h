@@ -79,6 +79,13 @@ typedef enum {
     CAN_CMD_MUX_SET_CAM =             0xA1,
     CAN_CMD_MUX_SET_CHANNEL =         0xA2,
     CAN_CMD_MUX_SET_POWER =           0xA4,
+
+    CAN_CMD_MOBILAB_SET_PUMP =			0xC0,
+    CAN_CMD_MOBILAB_SET_HEATER =		0xC1,
+    CAN_CMD_MOBILAB_SET_BACKLIGHT = 	0xC2,
+    CAN_CMD_MOBILAB_SET_AUX	=			0xC3,
+    CAN_CMD_MOBILAB_SET_SERVO =			0xC4,
+    CAN_CMD_MOBILAB_GET_TEMPERATURE =	0xC5,
 } can_cmd_t;
 
 typedef struct {
@@ -208,6 +215,13 @@ typedef enum {
 #define CAN_ARG_SCIENCE_GET_WEIGHT          6
 #define CAN_ARG_SCIENCE_GET_STATUS          2
 #define CAN_ARG_SCIENCE_DEBUG_RX            8
+
+#define CAN_ARG_MOBILAB_SET_PUMP			2
+#define CAN_ARG_MOBILAB_SET_HEATER			2
+#define CAN_ARG_MOBILAB_SET_BACKLIGHT 		2
+#define CAN_ARG_MOBILAB_SET_AUX				2
+#define CAN_ARG_MOBILAB_SET_SERVO			2
+#define CAN_ARG_MOBILAB_GET_TEMPERATURE		5
 
 #define CAN_ARG_MUX_SET_CAM          2
 #define CAN_ARG_MUX_SET_CHANNEL      2

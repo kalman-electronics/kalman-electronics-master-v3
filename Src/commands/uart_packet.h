@@ -79,6 +79,14 @@ typedef enum {
     UART_CMD_SCIENCE_GET_WEIGHT              = 0xAE,     //!< [RX]
     UART_CMD_SCIENCE_GET_SAMPLES             = 0xAF,     //!< [RX]
 
+    //Mobilab v2
+    UART_CMD_MOBILAB_SET_PUMP				= 0xC0, 	//!< [TX]
+    UART_CMD_MOBILAB_SET_HEATER				= 0xC1,		//!< [TX]
+    UART_CMD_MOBILAB_SET_BACKLIGHT			= 0xC2,		//!< [TX]
+    UART_CMD_MOBILAB_SET_AUX				= 0xC3,		//!< [TX]
+    UART_CMD_MOBILAB_SET_SERVO				= 0xC4,		//!< [TX]
+    UART_CMD_MOBILAB_GET_TEMPERATURE		= 0xC5,		//!< [RX]
+
     //6dof arm
     UART_CMD_ARM_6DOF_SET_POS                = 0xE0,     //!< [TX]
     UART_CMD_ARM_6DOF_SET_VELOCITY           = 0xE1,     //!< [TX]
@@ -172,6 +180,14 @@ typedef enum {
     UART_ARG_SCIENCE_GET_ATMOSPHERE          = 8,
     UART_ARG_SCIENCE_GET_WEIGHT              = 6,
     UART_ARG_SCIENCE_GET_SAMPLES             = 5,
+
+    //Mobilab v2
+    UART_ARG_MOBILAB_SET_PUMP				= 2,
+    UART_ARG_MOBILAB_SET_HEATER				= 2,
+    UART_ARG_MOBILAB_SET_BACKLIGHT			= 2,
+    UART_ARG_MOBILAB_SET_AUX				= 2,
+    UART_ARG_MOBILAB_SET_SERVO				= 2,
+    UART_ARG_MOBILAB_GET_TEMPERATURE		= 5,
 
     // Arm 6 DOF
     UART_ARG_ARM_6DOF_SET_POS              = 16,

@@ -215,6 +215,33 @@ uart_packet_def_t uart_packet_defs[] = {
             .execute = Cmd_UART_Science_GetAtmosphereRequest,
         },
 
+        // --- Mobilab v2 ---
+        {
+            .cmd = UART_CMD_MOBILAB_SET_PUMP,
+            .arg_count = UART_ARG_MOBILAB_SET_PUMP,
+            .execute = Cmd_UART_Mobilab_SetPump
+        },
+        {
+            .cmd = UART_CMD_MOBILAB_SET_HEATER,
+            .arg_count = UART_ARG_MOBILAB_SET_HEATER,
+            .execute = Cmd_UART_Mobilab_SetHeater
+        },
+        {
+            .cmd = UART_CMD_MOBILAB_SET_BACKLIGHT,
+            .arg_count = UART_ARG_MOBILAB_SET_BACKLIGHT,
+            .execute = Cmd_UART_Mobilab_SetBacklight
+        },
+        {
+            .cmd = UART_CMD_MOBILAB_SET_AUX,
+            .arg_count = UART_ARG_MOBILAB_SET_AUX,
+            .execute = Cmd_UART_Mobilab_SetAux
+        },
+        {
+            .cmd = UART_CMD_MOBILAB_SET_SERVO,
+            .arg_count = UART_ARG_MOBILAB_SET_SERVO,
+            .execute = Cmd_UART_Mobilab_SetServo
+        },
+
         // --- Mux ---
         {
             .cmd = UART_CMD_MUX_SET_CAM,
