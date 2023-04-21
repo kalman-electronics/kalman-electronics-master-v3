@@ -74,7 +74,6 @@ void UARTEncoder_Task() {
 
 void UARTEncoder_EncodePacket(uart_encoder_t* encoder, uart_packet_t* msg) {
     //TODO: implement circular buffer
-    //TODO: **BREAKING** way to send data to multiple uarts
 
     // Reset pointers when all previously queued data has been transmitted
     if (encoder->tx_dma_buf_head >= encoder->tx_dma_buf_tail && encoder->status == UART_ENCODER_IDLE) {

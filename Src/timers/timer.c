@@ -109,6 +109,8 @@ void Timer_CAN_TrafficMotorArm() {
 
 
     Cmd_Bus_Motor_SetWheels();
+
+    #warning Old arm support disabled
     //TODO: W A R N I N G - DISABLED OLD ARM TRAFFIC, add a way to select which one is being used
     //Cmd_Bus_Arm_SetPos1();
     //Cmd_Bus_Arm_SetPos2();
@@ -116,7 +118,7 @@ void Timer_CAN_TrafficMotorArm() {
 }
 
 void Timer_UART_Traffic6DoF() {
-    Cmd_UART_Arm6DOF_GetPos(NULL, 1);
+    Cmd_UART_Arm6DOF_GetPos(NULL, 1); // TODO: ugly shit, pls fix
 }
 
 void Timer_UART_TrafficStatus() {
