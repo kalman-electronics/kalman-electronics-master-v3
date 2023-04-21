@@ -43,6 +43,7 @@ typedef enum {
     UART_CMD_MOTOR_SET_WHEELS                = 0x40,     //!< [TX]
     UART_CMD_MOTOR_CALIBRATE                 = 0x41,     //!< [TX]
     UART_CMD_MOTOR_GET_WHEELS                = 0x4F,     //!< [RX]
+    UART_CMD_MOTOR_GET_TEMPERATURE           = 0x42,     //!< [RX]
 
     //Arm Controller v2
     UART_CMD_ARM_SET_POS                     = 0x50,     //!< [TX]
@@ -51,6 +52,10 @@ typedef enum {
     UART_CMD_ARM_GET_VOLTAGE_REQUEST         = 0x53,     //!< [TX]
     UART_CMD_ARM_GET_VOLTAGE                 = 0x5E,     //!< [RX]
     UART_CMD_ARM_GET_POS                     = 0x5F,     //!< [RX]
+
+    //UEUOS v2
+    UART_CMD_UEUOS_SET_STATE                 = 0x60,     //!< [TX]
+    UART_CMD_UEUOS_SET_COLOR                 = 0x61,     //!< [TX]
 
     //Universal Module
     UART_CMD_UNIVERSAL_SET_BRIDGE            = 0x70,     //!< [TX]
@@ -74,6 +79,14 @@ typedef enum {
     UART_CMD_SCIENCE_GET_ATMOSPHERE          = 0xAD,     //!< [RX]
     UART_CMD_SCIENCE_GET_WEIGHT              = 0xAE,     //!< [RX]
     UART_CMD_SCIENCE_GET_SAMPLES             = 0xAF,     //!< [RX]
+
+    //Mobilab v2
+    UART_CMD_MOBILAB_SET_PUMP				= 0xC0, 	//!< [TX]
+    UART_CMD_MOBILAB_SET_HEATER				= 0xC1,		//!< [TX]
+    UART_CMD_MOBILAB_SET_BACKLIGHT			= 0xC2,		//!< [TX]
+    UART_CMD_MOBILAB_SET_AUX				= 0xC3,		//!< [TX]
+    UART_CMD_MOBILAB_SET_SERVO				= 0xC4,		//!< [TX]
+    UART_CMD_MOBILAB_GET_TEMPERATURE		= 0xC5,		//!< [RX]
 
     //6dof arm
     UART_CMD_ARM_6DOF_SET_POS                = 0xE0,     //!< [TX]
@@ -126,6 +139,7 @@ typedef enum {
     UART_ARG_MOTOR_SET_WHEELS                = 8,
     UART_ARG_MOTOR_CALIBRATE                 = 6,
     UART_ARG_MOTOR_GET_WHEELS                = 12,
+    UART_ARG_MOTOR_GET_TEMPERATURE           = 8,
 
     //Arm Controller v2
     UART_ARG_ARM_SET_POS                     = 12,
@@ -141,6 +155,10 @@ typedef enum {
     UART_ARG_LIDAR_GET_SPEED_POS_REQUEST     = 0,
     UART_ARG_LIDAR_GET_SPEED_POS             = 4,
     UART_ARG_LIDAR_GET_POS                   = 2,
+
+    //Ueuos v2
+    UART_ARG_UEUOS_SET_STATE                 = 1,
+    UART_ARG_UEUOS_SET_COLOR                 = 3,
 
     //Universal Module
     UART_ARG_UNIVERSAL_SET_BRIDGE            = 6,
@@ -164,6 +182,14 @@ typedef enum {
     UART_ARG_SCIENCE_GET_ATMOSPHERE          = 8,
     UART_ARG_SCIENCE_GET_WEIGHT              = 6,
     UART_ARG_SCIENCE_GET_SAMPLES             = 5,
+
+    //Mobilab v2
+    UART_ARG_MOBILAB_SET_PUMP				= 2,
+    UART_ARG_MOBILAB_SET_HEATER				= 2,
+    UART_ARG_MOBILAB_SET_BACKLIGHT			= 2,
+    UART_ARG_MOBILAB_SET_AUX				= 2,
+    UART_ARG_MOBILAB_SET_SERVO				= 2,
+    UART_ARG_MOBILAB_GET_TEMPERATURE		= 5,
 
     // Arm 6 DOF
     UART_ARG_ARM_6DOF_SET_POS              = 16,

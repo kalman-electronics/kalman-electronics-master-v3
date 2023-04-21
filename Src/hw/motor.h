@@ -18,6 +18,11 @@ typedef struct {
     uint8_t limit_status;       //!< stany krancowek silnikow skretu
     uint8_t motor_status;       //!< status wszystkich silnikow
     uint8_t status;             //!< status kontrolera
+
+    struct {
+        uint8_t propulsion_temperature[4];
+        uint8_t turn_temperature[4];
+    } motor_temperature;
 } motor_controller_t;
 
 

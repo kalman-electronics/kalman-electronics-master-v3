@@ -137,6 +137,18 @@ uart_packet_def_t uart_packet_defs[] = {
             .execute = Cmd_UART_Arm6DOF_GetProbeRequest,
         },
 
+        // --- UEUOS v2 ---
+        {
+            .cmd = UART_CMD_UEUOS_SET_STATE,
+            .arg_count = UART_ARG_UEUOS_SET_STATE,
+            .execute = Cmd_UART_Ueuos_SetState,
+        },
+        {
+                .cmd = UART_CMD_UEUOS_SET_COLOR,
+                .arg_count = UART_ARG_UEUOS_SET_COLOR,
+                .execute = Cmd_UART_Ueuos_SetColor,
+        },
+
         // --- Universal ---
         {
             .cmd = UART_CMD_UNIVERSAL_SET_BRIDGE,
@@ -201,6 +213,33 @@ uart_packet_def_t uart_packet_defs[] = {
             .cmd = UART_CMD_SCIENCE_GET_ATMOSPHERE_REQUEST,
             .arg_count = UART_ARG_SCIENCE_GET_ATMOSPHERE_REQUEST,
             .execute = Cmd_UART_Science_GetAtmosphereRequest,
+        },
+
+        // --- Mobilab v2 ---
+        {
+            .cmd = UART_CMD_MOBILAB_SET_PUMP,
+            .arg_count = UART_ARG_MOBILAB_SET_PUMP,
+            .execute = Cmd_UART_Mobilab_SetPump
+        },
+        {
+            .cmd = UART_CMD_MOBILAB_SET_HEATER,
+            .arg_count = UART_ARG_MOBILAB_SET_HEATER,
+            .execute = Cmd_UART_Mobilab_SetHeater
+        },
+        {
+            .cmd = UART_CMD_MOBILAB_SET_BACKLIGHT,
+            .arg_count = UART_ARG_MOBILAB_SET_BACKLIGHT,
+            .execute = Cmd_UART_Mobilab_SetBacklight
+        },
+        {
+            .cmd = UART_CMD_MOBILAB_SET_AUX,
+            .arg_count = UART_ARG_MOBILAB_SET_AUX,
+            .execute = Cmd_UART_Mobilab_SetAux
+        },
+        {
+            .cmd = UART_CMD_MOBILAB_SET_SERVO,
+            .arg_count = UART_ARG_MOBILAB_SET_SERVO,
+            .execute = Cmd_UART_Mobilab_SetServo
         },
 
         // --- Mux ---

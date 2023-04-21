@@ -16,6 +16,7 @@ void Cmd_Bus_Motor_GetWheels1(uint8_t *data);
 void Cmd_Bus_Motor_GetWheels2(uint8_t *data);
 void Cmd_Bus_Motor_GetStatus(uint8_t* data);
 void Cmd_Bus_Motor_DebugRx(uint8_t* data);
+void Cmd_Bus_Motor_GetTemperature(uint8_t* data);
 
 // --- Arm ---
 void Cmd_Bus_Arm_GetPos1(uint8_t* data);
@@ -42,6 +43,9 @@ void Cmd_Bus_Science_GetAtmosphere(uint8_t* data);
 void Cmd_Bus_Science_GetWeight(uint8_t* data);
 void Cmd_Bus_Science_GetStatus(uint8_t* data);
 void Cmd_Bus_Science_DebugRx(uint8_t* data);
+
+// --- Mobilab v2 ---
+void Cmd_Bus_Mobilab_GetTemperature(uint8_t* data);
 
 // --- Fallback handlers ---
 void Cmd_Bus_UnknownHandler(can_packet_t* msg);
@@ -85,6 +89,10 @@ void Cmd_Bus_Party_SetRgb(uint8_t anim);
 void Cmd_Bus_Party_SetPower(uint8_t flags);
 void Cmd_Bus_Party_DebugTx(uint8_t* data);
 
+// --- UEUOS v2 ---
+void Cmd_Bus_Ueuos_SetState(const uint8_t* data);
+void Cmd_Bus_Ueuos_SetColor(const uint8_t* data);
+
 // --- Universal ---
 void Cmd_Bus_Universal_SetBridge(uint8_t id, uint8_t flags, uint8_t* data);
 void Cmd_Bus_Universal_SetServo(uint8_t id, uint8_t flags, uint8_t* data);
@@ -95,6 +103,13 @@ void Cmd_Bus_Universal_DebugTx(uint8_t* data);
 // --- Science ---
 void Cmd_Bus_Science_Poll(uint8_t id);
 void Cmd_Bus_Science_DebugTx(uint8_t* data);
+
+// --- Mobilab v2 ---
+void Cmd_Bus_Mobilab_SetPump(const uint8_t* data);
+void Cmd_Bus_Mobilab_SetHeater(const uint8_t* data);
+void Cmd_Bus_Mobilab_SetBacklight(const uint8_t* data);
+void Cmd_Bus_Mobilab_SetAux(const uint8_t* data);
+void Cmd_Bus_Mobilab_SetServo(const uint8_t* data);
 
 // --- Mux --
 void Cmd_Bus_Mux_SetChannel(uint8_t vtx, uint8_t channel);

@@ -36,6 +36,11 @@ const can_packet_def_t can_packet_defs[] = {
         .arg_count = CAN_ARG_MOTOR_DEBUG_RX,
         .execute = Cmd_Bus_Motor_DebugRx,
     },
+    {
+        .cmd = CAN_CMD_MOTOR_GET_TEMPERATURE,
+        .arg_count = CAN_ARG_MOTOR_GET_TEMPERATURE,
+        .execute = Cmd_Bus_Motor_GetTemperature,
+    },
 
     // --- Arm ---
     {
@@ -133,6 +138,13 @@ const can_packet_def_t can_packet_defs[] = {
         .cmd = CAN_CMD_SCIENCE_DEBUG_RX,
         .arg_count = CAN_ARG_SCIENCE_DEBUG_RX,
         .execute = Cmd_Bus_Science_DebugRx,
+    },
+
+    // --- Mobilab v2 ---
+    {
+            .cmd = CAN_CMD_MOBILAB_GET_TEMPERATURE,
+            .arg_count = CAN_ARG_MOBILAB_GET_TEMPERATURE,
+            .execute = Cmd_Bus_Mobilab_GetTemperature,
     },
 
     // --- Fallback handlers ---

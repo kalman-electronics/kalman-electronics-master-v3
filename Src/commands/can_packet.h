@@ -13,6 +13,7 @@ typedef enum {
     CAN_CMD_MOTOR_SET_WHEELS =       0x10,
     CAN_CMD_MOTOR_CALIBRATE =        0x11,
     CAN_CMD_MOTOR_DEBUG_TX =         0x12,
+    CAN_CMD_MOTOR_GET_TEMPERATURE =  0x13,
     CAN_CMD_MOTOR_GET_WHEELS1 =      0x1C,
     CAN_CMD_MOTOR_GET_WHEELS2 =      0x1D,
     CAN_CMD_MOTOR_GET_STATUS =       0x1E,
@@ -54,6 +55,9 @@ typedef enum {
     CAN_CMD_PARTY_GET_STATUS =       0x5E,
     CAN_CMD_PARTY_DEBUG_RX =         0x5F,
 
+    CAN_CMD_UEUOS_SET_STATE =        0x60,
+    CAN_CMD_UEUOS_SET_COLOR =        0x61,
+
     CAN_CMD_UNIVERSAL_SET_BRIDGE =   0x80,
     CAN_CMD_UNIVERSAL_SET_SERVO =    0x81,
     CAN_CMD_UNIVERSAL_SET_PWM =      0x82,
@@ -76,6 +80,13 @@ typedef enum {
     CAN_CMD_MUX_SET_CAM =             0xA1,
     CAN_CMD_MUX_SET_CHANNEL =         0xA2,
     CAN_CMD_MUX_SET_POWER =           0xA4,
+
+    CAN_CMD_MOBILAB_SET_PUMP =			0xC0,
+    CAN_CMD_MOBILAB_SET_HEATER =		0xC1,
+    CAN_CMD_MOBILAB_SET_BACKLIGHT = 	0xC2,
+    CAN_CMD_MOBILAB_SET_AUX	=			0xC3,
+    CAN_CMD_MOBILAB_SET_SERVO =			0xC4,
+    CAN_CMD_MOBILAB_GET_TEMPERATURE =	0xC5,
 } can_cmd_t;
 
 typedef struct {
@@ -116,6 +127,7 @@ typedef enum {
 #define CAN_ARG_MOTOR_SET_WHEELS        8
 #define CAN_ARG_MOTOR_CALIBRATE         6
 #define CAN_ARG_MOTOR_DEBUG_TX          8
+#define CAN_ARG_MOTOR_GET_TEMPERATURE   8
 #define CAN_ARG_MOTOR_GET_WHEELS1       8
 #define CAN_ARG_MOTOR_GET_WHEELS2       4
 #define CAN_ARG_MOTOR_GET_STATUS        4
@@ -184,6 +196,9 @@ typedef enum {
 #define CAN_ARG_PARTY_GET_STATUS        6
 #define CAN_ARG_PARTY_DEBUG_RX          8
 
+#define CAN_ARG_UEUOS_SET_STATE         1
+#define CAN_ARG_UEUOS_SET_COLOR         3
+
 #define CAN_ARG_UNIVERSAL_SET_BRIDGE    6
 #define CAN_ARG_UNIVERSAL_SET_SERVO     6
 #define CAN_ARG_UNIVERSAL_SET_PWM       8
@@ -202,6 +217,13 @@ typedef enum {
 #define CAN_ARG_SCIENCE_GET_WEIGHT          6
 #define CAN_ARG_SCIENCE_GET_STATUS          2
 #define CAN_ARG_SCIENCE_DEBUG_RX            8
+
+#define CAN_ARG_MOBILAB_SET_PUMP			2
+#define CAN_ARG_MOBILAB_SET_HEATER			2
+#define CAN_ARG_MOBILAB_SET_BACKLIGHT 		2
+#define CAN_ARG_MOBILAB_SET_AUX				2
+#define CAN_ARG_MOBILAB_SET_SERVO			2
+#define CAN_ARG_MOBILAB_GET_TEMPERATURE		5
 
 #define CAN_ARG_MUX_SET_CAM          2
 #define CAN_ARG_MUX_SET_CHANNEL      2
