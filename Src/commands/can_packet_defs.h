@@ -80,6 +80,11 @@ const can_packet_def_t can_packet_defs[] = {
         .arg_count = CAN_ARG_ARM_6DOF_GET_POS2,
         .execute = Cmd_Bus_Arm6DOF_GetPos2,
     },
+	{
+		.cmd = CAN_CMD_ARM_6DOF_SET_GRIPPER,
+		.arg_count = CAN_ARG_ARM_6DOF_SET_GRIPPER,
+		.execute = Cmd_Bus_Arm6DOF_SetGripper,
+	},
     {
         .cmd = CAN_CMD_ARM_6DOF_SMART_KUTONG_DATA,
         .arg_count = CAN_ARG_ARM_6DOF_SMART_KUTONG_DATA,
@@ -142,9 +147,9 @@ const can_packet_def_t can_packet_defs[] = {
 
     // --- Mobilab v2 ---
     {
-            .cmd = CAN_CMD_MOBILAB_GET_TEMPERATURE,
-            .arg_count = CAN_ARG_MOBILAB_GET_TEMPERATURE,
-            .execute = Cmd_Bus_Mobilab_GetTemperature,
+		.cmd = CAN_CMD_MOBILAB_GET_TEMPERATURE,
+		.arg_count = CAN_ARG_MOBILAB_GET_TEMPERATURE,
+		.execute = Cmd_Bus_Mobilab_GetTemperature,
     },
 
     // --- Fallback handlers ---

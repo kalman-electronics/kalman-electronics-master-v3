@@ -48,6 +48,8 @@ void Cmd_UART_Arm6DOF_GetPos(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Arm6DOF_PositioningStart(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Arm6DOF_PositioningAbort(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Arm6DOF_SetActualPos(uint8_t* data, uart_packet_link_t link);
+void Cmd_UART_Arm6DOF_KeyboardClick(uint8_t *data, uart_packet_link_t link_type);
+void Cmd_UART_Arm6DOF_SoftReset(uint8_t *data, uart_packet_link_t link_type);
 void Cmd_UART_Arm6DOF_GetProbeRequest(uint8_t* data, uart_packet_link_t link_type);
 
 // --- UEUOS v2 ---
@@ -114,6 +116,7 @@ void Cmd_UART_Arm_GetVoltage(uart_packet_link_t link);
 // --- Arm 6DoF ---
 //TODO: change name
 void Cmd_UART_Arm6DOF_GetPos_helper(uart_packet_link_t link_type);
+void Cmd_UART_Arm6DOF_GetGripper();
 
 // --- Universal ---
 void Cmd_UART_Universal_GetWeight(uint8_t id, uint8_t loadcell_index);

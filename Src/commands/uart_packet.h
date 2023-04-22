@@ -96,6 +96,9 @@ typedef enum {
     UART_CMD_ARM_6DOF_POSITIONING_START      = 0xF4,     //!< [TX]
     UART_CMD_ARM_6DOF_POSITIONING_ABORT      = 0xF5,     //!< [TX]
     UART_CMD_ARM_6DOF_SET_ACTUAL_POS         = 0xF6,     //!< [TX]
+	UART_CMD_ARM_6DOF_GET_GRIPPER            = 0xFB,     //!< [RX]
+	UART_CMD_ARM_6DOF_KEYBOARD_CLICK         = 0xF9,     //!< [TX]
+	UART_CMD_ARM_6DOF_SOFT_RESET             = 0xFA,     //!< [TX]
     UART_CMD_ARM_6DOF_GET_PROBE_REQUEST      = 0xF5,     //!< [TX]
     UART_CMD_ARM_6DOF_GET_PROBE              = 0xF6,     //!< [RX]
 
@@ -199,6 +202,9 @@ typedef enum {
     UART_ARG_ARM_6DOF_POSITIONING_START    = 1,
     UART_ARG_ARM_6DOF_POSITIONING_ABORT    = 0,
     UART_ARG_ARM_6DOF_SET_ACTUAL_POS       = 3,
+	UART_ARG_ARM_6DOF_GET_GRIPPER          = 2,
+	UART_ARG_ARM_6DOF_KEYBOARD_CLICK       = 0,
+	UART_ARG_ARM_6DOF_SOFT_RESET           = 0,
     UART_ARG_ARM_6DOF_GET_PROBE_REQUEST    = 0,
     UART_ARG_ARM_6DOF_GET_PROBE            = 4,
 

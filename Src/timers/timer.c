@@ -115,6 +115,7 @@ void Timer_ResetTimeout(timer_id timer) {
 
 // --- Traffic ---
 
+//TODO: arm timeout tim?
 void Timer_CAN_TrafficMotorArm() {
     //Cmd_UART_Arm_GetPos();
 
@@ -132,7 +133,8 @@ void Timer_CAN_TrafficMotorArm() {
 }
 
 void Timer_UART_Traffic6DoF() {
-    Cmd_UART_Arm6DOF_GetPos(NULL, 1); // TODO: ugly shit, pls fix
+    Cmd_UART_Arm6DOF_GetPos(NULL, logic.link_type);
+    Cmd_UART_Arm6DOF_GetGripper();
 }
 
 void Timer_UART_TrafficStatus() {
@@ -167,6 +169,7 @@ void Timer_MotorTimeout() {
     #endif
 }
 
+//TODO: stop 6dof
 void Timer_ArmTimeout() {
     #if TIMER_COMM_TIMEOUT_BYPASS == 0
     debug_printf("[COMM] Przekroczono czas oczekiwania na cykliczna ramke Arm Controllera - zatrzymanie silnikow.\r\n");

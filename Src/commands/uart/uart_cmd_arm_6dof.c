@@ -56,8 +56,8 @@ void Cmd_UART_Arm6DOF_SetVelocity(uint8_t *data, uart_packet_link_t link_type) {
 void Cmd_UART_Arm6DOF_SetGripper(uint8_t *data, uart_packet_link_t link_type) {
     if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART))
         && (link_type == logic.link_type)) {
-
-        memcpy((void*)&bus_arm_6dof.gripper, data, sizeof(bus_arm_6dof.gripper));
+    	//armTimeoutTim = 0;  // reset timeout //TODO: arm timeout
+        bus_arm_6dof.gripper = data[1] | (data[0] << 8);
 
         Cmd_UART_BlinkLed(link_type);
     }
@@ -120,12 +120,32 @@ void Cmd_UART_Arm6DOF_SetActualPos(uint8_t *data, uart_packet_link_t link_type) 
     GpioExpander_SetLed(LED_DEBUG1, on, 50);
 }
 
+void Cmd_UART_Arm6DOF_KeyboardClick(uint8_t *data, uart_packet_link_t link_type) {
+	if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type)) {
+		if (Logic_GetUptime() >= LOGIC_COMM_START_TIME) {
+			Cmd_Bus_Arm6DOF_KeyboardClick();
+		}
+
+		Cmd_UART_BlinkLed(link_type);
+	}
+}
+
+void Cmd_UART_Arm6DOF_SoftReset(uint8_t *data, uart_packet_link_t link_type) {
+	if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type)) {
+		if (Logic_GetUptime() >= LOGIC_COMM_START_TIME){
+			Cmd_Bus_Arm6DOF_SoftReset();
+		}
+
+		Cmd_UART_BlinkLed(link_type);
+	}
+}
+
 void Cmd_UART_Arm6DOF_GetProbeRequest(uint8_t* data, uart_packet_link_t link_type) {
     if ((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) {
         uart_packet_t msg = {
-                .cmd = UART_CMD_ARM_6DOF_GET_PROBE,
-                .arg_count = UART_ARG_ARM_6DOF_GET_PROBE,
-                .origin = link_type,
+			.cmd = UART_CMD_ARM_6DOF_GET_PROBE,
+			.arg_count = UART_ARG_ARM_6DOF_GET_PROBE,
+			.origin = link_type,
         };
 
         memcpy(msg.args, (void*) &(bus_arm_6dof.kutong), sizeof(bus_arm_6dof.kutong));
@@ -141,13 +161,27 @@ void Cmd_UART_Arm6DOF_GetProbeRequest(uint8_t* data, uart_packet_link_t link_typ
 void Cmd_UART_Arm6DOF_GetPos_helper(uart_packet_link_t link_type) {
     if ((logic.link_type == LINK_RF_UART) || (logic.link_type == LINK_AUTO_UART)) {
         uart_packet_t msg = {
-                .cmd = UART_CMD_ARM_6DOF_GET_POS,
-                .arg_count = UART_ARG_ARM_6DOF_GET_POS,
-                .origin = link_type,
+			.cmd = UART_CMD_ARM_6DOF_GET_POS,
+			.arg_count = UART_ARG_ARM_6DOF_GET_POS,
+			.origin = link_type,
         };
 
         memcpy(msg.args, (void*)&bus_arm_6dof.current.position, UART_ARG_ARM_6DOF_GET_POS);
 
         Queues_SendUARTFrame(&msg);
     }
+}
+
+void Cmd_UART_Arm6DOF_GetGripper() {
+	if ((logic.link_type== LINK_RF_UART) || (logic.link_type == LINK_AUTO_UART)) {
+		uart_packet_t msg = {
+			.cmd = CAN_CMD_ARM_6DOF_GET_GRIPPER,
+			.arg_count = CAN_ARG_ARM_6DOF_GET_GRIPPER,
+			.origin = logic.link_type,
+		};
+
+		memcpy((void*)msg.args, (void*)&bus_arm_6dof.gripperActual, CAN_ARG_ARM_6DOF_GET_GRIPPER);
+
+		Queues_SendUARTFrame(&msg);
+	}
 }

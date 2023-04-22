@@ -1,4 +1,4 @@
-#ifndef KALMAN_ELECTRONICS_MASTER_V3_UART_PACKET_DEFS_H
+	#ifndef KALMAN_ELECTRONICS_MASTER_V3_UART_PACKET_DEFS_H
 #define KALMAN_ELECTRONICS_MASTER_V3_UART_PACKET_DEFS_H
 
 #include "uart_packet.h"
@@ -131,6 +131,16 @@ uart_packet_def_t uart_packet_defs[] = {
             .arg_count = UART_ARG_ARM_6DOF_SET_ACTUAL_POS,
             .execute = Cmd_UART_Arm6DOF_SetActualPos,
         },
+		{
+			.cmd = UART_CMD_ARM_6DOF_KEYBOARD_CLICK,
+			.arg_count = UART_ARG_ARM_6DOF_KEYBOARD_CLICK,
+			.execute = Cmd_UART_Arm6DOF_KeyboardClick,
+		},
+		{
+			.cmd = UART_CMD_ARM_6DOF_SOFT_RESET,
+			.arg_count = UART_ARG_ARM_6DOF_SOFT_RESET,
+			.execute = Cmd_UART_Arm6DOF_SoftReset,
+		},
         {
             .cmd = UART_CMD_ARM_6DOF_GET_PROBE_REQUEST,
             .arg_count = UART_ARG_ARM_6DOF_GET_PROBE_REQUEST,
