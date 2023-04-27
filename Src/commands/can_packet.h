@@ -45,6 +45,7 @@ typedef enum {
     CAN_CMD_ARM_6DOF_SMART_KUTONG_DATA =    0xB5,
 	CAN_CMD_ARM_6DOF_KEYBOARD_CLICK =       0xB6,
 	CAN_CMD_ARM_6DOF_SOFT_RESET =           0xB7,
+    CAN_CMD_ARM_6DOF_AUTOCLICK_SET_POS =    0xBF,
 
     CAN_CMD_DEBUG_DEBUG_TX =         0x70,
     CAN_CMD_DEBUG_GET_STATUS =       0x7D,
@@ -61,6 +62,7 @@ typedef enum {
 
     CAN_CMD_UEUOS_SET_STATE =        0x60,
     CAN_CMD_UEUOS_SET_COLOR =        0x61,
+    CAN_CMD_UEUOS_SET_EFFECT =       0x62,
 
     CAN_CMD_UNIVERSAL_SET_BRIDGE =   0x80,
     CAN_CMD_UNIVERSAL_SET_SERVO =    0x81,
@@ -163,6 +165,7 @@ typedef enum {
 #define CAN_ARG_ARM_6DOF_SMART_KUTONG_DATA   4
 #define CAN_ARG_ARM_6DOF_KEYBOARD_CLICK      0
 #define CAN_ARG_ARM_6DOF_SOFT_RESET          0
+#define CAN_ARG_ARM_6DOF_AUTOCLICK_SET_POS   1
 
 #define CAN_ARG_LID_SET_SPEED           2
 #define CAN_ARG_LID_REQ_POS             0
@@ -206,6 +209,7 @@ typedef enum {
 
 #define CAN_ARG_UEUOS_SET_STATE         1
 #define CAN_ARG_UEUOS_SET_COLOR         3
+#define CAN_ARG_UEUOS_SET_EFFECT        1
 
 #define CAN_ARG_UNIVERSAL_SET_BRIDGE    6
 #define CAN_ARG_UNIVERSAL_SET_SERVO     6

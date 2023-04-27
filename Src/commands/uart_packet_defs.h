@@ -146,6 +146,11 @@ uart_packet_def_t uart_packet_defs[] = {
             .arg_count = UART_ARG_ARM_6DOF_GET_PROBE_REQUEST,
             .execute = Cmd_UART_Arm6DOF_GetProbeRequest,
         },
+        {
+            .cmd = UART_CMD_ARM_6DOF_AUTOCLICK_SET_POS,
+            .arg_count = UART_ARG_ARM_6DOF_AUTOCLICK_SET_POS,
+            .execute = Cmd_UART_Arm6DOF_Autoclick_SetPos,
+        },
 
         // --- UEUOS v2 ---
         {
@@ -154,9 +159,14 @@ uart_packet_def_t uart_packet_defs[] = {
             .execute = Cmd_UART_Ueuos_SetState,
         },
         {
-                .cmd = UART_CMD_UEUOS_SET_COLOR,
-                .arg_count = UART_ARG_UEUOS_SET_COLOR,
-                .execute = Cmd_UART_Ueuos_SetColor,
+            .cmd = UART_CMD_UEUOS_SET_COLOR,
+            .arg_count = UART_ARG_UEUOS_SET_COLOR,
+            .execute = Cmd_UART_Ueuos_SetColor,
+        },
+        {
+            .cmd = UART_CMD_UEUOS_SET_EFFECT,
+            .arg_count = UART_ARG_UEUOS_SET_EFFECT,
+            .execute = Cmd_UART_Ueuos_SetEffect,
         },
 
         // --- Universal ---

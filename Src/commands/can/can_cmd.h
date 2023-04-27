@@ -85,6 +85,7 @@ void Cmd_Bus_Arm6DOF_KeyboardClick();
 void Cmd_Bus_Arm6DOF_SetActualPos(uint8_t ID, uint8_t MSB, uint8_t LSB);
 void Cmd_Bus_Arm6DOF_SoftReset();
 void Cmd_Bus_Arm6DOF_SmartKutongToggle();
+void Cmd_Bus_Arm6DOF_Autoclick_SetPos(uint8_t pos);
 
 // --- Party ---
 void Cmd_Bus_Party_SetIgniters(uint8_t flags);
@@ -96,6 +97,7 @@ void Cmd_Bus_Party_DebugTx(uint8_t* data);
 // --- UEUOS v2 ---
 void Cmd_Bus_Ueuos_SetState(const uint8_t* data);
 void Cmd_Bus_Ueuos_SetColor(const uint8_t* data);
+void Cmd_Bus_Ueuos_SetEffect(const uint8_t* data);
 
 // --- Universal ---
 void Cmd_Bus_Universal_SetBridge(uint8_t id, uint8_t flags, uint8_t* data);

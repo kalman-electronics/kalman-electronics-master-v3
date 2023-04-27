@@ -32,3 +32,17 @@ void Cmd_Bus_Ueuos_SetColor(const uint8_t *data){
 
     Queues_SendCANFrame(&msg);
 }
+
+/**
+ * Ramka ustawia predefiniowany efekt UEUOSA
+ * @param data      wskaznik na 8-bajtowy bufor danych (3 argumenty kolor RGB UEUOSa)
+ */
+void Cmd_Bus_Ueuos_SetEffect(const uint8_t *data){
+    can_packet_t msg = {
+            .cmd = CAN_CMD_UEUOS_SET_EFFECT,
+            .arg_count = CAN_ARG_UEUOS_SET_EFFECT,
+            .args[0] = data[0],
+    };
+
+    Queues_SendCANFrame(&msg);
+}

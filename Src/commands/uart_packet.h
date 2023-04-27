@@ -56,6 +56,7 @@ typedef enum {
     //UEUOS v2
     UART_CMD_UEUOS_SET_STATE                 = 0x60,     //!< [TX]
     UART_CMD_UEUOS_SET_COLOR                 = 0x61,     //!< [TX]
+    UART_CMD_UEUOS_SET_EFFECT                = 0x62,     //!< [TX]
 
     //Universal Module
     UART_CMD_UNIVERSAL_SET_BRIDGE            = 0x70,     //!< [TX]
@@ -93,6 +94,7 @@ typedef enum {
     UART_CMD_ARM_6DOF_SET_VELOCITY           = 0xE1,     //!< [TX]
     UART_CMD_ARM_6DOF_SET_GRIPPER            = 0xE2,     //!< [TX]
     UART_CMD_ARM_6DOF_GET_POS                = 0xF3,     //!< [RX]
+    UART_CMD_ARM_6DOF_AUTOCLICK_SET_POS      = 0xE3,
     UART_CMD_ARM_6DOF_POSITIONING_START      = 0xF4,     //!< [TX]
     UART_CMD_ARM_6DOF_POSITIONING_ABORT      = 0xF5,     //!< [TX]
     UART_CMD_ARM_6DOF_SET_ACTUAL_POS         = 0xF6,     //!< [TX]
@@ -162,6 +164,7 @@ typedef enum {
     //Ueuos v2
     UART_ARG_UEUOS_SET_STATE                 = 1,
     UART_ARG_UEUOS_SET_COLOR                 = 3,
+    UART_ARG_UEUOS_SET_EFFECT                = 1,
 
     //Universal Module
     UART_ARG_UNIVERSAL_SET_BRIDGE            = 6,
@@ -199,6 +202,7 @@ typedef enum {
     UART_ARG_ARM_6DOF_SET_VELOCITY         = 13,
     UART_ARG_ARM_6DOF_SET_GRIPPER          = 2,
     UART_ARG_ARM_6DOF_GET_POS              = 14,
+    UART_ARG_ARM_6DOF_AUTOCLICK_SET_POS    = 1,
     UART_ARG_ARM_6DOF_POSITIONING_START    = 1,
     UART_ARG_ARM_6DOF_POSITIONING_ABORT    = 0,
     UART_ARG_ARM_6DOF_SET_ACTUAL_POS       = 3,

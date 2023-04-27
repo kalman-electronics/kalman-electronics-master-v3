@@ -63,6 +63,15 @@ void Cmd_UART_Arm6DOF_SetGripper(uint8_t *data, uart_packet_link_t link_type) {
     }
 }
 
+
+void Cmd_UART_Arm6DOF_Autoclick_SetPos(uint8_t *data, uart_packet_link_t link_type) {
+    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type))  {
+        Cmd_Bus_Arm6DOF_Autoclick_SetPos(data[0]);
+
+        Cmd_UART_BlinkLed(link_type);
+    }
+}
+
 void Cmd_UART_Arm6DOF_GetPos(uint8_t *data, uart_packet_link_t link_type) {
     if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
