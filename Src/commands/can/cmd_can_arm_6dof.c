@@ -143,7 +143,7 @@ void Cmd_Bus_Arm6DOF_SoftReset() {
 void Cmd_Bus_Arm6DOF_Autoclick_SetPos(uint8_t pos){
     can_packet_t msg = {
             .cmd = CAN_CMD_ARM_6DOF_AUTOCLICK_SET_POS,
-            .arg_count = CAN_CMD_ARM_6DOF_AUTOCLICK_SET_POS,
+            .arg_count = CAN_ARG_ARM_6DOF_AUTOCLICK_SET_POS,
             .args[0] = pos,
     };
 
