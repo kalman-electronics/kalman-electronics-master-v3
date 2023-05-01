@@ -1,10 +1,9 @@
 import serial
 
-with serial.Serial('COM18', 115200, timeout=1) as ser:
+with serial.Serial('COM8', 115200, timeout=1) as ser:
     while True:
         crc_data = []
         crc = 0
-        str_args = ""
 
         cmd = int(input("cmd:  "))
         crc_data.append(cmd)
@@ -16,7 +15,6 @@ with serial.Serial('COM18', 115200, timeout=1) as ser:
 
         crc_data.append(len(args))
         for arg in args:
-            str_args = str_args + (chr(int(arg)))
             crc_data.append(int(arg))
 
         crc = 0
@@ -25,6 +23,12 @@ with serial.Serial('COM18', 115200, timeout=1) as ser:
 
         print("crc:  " + str(crc))
 
-        frame = '<' + chr(cmd) + chr(args_num) + str_args + chr(crc)
+        frame = bytearray([ord('<'), cmd, int(args_num)])
+
+        for arg in args:
+            frame.append(int(arg))
+
+        frame.append(crc)
+
         print(frame)
-        ser.write(frame.encode('utf-8'))
+        ser.write(frame)
