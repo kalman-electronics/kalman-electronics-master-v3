@@ -280,18 +280,34 @@ uart_packet_def_t uart_packet_defs[] = {
         },
 
         // --- Custom ---
-        //TODO: handling temporarily moved to handler
-        /*
         {
             .cmd = UART_CMD_CUSTOM_TO_RF,
-            .arg_count = UART_ARG_MAX_CMD_CUSTOM_RF,
+            .arg_count = UART_ARG_MAX,
             .execute = Cmd_UART_CustomToRF,
         },
         {
             .cmd = UART_CMD_CUSTOM_TO_UART,
-            .arg_count = UART_ARG_MAX_CMD_CUSTOM_UART,
+            .arg_count = UART_ARG_MAX,
             .execute = Cmd_UART_CustomToUART,
-        },*/
+        },
+        {
+            .cmd = UART_CMD_SUPERVISOR_TO_RF,
+            .arg_count = UART_ARG_MAX,
+            .execute = Cmd_UART_SupervisorToRF,
+        },
+        {
+            .cmd = UART_CMD_SUPERVISOR_TO_UART,
+            .arg_count = UART_ARG_MAX,
+            .execute = Cmd_UART_SupervisorToUART,
+        },
 };
+
+//TODO: add message traits / fields such as custom_frame or ack_required changing handler behaviour
+#define UART_PACKET_IS_CUSTOM(cmd) ((       \
+    (cmd == UART_CMD_CUSTOM_TO_RF)       || \
+    (cmd == UART_CMD_CUSTOM_TO_UART)     || \
+    (cmd == UART_CMD_SUPERVISOR_TO_RF)   || \
+    (cmd == UART_CMD_SUPERVISOR_TO_UART)) ? 1 : 0)
+
 
 #endif //KALMAN_ELECTRONICS_MASTER_V3_UART_PACKET_DEFS_H

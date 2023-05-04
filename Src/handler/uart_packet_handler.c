@@ -22,22 +22,11 @@ void UARTHandler_Task() {
 }
 
 void UARTHandler_ProcessPacket(uart_packet_t* msg) {
-    // Custom frames support
-    //TODO: ugly af, add len to callbacks and merge with other commands
-    if (msg->cmd == UART_CMD_CUSTOM_TO_RF) {
-        Cmd_UART_CustomToRF(msg->args, msg->arg_count);
-        return;
-    }
-
-    if (msg->cmd == UART_CMD_CUSTOM_TO_UART) {
-        Cmd_UART_CustomToUART(msg->args, msg->arg_count);
-        return;
-    }
-
-    // Find and validate handler
+    // Find and validate packet handler
     for (int i = 0; i < UART_PACKET_DEFS_LEN; i ++) {
         if (uart_packet_defs[i].cmd == msg->cmd) {
-            if (uart_packet_defs[i].arg_count != msg->arg_count && (msg->cmd != UART_CMD_CUSTOM_TO_UART && msg->cmd != UART_CMD_CUSTOM_TO_RF)) {
+            // Check packet arguments (skip on custom frame)
+            if (uart_packet_defs[i].arg_count != msg->arg_count && !UART_PACKET_IS_CUSTOM(msg->cmd)) {
                 debug_printf("Invalid packet arg len\n");
                 return;
             }

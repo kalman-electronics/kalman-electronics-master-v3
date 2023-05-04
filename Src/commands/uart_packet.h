@@ -111,6 +111,8 @@ typedef enum {
 
     UART_CMD_CUSTOM_TO_UART                  = 0x80,     //!< [TX, RX]
     UART_CMD_CUSTOM_TO_RF                    = 0x81,     //!< [TX, RX]
+    UART_CMD_SUPERVISOR_TO_UART                  = 0x82,     //!< [TX, RX]
+    UART_CMD_SUPERVISOR_TO_RF                    = 0x83,     //!< [TX, RX]
 } uart_cmd_t;
 
 /**
@@ -220,8 +222,7 @@ typedef enum {
 
 
     // Custom commands
-    UART_ARG_MAX_CMD_CUSTOM_UART         = 255,
-    UART_ARG_MAX_CMD_CUSTOM_RF           = 255,
+    UART_ARG_MAX        = 255,
 } uart_args_t;
 
 typedef struct {

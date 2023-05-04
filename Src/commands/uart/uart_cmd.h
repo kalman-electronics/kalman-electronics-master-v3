@@ -91,6 +91,8 @@ void Cmd_UART_Mux_SetPower(uint8_t* data, uart_packet_link_t link);
 // --- Custom ---
 void Cmd_UART_CustomToRF(uint8_t* data, uint8_t len);
 void Cmd_UART_CustomToUART(uint8_t* data, uint8_t len);
+void Cmd_UART_SupervisorToRF(uint8_t* data, uint8_t len);
+void Cmd_UART_SupervisorToUART(uint8_t* data, uint8_t len);
 
 // --- Unknown ---
 void Cmd_UART_UnknownHandler(uart_packet_t* msg);
