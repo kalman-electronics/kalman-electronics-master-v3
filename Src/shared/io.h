@@ -1,0 +1,11 @@
+#ifndef KALMAN_ELECTRONICS_MASTER_V3_IO_H
+#define KALMAN_ELECTRONICS_MASTER_V3_IO_H
+
+#define IO_TIMERS_PC_POWERON_PULSE_DURATION 300
+#define IO_TIMERS_PC_RESET_PULSE_DURATION   500
+
+void IO_Timers_Init();
+void IO_Request_PC_PowerOn();
+void IO_Request_PC_Reset();
+
+#endif

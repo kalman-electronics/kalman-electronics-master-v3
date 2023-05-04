@@ -23,6 +23,7 @@
 #endif
 
 extern TaskHandle_t UARTParser_TaskHandle;
+extern TaskHandle_t IO_TaskHandle;
 extern TCAN114x_Dev tcan;
 
 #endif //KALMAN_ELECTRONICS_MASTER_V3_COMMON_H

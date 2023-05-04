@@ -6,6 +6,7 @@
 #include "shared/logic.h"
 #include "hw/hw.h"
 #include "timers/timer.h"
+#include "shared/io.h"
 
 /*
  *  RX Frames

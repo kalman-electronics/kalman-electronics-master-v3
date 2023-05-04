@@ -95,7 +95,6 @@ void Cmd_Master_SetVideoChannel(uint8_t *data, uart_packet_link_t link_type) {
  * @param data      wskaznik na bufor odebranych danych
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
-//TODO: PC control
 void Cmd_UART_Master_ComputerPowerOn(uint8_t *data, uart_packet_link_t link_type) {
     if (((link_type == LINK_RF_UART)) && (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
@@ -103,7 +102,7 @@ void Cmd_UART_Master_ComputerPowerOn(uint8_t *data, uart_packet_link_t link_type
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"));
         //}
 
-        //Logic_Gpio_ComputerPowerOn();
+        IO_Request_PC_PowerOn();
 
         Cmd_UART_BlinkLed(link_type);
     }
@@ -116,7 +115,6 @@ void Cmd_UART_Master_ComputerPowerOn(uint8_t *data, uart_packet_link_t link_type
  * @param data      wskaznik na bufor odebranych danych
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
-//TODO: PC control
 void Cmd_UART_Master_ComputerReset(uint8_t *data, uart_packet_link_t link_type) {
     if (((link_type == LINK_RF_UART)) && (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
@@ -124,7 +122,7 @@ void Cmd_UART_Master_ComputerReset(uint8_t *data, uart_packet_link_t link_type) 
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"));
         //}
 
-        //Logic_Gpio_ComputerReset();
+        IO_Request_PC_Reset();
 
         Cmd_UART_BlinkLed(link_type);
     }
