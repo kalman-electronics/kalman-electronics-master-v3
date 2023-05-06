@@ -151,7 +151,7 @@ typedef enum {
 #define CAN_ARG_ARM_DEBUG_RX            8
 
 #define CAN_ARG_ARM_6DOF_SET_POS1            8
-#define CAN_ARG_ARM_6DOF_SET_POS2            6 //!!!!!!!!!!!!!!!!!!!!
+#define CAN_ARG_ARM_6DOF_SET_POS2            8
 #define CAN_ARG_ARM_6DOF_SET_VELOCITY1       8
 #define CAN_ARG_ARM_6DOF_SET_VELOCITY2       5
 #define CAN_ARG_ARM_6DOF_GET_POS1            8
