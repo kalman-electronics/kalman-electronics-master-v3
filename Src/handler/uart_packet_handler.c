@@ -21,12 +21,18 @@ void UARTHandler_Task() {
     }
 }
 
+//TODO: Fix different args in custom callback functions
 void UARTHandler_ProcessPacket(uart_packet_t* msg) {
     // Find and validate packet handler
     for (int i = 0; i < UART_PACKET_DEFS_LEN; i ++) {
         if (uart_packet_defs[i].cmd == msg->cmd) {
             // Check packet arguments (skip on custom frame)
-            if (uart_packet_defs[i].arg_count != msg->arg_count && !UART_PACKET_IS_CUSTOM(msg->cmd)) {
+        	if (UART_PACKET_IS_CUSTOM(msg->cmd)) {
+        		uart_packet_defs[i].execute(msg->args, msg->arg_count);
+        		return;
+        	}
+
+            if (uart_packet_defs[i].arg_count != msg->arg_count) {
                 debug_printf("Invalid packet arg len\n");
                 return;
             }
