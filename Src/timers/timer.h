@@ -37,7 +37,8 @@ void Timer_ResetTimeout(timer_id timer);
 // --- Timer callbacks ---
 
 // --- Traffic ---
-void Timer_CAN_TrafficMotorArm();
+void Timer_CAN_TrafficSetArm();
+void Timer_CAN_TrafficSetMotor();
 void Timer_UART_Traffic6DoF();
 void Timer_UART_TrafficStatus();
 void Timer_UART_TrafficMotor();
