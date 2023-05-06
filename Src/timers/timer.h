@@ -10,23 +10,24 @@
 #include "FreeRTOS.h"
 #include "timers.h"
 
-#define TIMER_COUNT 10
+#define TIMER_COUNT 11
 
 //TODO: timer struct and dynamic init
 
 extern TimerHandle_t timer_defs[TIMER_COUNT];
 
 typedef enum {
-    TIMER_CAN_TRAFFIC_MOTOR_ARM     = 0,
-    TIMER_UART_TRAFFIC_6DOF         = 1,
-    TIMER_UART_TRAFFIC_STATUS       = 2,
-    TIMER_UART_TRAFFIC_MOTOR        = 3,
-    TIMER_MOTOR_TIMEOUT             = 4,
-    TIMER_ARM_TIMEOUT               = 5,
-    TIMER_TCAN                      = 6,
-    TIMER_HEALTH_CHECK              = 7,
-    TIMER_UART_TRAFFIC_MOBILAB      = 8,
-    TIMER_UART_TRAFFIC_MOTOR_TEMP   = 9,
+    TIMER_CAN_TRAFFIC_SET_ARM,
+    TIMER_CAN_TRAFFIC_SET_MOTOR,
+    TIMER_UART_TRAFFIC_6DOF,
+    TIMER_UART_TRAFFIC_STATUS,
+    TIMER_UART_TRAFFIC_MOTOR,
+    TIMER_MOTOR_TIMEOUT,
+    TIMER_ARM_TIMEOUT,
+    TIMER_TCAN,
+    TIMER_HEALTH_CHECK,
+    TIMER_UART_TRAFFIC_MOBILAB,
+    TIMER_UART_TRAFFIC_MOTOR_TEMP,
 } timer_id;
 
 void Timer_Init();

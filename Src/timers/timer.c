@@ -9,12 +9,19 @@
 TimerHandle_t timer_defs[TIMER_COUNT];
 
 void Timer_Init() {
-    timer_defs[TIMER_CAN_TRAFFIC_MOTOR_ARM] = xTimerCreate(
-            "CAN_TrafficMotorArm",
+    timer_defs[TIMER_CAN_TRAFFIC_SET_ARM] = xTimerCreate(
+            "CAN_TrafficSetArm",
             100 / portTICK_PERIOD_MS,
             pdTRUE,
             0,
-            Timer_CAN_TrafficMotorArm);
+            Timer_CAN_TrafficSetArm);
+
+    timer_defs[TIMER_CAN_TRAFFIC_SET_MOTOR] = xTimerCreate(
+            "CAN_TrafficSetMotor",
+            100 / portTICK_PERIOD_MS,
+            pdTRUE,
+            0,
+            Timer_CAN_TrafficSetMotor);
 
     timer_defs[TIMER_UART_TRAFFIC_6DOF] = xTimerCreate(
             "CAN_Traffic6DoF",
@@ -116,20 +123,22 @@ void Timer_ResetTimeout(timer_id timer) {
 // --- Traffic ---
 
 //TODO: arm timeout tim?
-void Timer_CAN_TrafficMotorArm() {
-    //Cmd_UART_Arm_GetPos();
-
+void Timer_CAN_TrafficSetArm() {
     if (Logic_GetUptime() < LOGIC_COMM_START_TIME)
         return;
-
-
-    Cmd_Bus_Motor_SetWheels();
 
     #warning Old arm support disabled
     //TODO: W A R N I N G - DISABLED OLD ARM TRAFFIC, add a way to select which one is being used
     //Cmd_Bus_Arm_SetPos1();
     //Cmd_Bus_Arm_SetPos2();
     Cmd_Bus_Arm6DOF_SetParams();
+}
+
+void Timer_CAN_TrafficSetMotor() {
+    if (Logic_GetUptime() < LOGIC_COMM_START_TIME)
+        return;
+
+    Cmd_Bus_Motor_SetWheels();
 }
 
 void Timer_UART_Traffic6DoF() {

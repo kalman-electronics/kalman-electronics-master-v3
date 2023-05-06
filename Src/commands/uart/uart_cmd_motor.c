@@ -20,10 +20,17 @@ void Cmd_UART_Motor_SetWheels(uint8_t *data, uart_packet_link_t link_type) {
                     data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]);
         //}
 
+        // Update HW struct
         for (uint8_t i=0; i<4; i++) {
             bus_motor.required_speed[i] = data[i];
             bus_motor.required_angle[i] = data[i+4];
         }
+
+        // Update motor master
+        Cmd_Bus_Motor_SetWheels();
+
+        // Reset periodical motor master timeout
+        Timer_ResetTimeout(TIMER_CAN_TRAFFIC_SET_MOTOR);
         Timer_ResetTimeout(TIMER_MOTOR_TIMEOUT);
 
         Cmd_UART_BlinkLed(link_type);
