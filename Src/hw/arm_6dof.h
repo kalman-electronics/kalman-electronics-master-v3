@@ -37,6 +37,11 @@ typedef struct {
         uint16_t temperature;
         uint16_t humidity;
     } kutong;
+
+    // per joint vel control in pos control
+    struct __attribute__((packed)) {
+        uint16_t vel_01_radps[6];
+    } per_joint_vel_pos;
 } arm_6dof_controller_t;
 
 

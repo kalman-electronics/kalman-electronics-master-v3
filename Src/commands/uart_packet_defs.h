@@ -102,6 +102,11 @@ uart_packet_def_t uart_packet_defs[] = {
             .execute = Cmd_UART_Arm6DOF_SetPos,
         },
         {
+            .cmd = UART_CMD_ARM_6DOF_SET_POS_VEL,
+            .arg_count = UART_ARG_ARM_6DOF_SET_POS_VEL,
+            .execute = Cmd_UART_Arm6DOF_SetPosVel,
+        },
+        {
             .cmd = UART_CMD_ARM_6DOF_SET_VELOCITY,
             .arg_count = UART_ARG_ARM_6DOF_SET_VELOCITY,
             .execute = Cmd_UART_Arm6DOF_SetVelocity,

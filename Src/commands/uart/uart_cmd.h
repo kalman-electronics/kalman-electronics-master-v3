@@ -43,6 +43,7 @@ void Cmd_UART_Arm_GetVoltageRequest(uint8_t* data, uart_packet_link_t link);
 
 // --- Arm 6DoF ---
 void Cmd_UART_Arm6DOF_SetPos(uint8_t* data, uart_packet_link_t link);
+void Cmd_UART_Arm6DOF_SetPosVel(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Arm6DOF_SetVelocity(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Arm6DOF_SetGripper(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Arm6DOF_GetPos(uint8_t* data, uart_packet_link_t link);

@@ -31,6 +31,21 @@ void Cmd_Bus_Arm6DOF_GetSmartKutongData(uint8_t *data) {
  *  TX Frames
  */
 
+void Cmd_Bus_Arm6DOF_SetPosVel() {
+    can_packet_t msg = {
+        .cmd = CAN_CMD_ARM_6DOF_SET_POS_VEL1,
+        .arg_count = CAN_ARG_ARM_6DOF_SET_POS_VEL1,
+    };
+    memcpy(msg.args, (void*)&bus_arm_6dof.per_joint_vel_pos.vel_01_radps[0], CAN_ARG_ARM_6DOF_SET_POS_VEL1);
+    Queues_SendCANFrame(&msg);
+
+    msg.cmd = CAN_CMD_ARM_6DOF_SET_POS_VEL2;
+    msg.arg_count = CAN_ARG_ARM_6DOF_SET_POS_VEL2;
+
+    memcpy(msg.args, (void*)&bus_arm_6dof.per_joint_vel_pos.vel_01_radps[4], CAN_ARG_ARM_6DOF_SET_POS_VEL2);
+    Queues_SendCANFrame(&msg);
+}
+
 void Cmd_Bus_Arm6DOF_SetPos() {
     can_packet_t msg = {
         .cmd = CAN_CMD_ARM_6DOF_SET_POS1,
@@ -46,6 +61,8 @@ void Cmd_Bus_Arm6DOF_SetPos() {
     memcpy(msg.args, (void*)&bus_arm_6dof.required.position + 8, 8);
     Queues_SendCANFrame(&msg);
 }
+
+
 
 void Cmd_Bus_Arm6DOF_SetVelocity() {
     can_packet_t msg = {
@@ -76,6 +93,7 @@ void Cmd_Bus_Arm6DOF_SetGripper() {
 
 void Cmd_Bus_Arm6DOF_SetParams() {
     if (bus_arm_6dof.mode == ARM_6DOF_POSITION_MODE) {
+        Cmd_Bus_Arm6DOF_SetPosVel();
         Cmd_Bus_Arm6DOF_SetPos();
     } else if (bus_arm_6dof.mode == ARM_6DOF_VELOCITY_MODE) {
         Cmd_Bus_Arm6DOF_SetVelocity();

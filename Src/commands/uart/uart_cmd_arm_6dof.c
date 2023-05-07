@@ -41,6 +41,18 @@ void Cmd_UART_Arm6DOF_SetPos(uint8_t *data, uart_packet_link_t link_type) {
     GpioExpander_SetLed(LED_DEBUG1, on, 50);
 }
 
+void Cmd_UART_Arm6DOF_SetPosVel(uint8_t *data, uart_packet_link_t link_type){
+    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART))
+        && (link_type == logic.link_type)) {
+
+        memcpy((void*)bus_arm_6dof.per_joint_vel_pos.vel_01_radps, data, sizeof(bus_arm_6dof.per_joint_vel_pos));
+
+        Cmd_UART_BlinkLed(link_type);
+    }
+
+    GpioExpander_SetLed(LED_DEBUG1, on, 50);
+}
+
 void Cmd_UART_Arm6DOF_SetVelocity(uint8_t *data, uart_packet_link_t link_type) {
     if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART))
         && (link_type == logic.link_type)) {

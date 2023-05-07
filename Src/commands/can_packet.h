@@ -32,6 +32,8 @@ typedef enum {
 
     CAN_CMD_ARM_6DOF_SET_POS1 =             0xB0,
     CAN_CMD_ARM_6DOF_SET_POS2 =             0xB1,
+    CAN_CMD_ARM_6DOF_SET_POS_VEL1 =         0xB4,
+    CAN_CMD_ARM_6DOF_SET_POS_VEL2 =         0xB5,
     CAN_CMD_ARM_6DOF_SET_VELOCITY1 =        0xB2,
     CAN_CMD_ARM_6DOF_SET_VELOCITY2 =        0xB3,
     CAN_CMD_ARM_6DOF_GET_POS1 =             0xB8,
@@ -152,6 +154,8 @@ typedef enum {
 
 #define CAN_ARG_ARM_6DOF_SET_POS1            8
 #define CAN_ARG_ARM_6DOF_SET_POS2            8
+#define CAN_ARG_ARM_6DOF_SET_POS_VEL1        8
+#define CAN_ARG_ARM_6DOF_SET_POS_VEL2        4
 #define CAN_ARG_ARM_6DOF_SET_VELOCITY1       8
 #define CAN_ARG_ARM_6DOF_SET_VELOCITY2       5
 #define CAN_ARG_ARM_6DOF_GET_POS1            8
