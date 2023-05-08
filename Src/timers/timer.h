@@ -12,6 +12,9 @@
 
 #define TIMER_COUNT 11
 
+#define TIMER_MOTOR_TIMEOUT_TIME 500
+#define TIMER_ARM_TIMEOUT_TIME   500
+
 //TODO: timer struct and dynamic init
 
 extern TimerHandle_t timer_defs[TIMER_COUNT];
