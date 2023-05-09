@@ -187,7 +187,6 @@ void Timer_ArmTimeout() {
 
     // Switch 6DoF to velocity mode and hold in last state to prevent collision
     bus_arm_6dof.mode = ARM_6DOF_VELOCITY_MODE;
-    bus_arm_6dof.required.velocity.max_torque = 20; //TODO: tune max_torque
     
     for (uint8_t i=0; i<6; i++) {
         bus_arm_6dof.required.velocity.velocity[i] = 0;
