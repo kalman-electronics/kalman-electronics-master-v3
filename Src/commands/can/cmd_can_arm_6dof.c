@@ -36,13 +36,28 @@ void Cmd_Bus_Arm6DOF_SetPosVel() {
         .cmd = CAN_CMD_ARM_6DOF_SET_POS_VEL1,
         .arg_count = CAN_ARG_ARM_6DOF_SET_POS_VEL1,
     };
-    memcpy(msg.args, (void*)&bus_arm_6dof.per_joint_vel_pos.vel_01_radps[0], CAN_ARG_ARM_6DOF_SET_POS_VEL1);
+    memcpy(msg.args, (void*)&bus_arm_6dof.vels.vel_01_radps[0], CAN_ARG_ARM_6DOF_SET_POS_VEL1);
     Queues_SendCANFrame(&msg);
 
     msg.cmd = CAN_CMD_ARM_6DOF_SET_POS_VEL2;
     msg.arg_count = CAN_ARG_ARM_6DOF_SET_POS_VEL2;
 
-    memcpy(msg.args, (void*)&bus_arm_6dof.per_joint_vel_pos.vel_01_radps[4], CAN_ARG_ARM_6DOF_SET_POS_VEL2);
+    memcpy(msg.args, (void*)&bus_arm_6dof.vels.vel_01_radps[4], CAN_ARG_ARM_6DOF_SET_POS_VEL2);
+    Queues_SendCANFrame(&msg);
+}
+
+void Cmd_Bus_Arm6DOF_SetTroque() {
+    can_packet_t msg = {
+            .cmd = CAN_CMD_ARM_6DOF_SET_TORQUE1,
+            .arg_count = CAN_ARG_ARM_6DOF_SET_TORQUE1,
+    };
+    memcpy(msg.args, (void*)&bus_arm_6dof.torques.torque_mNm[0], CAN_ARG_ARM_6DOF_SET_TORQUE1);
+    Queues_SendCANFrame(&msg);
+
+    msg.cmd = CAN_CMD_ARM_6DOF_SET_TORQUE2;
+    msg.arg_count = CAN_ARG_ARM_6DOF_SET_TORQUE2;
+
+    memcpy(msg.args, (void*)&bus_arm_6dof.torques.torque_mNm[4], CAN_ARG_ARM_6DOF_SET_TORQUE2);
     Queues_SendCANFrame(&msg);
 }
 
@@ -98,7 +113,7 @@ void Cmd_Bus_Arm6DOF_SetParams() {
     } else if (bus_arm_6dof.mode == ARM_6DOF_VELOCITY_MODE) {
         Cmd_Bus_Arm6DOF_SetVelocity();
     }
-
+    Cmd_Bus_Arm6DOF_SetTroque();
     Cmd_Bus_Arm6DOF_SetGripper();
 }
 
