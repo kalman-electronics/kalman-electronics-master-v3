@@ -75,6 +75,7 @@ void Cmd_Bus_Arm6DOF_SetPos() {
 
     memcpy(msg.args, (void*)&bus_arm_6dof.required.position + 8, 8);
     Queues_SendCANFrame(&msg);
+    GpioExpander_SetLed(LED_BLANK1, on, 20);  // debug only
 }
 
 
