@@ -35,6 +35,10 @@ void Cmd_UART_Arm6DOF_SetPos(uint8_t *data, uart_packet_link_t link_type) {
 
         Arm_6DOF_SetRequiredByMode(data, ARM_6DOF_POSITION_MODE);
 
+        // Reset periodical arm master timeout
+        Timer_ResetTimeout(TIMER_CAN_TRAFFIC_SET_ARM);
+        Timer_ResetTimeout(TIMER_ARM_TIMEOUT);
+
         Cmd_UART_BlinkLed(link_type);
     }
 
@@ -83,6 +87,10 @@ void Cmd_UART_Arm6DOF_SetVelocity(uint8_t *data, uart_packet_link_t link_type) {
 
         Arm_6DOF_SetRequiredByMode(data, ARM_6DOF_VELOCITY_MODE);
 
+        // Reset periodical arm master timeout
+        Timer_ResetTimeout(TIMER_CAN_TRAFFIC_SET_ARM);
+        Timer_ResetTimeout(TIMER_ARM_TIMEOUT);
+
         Cmd_UART_BlinkLed(link_type);
     }
 
@@ -92,8 +100,10 @@ void Cmd_UART_Arm6DOF_SetVelocity(uint8_t *data, uart_packet_link_t link_type) {
 void Cmd_UART_Arm6DOF_SetGripper(uint8_t *data, uart_packet_link_t link_type) {
     if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART))
         && (link_type == logic.link_type)) {
-    	//armTimeoutTim = 0;  // reset timeout //TODO: arm timeout
         bus_arm_6dof.gripper = data[1] | (data[0] << 8);
+
+        // Reset arm master timeout
+        Timer_ResetTimeout(TIMER_ARM_TIMEOUT);
 
         Cmd_UART_BlinkLed(link_type);
     }
