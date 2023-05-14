@@ -47,8 +47,32 @@ void Cmd_UART_Arm6DOF_SetPos(uint8_t *data, uart_packet_link_t link_type) {
 void Cmd_UART_Arm6DOF_SetPosVel(uint8_t *data, uart_packet_link_t link_type){
     if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART))
         && (link_type == logic.link_type)) {
+        uint8_t msb;
+        uint8_t lsb;
+        for(uint8_t i = 0; i < UART_ARG_ARM_6DOF_SET_POS_VEL/2; i++){
+            msb = data[2*i];
+            lsb = data[2*i+1];
+            // conversion from big to little endianess
+            bus_arm_6dof.vels.vel_01_radps[i] = (((uint16_t)msb << 8) | lsb);
+        }
 
-        memcpy((void*)bus_arm_6dof.per_joint_vel_pos.vel_01_radps, data, sizeof(bus_arm_6dof.per_joint_vel_pos));
+        Cmd_UART_BlinkLed(link_type);
+    }
+
+    GpioExpander_SetLed(LED_DEBUG1, on, 50);
+}
+
+void Cmd_UART_Arm6DOF_SetTorque(uint8_t *data, uart_packet_link_t link_type){
+    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART))
+        && (link_type == logic.link_type)) {
+        uint8_t msb;
+        uint8_t lsb;
+        for(uint8_t i = 0; i < UART_ARG_ARM_6DOF_SET_TORQUE/2; i++){
+            msb = data[2*i];
+            lsb = data[2*i+1];
+            // conversion from big to little endianess
+            bus_arm_6dof.torques.torque_mNm[i] = (((uint16_t)msb << 8) | lsb);
+        }
 
         Cmd_UART_BlinkLed(link_type);
     }

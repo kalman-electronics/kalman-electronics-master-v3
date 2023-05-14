@@ -93,6 +93,7 @@ typedef enum {
     UART_CMD_ARM_6DOF_SET_POS                = 0xE0,     //!< [TX]
     UART_CMD_ARM_6DOF_SET_POS_VEL            = 0xE4,     //!< [TX]
     UART_CMD_ARM_6DOF_SET_VELOCITY           = 0xE1,     //!< [TX]
+    UART_CMD_ARM_6DOF_SET_TORQUE             = 0xE5,     //!< [TX]
     UART_CMD_ARM_6DOF_SET_GRIPPER            = 0xE2,     //!< [TX]
     UART_CMD_ARM_6DOF_GET_POS                = 0xF3,     //!< [RX]
     UART_CMD_ARM_6DOF_AUTOCLICK_SET_POS      = 0xE3,
@@ -203,6 +204,7 @@ typedef enum {
     // Arm 6 DOF
     UART_ARG_ARM_6DOF_SET_POS              = 16,
     UART_ARG_ARM_6DOF_SET_POS_VEL          = 12,
+    UART_ARG_ARM_6DOF_SET_TORQUE           = 12,
     UART_ARG_ARM_6DOF_SET_VELOCITY         = 13,
     UART_ARG_ARM_6DOF_SET_GRIPPER          = 2,
     UART_ARG_ARM_6DOF_GET_POS              = 14,

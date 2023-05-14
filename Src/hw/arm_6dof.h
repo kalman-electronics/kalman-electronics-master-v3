@@ -9,6 +9,16 @@ typedef enum {
 
 #include "stdint.h"
 
+// per joint vel control in pos control
+typedef struct __attribute__((packed)) {
+    uint16_t vel_01_radps[6];
+} per_joint_vel_pos_t;
+
+// per joint torque control
+typedef struct __attribute__((packed)) {
+    uint16_t torque_mNm[6];
+} per_joint_torque_t;
+
 typedef struct {
     arm_6dof_mode_t mode;
 
@@ -38,10 +48,9 @@ typedef struct {
         uint16_t humidity;
     } kutong;
 
-    // per joint vel control in pos control
-    struct __attribute__((packed)) {
-        uint16_t vel_01_radps[6];
-    } per_joint_vel_pos;
+    per_joint_vel_pos_t vels;
+    per_joint_torque_t torques;
+
 } arm_6dof_controller_t;
 
 
