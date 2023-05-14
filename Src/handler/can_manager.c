@@ -69,8 +69,16 @@ void CanManager_Task() {
         can_header.TxEventFifoControl = FDCAN_NO_TX_EVENTS;
         can_header.MessageMarker = 0;
 
+        // Wait for space in CAN TX FIFO
+        while(!HAL_FDCAN_GetTxFifoFreeLevel(&hfdcan1)) {
+        	vTaskDelay(1 / portTICK_PERIOD_MS);
+        }
+
         // Add the packet to be sent from the TX FIFO
-        HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan1, &can_header, msg.args);
+        HAL_StatusTypeDef res = HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan1, &can_header, msg.args);
+        if (res != HAL_OK) {
+        	//GpioExpander_SetLed(LED_CAN_ERR, on, 50); //TODO: can err led is not working
+        }
     }
 }
 

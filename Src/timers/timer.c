@@ -11,14 +11,14 @@ TimerHandle_t timer_defs[TIMER_COUNT];
 void Timer_Init() {
     timer_defs[TIMER_CAN_TRAFFIC_SET_ARM] = xTimerCreate(
             "CAN_TrafficSetArm",
-            100 / portTICK_PERIOD_MS,
+            150 / portTICK_PERIOD_MS,
             pdTRUE,
             0,
             Timer_CAN_TrafficSetArm);
 
     timer_defs[TIMER_CAN_TRAFFIC_SET_MOTOR] = xTimerCreate(
             "CAN_TrafficSetMotor",
-            100 / portTICK_PERIOD_MS,
+            150 / portTICK_PERIOD_MS,
             pdTRUE,
             0,
             Timer_CAN_TrafficSetMotor);
@@ -62,14 +62,14 @@ void Timer_Init() {
 
     timer_defs[TIMER_MOTOR_TIMEOUT] = xTimerCreate(
             "Timeout_Motor",
-            1000 / portTICK_PERIOD_MS,
+            TIMER_MOTOR_TIMEOUT_TIME / portTICK_PERIOD_MS,
             pdFALSE,
             0,
             Timer_MotorTimeout);
 
     timer_defs[TIMER_ARM_TIMEOUT] = xTimerCreate(
             "Timeout_Arm",
-            1000 / portTICK_PERIOD_MS,
+            TIMER_ARM_TIMEOUT_TIME / portTICK_PERIOD_MS,
             pdFALSE,
             0,
             Timer_ArmTimeout);
@@ -122,7 +122,6 @@ void Timer_ResetTimeout(timer_id timer) {
 
 // --- Traffic ---
 
-//TODO: arm timeout tim?
 void Timer_CAN_TrafficSetArm() {
     if (Logic_GetUptime() < LOGIC_COMM_START_TIME)
         return;
@@ -182,9 +181,17 @@ void Timer_MotorTimeout() {
 void Timer_ArmTimeout() {
     #if TIMER_COMM_TIMEOUT_BYPASS == 0
     debug_printf("[COMM] Przekroczono czas oczekiwania na cykliczna ramke Arm Controllera - zatrzymanie silnikow.\r\n");
+    // for (uint8_t i=0; i<6; i++) {
+    //     bus_arm.required_pos[i] = bus_arm.current_pos[i];
+    // }
+
+    // Switch 6DoF to velocity mode and hold in last state to prevent collision
+    bus_arm_6dof.mode = ARM_6DOF_VELOCITY_MODE;
+    
     for (uint8_t i=0; i<6; i++) {
-        bus_arm.required_pos[i] = bus_arm.current_pos[i];
+        bus_arm_6dof.required.velocity.velocity[i] = 0;
     }
+
     #else
         #warning Motor timeout bypassed
     #endif
