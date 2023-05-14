@@ -46,7 +46,7 @@ void Cmd_Bus_Arm6DOF_SetPosVel() {
     Queues_SendCANFrame(&msg);
 }
 
-void Cmd_Bus_Arm6DOF_SetTroque() {
+void Cmd_Bus_Arm6DOF_SetTorque() {
     can_packet_t msg = {
             .cmd = CAN_CMD_ARM_6DOF_SET_TORQUE1,
             .arg_count = CAN_ARG_ARM_6DOF_SET_TORQUE1,
@@ -114,8 +114,6 @@ void Cmd_Bus_Arm6DOF_SetParams() {
     } else if (bus_arm_6dof.mode == ARM_6DOF_VELOCITY_MODE) {
         Cmd_Bus_Arm6DOF_SetVelocity();
     }
-    Cmd_Bus_Arm6DOF_SetTroque();
-    Cmd_Bus_Arm6DOF_SetGripper();
 }
 
 void Cmd_Bus_Arm6DOF_PositioningStart(uint8_t ID) {

@@ -17,15 +17,15 @@ void Arm_6DOF_SetRequiredByMode(uint8_t *data, arm_6dof_mode_t mode) {
     switch(mode) {
         case ARM_6DOF_POSITION_MODE:
             memcpy((void*)&bus_arm_6dof.required, data, sizeof(bus_arm_6dof.required.position));
-            Cmd_Bus_Arm6DOF_SetPos();
             break;
         case ARM_6DOF_VELOCITY_MODE:
         	memcpy((void*)&bus_arm_6dof.required, data, sizeof(bus_arm_6dof.required.velocity));
-            Cmd_Bus_Arm6DOF_SetVelocity();
             break;
         default:
             return;
     }
+
+    Cmd_Bus_Arm6DOF_SetParams();
 }
 
 void Cmd_UART_Arm6DOF_SetPos(uint8_t *data, uart_packet_link_t link_type) {
@@ -79,6 +79,11 @@ void Cmd_UART_Arm6DOF_SetTorque(uint8_t *data, uart_packet_link_t link_type){
             // conversion from big to little endianess
             bus_arm_6dof.torques.torque_mNm[i] = (((uint16_t)msb << 8) | lsb);
         }
+
+        Cmd_Bus_Arm6DOF_SetTorque();
+
+        // Reset arm master timeout
+        Timer_ResetTimeout(TIMER_ARM_TIMEOUT);
 
         Cmd_UART_BlinkLed(link_type);
     }
