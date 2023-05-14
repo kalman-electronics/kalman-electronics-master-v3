@@ -75,6 +75,8 @@ void Cmd_Bus_Arm_Calibrate(uint8_t joint);
 void Cmd_Bus_Arm_DebugTx(uint8_t* data);
 
 // --- Arm 6DoF
+void Cmd_Bus_Arm6DOF_SetPosVel();
+void Cmd_Bus_Arm6DOF_SetTorque();
 void Cmd_Bus_Arm6DOF_SetPos();
 void Cmd_Bus_Arm6DOF_SetVelocity();
 void Cmd_Bus_Arm6DOF_SetGripper();
