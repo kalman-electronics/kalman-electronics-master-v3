@@ -11,14 +11,14 @@ TimerHandle_t timer_defs[TIMER_COUNT];
 void Timer_Init() {
     timer_defs[TIMER_CAN_TRAFFIC_SET_ARM] = xTimerCreate(
             "CAN_TrafficSetArm",
-            100 / portTICK_PERIOD_MS,
+            150 / portTICK_PERIOD_MS,
             pdTRUE,
             0,
             Timer_CAN_TrafficSetArm);
 
     timer_defs[TIMER_CAN_TRAFFIC_SET_MOTOR] = xTimerCreate(
             "CAN_TrafficSetMotor",
-            100 / portTICK_PERIOD_MS,
+            150 / portTICK_PERIOD_MS,
             pdTRUE,
             0,
             Timer_CAN_TrafficSetMotor);
