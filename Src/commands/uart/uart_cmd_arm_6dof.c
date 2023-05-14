@@ -56,6 +56,12 @@ void Cmd_UART_Arm6DOF_SetPosVel(uint8_t *data, uart_packet_link_t link_type){
             bus_arm_6dof.vels.vel_01_radps[i] = (((uint16_t)msb << 8) | lsb);
         }
 
+        Arm_6DOF_SetRequiredByMode(data, ARM_6DOF_VELOCITY_MODE);
+
+        // Reset periodical arm master timeout
+        Timer_ResetTimeout(TIMER_CAN_TRAFFIC_SET_ARM);
+        Timer_ResetTimeout(TIMER_ARM_TIMEOUT);
+
         Cmd_UART_BlinkLed(link_type);
     }
 
