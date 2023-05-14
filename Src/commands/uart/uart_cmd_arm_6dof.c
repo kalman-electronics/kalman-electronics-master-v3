@@ -12,21 +12,20 @@
  */
 
 void Arm_6DOF_SetRequiredByMode(uint8_t *data, arm_6dof_mode_t mode) {
-    uint16_t nbytes;
+    memcpy((void*)&bus_arm_6dof.mode, &mode, sizeof(mode));
 
     switch(mode) {
         case ARM_6DOF_POSITION_MODE:
-            nbytes = sizeof(bus_arm_6dof.required.position);
+            memcpy((void*)&bus_arm_6dof.required, data, sizeof(bus_arm_6dof.required.position));
+            Cmd_Bus_Arm6DOF_SetPos();
             break;
         case ARM_6DOF_VELOCITY_MODE:
-            nbytes = sizeof(bus_arm_6dof.required.velocity);
+        	memcpy((void*)&bus_arm_6dof.required, data, sizeof(bus_arm_6dof.required.velocity));
+            Cmd_Bus_Arm6DOF_SetVelocity();
             break;
         default:
             return;
     }
-
-    memcpy((void*)&bus_arm_6dof.required, data, nbytes);
-    memcpy((void*)&bus_arm_6dof.mode, &mode, sizeof(mode));
 }
 
 void Cmd_UART_Arm6DOF_SetPos(uint8_t *data, uart_packet_link_t link_type) {
@@ -65,6 +64,8 @@ void Cmd_UART_Arm6DOF_SetGripper(uint8_t *data, uart_packet_link_t link_type) {
     if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART))
         && (link_type == logic.link_type)) {
         bus_arm_6dof.gripper = data[1] | (data[0] << 8);
+
+        Cmd_Bus_Arm6DOF_SetGripper();
 
         // Reset arm master timeout
         Timer_ResetTimeout(TIMER_ARM_TIMEOUT);
