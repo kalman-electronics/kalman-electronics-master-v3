@@ -81,7 +81,7 @@ void UARTEncoder_EncodePacket(uart_encoder_t* encoder, uart_packet_t* msg) {
         encoder->tx_dma_buf_tail = 0;
     }
 
-    uint16_t packet_len = 3 + msg->arg_count + 1; // Header + data + crc
+    uint16_t packet_len = 3 + msg->arg_count + 2; // Header + data + crc + urc
 
     taskENTER_CRITICAL();
 
@@ -116,6 +116,11 @@ void UARTEncoder_EncodeToBuf(uart_encoder_t* encoder, uart_packet_t* msg) {
     for (uint8_t i = 0; i < msg->arg_count; i++)
         crc ^= msg->args[i];
 
+    // ÜRC calculation - additional "CRC" - for the received packet
+    uint8_t urc;
+    for (uint8_t i = 0; i < msg->arg_count; i++)
+		urc += (msg->args[i] + i) * ((i & 0b11) + 1);
+
     uint8_t* addr = encoder->tx_dma_buf + encoder->tx_dma_buf_head;
 
     addr[0] = '<';                               // Start
@@ -123,7 +128,9 @@ void UARTEncoder_EncodeToBuf(uart_encoder_t* encoder, uart_packet_t* msg) {
     addr[2] = msg->arg_count;                    // Len
     memcpy(addr + 3, msg->args, msg->arg_count); // Data
     addr[msg->arg_count + 3] = crc;              // CRC
+    addr[msg->arg_count + 4] = urc;              // ÜRC
+
 
     // Buffer overflow has been checked before
-    encoder->tx_dma_buf_head += 3 + msg->arg_count + 1;
+    encoder->tx_dma_buf_head += 3 + msg->arg_count + 2;
 }

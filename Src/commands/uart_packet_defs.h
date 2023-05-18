@@ -1,4 +1,4 @@
-	#ifndef KALMAN_ELECTRONICS_MASTER_V3_UART_PACKET_DEFS_H
+#ifndef KALMAN_ELECTRONICS_MASTER_V3_UART_PACKET_DEFS_H
 #define KALMAN_ELECTRONICS_MASTER_V3_UART_PACKET_DEFS_H
 
 #include "uart_packet.h"
@@ -6,7 +6,7 @@
 
 #define UART_PACKET_DEFS_LEN (sizeof(uart_packet_defs)/sizeof(uart_packet_def_t))
 
-uart_packet_def_t uart_packet_defs[] = {
+static uart_packet_def_t uart_packet_defs[] = {
         // --- Common ---
         {
             .cmd = UART_CMD_COMMON_RESET_ALL,
