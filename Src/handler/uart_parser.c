@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "uart_parser.h"
+#include "commands/uart_packet_defs.h"
 #include "dma.h"
 #include "usart.h"
 #include "string.h"
@@ -85,6 +86,13 @@ void UARTParser_ParseBuf(uart_parser_t* parser) {
             case UART_PARSER_HEADER_LEN:
                 parser->packet.arg_count = PARSER_READ_BYTE();
 
+                // Drop regular packets over 16 bytes long as they SHOULD not appear
+				#warning "Parser drops frames over 16 bytes long - URC hotfix"
+                if (parser->packet.arg_count > 16 && !UART_PACKET_IS_CUSTOM(parser->packet.cmd)) {
+                	parser->state = UART_PARSER_WAITING;
+                	break;
+                }
+
                 // For packet without arguments skip data acq phase
                 if (parser->packet.arg_count != 0) {
                     parser->state = UART_PARSER_DATA;
@@ -111,6 +119,22 @@ void UARTParser_ParseBuf(uart_parser_t* parser) {
                     crc ^= parser->packet.args[i];
 
                 // Compare calculated CRC with a received one
+				if (crc != PARSER_READ_BYTE()) {
+					parser->state = UART_PARSER_WAITING;
+					debug_printf("CRC Error\n");
+					break;
+				}
+
+                parser->state = UART_PARSER_ÜRC;
+                break;
+
+			case UART_PARSER_ÜRC:
+				// Calculate ÜRC - additional "CRC" - for the received packet
+				crc = 0;
+                for (uint8_t i = 0; i < parser->packet.arg_count; i++)
+                    crc += (parser->packet.args[i] + i) * ((i & 0b11) + 1);
+
+                // Compare calculated ÜRC with a received one
                 if (crc == PARSER_READ_BYTE()) {
                 	parser->packet.origin = UARTPacket_UARTIDToLink(parser->uart->id);
 

@@ -15,6 +15,7 @@ typedef enum {
     UART_PARSER_HEADER_LEN,
 	UART_PARSER_DATA,
     UART_PARSER_CRC,
+	UART_PARSER_ÜRC
 } uart_parser_state_t;
 
 typedef struct {
