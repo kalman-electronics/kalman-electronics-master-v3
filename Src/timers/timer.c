@@ -11,7 +11,7 @@ TimerHandle_t timer_defs[TIMER_COUNT];
 void Timer_Init() {
     timer_defs[TIMER_CAN_TRAFFIC_SET_ARM] = xTimerCreate(
             "CAN_TrafficSetArm",
-            150 / portTICK_PERIOD_MS,
+            50 / portTICK_PERIOD_MS,
             pdTRUE,
             0,
             Timer_CAN_TrafficSetArm);
@@ -25,7 +25,7 @@ void Timer_Init() {
 
     timer_defs[TIMER_UART_TRAFFIC_6DOF] = xTimerCreate(
             "CAN_Traffic6DoF",
-            150 / portTICK_PERIOD_MS,
+            50 / portTICK_PERIOD_MS,
             pdTRUE,
             0,
             Timer_UART_Traffic6DoF);
@@ -39,14 +39,14 @@ void Timer_Init() {
 
     timer_defs[TIMER_UART_TRAFFIC_MOTOR] = xTimerCreate(
             "UART_TrafficMotor",
-            300 / portTICK_PERIOD_MS,
+            500 / portTICK_PERIOD_MS,
             pdTRUE,
             0,
             Timer_UART_TrafficMotor);
 
     timer_defs[TIMER_UART_TRAFFIC_MOTOR_TEMP] = xTimerCreate(
             "UART_TrafficMotorTemp",
-            1000 / portTICK_PERIOD_MS,
+            2000 / portTICK_PERIOD_MS,
             pdTRUE,
             0,
             Timer_UART_TrafficMotorTemp);
