@@ -1,4 +1,16 @@
+from pickletools import uint8
 import serial
+from typing import List, Deque
+
+def _calc_urc(data: List[uint8]) -> uint8:
+    crc = 0x00
+    for i, arg in enumerate(data[2:]):
+        crc += (((arg + i) * ((i % 4) + 1)))
+        crc %= 256
+        # rospy.logerr("> i " + str(i))
+        # rospy.logerr("crc " + str(crc))
+        # rospy.logerr("val " + str((((arg + i) * ((i % 4) + 1)))))
+    return crc % 256
 
 with serial.Serial('COM8', 115200, timeout=1) as ser:
     while True:
@@ -23,12 +35,17 @@ with serial.Serial('COM8', 115200, timeout=1) as ser:
 
         print("crc:  " + str(crc))
 
-        frame = bytearray([ord('<'), cmd, int(args_num)])
+        frame = bytearray([cmd, int(args_num)])
 
         for arg in args:
             frame.append(int(arg))
 
+        urc = _calc_urc(frame)
+        print(urc)
+
+        frame.insert(0, ord('<'))
         frame.append(crc)
+        frame.append(urc)
 
         print(frame)
         ser.write(frame)
