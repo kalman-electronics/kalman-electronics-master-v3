@@ -126,11 +126,13 @@ void UARTEncoder_EncodeToBuf(uart_encoder_t* encoder, uart_packet_t* msg) {
     addr[0] = '<';                               // Start
     addr[1] = msg->cmd;                          // Command
     addr[2] = msg->arg_count;                    // Len
-    memcpy(addr + 3, msg->args, msg->arg_count); // Data
-    addr[msg->arg_count + 3] = crc;              // CRC
-    addr[msg->arg_count + 4] = urc;              // ÜRC
+    addr[3] = msg->cmd + msg->arg_count;         // HRC - header checksum
+
+    memcpy(addr + 4, msg->args, msg->arg_count); // Data
+    addr[msg->arg_count + 4] = crc;              // CRC
+    addr[msg->arg_count + 5] = urc;              // ÜRC
 
 
     // Buffer overflow has been checked before
-    encoder->tx_dma_buf_head += 3 + msg->arg_count + 2;
+    encoder->tx_dma_buf_head += 4 + msg->arg_count + 2;
 }

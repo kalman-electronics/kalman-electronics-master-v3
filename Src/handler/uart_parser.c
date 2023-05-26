@@ -82,11 +82,22 @@ void UARTParser_ParseBuf(uart_parser_t* parser) {
                 break;
 
             // Calculate data length / remaining data to read
-            // TODO: Additional check - Deduce len from cmd field in message def
             case UART_PARSER_HEADER_LEN:
                 parser->packet.arg_count = PARSER_READ_BYTE();
+				parser->state = UART_PARSER_HEADER_CRC;
+                break;
 
-                // Drop regular packets over 16 bytes long as they SHOULD not appear
+			// Calculate CRC for the packet's header
+			// TODO: Additional check - Deduce len from cmd field in message def
+			case UART_PARSER_HEADER_CRC:
+				crc = PARSER_READ_BYTE();
+
+				if (crc != parser->packet.cmd + parser->packet.arg_count) {
+					parser->state = UART_PARSER_WAITING;
+					break;
+				}
+
+				// Drop regular packets over 16 bytes long as they SHOULD not appear
 				#warning "Parser drops frames over 16 bytes long - URC hotfix"
                 if (parser->packet.arg_count > 16 && !UART_PACKET_IS_CUSTOM(parser->packet.cmd)) {
                 	parser->state = UART_PARSER_WAITING;
@@ -99,8 +110,7 @@ void UARTParser_ParseBuf(uart_parser_t* parser) {
                 } else {
                     parser->state = UART_PARSER_CRC;
                 }
-
-                break;
+				break;
 
             case UART_PARSER_DATA:
                 parser->packet.args[parser->data_writen++] = PARSER_READ_BYTE();
