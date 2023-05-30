@@ -190,6 +190,8 @@ void Timer_ArmTimeout() {
     
     for (uint8_t i=0; i<6; i++) {
         bus_arm_6dof.required.velocity.velocity[i] = 0;
+        bus_arm_6dof.required.velocity.max_torque = 100;
+
     }
 
     #else
