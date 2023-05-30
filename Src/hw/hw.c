@@ -18,7 +18,7 @@ void HW_Init() {
 
     // 6-DoF init
     memset((void*)&bus_arm_6dof, 0, sizeof(bus_arm_6dof));
-    bus_arm_6dof.mode = ARM_6DOF_POSITION_MODE;
+    bus_arm_6dof.mode = ARM_6DOF_VELOCITY_MODE;
 
     //mobilab v2 init
     for (int i = 0; i < BUS_MOBILAB_COUNT; i++)
