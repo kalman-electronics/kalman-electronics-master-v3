@@ -81,7 +81,7 @@ void UARTEncoder_EncodePacket(uart_encoder_t* encoder, uart_packet_t* msg) {
         encoder->tx_dma_buf_tail = 0;
     }
 
-    uint16_t packet_len = 3 + msg->arg_count + 2; // Header + data + crc + urc
+    uint16_t packet_len = 4 + msg->arg_count + 2; // Header + data + crc + urc
 
     taskENTER_CRITICAL();
 
