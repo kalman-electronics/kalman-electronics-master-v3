@@ -10,6 +10,8 @@
 #define MIN(a, b) ((a) > (b) ? (b) : (a))
 #define PARSER_READ_BYTE() (parser->rx_parser_buf[parser->rx_parser_buf_tail++])
 
+#define HEX2BYTE_ERROR 0xFFFF
+
 uart_parser_t parser_defs[UART_DEFS_COUNT];
 
 void UARTParser_ParseBuf(uart_parser_t* parser);
@@ -62,6 +64,113 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef* huart, uint16_t Size) {
 	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 	xTaskNotifyFromISR(UARTParser_TaskHandle, parser->uart->id + 1, eSetBits, &xHigherPriorityTaskWoken);
 	portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+}
+
+uint8_t _decode_hex(uint8_t hex) {
+    if ((hex >= '0') && (hex <= '9'))
+        return hex-'0';
+    else if ((hex >= 'a') && (hex <= 'f'))
+        return 10+hex-'a';
+    else if ((hex >= 'A') && (hex <= 'F'))
+        return 10+hex-'A';
+    else
+        return 255;
+}
+
+uint16_t _hex2byte(uint8_t *buf) {
+	uint8_t result, value;
+	if ((value = _decode_hex(buf[0])) < 16) {
+		result = value << 4;
+
+		if ((value = _decode_hex(buf[1])) < 16) {
+			result = result + value;
+			return result;
+		}
+		return HEX2BYTE_ERROR;
+	}
+	return HEX2BYTE_ERROR;
+}
+
+void UARTParser_ParseRawData(uart_parser_t* parser, uint8_t* buf) {
+	uint8_t crc = 0; //obliczone pole CRC
+	uint8_t *p = buf; //pomocniczy wskaznik
+	uint16_t conv; //zdekodowana wartosc z dwoch znakow ASCII
+
+	//dekodowanie kodu komendy
+	if ((conv = _hex2byte(p)) != HEX2BYTE_ERROR) {
+		parser->packet.cmd = (uint8_t)conv;
+		crc ^= (uint8_t)conv;
+		p += 2;
+	}
+	else return;
+
+	//dekodowanie ilosci argumentow - w zaleznosci od konfiguracji 1 lub 2 bajty
+	uint16_t args_count = 0;
+	if ((conv = _hex2byte(p)) != HEX2BYTE_ERROR) {
+        args_count += conv;
+        crc ^= (uint8_t)conv;
+        p += 2;
+    }
+    else return;
+
+	//dekodowanie argumentow
+	for (uint16_t i=0; i<args_count; i++) {
+		if ((conv = _hex2byte(p)) != HEX2BYTE_ERROR) {
+			parser->packet.args[i] = (uint8_t)conv;
+			crc ^= (uint8_t)conv;
+			p += 2;
+		}
+		else return;
+	}
+
+	//porownanie CRC
+	if ((conv = _hex2byte(p)) != HEX2BYTE_ERROR) {
+		if (crc == (uint8_t)conv) {
+			parser->packet.arg_count = args_count;
+
+			//przekazywanie ramki do funkcji wykonawczej
+			parser->packet.origin = UARTPacket_UARTIDToLink(parser->uart->id);
+
+			if (!xQueueSend(uart_handler_incoming_packet_queue, &(parser->packet), 0))
+				debug_printf("UART msg queue full\n");
+
+		} else {
+			debug_printf("CRC Error\n");
+		}
+	}
+}
+
+void UARTParser_ParseBufLegacy(uart_parser_t* parser) {
+	static uint8_t buf[300];
+	static uint16_t len = 0;
+	static uint8_t isParsing = 0;
+
+	while(parser->rx_parser_buf_head != parser->rx_parser_buf_tail) {
+		uint8_t current_byte = PARSER_READ_BYTE();
+
+		if (parser->rx_parser_buf_tail == UART_PARSER_PARSER_BUF_SIZE)
+			parser->rx_parser_buf_tail = 0;
+
+		if (current_byte == '<') {
+			len = 0;
+			isParsing = 1;
+			continue;
+		} else if (!isParsing) {
+			continue;
+		}
+
+		if (current_byte == '>') {
+			UARTParser_ParseRawData(parser, buf);
+			isParsing = 0;
+		} else {
+			buf[len++] = current_byte;
+
+			if (len == 300) {
+				isParsing = 0;
+				len = 0;
+			}
+		}
+	}
 }
 
 void UARTParser_ParseBuf(uart_parser_t* parser) {
@@ -187,7 +296,8 @@ void UARTParser_Task() {
 			// Check every bit until all are cleared
 			if(uarts_to_process & (1 << uart_id)) {
 				// Parse buffer
-				UARTParser_ParseBuf(&parser_defs[uart_id]);
+				#warning Using legacy parser
+				UARTParser_ParseBufLegacy(&parser_defs[uart_id]);
 
 				// Clear bit
 				uarts_to_process &= ~(1 << uart_id);

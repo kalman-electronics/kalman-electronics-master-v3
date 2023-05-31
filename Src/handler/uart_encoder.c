@@ -81,7 +81,7 @@ void UARTEncoder_EncodePacket(uart_encoder_t* encoder, uart_packet_t* msg) {
         encoder->tx_dma_buf_tail = 0;
     }
 
-    uint16_t packet_len = 3 + msg->arg_count + 2; // Header + data + crc + urc
+    uint16_t packet_len = (3 + msg->arg_count + 2) * 2;
 
     taskENTER_CRITICAL();
 
@@ -93,7 +93,7 @@ void UARTEncoder_EncodePacket(uart_encoder_t* encoder, uart_packet_t* msg) {
     }
 
     // Encode packet to buffer
-    UARTEncoder_EncodeToBuf(encoder, msg);
+    UARTEncoder_EncodeToBufLegacy(encoder, msg);
 
     // Start DMA if it is not running
     if (encoder->status == UART_ENCODER_IDLE) {
@@ -135,4 +135,41 @@ void UARTEncoder_EncodeToBuf(uart_encoder_t* encoder, uart_packet_t* msg) {
 
     // Buffer overflow has been checked before
     encoder->tx_dma_buf_head += 4 + msg->arg_count + 2;
+}
+
+uint8_t _encode_hex(uint8_t value) {
+	if (value < 10)
+		return '0'+value;
+	else if (value < 16)
+		return 'a'+value-10;
+	else
+		return 255;
+}
+
+uint8_t* _byte2hex(uint8_t byte, uint8_t *buf) {
+	buf[0] = _encode_hex(byte >> 4);
+	buf[1] = _encode_hex(byte & 0x0F);
+	return buf+2;
+}
+
+void UARTEncoder_EncodeToBufLegacy(uart_encoder_t* encoder, uart_packet_t* msg) {
+    // CRC calculation
+    uint8_t crc = msg->cmd ^ msg->arg_count;
+    for (uint8_t i = 0; i < msg->arg_count; i++)
+        crc ^= msg->args[i];
+
+    uint8_t* addr = encoder->tx_dma_buf + encoder->tx_dma_buf_head;
+
+    *addr++ = '<';                                           // Start
+    addr = _byte2hex(msg->cmd, addr);                      // Command
+    addr = _byte2hex((uint8_t)(msg->arg_count & 0xFF), addr);  // Len
+
+    for (uint16_t a=0; a<msg->arg_count; a++)                  // Data
+        addr = _byte2hex(msg->args[a], addr);
+
+    addr = _byte2hex(crc, addr);                             // CRC
+    *addr++ = '>';                                           // End
+
+    // Buffer overflow has been checked before
+    encoder->tx_dma_buf_head += (3 + msg->arg_count + 2) * 2;
 }
