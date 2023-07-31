@@ -117,7 +117,7 @@ void UARTEncoder_EncodeToBuf(uart_encoder_t* encoder, uart_packet_t* msg) {
         crc ^= msg->args[i];
 
     // ÜRC calculation - additional "CRC" - for the received packet
-    uint8_t urc;
+    uint8_t urc = 0;
     for (uint8_t i = 0; i < msg->arg_count; i++)
 		urc += (msg->args[i] + i) * ((i & 0b11) + 1);
 
