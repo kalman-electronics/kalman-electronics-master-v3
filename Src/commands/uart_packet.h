@@ -113,6 +113,8 @@ typedef enum {
     UART_CMD_CUSTOM_TO_RF                    = 0x81,     //!< [TX, RX]
     UART_CMD_SUPERVISOR_TO_UART              = 0x82,     //!< [TX, RX]
     UART_CMD_SUPERVISOR_TO_RF                = 0x83,     //!< [TX, RX]
+    UART_CMD_RF_TO_ESP32                     = 0x84,     //!< [TX, RX]
+    UART_CMD_ESP32_TO_RF                     = 0x85,     //!< [TX, RX]
 } uart_cmd_t;
 
 /**

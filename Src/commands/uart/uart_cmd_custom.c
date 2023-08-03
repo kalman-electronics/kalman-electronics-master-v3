@@ -48,3 +48,25 @@ void Cmd_UART_SupervisorToUART(uint8_t* data, uint8_t len) {
 
     Queues_SendUARTFrame(&msg);
 }
+
+void Cmd_UART_RF_To_ESP32(uint8_t* data, uint8_t len) {
+    uart_packet_t msg = {
+            .cmd = UART_CMD_RF_TO_ESP32,
+            .arg_count = len,
+            .origin = LINK_DEBUG_UART
+    };
+    memcpy(msg.args, data, len);
+
+    Queues_SendUARTFrame(&msg);
+}
+
+void Cmd_UART_ESP32_To_RF(uint8_t* data, uint8_t len) {
+    uart_packet_t msg = {
+            .cmd = UART_CMD_ESP32_TO_RF,
+            .arg_count = len,
+            .origin = LINK_RF_UART
+    };
+    memcpy(msg.args, data, len);
+
+    Queues_SendUARTFrame(&msg);
+}
