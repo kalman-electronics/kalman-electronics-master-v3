@@ -60,7 +60,7 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef* huart, uint16_t Size) {
 
 	// Notify parser about new data on specific UART channel to be processed and yield
 	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
-	xTaskNotifyFromISR(UARTParser_TaskHandle, parser->uart->id + 1, eSetBits, &xHigherPriorityTaskWoken);
+	xTaskNotifyFromISR(UARTParser_TaskHandle,   1 << parser->uart->id, eSetBits, &xHigherPriorityTaskWoken);
 	portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 }
 
