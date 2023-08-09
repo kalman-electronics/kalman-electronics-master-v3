@@ -1,50 +1,47 @@
-from pickletools import uint8
+from ctypes import c_uint8
 import serial
 from typing import List, Deque
-
-def _calc_urc(data: List[uint8]) -> uint8:
-    crc = 0x00
-    for i, arg in enumerate(data[2:]):
-        crc += (((arg + i) * ((i % 4) + 1)))
-        crc %= 256
-        # rospy.logerr("> i " + str(i))
-        # rospy.logerr("crc " + str(crc))
-        # rospy.logerr("val " + str((((arg + i) * ((i % 4) + 1)))))
-    return crc % 256
 
 with serial.Serial('COM8', 115200, timeout=1) as ser:
     while True:
         crc_data = []
         crc = 0
 
-        cmd = int(input("cmd:  "))
+        cmd = c_uint8(int(input("cmd:  ")))
         crc_data.append(cmd)
 
         args = input("args: ").split(' ')
         if args[0] == "":
             args = []
-        args_num = len(args)
 
-        crc = cmd ^ args_num
-        for arg in args:
-            crc ^= bytes(arg, "utf-8")[0]
-
-        urc = 0
-        for i in range(0, args_num):
-            urc += (bytes(args[i], "utf-8")[0] + i.to_bytes()[0]) * ((i.to_bytes()[0] & 0b11) + 1)
-
-        print("crc:  " + str(crc))
-
-        frame = bytearray([ord('<'),
-                           cmd,
-                           int(args_num),
-                           int(args_num) + cmd])
+        args_num = c_uint8(len(args))
+        args_uint8 = []
 
         for arg in args:
-            frame.append(int(arg))
+            args_uint8.append(c_uint8(int(arg)))
 
-        frame.append(crc)
-        frame.append(urc)
+        crc = c_uint8(cmd.value ^ args_num.value)
+        for arg in args_uint8:
+            crc = c_uint8(crc.value ^ arg.value)
+
+        urc = c_uint8(0)
+        for arg in args_uint8:
+            urc = c_uint8((urc.value + arg.value) * ((arg.value & 0b11) + 1))
+
+        frame = [
+            ord('<'),
+            cmd.value,
+            args_num.value,
+            c_uint8(cmd.value + args_num.value).value
+        ]
+
+        for arg in args_uint8:
+            frame.append(arg.value)
+
+        frame.append(crc.value)
+        frame.append(urc.value)
 
         print(frame)
         ser.write(frame)
+
+
