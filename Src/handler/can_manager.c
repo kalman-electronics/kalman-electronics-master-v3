@@ -20,6 +20,15 @@ const uint8_t canlib_rx_list[CANLIB_RX_LIST_COUNT] = {
 void CanManager_FilterConfig();
 
 void CanManager_Task() {
+    /* setup number of STD can filters */
+    HAL_FDCAN_DeInit(&hfdcan1);
+    hfdcan1.Init.StdFiltersNbr = CANLIB_RX_LIST_COUNT;
+    HAL_FDCAN_Init(&hfdcan1);
+
+    //configure filters
+    CanManager_FilterConfig();
+
+    //start FDCAN periphery
     HAL_FDCAN_Start(&hfdcan1);
 
     // setup notifications
@@ -33,8 +42,6 @@ void CanManager_Task() {
     //TCAN114x_Init(&tcan, &hspi3, TCAN_CS_GPIO_Port, TCAN_CS_Pin);  // pass communication periphs to hw proxy struct
     //TCAN114x_getDeviceID(&tcan);  // get device id, for debug
     //TCAN114x_setMode(&tcan, normal);  // set normal mode, for normal transceiver operation
-
-    CanManager_FilterConfig();
 
     /*
     FDCAN_TxHeaderTypeDef canHead;
@@ -83,6 +90,10 @@ void CanManager_Task() {
 }
 
 void CanManager_FilterConfig() {
+    //configure global filter - behaviour of frames non matching any filters
+    HAL_FDCAN_ConfigGlobalFilter(&hfdcan1, FDCAN_REJECT, FDCAN_REJECT,
+                                 FDCAN_REJECT_REMOTE, FDCAN_REJECT_REMOTE);
+
     FDCAN_FilterTypeDef filter;
 
 #if CANMANAGER_ACCEPT_ALL_FRAMES == 1
