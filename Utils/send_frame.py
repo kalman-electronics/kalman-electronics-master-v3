@@ -25,17 +25,20 @@ with serial.Serial('COM8', 115200, timeout=1) as ser:
             args = []
         args_num = len(args)
 
-        crc_data.append(len(args))
+        crc = cmd ^ args_num
         for arg in args:
-            crc_data.append(int(arg))
+            crc ^= bytes(arg, "utf-8")[0]
 
-        crc = 0
-        for c in crc_data:
-            crc ^= c
+        urc = 0
+        for i in range(0, args_num):
+            urc += (bytes(args[i], "utf-8")[0] + i.to_bytes()[0]) * ((i.to_bytes()[0] & 0b11) + 1)
 
         print("crc:  " + str(crc))
 
-        frame = bytearray([cmd, int(args_num)])
+        frame = bytearray([ord('<'),
+                           cmd,
+                           int(args_num),
+                           int(args_num) + cmd])
 
         for arg in args:
             frame.append(int(arg))

@@ -310,6 +310,16 @@ static uart_packet_def_t uart_packet_defs[] = {
             .arg_count = UART_ARG_MAX,
             .execute = Cmd_UART_SupervisorToUART,
         },
+        {
+            .cmd = UART_CMD_RF_TO_ESP32,
+            .arg_count = UART_ARG_MAX,
+            .execute = Cmd_UART_RF_To_ESP32,
+        },
+        {
+            .cmd = UART_CMD_ESP32_TO_RF,
+            .arg_count = UART_ARG_MAX,
+            .execute = Cmd_UART_ESP32_To_RF,
+        }
 };
 
 //TODO: add message traits / fields such as custom_frame or ack_required changing handler behaviour
@@ -317,7 +327,9 @@ static uart_packet_def_t uart_packet_defs[] = {
     (cmd == UART_CMD_CUSTOM_TO_RF)       || \
     (cmd == UART_CMD_CUSTOM_TO_UART)     || \
     (cmd == UART_CMD_SUPERVISOR_TO_RF)   || \
-    (cmd == UART_CMD_SUPERVISOR_TO_UART)) ? 1 : 0)
+    (cmd == UART_CMD_SUPERVISOR_TO_UART) || \
+    (cmd == UART_CMD_ESP32_TO_RF)        || \
+    (cmd == UART_CMD_RF_TO_ESP32))       ? 1 : 0)
 
 
 #endif //KALMAN_ELECTRONICS_MASTER_V3_UART_PACKET_DEFS_H

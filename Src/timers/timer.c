@@ -184,20 +184,14 @@ void Timer_ArmTimeout() {
     // for (uint8_t i=0; i<6; i++) {
     //     bus_arm.required_pos[i] = bus_arm.current_pos[i];
     // }
-    
-    // Hold in last state to prevent collision
-    switch (bus_arm_6dof.mode) {
-    	case ARM_6DOF_POSITION_MODE:
-    		for (uint8_t i = 0; i <= 6; i++) {
-				bus_arm_6dof.required.position.pos[i] = bus_arm_6dof.current.position.pos[i];
-			}
-        	break;
 
-    	case ARM_6DOF_VELOCITY_MODE:
-    		for (uint8_t i = 0; i < 6; i++) {
-				bus_arm_6dof.required.velocity.velocity[i] = 0;
-			}
-    		break;
+    // Switch 6DoF to velocity mode and hold in last state to prevent collision
+    bus_arm_6dof.mode = ARM_6DOF_VELOCITY_MODE;
+    
+    for (uint8_t i=0; i<6; i++) {
+        bus_arm_6dof.required.velocity.velocity[i] = 0;
+        bus_arm_6dof.required.velocity.max_torque = 100;
+
     }
 
     #else
