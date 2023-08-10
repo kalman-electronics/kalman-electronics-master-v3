@@ -103,8 +103,8 @@ typedef enum {
 	UART_CMD_ARM_6DOF_GET_GRIPPER            = 0xFB,     //!< [RX]
 	UART_CMD_ARM_6DOF_KEYBOARD_CLICK         = 0xF9,     //!< [TX]
 	UART_CMD_ARM_6DOF_SOFT_RESET             = 0xFA,     //!< [TX]
-    UART_CMD_ARM_6DOF_GET_PROBE_REQUEST      = 0xF5,     //!< [TX]
-    UART_CMD_ARM_6DOF_GET_PROBE              = 0xF6,     //!< [RX]
+    UART_CMD_ARM_6DOF_GET_PROBE              = 0xFC,     //!< [RX]
+    UART_CMD_ARM_6DOF_GET_PROBE_REQUEST      = 0xFD,     //!< [TX]
 
     //analog visiom mux
     UART_CMD_MUX_SET_CAM                     = 0xB1,     //!< [TX]
