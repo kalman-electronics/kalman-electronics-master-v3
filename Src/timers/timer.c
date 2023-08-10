@@ -195,7 +195,7 @@ void Timer_ArmTimeout() {
     }
 
     #else
-        #warning Motor timeout bypassed
+        #warning Arm timeout bypassed
     #endif
 }
 
