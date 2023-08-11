@@ -13,7 +13,7 @@
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Arm_SetPos(uint8_t* data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type)) {
+    if ((link_type == LINK_RF_UART) ||  (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_cyclic) {
             debug_printf("[%s] Arm SetPos: %d %d %d %d %d %d %d %d %d %d %d %d\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
@@ -39,7 +39,7 @@ void Cmd_UART_Arm_SetPos(uint8_t* data, uart_packet_link_t link_type) {
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Arm_SetMagnet(uint8_t* data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type)) {
+    if ((link_type == LINK_RF_UART) ||  (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             debug_printf("[%s] Arm SetMagnet: %d\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
@@ -63,7 +63,7 @@ void Cmd_UART_Arm_SetMagnet(uint8_t* data, uart_packet_link_t link_type) {
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Arm_Calibrate(uint8_t* data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type)) {
+    if ((link_type == LINK_RF_UART) ||  (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             debug_printf("[%s] Arm Calibrate: %d %d %d %d %d %d\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
@@ -90,7 +90,7 @@ void Cmd_UART_Arm_Calibrate(uint8_t* data, uart_packet_link_t link_type) {
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Arm_GetVoltageRequest(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type)) {
+    if ((link_type == LINK_RF_UART) ||  (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             //TODO:debug_sprintf("[%s] Arm GetVoltageRequest\r\n",
             //        (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"));
@@ -110,7 +110,7 @@ void Cmd_UART_Arm_GetVoltageRequest(uint8_t *data, uart_packet_link_t link_type)
  * Zwracanie aktualnych pozycji cz�on�w ramienia.
  */
 void Cmd_UART_Arm_GetPos(void) {
-    if ((logic.link_type == LINK_RF_UART) || (logic.link_type == LINK_AUTO_UART)) {
+    if ((logic.link_type == LINK_RF_UART) ||  (logic.link_type == LINK_AUTO_UART)) {
         uart_packet_t msg = {
             .cmd = UART_CMD_ARM_GET_POS,
             .arg_count = UART_ARG_ARM_GET_POS,
@@ -133,7 +133,7 @@ void Cmd_UART_Arm_GetPos(void) {
  * Zwracanie aktualnej warto�ci napi�cia zmierzonego na wej�ciu +-24V.
  */
 void Cmd_UART_Arm_GetVoltage(uart_packet_link_t link_type) {
-    if ((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) {
+    if ((link_type == LINK_RF_UART) ||  (link_type == logic.link_type)) {
         uart_packet_t msg = {
             .cmd = UART_CMD_ARM_GET_VOLTAGE,
             .arg_count = UART_ARG_ARM_GET_VOLTAGE,

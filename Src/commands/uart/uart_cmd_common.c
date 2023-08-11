@@ -16,7 +16,7 @@
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Common_ResetAll(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type)) {
+    if ((link_type == LINK_RF_UART) ||  (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             debug_printf("[%s] Common ResetAll\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"));
@@ -39,7 +39,7 @@ void Cmd_UART_Common_ResetAll(uint8_t *data, uart_packet_link_t link_type) {
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Common_ResetDevice(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type)) {
+    if ((link_type == LINK_RF_UART) ||  (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             debug_printf("[%s] Common ResetDevice: %d\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
@@ -67,7 +67,7 @@ void Cmd_UART_Common_ResetDevice(uint8_t *data, uart_packet_link_t link_type) {
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Common_SetPid(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type)) {
+    if ((link_type == LINK_RF_UART) ||  (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             debug_printf("[%s] Common SetPid: %d %d %d %d %d %d %d %d\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
@@ -95,7 +95,7 @@ void Cmd_UART_Common_SetPid(uint8_t *data, uart_packet_link_t link_type) {
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Common_GetPidRequest(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type)) {
+    if ((link_type == LINK_RF_UART) ||  (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             debug_printf("[%s] Common GetPidRequest: %d\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
@@ -116,7 +116,7 @@ void Cmd_UART_Common_GetPidRequest(uint8_t *data, uart_packet_link_t link_type) 
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Common_DebugTx(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type)) {
+    if ((link_type == LINK_RF_UART) ||  (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             debug_printf("[%s] Common DebugTx: %d %d %d %d %d %d %d %d %d\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
@@ -155,7 +155,7 @@ void Cmd_UART_Common_DebugTx(uint8_t *data, uart_packet_link_t link_type) {
  * @param flags     flagi silnikow kontrolera, ktorych dotyczy zmiana (ustawiony jeden konkretny bit reprezentujacy dany silnik)
  */
 void Cmd_UART_Common_GetPid(uint16_t p, uint8_t i, uint8_t d, uint8_t min, uint8_t max, can_device_t id, uint8_t flags) {
-    if ((logic.link_type == LINK_RF_UART) || (logic.link_type == LINK_AUTO_UART)) {
+    if ((logic.link_type == LINK_RF_UART) || (logic.link_type == LINK_AUTO_UART)){
         uart_packet_t msg = {
                 .cmd = UART_CMD_COMMON_GET_PID,
                 .arg_count = UART_ARG_COMMON_GET_PID,
