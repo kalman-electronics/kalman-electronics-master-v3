@@ -25,7 +25,7 @@ void Timer_Init() {
 
     timer_defs[TIMER_UART_TRAFFIC_6DOF] = xTimerCreate(
             "CAN_Traffic6DoF",
-            50 / portTICK_PERIOD_MS,
+            100 / portTICK_PERIOD_MS,
             pdTRUE,
             0,
             Timer_UART_Traffic6DoF);
