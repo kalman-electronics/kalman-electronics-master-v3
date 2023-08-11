@@ -12,7 +12,7 @@
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Science_GetSamplesRequest(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type))  {
+    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             debug_printf("[%s] Science GetSamplesRequest: %d\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
@@ -32,7 +32,7 @@ void Cmd_UART_Science_GetSamplesRequest(uint8_t *data, uart_packet_link_t link_t
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Science_GetWeightRequest(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type))  {
+    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             debug_printf("[%s] Science GetWeightRequest: %d\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
@@ -51,7 +51,7 @@ void Cmd_UART_Science_GetWeightRequest(uint8_t *data, uart_packet_link_t link_ty
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Science_GetAtmosphereRequest(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type))  {
+    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             debug_printf("[%s] Science GetAtmosphereRequest: %d\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),

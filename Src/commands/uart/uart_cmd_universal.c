@@ -11,7 +11,7 @@
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Universal_SetBridge(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type))  {
+    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             debug_printf("[%s] Universal SetBridge: %d %d %d %d %d %d\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
@@ -35,7 +35,7 @@ void Cmd_UART_Universal_SetBridge(uint8_t *data, uart_packet_link_t link_type) {
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Universal_SetServo(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type))  {
+    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             debug_printf("[%s] Universal SetServo: %d %d %d %d %d %d\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
@@ -59,7 +59,7 @@ void Cmd_UART_Universal_SetServo(uint8_t *data, uart_packet_link_t link_type) {
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Universal_SetPwm(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type))  {
+    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             debug_printf("[%s] Universal SetPwm: %d %d %d %d %d %d %d %d\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
@@ -83,7 +83,7 @@ void Cmd_UART_Universal_SetPwm(uint8_t *data, uart_packet_link_t link_type) {
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Universal_SetGpio(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type))  {
+    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             debug_printf("[%s] Universal SetGpio: %d %d %d %d %d\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
@@ -107,7 +107,7 @@ void Cmd_UART_Universal_SetGpio(uint8_t *data, uart_packet_link_t link_type) {
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Universal_GetWeightRequest(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type))  {
+    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             debug_printf("[%s] Universal GetWeightRequest: %d\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),

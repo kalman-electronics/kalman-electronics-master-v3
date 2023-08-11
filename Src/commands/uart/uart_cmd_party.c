@@ -12,7 +12,7 @@
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Party_SetIgniters(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type))  {
+    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             debug_printf("[%s] Party SetIgniters: %d\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
@@ -33,7 +33,7 @@ void Cmd_UART_Party_SetIgniters(uint8_t *data, uart_packet_link_t link_type) {
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Party_SetLeds(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type))  {
+    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             debug_printf("[%s] Party SetLeds: %d\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
@@ -54,7 +54,7 @@ void Cmd_UART_Party_SetLeds(uint8_t *data, uart_packet_link_t link_type) {
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Party_SetPower(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type))  {
+    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             debug_printf("[%s] Party SetPower: %d\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
@@ -75,7 +75,7 @@ void Cmd_UART_Party_SetPower(uint8_t *data, uart_packet_link_t link_type) {
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Party_SetDetectorsMode(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type))  {
+    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             debug_printf("[%s] Party SetDetectorsMode: %d\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
