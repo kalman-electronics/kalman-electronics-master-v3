@@ -46,7 +46,7 @@ void Cmd_UART_Master_SetLink(uint8_t *data, uart_packet_link_t link_type) {
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Master_SetStatusMode(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type)) {
+    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             printf("[%s] Master SetStatusMode INOP!: %d\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
@@ -96,7 +96,7 @@ void Cmd_Master_SetVideoChannel(uint8_t *data, uart_packet_link_t link_type) {
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Master_ComputerPowerOn(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART)) && (link_type == logic.link_type)) {
+    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             printf("[%s] Master ComputerPowerOn\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"));
@@ -116,7 +116,7 @@ void Cmd_UART_Master_ComputerPowerOn(uint8_t *data, uart_packet_link_t link_type
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Master_ComputerReset(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART)) && (link_type == logic.link_type)) {
+    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             printf("[%s] Master ComputerReset\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"));
@@ -157,7 +157,7 @@ void Cmd_UART_Master_RaspberryReset(uint8_t *data, uart_packet_link_t link_type)
  */
 //TODO: verbosity select
 void Cmd_UART_Master_SetDebugInfo(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type)) {
+    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
         //if (logic_flash.debug_info & debug_comm_control) {
             printf("[%s] Master SetDebugInfo INOP!: %d\r\n",
                     (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
