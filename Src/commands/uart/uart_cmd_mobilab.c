@@ -12,11 +12,11 @@
  * @param data      wskaznik na bufor odebranych danych
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
-void Cmd_UART_Mobilab_SetPump(uint8_t* data, uart_packet_link_t link){
+void Cmd_UART_Mobilab_SetPump(uint8_t* data, uart_packet_link_t link_type){
     if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
         Cmd_Bus_Mobilab_SetPump(data);
 
-        Cmd_UART_BlinkLed(link);
+        Cmd_UART_BlinkLed(link_type);
     }
 }
 
@@ -25,11 +25,11 @@ void Cmd_UART_Mobilab_SetPump(uint8_t* data, uart_packet_link_t link){
  * @param data      wskaznik na bufor odebranych danych
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
-void Cmd_UART_Mobilab_SetHeater(uint8_t* data, uart_packet_link_t link){
+void Cmd_UART_Mobilab_SetHeater(uint8_t* data, uart_packet_link_t link_type){
     if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
         Cmd_Bus_Mobilab_SetHeater(data);
 
-        Cmd_UART_BlinkLed(link);
+        Cmd_UART_BlinkLed(link_type);
     }
 }
 
@@ -38,11 +38,11 @@ void Cmd_UART_Mobilab_SetHeater(uint8_t* data, uart_packet_link_t link){
  * @param data      wskaznik na bufor odebranych danych
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
-void Cmd_UART_Mobilab_SetBacklight(uint8_t* data, uart_packet_link_t link){
+void Cmd_UART_Mobilab_SetBacklight(uint8_t* data, uart_packet_link_t link_type){
     if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
         Cmd_Bus_Mobilab_SetBacklight(data);
 
-        Cmd_UART_BlinkLed(link);
+        Cmd_UART_BlinkLed(link_type);
     }
 }
 
@@ -51,11 +51,11 @@ void Cmd_UART_Mobilab_SetBacklight(uint8_t* data, uart_packet_link_t link){
  * @param data      wskaznik na bufor odebranych danych
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
-void Cmd_UART_Mobilab_SetAux(uint8_t* data, uart_packet_link_t link){
+void Cmd_UART_Mobilab_SetAux(uint8_t* data, uart_packet_link_t link_type){
     if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
         Cmd_Bus_Mobilab_SetAux(data);
 
-        Cmd_UART_BlinkLed(link);
+        Cmd_UART_BlinkLed(link_type);
     }
 }
 
@@ -64,11 +64,11 @@ void Cmd_UART_Mobilab_SetAux(uint8_t* data, uart_packet_link_t link){
  * @param data      wskaznik na bufor odebranych danych
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
-void Cmd_UART_Mobilab_SetServo(uint8_t* data, uart_packet_link_t link){
+void Cmd_UART_Mobilab_SetServo(uint8_t* data, uart_packet_link_t link_type){
     if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
         Cmd_Bus_Mobilab_SetServo(data);
 
-        Cmd_UART_BlinkLed(link);
+        Cmd_UART_BlinkLed(link_type);
     }
 }
 

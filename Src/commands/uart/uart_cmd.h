@@ -80,11 +80,11 @@ void Cmd_UART_Science_GetWeightRequest(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Science_GetAtmosphereRequest(uint8_t* data, uart_packet_link_t link);
 
 // --- Mobilab v2 ---
-void Cmd_UART_Mobilab_SetPump(uint8_t* data, uart_packet_link_t link);
-void Cmd_UART_Mobilab_SetHeater(uint8_t* data, uart_packet_link_t link);
-void Cmd_UART_Mobilab_SetBacklight(uint8_t* data, uart_packet_link_t link);
-void Cmd_UART_Mobilab_SetAux(uint8_t* data, uart_packet_link_t link);
-void Cmd_UART_Mobilab_SetServo(uint8_t* data, uart_packet_link_t link);
+void Cmd_UART_Mobilab_SetPump(uint8_t* data, uart_packet_link_t link_type);
+void Cmd_UART_Mobilab_SetHeater(uint8_t* data, uart_packet_link_t link_type);
+void Cmd_UART_Mobilab_SetBacklight(uint8_t* data, uart_packet_link_t link_type);
+void Cmd_UART_Mobilab_SetAux(uint8_t* data, uart_packet_link_t link_type);
+void Cmd_UART_Mobilab_SetServo(uint8_t* data, uart_packet_link_t link_type);
 
 // --- Mux ---
 void Cmd_UART_Mux_SetCam(uint8_t* data, uart_packet_link_t link);
