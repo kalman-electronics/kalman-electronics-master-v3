@@ -51,6 +51,9 @@ typedef enum {
 	CAN_CMD_ARM_6DOF_SOFT_RESET =           0xB7,
     CAN_CMD_ARM_6DOF_AUTOCLICK_SET_POS =    0xBF,
 
+    CAN_CMD_DRILL_A_BRIDGE_SET =     0x40,
+    CAN_CMD_DRILL_B_BRIDGE_SET =     0x41,
+
     CAN_CMD_DEBUG_DEBUG_TX =         0x70,
     CAN_CMD_DEBUG_GET_STATUS =       0x7D,
     CAN_CMD_DEBUG_GET_CAN_STATUS =   0x7E,
@@ -174,6 +177,9 @@ typedef enum {
 #define CAN_ARG_ARM_6DOF_KEYBOARD_CLICK      0
 #define CAN_ARG_ARM_6DOF_SOFT_RESET          0
 #define CAN_ARG_ARM_6DOF_AUTOCLICK_SET_POS   1
+
+#define CAN_ARG_DRILL_A_BRIDGE_SET    2
+#define CAN_ARG_DRILL_B_BRIDGE_SET    2
 
 #define CAN_ARG_LID_SET_SPEED           2
 #define CAN_ARG_LID_REQ_POS             0

@@ -89,6 +89,10 @@ void Cmd_Bus_Arm6DOF_SoftReset();
 void Cmd_Bus_Arm6DOF_SmartKutongToggle();
 void Cmd_Bus_Arm6DOF_Autoclick_SetPos(uint8_t pos);
 
+// --- Drill ---
+void Cmd_Bus_Drill_A_Bridge_Set(uint8_t direction, uint8_t speed);
+void Cmd_Bus_Drill_B_Bridge_Set(uint8_t direction, uint8_t speed);
+
 // --- Party ---
 void Cmd_Bus_Party_SetIgniters(uint8_t flags);
 void Cmd_Bus_Party_SetAuto(uint8_t light, uint8_t buzzer);

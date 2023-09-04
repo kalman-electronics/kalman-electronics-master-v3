@@ -56,6 +56,10 @@ void Cmd_UART_Arm6DOF_KeyboardClick(uint8_t *data, uart_packet_link_t link_type)
 void Cmd_UART_Arm6DOF_SoftReset(uint8_t *data, uart_packet_link_t link_type);
 void Cmd_UART_Arm6DOF_GetProbeRequest(uint8_t* data, uart_packet_link_t link_type);
 
+// --- Drill ---
+void Cmd_UART_Drill_A_Bridge_Set(uint8_t* data, uart_packet_link_t link_type);
+void Cmd_UART_Drill_B_Bridge_Set(uint8_t* data, uart_packet_link_t link_type);
+
 // --- UEUOS v2 ---
 void Cmd_UART_Ueuos_SetState(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Ueuos_SetColor(uint8_t* data, uart_packet_link_t link);
@@ -80,11 +84,11 @@ void Cmd_UART_Science_GetWeightRequest(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Science_GetAtmosphereRequest(uint8_t* data, uart_packet_link_t link);
 
 // --- Mobilab v2 ---
-void Cmd_UART_Mobilab_SetPump(uint8_t* data, uart_packet_link_t link_type);
-void Cmd_UART_Mobilab_SetHeater(uint8_t* data, uart_packet_link_t link_type);
-void Cmd_UART_Mobilab_SetBacklight(uint8_t* data, uart_packet_link_t link_type);
-void Cmd_UART_Mobilab_SetAux(uint8_t* data, uart_packet_link_t link_type);
-void Cmd_UART_Mobilab_SetServo(uint8_t* data, uart_packet_link_t link_type);
+void Cmd_UART_Mobilab_SetPump(uint8_t* data, uart_packet_link_t link);
+void Cmd_UART_Mobilab_SetHeater(uint8_t* data, uart_packet_link_t link);
+void Cmd_UART_Mobilab_SetBacklight(uint8_t* data, uart_packet_link_t link);
+void Cmd_UART_Mobilab_SetAux(uint8_t* data, uart_packet_link_t link);
+void Cmd_UART_Mobilab_SetServo(uint8_t* data, uart_packet_link_t link);
 
 // --- Mux ---
 void Cmd_UART_Mux_SetCam(uint8_t* data, uart_packet_link_t link);

@@ -45,6 +45,10 @@ typedef enum {
     UART_CMD_MOTOR_GET_WHEELS                = 0x4F,     //!< [RX]
     UART_CMD_MOTOR_GET_TEMPERATURE           = 0x42,     //!< [RX]
 
+    // Drill
+    UART_CMD_DRILL_A_BRIDGE_SET              = 0x45,     //!< [TX]
+    UART_CMD_DRILL_B_BRIDGE_SET              = 0x46,     //!< [TX]
+
     //Arm Controller v2
     UART_CMD_ARM_SET_POS                     = 0x50,     //!< [TX]
     UART_CMD_ARM_SET_MAGNET                  = 0x51,     //!< [TX]
@@ -151,6 +155,10 @@ typedef enum {
     UART_ARG_MOTOR_CALIBRATE                 = 6,
     UART_ARG_MOTOR_GET_WHEELS                = 12,
     UART_ARG_MOTOR_GET_TEMPERATURE           = 8,
+
+    // Drill
+    UART_ARG_DRILL_A_BRIDE_SET              = 2,
+    UART_ARG_DRILL_B_BRIDE_SET              = 2,
 
     //Arm Controller v2
     UART_ARG_ARM_SET_POS                     = 12,

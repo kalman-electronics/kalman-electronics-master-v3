@@ -162,6 +162,18 @@ static uart_packet_def_t uart_packet_defs[] = {
             .execute = Cmd_UART_Arm6DOF_Autoclick_SetPos,
         },
 
+        // --- Drill ---
+        {
+            .cmd = UART_CMD_DRILL_A_BRIDGE_SET,
+            .arg_count = UART_ARG_DRILL_A_BRIDE_SET,
+            .execute = Cmd_UART_Drill_A_Bridge_Set
+        },
+        {
+            .cmd = UART_CMD_DRILL_B_BRIDGE_SET,
+            .arg_count = UART_ARG_DRILL_B_BRIDE_SET,
+            .execute = Cmd_UART_Drill_B_Bridge_Set
+        },
+
         // --- UEUOS v2 ---
         {
             .cmd = UART_CMD_UEUOS_SET_STATE,
