@@ -53,6 +53,8 @@ typedef enum {
 
     CAN_CMD_DRILL_A_BRIDGE_SET =     0x40,
     CAN_CMD_DRILL_B_BRIDGE_SET =     0x41,
+    CAN_CMD_DRILL_GET_WEIGHT =       0x42,
+    CAN_CMD_DRILL_SEND_WEIGHT =      0x43,
 
     CAN_CMD_DEBUG_DEBUG_TX =         0x70,
     CAN_CMD_DEBUG_GET_STATUS =       0x7D,
@@ -180,6 +182,8 @@ typedef enum {
 
 #define CAN_ARG_DRILL_A_BRIDGE_SET    2
 #define CAN_ARG_DRILL_B_BRIDGE_SET    2
+#define CAN_ARG_DRILL_GET_WEIGHT      0
+#define CAN_ARG_DRILL_SEND_WEIGHT     4
 
 #define CAN_ARG_LID_SET_SPEED           2
 #define CAN_ARG_LID_REQ_POS             0
@@ -188,16 +192,6 @@ typedef enum {
 #define CAN_ARG_LID_GET_POS             2
 #define CAN_ARG_LID_GET_STATUS          4
 #define CAN_ARG_LID_DEBUG_RX            8
-
-#define CAN_ARG_DRILL_SET_MOTOR1        2
-#define CAN_ARG_DRILL_SET_MOTOR2        1
-#define CAN_ARG_DRILL_SET_MOTOR3        1
-#define CAN_ARG_DRILL_SET_MOTOR4        1
-#define CAN_ARG_DRILL_SET_SERVO         1
-#define CAN_ARG_DRILL_CAL_SERVO         7
-#define CAN_ARG_DRILL_DEBUG_TX          8
-#define CAN_ARG_DRILL_GET_STATUS        6
-#define CAN_ARG_DRILL_DEBUG_RX          8
 
 #define CAN_ARG_BOX_SET_SERVO           1
 #define CAN_ARG_BOX_CAL_SERVO           7

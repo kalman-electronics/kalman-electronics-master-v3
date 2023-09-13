@@ -52,6 +52,9 @@ void Cmd_Bus_Mobilab_GetTemperature(uint8_t* data);
 void Cmd_Bus_UnknownHandler(can_packet_t* msg);
 void Cmd_Bus_EmptyHandler(uint8_t* msg);
 
+// --- Drill ---
+void Cmd_Bus_Drill_GetWeight(uint8_t* data);
+
 /*
  *  TX Frames
  */
@@ -92,6 +95,7 @@ void Cmd_Bus_Arm6DOF_Autoclick_SetPos(uint8_t pos);
 // --- Drill ---
 void Cmd_Bus_Drill_A_Bridge_Set(uint8_t direction, uint8_t speed);
 void Cmd_Bus_Drill_B_Bridge_Set(uint8_t direction, uint8_t speed);
+void Cmd_Bus_Drill_GetWeightRequest();
 
 // --- Party ---
 void Cmd_Bus_Party_SetIgniters(uint8_t flags);

@@ -173,6 +173,11 @@ static uart_packet_def_t uart_packet_defs[] = {
             .arg_count = UART_ARG_DRILL_B_BRIDE_SET,
             .execute = Cmd_UART_Drill_B_Bridge_Set
         },
+        {
+            .cmd = UART_CMD_DRILL_GET_WEIGHT,
+            .arg_count = UART_ARG_DRILL_GET_WEIGHT,
+            .execute = Cmd_UART_Drill_GetWeightRequest
+        },
 
         // --- UEUOS v2 ---
         {

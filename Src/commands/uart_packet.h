@@ -48,6 +48,8 @@ typedef enum {
     // Drill
     UART_CMD_DRILL_A_BRIDGE_SET              = 0x45,     //!< [TX]
     UART_CMD_DRILL_B_BRIDGE_SET              = 0x46,     //!< [TX]
+    UART_CMD_DRILL_GET_WEIGHT                = 0x47,     //!< [TX]
+    UART_CMD_DRILL_SEND_WEIGHT               = 0x48,     //!< [TX]
 
     //Arm Controller v2
     UART_CMD_ARM_SET_POS                     = 0x50,     //!< [TX]
@@ -159,6 +161,8 @@ typedef enum {
     // Drill
     UART_ARG_DRILL_A_BRIDE_SET              = 2,
     UART_ARG_DRILL_B_BRIDE_SET              = 2,
+    UART_ARG_DRILL_GET_WEIGHT               = 0,
+    UART_ARG_DRILL_SEND_WEIGHT              = 4,
 
     //Arm Controller v2
     UART_ARG_ARM_SET_POS                     = 12,
