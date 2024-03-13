@@ -16,14 +16,14 @@ _deps
 *-prefix/
 
 ### Clion/MX ###
-cmake-build-*/
+cmake-build-debug/
 Debug/
 Release/
 *.launch
 
 .settings/
 .idea/
-.cproject
+
 
 ### Utils python venv ###
 venv/
