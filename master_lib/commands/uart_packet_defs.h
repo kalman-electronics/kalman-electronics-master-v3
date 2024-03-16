@@ -223,28 +223,6 @@ static uart_packet_def_t uart_packet_defs[] = {
             .execute = Cmd_UART_Universal_GetWeightRequest,
         },
 
-        // --- Party ---
-        {
-            .cmd = UART_CMD_PARTY_SET_IGNITERS,
-            .arg_count = UART_ARG_PARTY_SET_IGNITERS,
-            .execute = Cmd_UART_Party_SetIgniters,
-        },
-        {
-            .cmd = UART_CMD_PARTY_SET_LEDS,
-            .arg_count = UART_ARG_PARTY_SET_LEDS,
-            .execute = Cmd_UART_Party_SetLeds,
-        },
-        {
-            .cmd = UART_CMD_PARTY_SET_POWER,
-            .arg_count = UART_ARG_PARTY_SET_POWER,
-            .execute = Cmd_UART_Party_SetPower,
-        },
-        {
-            .cmd = UART_CMD_PARTY_SET_DETECTORS_MODE,
-            .arg_count = UART_ARG_PARTY_SET_DETECTORS_MODE,
-            .execute = Cmd_UART_Party_SetDetectorsMode,
-        },
-
         // --- Science ---
         {
             .cmd = UART_CMD_SCIENCE_GET_SAMPLES_REQUEST,

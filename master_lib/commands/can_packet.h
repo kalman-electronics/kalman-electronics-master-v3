@@ -56,19 +56,6 @@ typedef enum {
     CAN_CMD_DRILL_GET_WEIGHT =       0x42,
     CAN_CMD_DRILL_SEND_WEIGHT =      0x43,
 
-    CAN_CMD_DEBUG_DEBUG_TX =         0x70,
-    CAN_CMD_DEBUG_GET_STATUS =       0x7D,
-    CAN_CMD_DEBUG_GET_CAN_STATUS =   0x7E,
-    CAN_CMD_DEBUG_DEBUG_RX =         0x7F,
-
-    CAN_CMD_PARTY_SET_IGNITERS =     0x50,
-    CAN_CMD_PARTY_SET_AUTO =         0x51,
-    CAN_CMD_PARTY_SET_RGB =          0x52,
-    CAN_CMD_PARTY_SET_POWER =        0x53,
-    CAN_CMD_PARTY_DEBUG_TX =         0x54,
-    CAN_CMD_PARTY_GET_STATUS =       0x5E,
-    CAN_CMD_PARTY_DEBUG_RX =         0x5F,
-
     CAN_CMD_UEUOS_SET_STATE =        0x60,
     CAN_CMD_UEUOS_SET_COLOR =        0x61,
     CAN_CMD_UEUOS_SET_EFFECT =       0x62,
@@ -158,14 +145,6 @@ typedef enum {
 	CAN_ARG_DRILL_GET_WEIGHT      = 0,
 	CAN_ARG_DRILL_SEND_WEIGHT     = 4,
 
-	CAN_ARG_PARTY_SET_IGNITERS     = 1,
-	CAN_ARG_PARTY_SET_AUTO         = 1,
-	CAN_ARG_PARTY_SET_RGB          = 6,
-	CAN_ARG_PARTY_SET_POWER        = 1,
-	CAN_ARG_PARTY_DEBUG_TX         = 8,
-	CAN_ARG_PARTY_GET_STATUS       = 6,
-	CAN_ARG_PARTY_DEBUG_RX         = 8,
-
 	CAN_ARG_UEUOS_SET_STATE        = 1,
 	CAN_ARG_UEUOS_SET_COLOR        = 3,
 	CAN_ARG_UEUOS_SET_EFFECT       = 1,
@@ -223,7 +202,6 @@ typedef enum {
     DEVICE_DRILL        = 4,    //! Driller Controller
     DEVICE_BOX          = 5,    //! Experiment Box
     DEVICE_DEBUG        = 6,    //! Debug Module
-    DEVICE_PARTY        = 7,    //! Party Module
     DEVICE_UNIVERSAL    = 8,    //! Universal Module
     DEVICE_SCIENCE      = 9,    //! Sajens Module
     DEVICE_MUX          = 10,   //! Mux Module

@@ -130,7 +130,6 @@ void Cmd_UART_Common_DebugTx(uint8_t *data, uart_packet_link_t link_type) {
                 case DEVICE_MOTOR:      { Cmd_Bus_Motor_DebugTx(data);     break; }
                 case DEVICE_ARM:        { Cmd_Bus_Arm_DebugTx(data);       break; }
                 case DEVICE_UNIVERSAL:  { Cmd_Bus_Universal_DebugTx(data);          break; }
-                case DEVICE_PARTY:      { Cmd_Bus_Party_DebugTx(data);              break; }
                 case DEVICE_SCIENCE:    { Cmd_Bus_Science_DebugTx(data);            break; }
                 default: break;
             }

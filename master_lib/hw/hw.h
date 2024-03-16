@@ -4,7 +4,6 @@
 #include "arm.h"
 #include "arm_6dof.h"
 #include "motor.h"
-#include "party.h"
 #include "science.h"
 #include "universal.h"
 #include "mobilab.h"

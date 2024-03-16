@@ -72,13 +72,6 @@ typedef enum {
     UART_CMD_UNIVERSAL_GET_WEIGHT_REQUEST    = 0x74,     //!< [TX]
     UART_CMD_UNIVERSAL_GET_WEIGHT            = 0x8F,     //!< [RX]
 
-    //Party Module
-    UART_CMD_PARTY_SET_IGNITERS              = 0x90,     //!< [TX]
-    UART_CMD_PARTY_SET_LEDS                  = 0x91,     //!< [TX]
-    UART_CMD_PARTY_SET_POWER                 = 0x92,     //!< [TX]
-    UART_CMD_PARTY_SET_DETECTORS_MODE        = 0x93,     //!< [TX]
-    UART_CMD_PARTY_GET_DETECTORS             = 0x9F,     //!< [RX]
-
     //Sajens Module
     UART_CMD_SCIENCE_GET_SAMPLES_REQUEST     = 0xA0,     //!< [TX]
     UART_CMD_SCIENCE_GET_WEIGHT_REQUEST      = 0xA1,     //!< [TX]
@@ -191,13 +184,6 @@ typedef enum {
     UART_ARG_UNIVERSAL_SET_GPIO              = 5,
     UART_ARG_UNIVERSAL_GET_WEIGHT_REQUEST    = 1,
     UART_ARG_UNIVERSAL_GET_WEIGHT            = 6,
-
-    //Party Module
-    UART_ARG_PARTY_SET_IGNITERS              = 1,
-    UART_ARG_PARTY_SET_LEDS                  = 1,
-    UART_ARG_PARTY_SET_POWER                 = 1,
-    UART_ARG_PARTY_SET_DETECTORS_MODE        = 1,
-    UART_ARG_PARTY_GET_DETECTORS             = 4,
 
     //Sajens Module
     UART_ARG_SCIENCE_GET_SAMPLES_REQUEST     = 1,
