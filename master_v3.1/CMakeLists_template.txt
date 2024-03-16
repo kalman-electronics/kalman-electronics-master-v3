@@ -49,11 +49,12 @@ else ()
     add_compile_options(-Og -g)
 endif ()
 
+include_directories(Core Src)
+include_directories(../master_lib)
 include_directories(${includes})
 
 add_definitions(${defines})
-
-file(GLOB_RECURSE SOURCES ${sources})
+file(GLOB_RECURSE SOURCES ${sources} "Src/*.*" "../master_lib/*.*")
 
 set(LINKER_SCRIPT $${CMAKE_SOURCE_DIR}/${linkerScript})
 

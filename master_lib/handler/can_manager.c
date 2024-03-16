@@ -37,11 +37,10 @@ void CanManager_Task() {
     HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_LIST_PROTOCOL_ERROR, 0);
 
     //TCAN_114x initialization
-    //TODO: TCAN init here
-    //HAL_GPIO_WritePin(TCAN_CS_GPIO_Port, TCAN_CS_Pin, GPIO_PIN_SET);
-    //TCAN114x_Init(&tcan, &hspi3, TCAN_CS_GPIO_Port, TCAN_CS_Pin);  // pass communication periphs to hw proxy struct
-    //TCAN114x_getDeviceID(&tcan);  // get device id, for debug
-    //TCAN114x_setMode(&tcan, normal);  // set normal mode, for normal transceiver operation
+	HAL_GPIO_WritePin(TCAN_CS_GPIO_Port, TCAN_CS_Pin, GPIO_PIN_SET);
+	TCAN114x_Init(&tcan, &hspi1, TCAN_CS_GPIO_Port, TCAN_CS_Pin); // pass communication periphs to hw proxy struct
+	TCAN114x_getDeviceID(&tcan); // get device id, for debug
+	TCAN114x_setMode(&tcan, normal); // set normal mode, for normal transceiver operation
 
     /*
     FDCAN_TxHeaderTypeDef canHead;

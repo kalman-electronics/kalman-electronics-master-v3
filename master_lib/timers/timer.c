@@ -75,10 +75,10 @@ void Timer_Init() {
             Timer_ArmTimeout);
 
     // --- TCAN ---
-    HAL_GPIO_WritePin(TCAN_CS_GPIO_Port, TCAN_CS_Pin, GPIO_PIN_SET);
-    TCAN114x_Init(&tcan, &hspi1, TCAN_CS_GPIO_Port, TCAN_CS_Pin);
-    TCAN114x_getDeviceID(&tcan);
-    TCAN114x_setMode(&tcan, normal);
+//    HAL_GPIO_WritePin(TCAN_CS_GPIO_Port, TCAN_CS_Pin, GPIO_PIN_SET);
+//    TCAN114x_Init(&tcan, &hspi1, TCAN_CS_GPIO_Port, TCAN_CS_Pin);
+//    TCAN114x_getDeviceID(&tcan);
+//    TCAN114x_setMode(&tcan, normal);
 
     timer_defs[TIMER_TCAN] = xTimerCreate(
             "TCAN_Update",

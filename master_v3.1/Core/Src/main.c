@@ -29,10 +29,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "shared/common.h"
-#include "shared/logic.h"
-#include "hw/hw.h"
-#include "timers/timer.h"
+#include "Bridge/Bridge.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -52,7 +50,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-TCAN114x_Dev tcan;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -104,10 +102,8 @@ int main(void)
   MX_USART3_UART_Init();
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
-  Queues_Init();
-  HW_Init();
-  Logic_Init();
-  Timer_Init();
+  Init();
+
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -178,10 +174,6 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 
-int __io_putchar(int ch) {
-    HAL_UART_Transmit(PRINTF_UART_DEF, (uint8_t*)&ch, 1, 0xFFFF);
-    return ch;
-}
 
 /* USER CODE END 4 */
 
@@ -214,6 +206,9 @@ void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
+
+  ErrorHandler();
+
   __disable_irq();
   while (1)
   {

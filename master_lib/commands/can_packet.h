@@ -104,6 +104,104 @@ typedef enum {
     CAN_CMD_MOBILAB_GET_TEMPERATURE =	0xC5,
 } can_cmd_t;
 
+// --- Command arg length --
+typedef enum {
+	CAN_ARG_RESET_ALL = 5,
+	CAN_ARG_RESET_DEVICE = 6,
+	CAN_ARG_SET_PID = 8,
+	CAN_ARG_GET_PID_REQUEST = 1,
+	CAN_ARG_GET_PID = 8,
+
+	CAN_ARG_MOTOR_SET_WHEELS        = 8,
+	CAN_ARG_MOTOR_CALIBRATE         = 6,
+	CAN_ARG_MOTOR_DEBUG_TX          = 8,
+	CAN_ARG_MOTOR_GET_TEMPERATURE   = 8,
+	CAN_ARG_MOTOR_GET_WHEELS1       = 8,
+	CAN_ARG_MOTOR_GET_WHEELS2       = 4,
+	CAN_ARG_MOTOR_GET_STATUS        = 4,
+	CAN_ARG_MOTOR_DEBUG_RX          = 8,
+
+	CAN_ARG_ARM_SET_POS1            = 8,
+	CAN_ARG_ARM_SET_POS2            = 4,
+	CAN_ARG_ARM_SET_MAGNET          = 1,
+	CAN_ARG_ARM_CALIBRATE           = 6,
+	CAN_ARG_ARM_DEBUG_TX            = 8,
+	CAN_ARG_ARM_GET_POS1            = 8,
+	CAN_ARG_ARM_GET_POS2            = 4,
+	CAN_ARG_ARM_GET_24V             = 2,
+	CAN_ARG_ARM_GET_STATUS          = 5,
+	CAN_ARG_ARM_DEBUG_RX            = 8,
+
+	CAN_ARG_ARM_6DOF_SET_POS1            = 8,
+	CAN_ARG_ARM_6DOF_SET_POS2            = 8,
+	CAN_ARG_ARM_6DOF_SET_POS_VEL1        = 8,
+	CAN_ARG_ARM_6DOF_SET_POS_VEL2        = 4,
+	CAN_ARG_ARM_6DOF_SET_TORQUE1         = 8,
+	CAN_ARG_ARM_6DOF_SET_TORQUE2         = 4,
+	CAN_ARG_ARM_6DOF_SET_VELOCITY1       = 8,
+	CAN_ARG_ARM_6DOF_SET_VELOCITY2       = 5,
+	CAN_ARG_ARM_6DOF_GET_POS1            = 8,
+	CAN_ARG_ARM_6DOF_GET_POS2            = 6,
+	CAN_ARG_ARM_6DOF_POSITIONING_START   = 1,
+	CAN_ARG_ARM_6DOF_POSITIONING_ABORT   = 0,
+	CAN_ARG_ARM_6DOF_SET_ACTUAL_POS      = 3,
+	CAN_ARG_ARM_6DOF_SET_GRIPPER         = 2,
+	CAN_ARG_ARM_6DOF_GET_GRIPPER         = 2,
+	CAN_ARG_ARM_6DOF_SMART_KUTONG_TOGGLE = 0,
+	CAN_ARG_ARM_6DOF_SMART_KUTONG_DATA   = 4,
+	CAN_ARG_ARM_6DOF_KEYBOARD_CLICK      = 0,
+	CAN_ARG_ARM_6DOF_SOFT_RESET          = 0,
+	CAN_ARG_ARM_6DOF_AUTOCLICK_SET_POS   = 1,
+
+	CAN_ARG_DRILL_A_BRIDGE_SET    = 2,
+	CAN_ARG_DRILL_B_BRIDGE_SET    = 2,
+	CAN_ARG_DRILL_GET_WEIGHT      = 0,
+	CAN_ARG_DRILL_SEND_WEIGHT     = 4,
+
+	CAN_ARG_PARTY_SET_IGNITERS     = 1,
+	CAN_ARG_PARTY_SET_AUTO         = 1,
+	CAN_ARG_PARTY_SET_RGB          = 6,
+	CAN_ARG_PARTY_SET_POWER        = 1,
+	CAN_ARG_PARTY_DEBUG_TX         = 8,
+	CAN_ARG_PARTY_GET_STATUS       = 6,
+	CAN_ARG_PARTY_DEBUG_RX         = 8,
+
+	CAN_ARG_UEUOS_SET_STATE        = 1,
+	CAN_ARG_UEUOS_SET_COLOR        = 3,
+	CAN_ARG_UEUOS_SET_EFFECT       = 1,
+
+	CAN_ARG_UNIVERSAL_SET_BRIDGE   = 6,
+	CAN_ARG_UNIVERSAL_SET_SERVO    = 6,
+	CAN_ARG_UNIVERSAL_SET_PWM      = 8,
+	CAN_ARG_UNIVERSAL_SET_GPIO     = 5,
+	CAN_ARG_UNIVERSAL_DEBUG_TX     = 8,
+	CAN_ARG_UNIVERSAL_GET_WEIGHT   = 6,
+	CAN_ARG_UNIVERSAL_GET_STATUS   = 3,
+	CAN_ARG_UNIVERSAL_DEBUG_RX     = 8,
+
+	CAN_ARG_SCIENCE_POLL              = 1,
+	CAN_ARG_SCIENCE_DEBUG_TX          = 8,
+	CAN_ARG_SCIENCE_GET_TEMPERATURE1   = 5,
+	CAN_ARG_SCIENCE_GET_TEMPERATURE2   = 5,
+	CAN_ARG_SCIENCE_GET_HUMIDITY       = 5,
+	CAN_ARG_SCIENCE_GET_ATMOSPHERE     = 8,
+	CAN_ARG_SCIENCE_GET_WEIGHT         = 6,
+	CAN_ARG_SCIENCE_GET_STATUS         = 2,
+	CAN_ARG_SCIENCE_DEBUG_RX           = 8,
+
+	CAN_ARG_MOBILAB_SET_PUMP		= 2,
+	CAN_ARG_MOBILAB_SET_HEATER		= 2,
+	CAN_ARG_MOBILAB_SET_BACKLIGHT 	= 2,
+	CAN_ARG_MOBILAB_SET_AUX			= 2,
+	CAN_ARG_MOBILAB_SET_SERVO		= 2,
+	CAN_ARG_MOBILAB_GET_TEMPERATURE	= 5,
+
+	CAN_ARG_MUX_SET_CAM         = 2,
+	CAN_ARG_MUX_SET_CHANNEL     = 2,
+	CAN_ARG_MUX_SET_POWER       = 2,
+
+} can_args_t;
+
 typedef struct {
     can_cmd_t cmd;
     uint8_t arg_count;
@@ -130,123 +228,5 @@ typedef enum {
     DEVICE_SCIENCE      = 9,    //! Sajens Module
     DEVICE_MUX          = 10,   //! Mux Module
 } can_device_t;
-
-// --- Command arg length --
-
-#define CAN_ARG_RESET_ALL               5
-#define CAN_ARG_RESET_DEVICE            6
-#define CAN_ARG_SET_PID                 8
-#define CAN_ARG_GET_PID_REQUEST         1
-#define CAN_ARG_GET_PID                 8
-
-#define CAN_ARG_MOTOR_SET_WHEELS        8
-#define CAN_ARG_MOTOR_CALIBRATE         6
-#define CAN_ARG_MOTOR_DEBUG_TX          8
-#define CAN_ARG_MOTOR_GET_TEMPERATURE   8
-#define CAN_ARG_MOTOR_GET_WHEELS1       8
-#define CAN_ARG_MOTOR_GET_WHEELS2       4
-#define CAN_ARG_MOTOR_GET_STATUS        4
-#define CAN_ARG_MOTOR_DEBUG_RX          8
-
-#define CAN_ARG_ARM_SET_POS1            8
-#define CAN_ARG_ARM_SET_POS2            4
-#define CAN_ARG_ARM_SET_MAGNET          1
-#define CAN_ARG_ARM_CALIBRATE           6
-#define CAN_ARG_ARM_DEBUG_TX            8
-#define CAN_ARG_ARM_GET_POS1            8
-#define CAN_ARG_ARM_GET_POS2            4
-#define CAN_ARG_ARM_GET_24V             2
-#define CAN_ARG_ARM_GET_STATUS          5
-#define CAN_ARG_ARM_DEBUG_RX            8
-
-#define CAN_ARG_ARM_6DOF_SET_POS1            8
-#define CAN_ARG_ARM_6DOF_SET_POS2            8
-#define CAN_ARG_ARM_6DOF_SET_POS_VEL1        8
-#define CAN_ARG_ARM_6DOF_SET_POS_VEL2        4
-#define CAN_ARG_ARM_6DOF_SET_TORQUE1         8
-#define CAN_ARG_ARM_6DOF_SET_TORQUE2         4
-#define CAN_ARG_ARM_6DOF_SET_VELOCITY1       8
-#define CAN_ARG_ARM_6DOF_SET_VELOCITY2       5
-#define CAN_ARG_ARM_6DOF_GET_POS1            8
-#define CAN_ARG_ARM_6DOF_GET_POS2            6
-#define CAN_ARG_ARM_6DOF_POSITIONING_START   1
-#define CAN_ARG_ARM_6DOF_POSITIONING_ABORT   0
-#define CAN_ARG_ARM_6DOF_SET_ACTUAL_POS      3
-#define CAN_ARG_ARM_6DOF_SET_GRIPPER         2
-#define CAN_ARG_ARM_6DOF_GET_GRIPPER         2
-#define CAN_ARG_ARM_6DOF_SMART_KUTONG_TOGGLE 0
-#define CAN_ARG_ARM_6DOF_SMART_KUTONG_DATA   4
-#define CAN_ARG_ARM_6DOF_KEYBOARD_CLICK      0
-#define CAN_ARG_ARM_6DOF_SOFT_RESET          0
-#define CAN_ARG_ARM_6DOF_AUTOCLICK_SET_POS   1
-
-#define CAN_ARG_DRILL_A_BRIDGE_SET    2
-#define CAN_ARG_DRILL_B_BRIDGE_SET    2
-#define CAN_ARG_DRILL_GET_WEIGHT      0
-#define CAN_ARG_DRILL_SEND_WEIGHT     4
-
-#define CAN_ARG_LID_SET_SPEED           2
-#define CAN_ARG_LID_REQ_POS             0
-#define CAN_ARG_LID_SET_OV_CURRENT      1
-#define CAN_ARG_LID_DEBUG_TX            8
-#define CAN_ARG_LID_GET_POS             2
-#define CAN_ARG_LID_GET_STATUS          4
-#define CAN_ARG_LID_DEBUG_RX            8
-
-#define CAN_ARG_BOX_SET_SERVO           1
-#define CAN_ARG_BOX_CAL_SERVO           7
-#define CAN_ARG_BOX_SET_WORK            1
-#define CAN_ARG_BOX_DEBUG_TX            8
-#define CAN_ARG_BOX_GET_STATUS          1
-#define CAN_ARG_BOX_GET_MEASURE1        7
-#define CAN_ARG_BOX_GET_MEASURE2        4
-#define CAN_ARG_BOX_DEBUG_RX            8
-
-#define CAN_ARG_DEBUG_DEBUG_TX          8
-#define CAN_ARG_DEBUG_GET_STATUS        4
-#define CAN_ARG_DEBUG_GET_CAN_STATUS    5
-#define CAN_ARG_DEBUG_DEBUG_RX          8
-
-#define CAN_ARG_PARTY_SET_IGNITERS      1
-#define CAN_ARG_PARTY_SET_AUTO          1
-#define CAN_ARG_PARTY_SET_RGB           6
-#define CAN_ARG_PARTY_SET_POWER         1
-#define CAN_ARG_PARTY_DEBUG_TX          8
-#define CAN_ARG_PARTY_GET_STATUS        6
-#define CAN_ARG_PARTY_DEBUG_RX          8
-
-#define CAN_ARG_UEUOS_SET_STATE         1
-#define CAN_ARG_UEUOS_SET_COLOR         3
-#define CAN_ARG_UEUOS_SET_EFFECT        1
-
-#define CAN_ARG_UNIVERSAL_SET_BRIDGE    6
-#define CAN_ARG_UNIVERSAL_SET_SERVO     6
-#define CAN_ARG_UNIVERSAL_SET_PWM       8
-#define CAN_ARG_UNIVERSAL_SET_GPIO      5
-#define CAN_ARG_UNIVERSAL_DEBUG_TX      8
-#define CAN_ARG_UNIVERSAL_GET_WEIGHT    6
-#define CAN_ARG_UNIVERSAL_GET_STATUS    3
-#define CAN_ARG_UNIVERSAL_DEBUG_RX      8
-
-#define CAN_ARG_SCIENCE_POLL                1
-#define CAN_ARG_SCIENCE_DEBUG_TX            8
-#define CAN_ARG_SCIENCE_GET_TEMPERATURE1    5
-#define CAN_ARG_SCIENCE_GET_TEMPERATURE2    5
-#define CAN_ARG_SCIENCE_GET_HUMIDITY        5
-#define CAN_ARG_SCIENCE_GET_ATMOSPHERE      8
-#define CAN_ARG_SCIENCE_GET_WEIGHT          6
-#define CAN_ARG_SCIENCE_GET_STATUS          2
-#define CAN_ARG_SCIENCE_DEBUG_RX            8
-
-#define CAN_ARG_MOBILAB_SET_PUMP			2
-#define CAN_ARG_MOBILAB_SET_HEATER			2
-#define CAN_ARG_MOBILAB_SET_BACKLIGHT 		2
-#define CAN_ARG_MOBILAB_SET_AUX				2
-#define CAN_ARG_MOBILAB_SET_SERVO			2
-#define CAN_ARG_MOBILAB_GET_TEMPERATURE		5
-
-#define CAN_ARG_MUX_SET_CAM          2
-#define CAN_ARG_MUX_SET_CHANNEL      2
-#define CAN_ARG_MUX_SET_POWER        2
 
 #endif //KALMAN_ELECTRONICS_MASTER_V3_CAN_PACKET_H
