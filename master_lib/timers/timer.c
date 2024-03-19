@@ -126,10 +126,6 @@ void Timer_CAN_TrafficSetArm() {
     if (Logic_GetUptime() < LOGIC_COMM_START_TIME)
         return;
 
-    #warning Old arm support disabled
-    //TODO: W A R N I N G - DISABLED OLD ARM TRAFFIC, add a way to select which one is being used
-    //Cmd_Bus_Arm_SetPos1();
-    //Cmd_Bus_Arm_SetPos2();
     Cmd_Bus_Arm6DOF_SetParams();
 }
 
@@ -208,8 +204,9 @@ void Timer_TCANUpdate() {
     TCAN114x_getMode(&tcan);
 
     // reset TCAN after error condition
-    if(tcan.mode != normal)
-        TCAN114x_setMode(&tcan, normal);
+    if(tcan.mode != normal) {
+	    TCAN114x_setMode(&tcan, normal);
+    }
 
     //TODO: process CAN IT / call CAN Manager notify error function
 }

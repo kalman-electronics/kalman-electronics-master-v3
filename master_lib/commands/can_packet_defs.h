@@ -42,33 +42,6 @@ const can_packet_def_t can_packet_defs[] = {
                 .execute = Cmd_Bus_Motor_GetTemperature,
         },
 
-        // --- Arm ---
-        {
-                .cmd = CAN_CMD_ARM_GET_POS1,
-                .arg_count = CAN_ARG_ARM_GET_POS1,
-                .execute = Cmd_Bus_Arm_GetPos1,
-        },
-        {
-                .cmd = CAN_CMD_ARM_GET_POS2,
-                .arg_count = CAN_ARG_ARM_GET_POS2,
-                .execute = Cmd_Bus_Arm_GetPos2,
-        },
-        {
-                .cmd = CAN_CMD_ARM_GET_24V,
-                .arg_count = CAN_ARG_ARM_GET_24V,
-                .execute = Cmd_Bus_Arm_Get24V,
-        },
-        {
-                .cmd = CAN_CMD_ARM_GET_STATUS,
-                .arg_count = CAN_ARG_ARM_GET_STATUS,
-                .execute = Cmd_Bus_Arm_GetStatus,
-        },
-        {
-                .cmd = CAN_CMD_ARM_DEBUG_RX,
-                .arg_count = CAN_ARG_ARM_DEBUG_RX,
-                .execute = Cmd_Bus_Arm_DebugRx,
-        },
-
         // --- Arm 6DoF ---
         {
                 .cmd = CAN_CMD_ARM_6DOF_GET_POS1,

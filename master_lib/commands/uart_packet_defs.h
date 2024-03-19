@@ -73,28 +73,6 @@ static uart_packet_def_t uart_packet_defs[] = {
             .execute = Cmd_UART_Motor_Calibrate,
         },
 
-        // --- Arm ---
-        {
-            .cmd = UART_CMD_ARM_SET_POS,
-            .arg_count = UART_ARG_ARM_SET_POS,
-            .execute = Cmd_UART_Arm_SetPos,
-        },
-        {
-            .cmd = UART_CMD_ARM_SET_MAGNET,
-            .arg_count = UART_ARG_ARM_SET_MAGNET,
-            .execute = Cmd_UART_Arm_SetMagnet,
-        },
-        {
-            .cmd = UART_CMD_ARM_CALIBRATE,
-            .arg_count = UART_ARG_ARM_CALIBRATE,
-            .execute = Cmd_UART_Arm_Calibrate,
-        },
-        {
-            .cmd = UART_CMD_ARM_GET_VOLTAGE_REQUEST,
-            .arg_count = UART_ARG_ARM_GET_VOLTAGE_REQUEST,
-            .execute = Cmd_UART_Arm_GetVoltageRequest,
-        },
-
         // --- Arm 6DoF ---
         {
             .cmd = UART_CMD_ARM_6DOF_SET_POS,

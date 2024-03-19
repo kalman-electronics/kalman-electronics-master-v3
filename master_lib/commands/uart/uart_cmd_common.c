@@ -128,7 +128,6 @@ void Cmd_UART_Common_DebugTx(uint8_t *data, uart_packet_link_t link_type) {
             switch (data[8]) {
                 case DEVICE_MASTER:     { break; }
                 case DEVICE_MOTOR:      { Cmd_Bus_Motor_DebugTx(data);     break; }
-                case DEVICE_ARM:        { Cmd_Bus_Arm_DebugTx(data);       break; }
                 case DEVICE_UNIVERSAL:  { Cmd_Bus_Universal_DebugTx(data);          break; }
                 case DEVICE_SCIENCE:    { Cmd_Bus_Science_DebugTx(data);            break; }
                 default: break;
@@ -187,7 +186,6 @@ void Cmd_UART_Common_DebugRx(uint8_t *data, can_device_t id) {
                 .cmd = UART_CMD_COMMON_DEBUG_RX,
                 .arg_count = UART_ARG_COMMON_DEBUG_RX,
                 .origin = logic.link_type,
-                .args = {(uint8_t)(bus_arm.measured_voltage >> 8), (uint8_t)(bus_arm.measured_voltage & 0xFF)}
         };
 
         memcpy(msg.args, data, 8);

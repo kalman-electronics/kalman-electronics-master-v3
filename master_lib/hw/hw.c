@@ -2,7 +2,6 @@
 #include "hw.h"
 
 volatile motor_controller_t bus_motor;
-volatile arm_controller_t bus_arm;
 volatile arm_6dof_controller_t bus_arm_6dof;
 volatile universal_t bus_universal[BUS_UNIVERSAL_COUNT];
 volatile science_t bus_science[BUS_SCIENCE_COUNT];

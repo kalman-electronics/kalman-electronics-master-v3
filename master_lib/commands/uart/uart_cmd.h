@@ -73,12 +73,6 @@ void Cmd_UART_Universal_SetPwm(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Universal_SetGpio(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Universal_GetWeightRequest(uint8_t* data, uart_packet_link_t link);
 
-// --- Party ---
-void Cmd_UART_Party_SetIgniters(uint8_t* data, uart_packet_link_t link);
-void Cmd_UART_Party_SetLeds(uint8_t* data, uart_packet_link_t link);
-void Cmd_UART_Party_SetPower(uint8_t* data, uart_packet_link_t link);
-void Cmd_UART_Party_SetDetectorsMode(uint8_t* data, uart_packet_link_t link);
-
 // --- Science ---
 void Cmd_UART_Science_GetSamplesRequest(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Science_GetWeightRequest(uint8_t* data, uart_packet_link_t link);
