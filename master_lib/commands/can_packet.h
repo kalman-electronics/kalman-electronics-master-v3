@@ -19,17 +19,6 @@ typedef enum {
     CAN_CMD_MOTOR_GET_STATUS =       0x1E,
     CAN_CMD_MOTOR_DEBUG_RX =         0x1F,
 
-    CAN_CMD_ARM_SET_POS1 =           0x20,
-    CAN_CMD_ARM_SET_POS2 =           0x21,
-    CAN_CMD_ARM_SET_MAGNET =         0x22,
-    CAN_CMD_ARM_CALIBRATE =          0x23,
-    CAN_CMD_ARM_DEBUG_TX =           0x24,
-    CAN_CMD_ARM_GET_POS1 =           0x2B,
-    CAN_CMD_ARM_GET_POS2 =           0x2C,
-    CAN_CMD_ARM_GET_24V =            0x2D,
-    CAN_CMD_ARM_GET_STATUS =         0x2E,
-    CAN_CMD_ARM_DEBUG_RX =           0x2F,
-
     CAN_CMD_ARM_6DOF_SET_POS1 =             0xB0,
     CAN_CMD_ARM_6DOF_SET_POS2 =             0xB1,
     CAN_CMD_ARM_6DOF_SET_POS_VEL1 =         0xD0,

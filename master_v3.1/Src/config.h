@@ -1,0 +1,19 @@
+//
+// Created by bubak on 20/03/24.
+//
+
+#ifndef KALMAN_ELECTRONICS_MASTER_V3_CONFG_H
+#define KALMAN_ELECTRONICS_MASTER_V3_CONFG_H
+
+#endif //KALMAN_ELECTRONICS_MASTER_V3_CONFG_H
+
+//#define OLD_MASTER
+#define NEW_MASTER
+
+#ifdef NEW_MASTER
+
+#endif //NEW_MASTER
+
+#ifdef OLD_MASTER
+
+#endif //OLD_MASTER

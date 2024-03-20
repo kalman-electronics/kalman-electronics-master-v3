@@ -10,14 +10,14 @@
  */
 
 /**
- * Odczytanie aktualnej pr�dko�ci obrotu k�. Po 2 bajty na ko�o, kodowanie U2, warto��: pr�dko�� k�towa w 0.1 stopnia na sekund� (np. -23 = jazda do ty�u z pr�dko�ci� 2.3 stopni/s).
- * Ze wzgl�du na redundantn� magistral� RS485, Master musi wiedzie� kiedy transmisja z kontrolerem si� zatrzyma�a - z tego wzgl�du ramka GET_WHEELS1 jest wysy�ana w odpowiedzi
- * na ramk� SET_WHEELS, a nie cyklicznie.
+ * Odczytanie aktualnej prędkości obrotu kół. Po 2 bajty na koło, kodowanie U2, wartość: prędkość kątowa w 0.1 stopnia na sekundę (np. -23 = jazda do tyłu z prędkością 2.3 stopni/s).
+ * Ze względu na redundantną magistralę RS485, Master musi wiedzieć, kiedy transmisja z kontrolerem się zatrzymała - z tego względu ramka GET_WHEELS1 jest wysyłana w odpowiedzi
+ * na ramkę SET_WHEELS, a nie cyklicznie.
  *
  * Nie aktualne ^
  *
- * @param data      wskaznik na bufor odebranych danych
- * @param count     ilosc odebranych danych w ramce
+ * @param data      wskaźnik na bufor odebranych danych
+ * @param count     ilość odebranych danych w ramce
  */
 void Cmd_Bus_Motor_GetWheels1(uint8_t* data) {
     for (uint8_t ch=0; ch<4; ch++) {
@@ -28,11 +28,11 @@ void Cmd_Bus_Motor_GetWheels1(uint8_t* data) {
 }
 
 /**
- * Odczytanie aktualnego wychylenia modu��w skr�tu. Po 1 bajcie na modu�, kodowanie U2, warto��: +-90, odchylenie w stopniach wzgl�dem po�o�enia domy�lnego (dodatnie - skr�t w prawo).
- * Ze wzgl�du na redundantn� magistral� RS485, Master musi wiedzie� kiedy transmisja z kontrolerem si� zatrzyma�a - z tego wzgl�du ramka GET_WHEELS2 jest wysy�ana w odpowiedzi
- * na ramk� SET_WHEELS, a nie cyklicznie.
- * @param data      wskaznik na bufor odebranych danych
- * @param count     ilosc odebranych danych w ramce
+ * Odczytanie aktualnego wychylenia modułów skrętu. Po 1 bajcie na moduł, kodowanie U2, wartość: +-90, odchylenie w stopniach względem położenia domyślnego (dodatnie - skręt w prawo).
+ * Ze względu na redundantną magistralę RS485, Master musi wiedzieć, kiedy transmisja z kontrolerem się zatrzymała - z tego względu ramka GET_WHEELS2 jest wysyłana w odpowiedzi
+ * na ramkę SET_WHEELS, a nie cyklicznie.
+ * @param data      wskaźnik na bufor odebranych danych
+ * @param count     ilość odebranych danych w ramce
  */
 void Cmd_Bus_Motor_GetWheels2(uint8_t* data) {
     for (uint8_t ch=0; ch<4; ch++) {
@@ -43,9 +43,9 @@ void Cmd_Bus_Motor_GetWheels2(uint8_t* data) {
 }
 
 /**
- * Odczytywanie aktualnych status�w podsystem�w i danych kontrolnych. Nadawana cyklicznie co 100ms.
- * @param data      wskaznik na bufor odebranych danych
- * @param count     ilosc odebranych danych w ramce
+ * Odczytywanie aktualnych statusów podsystemów i danych kontrolnych. Nadawana cyklicznie co 100ms.
+ * @param data      wskaźnik na bufor odebranych danych
+ * @param count     ilość odebranych danych w ramce
  */
 void Cmd_Bus_Motor_GetStatus(uint8_t* data) {
     bus_motor.limit_status = data[0];
@@ -57,9 +57,9 @@ void Cmd_Bus_Motor_GetStatus(uint8_t* data) {
 }
 
 /**
- * Ramka na potrzeby test�w i rozwoju oprogramowania. Przekazywana na �wiat transparentnie, bez ingerencji.
- * @param data      wskaznik na bufor odebranych danych
- * @param count     ilosc odebranych danych w ramce
+ * Ramka na potrzeby testów i rozwoju oprogramowania. Przekazywana na świat transparentnie, bez ingerencji.
+ * @param data      wskaźnik na bufor odebranych danych
+ * @param count     ilość odebranych danych w ramce
  */
 void Cmd_Bus_Motor_DebugRx(uint8_t* data) {
     Cmd_UART_Common_DebugRx(data, DEVICE_MOTOR);
@@ -72,7 +72,7 @@ void Cmd_Bus_Motor_DebugRx(uint8_t* data) {
  */
 
 /**
- * Ustawianie zadanej pr�dko�ci obrotu k� oraz wychylenia modu��w skr�tu.
+ * Ustawianie zadanej prędkości obrotu kół oraz wychylenia modułów skrętu.
  */
 void Cmd_Bus_Motor_SetWheels() {
     can_packet_t msg = {
@@ -91,9 +91,9 @@ void Cmd_Bus_Motor_SetWheels() {
 
 
 /**
- * Zlecenie kalibracji rozregulowanego modu�u skr�tu. Po ustawieniu silnika w pozycji zerowej (jazda do przodu), wys�anie ramki spowoduje nadpisanie warto�ci odniesienia,
- * wzgl�dem kt�rej obliczana jest pozycja k�towa. Kalibracja wykona si� tylko wtedy, gdy argumenty b�d� mia�y warto�ci opisane poni�ej.
- * @param channel   indeks kanalu do kalibracji (numeracja zgodna z powyzszymi, 0..3)
+ * Zlecenie kalibracji rozregulowanego modułu skrętu. Po ustawieniu silnika w pozycji zerowej (jazda do przodu), wysłanie ramki spowoduje nadpisanie wartości odniesienia,
+ * względem której obliczana jest pozycja kątowa. Kalibracja wykona się tylko wtedy, gdy argumenty będą miały wartości opisane poniżej.
+ * @param channel   indeks kanału do kalibracji (numeracja zgodna z powyższymi, 0..3)
  */
 void Cmd_Bus_Motor_Calibrate(uint8_t channel) {
     can_packet_t msg = {
@@ -108,8 +108,8 @@ void Cmd_Bus_Motor_Calibrate(uint8_t channel) {
 
 
 /**
- * Ramka na potrzeby test�w i rozwoju oprogramowania. Przekazywa� kontrolerowi transparentnie, bez ingerencji.
- * @param data      wskaznik na 8-bajtowy bufor danych
+ * Ramka do celów testowych i rozwoju oprogramowania. Przekazuje kontrolerowi przezrocznie, bez ingerencji.
+ * @param data      wskaźnik do 8-bajtowego bufora danych
  */
 void Cmd_Bus_Motor_DebugTx(uint8_t* data) {
     can_packet_t msg = {

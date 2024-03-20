@@ -12,9 +12,14 @@ void Cmd_UART_BlinkLed(uart_packet_link_t link) {
 //TODO: fix this clusterfuck
 void Cmd_UART_UnknownHandler(uart_packet_t* msg) {
     debug_printf("\t[AUX  ] Nieobsluzona komenda komunikacji (link = ");
-    if (msg->origin == LINK_RF_UART)   { debug_printf("RF"); }
-    else                        { debug_printf("Auto"); }
-    debug_printf("; cmd=%d; data = ", msg->cmd);
+
+	if (msg->origin == LINK_RF_UART) {
+		debug_printf("RF");
+	} else {
+		debug_printf("Auto");
+	}
+
+	debug_printf("; cmd=%d; data = ", msg->cmd);
     for (uint8_t i = 0; i < msg->arg_count; i++) {
         debug_printf("%2x", msg->args[i]);
     }

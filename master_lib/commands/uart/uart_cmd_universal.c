@@ -6,9 +6,9 @@
 #include "../can/can_cmd.h"
 
 /**
- * Ustawianie zadanych kierunk�w i pr�dko�ci mostk�w H.
- * @param data      wskaznik na bufor odebranych danych
- * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
+ * Ustawianie zadanych kierunków i prędkości mostków H.
+ * @param data      wskaźnik na bufor odebranych danych
+ * @param link_type łącze komunikacyjne, na którym odebrano ramkę
  */
 void Cmd_UART_Universal_SetBridge(uint8_t *data, uart_packet_link_t link_type) {
     if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
@@ -30,7 +30,7 @@ void Cmd_UART_Universal_SetBridge(uint8_t *data, uart_packet_link_t link_type) {
 
 
 /**
- * Ustawienie zadanych warto�ci wychylenia serw.
+ * Ustawienie zadanych wartości wychylenia serw.
  * @param data      wskaznik na bufor odebranych danych
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
@@ -54,7 +54,7 @@ void Cmd_UART_Universal_SetServo(uint8_t *data, uart_packet_link_t link_type) {
 
 
 /**
- * Ustawienie zadanych warto�ci wype�nienia PWM�w mocy.
+ * Ustawienie zadanych wartości wypełnienia PWMów mocy.
  * @param data      wskaznik na bufor odebranych danych
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
@@ -78,9 +78,9 @@ void Cmd_UART_Universal_SetPwm(uint8_t *data, uart_packet_link_t link_type) {
 
 
 /**
- * Komenda dodana na przysz�o��, aktualnie nie jest u�ywana.
- * @param data      wskaznik na bufor odebranych danych
- * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
+ * Komenda dodana na przyszłość, aktualnie nie jest używana.
+ * @param data      wskaźnik na bufor odebranych danych
+ * @param link_type łącze komunikacyjne, na którym odebrano ramkę
  */
 void Cmd_UART_Universal_SetGpio(uint8_t *data, uart_packet_link_t link_type) {
     if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
@@ -102,9 +102,9 @@ void Cmd_UART_Universal_SetGpio(uint8_t *data, uart_packet_link_t link_type) {
 
 
 /**
- * ��danie odczytania aktualnych warto�ci belek tensometrycznych. W odpowiedzi Master zwraca seri� ramek UNIVERSAL_GET_WEIGHT, po jednej na ka�d� belk� danego modu�u uniwersalnego.
- * @param data      wskaznik na bufor odebranych danych
- * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
+ * Żądanie odczytania aktualnych wartości belek tensometrycznych. W odpowiedzi Master zwraca serię ramek UNIVERSAL_GET_WEIGHT, po jednej na każdą belkę danego modułu uniwersalnego.
+ * @param data      wskaźnik na bufor odebranych danych
+ * @param link_type łącze komunikacyjne, na którym odebrano ramkę
  */
 void Cmd_UART_Universal_GetWeightRequest(uint8_t *data, uart_packet_link_t link_type) {
     if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
@@ -129,9 +129,9 @@ void Cmd_UART_Universal_GetWeightRequest(uint8_t *data, uart_packet_link_t link_
 
 
 /**
- * Zwraca surow� warto�� odczytan� z zadanej belki tensometrycznej modu�u uniwersalnego o konkretnym ID.
- * @param id                bajt identyfikacji urzadzenia odbiorczego
- * @param loadcell_index    numer belki tensometrycznej (na przyszlosc, aktualnie niewspierane)
+ * Zwraca surową wartość odczytaną z zadanej belki tensometrycznej modułu uniwersalnego o konkretnym ID.
+ * @param id                bajt identyfikacji urządzenia odbiorczego
+ * @param loadcell_index    numer belki tensometrycznej (na przyszłość, aktualnie niewspierane)
  */
 void Cmd_UART_Universal_GetWeight(uint8_t id, uint8_t loadcell_index) {
     if ((logic.link_type == LINK_RF_UART) || (logic.link_type == LINK_AUTO_UART)) {

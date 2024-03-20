@@ -18,13 +18,6 @@ void Cmd_Bus_Motor_GetStatus(uint8_t* data);
 void Cmd_Bus_Motor_DebugRx(uint8_t* data);
 void Cmd_Bus_Motor_GetTemperature(uint8_t* data);
 
-// --- Arm ---
-void Cmd_Bus_Arm_GetPos1(uint8_t* data);
-void Cmd_Bus_Arm_GetPos2(uint8_t* data);
-void Cmd_Bus_Arm_Get24V(uint8_t* data);
-void Cmd_Bus_Arm_GetStatus(uint8_t* data);
-void Cmd_Bus_Arm_DebugRx(uint8_t *data);
-
 // --- Arm 6DoF ---
 void Cmd_Bus_Arm6DOF_GetPos1(uint8_t *data);
 void Cmd_Bus_Arm6DOF_GetPos2(uint8_t *data);
@@ -69,13 +62,6 @@ void Cmd_Bus_Common_GetPidRequest(can_device_t id);
 void Cmd_Bus_Motor_SetWheels();
 void Cmd_Bus_Motor_Calibrate(uint8_t channel);
 void Cmd_Bus_Motor_DebugTx(uint8_t* data);
-
-// --- Arm ---
-void Cmd_Bus_Arm_SetPos1();
-void Cmd_Bus_Arm_SetPos2();
-void Cmd_Bus_Arm_SetMagnet(uint8_t state);
-void Cmd_Bus_Arm_Calibrate(uint8_t joint);
-void Cmd_Bus_Arm_DebugTx(uint8_t* data);
 
 // --- Arm 6DoF
 void Cmd_Bus_Arm6DOF_SetPosVel();

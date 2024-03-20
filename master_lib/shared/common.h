@@ -1,8 +1,3 @@
-// A header file containing common global variables, macros and helpers
-// Includes:
-//     FreeRTOS task handles and queues
-//     UART port definitions
-
 #ifndef KALMAN_ELECTRONICS_MASTER_V3_COMMON_H
 #define KALMAN_ELECTRONICS_MASTER_V3_COMMON_H
 

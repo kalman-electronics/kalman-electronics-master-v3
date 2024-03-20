@@ -6,10 +6,10 @@
 #include "../can/can_cmd.h"
 
 /**
- * ��danie odczytania aktualnych warto�ci temperatur i wilgotno�ci pr�bek pomiarowych. W odpowiedzi Master zwraca seri� ramek SCIENCE_GET_SAMPLES,
- * po jednej na ka�d� pr�bk� pomiarow� modu�u science.
- * @param data      wskaznik na bufor odebranych danych
- * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
+ * Żądanie odczytania aktualnych wartości temperatur i wilgotności próbek pomiarowych. W odpowiedzi Master zwraca serię ramek SCIENCE_GET_SAMPLES,
+ * po jednej na każdą próbkę pomiarową modułu science.
+ * @param data      wskaźnik na bufor odebranych danych
+ * @param link_type łącze komunikacyjne, na którym odebrano ramkę
  */
 void Cmd_UART_Science_GetSamplesRequest(uint8_t *data, uart_packet_link_t link_type) {
     if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
@@ -27,9 +27,9 @@ void Cmd_UART_Science_GetSamplesRequest(uint8_t *data, uart_packet_link_t link_t
 }
 
 /**
- * ��danie odczytania aktualnych warto�ci belek tensometrycznych. W odpowiedzi Master zwraca seri� ramek SCIENCE_GET_WEIGHT, po jednej na ka�d� belk� modu�u science.
- * @param data      wskaznik na bufor odebranych danych
- * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
+ * Żądanie odczytania aktualnych wartości belek tensometrycznych. W odpowiedzi Master zwraca serię ramek SCIENCE_GET_WEIGHT, po jednej na każdą belkę modułu science.
+ * @param data      wskaźnik na bufor odebranych danych
+ * @param link_type łącze komunikacyjne, na którym odebrano ramkę
  */
 void Cmd_UART_Science_GetWeightRequest(uint8_t *data, uart_packet_link_t link_type) {
     if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
@@ -46,9 +46,9 @@ void Cmd_UART_Science_GetWeightRequest(uint8_t *data, uart_packet_link_t link_ty
 }
 
 /**
- * ��danie odczytania aktualnych warto�ci pomiar�w atmosferycznych. W odpowiedzi Master zwraca ramk� SCIENCE_GET_ATMOSPHERE.
- * @param data      wskaznik na bufor odebranych danych
- * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
+ * Żądanie odczytania aktualnych wartości pomiarów atmosferycznych. W odpowiedzi Master zwraca ramkę SCIENCE_GET_ATMOSPHERE.
+ * @param data      wskaźnik na bufor odebranych danych
+ * @param link_type łącze komunikacyjne, na którym odebrano ramkę
  */
 void Cmd_UART_Science_GetAtmosphereRequest(uint8_t *data, uart_packet_link_t link_type) {
     if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
@@ -65,8 +65,8 @@ void Cmd_UART_Science_GetAtmosphereRequest(uint8_t *data, uart_packet_link_t lin
 }
 
 /**
- * Zwraca aktualne warto�ci pomiar�w atmosferycznych modu�u science o konkretnym ID.
- * @param id                bajt identyfikacji urzadzenia odbiorczego
+ * Zwraca aktualne wartości pomiarów atmosferycznych modułu science o konkretnym ID.
+ * @param id                bajt identyfikacji urządzenia odbiorczego
  */
 void Cmd_UART_Science_GetAtmosphere(uint8_t id) {
     if ((logic.link_type == LINK_RF_UART) || (logic.link_type == LINK_AUTO_UART)) {
@@ -98,8 +98,8 @@ void Cmd_UART_Science_GetAtmosphere(uint8_t id) {
 }
 
 /**
- * Zwraca surow� warto�� odczytan� z zadanej belki tensometrycznej modu�u science o konkretnym ID.
- * @param id                bajt identyfikacji urzadzenia odbiorczego
+ * Zwraca surową wartość odczytaną z zadanej belki tensometrycznej modułu science o konkretnym ID.
+ * @param id                bajt identyfikacji urządzenia odbiorczego
  * @param loadcell_index    numer belki tensometrycznej (0..3)
  */
 void Cmd_UART_Science_GetWeight(uint8_t id, uint8_t loadcell_index) {
@@ -132,9 +132,9 @@ void Cmd_UART_Science_GetWeight(uint8_t id, uint8_t loadcell_index) {
 }
 
 /**
- * Zwraca aktualn� warto�� temperatury i wilgotno�ci zadanej pr�bki pomiarowej modu�u science o konkretnym ID.
- * @param id                bajt identyfikacji urzadzenia odbiorczego
- * @param sample_index      numer pr�bki (0..3)
+ * Zwraca aktualną wartość temperatury i wilgotności zadanej próbki pomiarowej modułu science o konkretnym ID.
+ * @param id                bajt identyfikacji urządzenia odbiorczego
+ * @param sample_index      numer próbki (0..3)
  */
 void Cmd_UART_Science_GetSamples(uint8_t id, uint8_t sample_index) {
     if ((logic.link_type == LINK_RF_UART) || (logic.link_type == LINK_AUTO_UART)) {

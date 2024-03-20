@@ -7,9 +7,9 @@
 
 
 /**
- * Wyb�r aktualnego ��cza komunikacyjnego. Komenda jako jedyna mo�e zosta� odebrana na dowolnym ��czu, bez wzgl�du na to kt�re obecnie obs�uguje modu� Master.
- * @param data      wskaznik na bufor odebranych danych
- * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
+ * Wybór aktualnego łącza komunikacyjnego. Komenda jako jedyna może zostać odebrana na dowolnym łączu, bez względu na to które obecnie obsługuje moduł Master.
+ * @param data      wskaźnik na bufor odebranych danych
+ * @param link_type łącze komunikacyjne, na którym odebrano ramkę
  */
 void Cmd_UART_Master_SetLink(uint8_t *data, uart_packet_link_t link_type) {
     //komenda zawsze mozliwa do odebrania, bez wzgledu na aktualnie wybrane lacze i lacze po ktorym ja wyslano
@@ -41,9 +41,9 @@ void Cmd_UART_Master_SetLink(uint8_t *data, uart_packet_link_t link_type) {
 
 
 /**
- * Wyb�r trybu zwracania przez modu� Master ramek statusowych.
- * @param data      wskaznik na bufor odebranych danych
- * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
+ * Wybór trybu zwracania przez moduł Master ramek statusowych.
+ * @param data      wskaźnik na bufor odebranych danych
+ * @param link_type łącze komunikacyjne, na którym odebrano ramkę
  */
 void Cmd_UART_Master_SetStatusMode(uint8_t *data, uart_packet_link_t link_type) {
     if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
@@ -70,9 +70,9 @@ void Cmd_UART_Master_SetStatusMode(uint8_t *data, uart_packet_link_t link_type) 
 }
 
 /**
- * Wyb�r ��danego widoku wizji analogowej. Dane przekazywane s� do Raspberry obs�uguj�cego konwersj� streamu IP na sygna� analogowy.
- * @param data      wskaznik na bufor odebranych danych
- * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
+ * Wybór żądanego widoku wizji analogowej. Dane przekazywane są do Raspberry obsługującego konwersję strumienia IP na sygnał analogowy.
+ * @param data      wskaźnik na bufor odebranych danych
+ * @param link_type łącze komunikacyjne, na którym odebrano ramkę
  *//*
 void Cmd_Master_SetVideoChannel(uint8_t *data, uart_packet_link_t link_type) {
     if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type)) {
@@ -91,7 +91,7 @@ void Cmd_Master_SetVideoChannel(uint8_t *data, uart_packet_link_t link_type) {
 }*/
 
 /**
- * "Wci�ni�cie" przycisku zasilania komputera pok�adowego.
+ * "Wciśnięcie" przycisku zasilania komputera pokładowego.
  * @param data      wskaznik na bufor odebranych danych
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
@@ -111,9 +111,9 @@ void Cmd_UART_Master_ComputerPowerOn(uint8_t *data, uart_packet_link_t link_type
 
 
 /**
- * "Wci�ni�cie" przycisku resetu komputera pok�adowego.
- * @param data      wskaznik na bufor odebranych danych
- * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
+ * "Wciśnięcie" przycisku resetu komputera pokładowego.
+ * @param data      wskaźnik na bufor odebranych danych
+ * @param link_type łącze komunikacyjne, na którym odebrano ramkę
  */
 void Cmd_UART_Master_ComputerReset(uint8_t *data, uart_packet_link_t link_type) {
     if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
@@ -129,11 +129,12 @@ void Cmd_UART_Master_ComputerReset(uint8_t *data, uart_packet_link_t link_type) 
 }
 
 
+#warning "Should it even be here?"
 
 /**
- * Reset Raspberry Pi 3 odpowiedzialnego za wizj� analogow�.
- * @param data      wskaznik na bufor odebranych danych
- * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
+ * Reset Raspberry Pi 3 odpowiedzialnego za wizję analogową.
+ * @param data      wskaźnik na bufor odebranych danych
+ * @param link_type łącze komunikacyjne, na którym odebrano ramkę
  *//*
 void Cmd_UART_Master_RaspberryReset(uint8_t *data, uart_packet_link_t link_type) {
     if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type)) {
@@ -151,9 +152,9 @@ void Cmd_UART_Master_RaspberryReset(uint8_t *data, uart_packet_link_t link_type)
 
 
 /**
- * Wyb�r informacji wysy�anych na debugowym uarcie modu�u Master.
- * @param data      wskaznik na bufor odebranych danych
- * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
+ * Wybór informacji wysyłanych na debugowym UART modułu Master.
+ * @param data      wskaźnik na bufor odebranych danych
+ * @param link_type łącze komunikacyjne, na którym odebrano ramkę
  */
 //TODO: verbosity select
 void Cmd_UART_Master_SetDebugInfo(uint8_t *data, uart_packet_link_t link_type) {
@@ -177,12 +178,11 @@ void Cmd_UART_Master_SetDebugInfo(uint8_t *data, uart_packet_link_t link_type) {
 
 
 /**
- * Zmiana stanu wyj�cia odpowiedzialnego za lamp� sygnalizacyjn�.
- * @warning aktualnie nieuzywane - patrz Cmd_Arm_SetMagnet
- * @param data      wskaznik na bufor odebranych danych
- * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
- */
- /*
+ * Zmiana stanu wyjścia odpowiedzialnego za lampę sygnalizacyjną.
+ * @warning aktualnie nieużywane - patrz Cmd_Arm_SetMagnet
+ * @param data      wskaźnik na bufor odebranych danych
+ * @param link_type łącze komunikacyjne, na którym odebrano ramkę
+ *//*
 void Cmd_Master_SetIndicator(uint8_t *data, uart_packet_link_t link_type) {
     if (link_type == logic.link_type) {
         //if (logic_flash.debug_info & debug_comm_control) {
@@ -200,9 +200,9 @@ void Cmd_Master_SetIndicator(uint8_t *data, uart_packet_link_t link_type) {
 
 
 /**
- * Zadawanie pr�dko�ci kamery PTZ (x,y,zoom). Ramka przekazywana przez Mastera do Raspberry Pi, nast�pnie przez ONVIF do kamer z funkcj� PTZ.
- * @param data      wskaznik na bufor odebranych danych
- * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
+ * Zadawanie prędkości kamery PTZ (x, y, zoom). Ramka przekazywana przez Mastera do Raspberry Pi, następnie przez ONVIF do kamer z funkcją PTZ.
+ * @param data      wskaźnik na bufor odebranych danych
+ * @param link_type łącze komunikacyjne, na którym odebrano ramkę
  *//*
 void Cmd_Master_SetPtzMove(uint8_t *data, uart_packet_link_t link_type) {
     if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type)) {
@@ -223,7 +223,7 @@ void Cmd_Master_SetPtzMove(uint8_t *data, uart_packet_link_t link_type) {
 
 
 /**
- * Zwracanie potwierdzenia zmiany ��cza komunikacyjnego, po odebraniu komendy Cmd_Master_SetLink. Ramka zwracana jest jeszcze na poprzednim ��czu (tzn. odsy�ana jest przed zmian�).
+ * Zwracanie potwierdzenia zmiany łącza komunikacyjnego, po odebraniu komendy Cmd_Master_SetLink. Ramka zwracana jest jeszcze na poprzednim łączu (tzn. odsyłana jest przed zmianą).
  */
 void Cmd_UART_Master_SetLinkResponse(uart_packet_link_t new_link) {
     uart_packet_t msg = {
@@ -239,7 +239,7 @@ void Cmd_UART_Master_SetLinkResponse(uart_packet_link_t new_link) {
 
 
 /**
- * Zwracanie podstawowych status�w pracy systemu elektroniki. Ramka wysy�ana jest tylko wtedy, gdy ustawiono odpowiedni tryb (patrz Cmd_Master_SetStatusMode).
+ * Zwracanie podstawowych statusów pracy systemu elektroniki. Ramka wysyłana jest tylko wtedy, gdy ustawiono odpowiedni tryb (patrz Cmd_Master_SetStatusMode).
  */
 void Cmd_UART_Master_GetBasicStatus(void) {
     uart_packet_link_t link = logic.link_type;
@@ -256,7 +256,7 @@ void Cmd_UART_Master_GetBasicStatus(void) {
 
 
 /**
- * Zwracanie szczeg�owych status�w pracy systemu elektroniki. Ramka wysy�ana jest tylko wtedy, gdy ustawiono odpowiedni tryb (patrz Cmd_Master_SetStatusMode).
+ * Zwracanie szczegółowych statusów pracy systemu elektroniki. Ramka wysyłana jest tylko wtedy, gdy ustawiono odpowiedni tryb (patrz Cmd_Master_SetStatusMode).
  */
 void Cmd_UART_Master_GetDetailedStatus(void) {
     uart_packet_link_t link = logic.link_type;

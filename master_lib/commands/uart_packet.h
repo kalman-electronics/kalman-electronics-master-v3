@@ -157,21 +157,6 @@ typedef enum {
     UART_ARG_DRILL_GET_WEIGHT               = 0,
     UART_ARG_DRILL_SEND_WEIGHT              = 4,
 
-    //Arm Controller v2
-    UART_ARG_ARM_SET_POS                     = 12,
-    UART_ARG_ARM_SET_MAGNET                  = 1,
-    UART_ARG_ARM_CALIBRATE                   = 6,
-    UART_ARG_ARM_GET_VOLTAGE_REQUEST         = 0,
-    UART_ARG_ARM_GET_VOLTAGE                 = 2,
-    UART_ARG_ARM_GET_POS                     = 12,
-
-    //Lidar Rotator
-    UART_ARG_LIDAR_SET_SPEED                 = 2,
-    UART_ARG_LIDAR_SET_OVERCURRENT           = 1,
-    UART_ARG_LIDAR_GET_SPEED_POS_REQUEST     = 0,
-    UART_ARG_LIDAR_GET_SPEED_POS             = 4,
-    UART_ARG_LIDAR_GET_POS                   = 2,
-
     //Ueuos v2
     UART_ARG_UEUOS_SET_STATE                 = 1,
     UART_ARG_UEUOS_SET_COLOR                 = 3,

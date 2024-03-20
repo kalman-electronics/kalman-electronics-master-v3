@@ -186,6 +186,7 @@ void Cmd_UART_Common_DebugRx(uint8_t *data, can_device_t id) {
                 .cmd = UART_CMD_COMMON_DEBUG_RX,
                 .arg_count = UART_ARG_COMMON_DEBUG_RX,
                 .origin = logic.link_type,
+		        .args = {(uint8_t)(0xFFFF >> 8), (uint8_t)(0xFFFF & 0xFF)}
         };
 
         memcpy(msg.args, data, 8);

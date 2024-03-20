@@ -8,9 +8,9 @@
 
 
 /**
- * Ustawianie zadanej pr�dko�ci obrotu k� oraz wychylenia modu��w skr�tu.
- * @param data      wskaznik na bufor odebranych danych
- * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
+ * Ustawianie zadanej prędkości obrotu oraz wychylenia modułów skrętu.
+ * @param data      wskaźnik na bufor odebranych danych
+ * @param link_type łącze komunikacyjne, na którym odebrano ramkę
  */
 void Cmd_UART_Motor_SetWheels(uint8_t *data, uart_packet_link_t link_type) {
     if ((link_type == LINK_RF_UART) ||  (link_type == logic.link_type)) {
@@ -40,9 +40,9 @@ void Cmd_UART_Motor_SetWheels(uint8_t *data, uart_packet_link_t link_type) {
 
 
 /**
- * Zlecenie kalibracji rozregulowanego modu�u skr�tu.
- * @param data      wskaznik na bufor odebranych danych
- * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
+ * Zlecenie kalibracji rozregulowanego modułu skrętu.
+ * @param data      wskaźnik na bufor odebranych danych
+ * @param link_type łącze komunikacyjne, na którym odebrano ramkę
  */
 void Cmd_UART_Motor_Calibrate(uint8_t *data, uart_packet_link_t link_type) {
     if ((link_type == LINK_RF_UART) ||  (link_type == logic.link_type)) {
@@ -67,7 +67,7 @@ void Cmd_UART_Motor_Calibrate(uint8_t *data, uart_packet_link_t link_type) {
 
 
 /**
- * Zwracanie aktualnej pr�dko�ci obrotu k� oraz wychylenia modu��w skr�tu.
+ * Zwracanie aktualnej prędkości obrotu oraz wychylenia modułów skrętu.
  */
 void Cmd_UART_Motor_GetWheels(void) {
     uart_packet_t msg = {
@@ -90,7 +90,7 @@ void Cmd_UART_Motor_GetWheels(void) {
 
 /**
  * Zwracanie ostatniego odczytu z temperatury silnikow
- * */
+ */
 void Cmd_UART_Motor_GetTemperature(void) {
     uart_packet_t msg = {
         .cmd = UART_CMD_MOTOR_GET_TEMPERATURE,

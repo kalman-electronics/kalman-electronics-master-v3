@@ -35,12 +35,6 @@ void Cmd_UART_Motor_SetWheels(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Motor_Calibrate(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Motor_GetTemperature(void);
 
-// --- Arm ---
-void Cmd_UART_Arm_SetPos(uint8_t* data, uart_packet_link_t link);
-void Cmd_UART_Arm_SetMagnet(uint8_t* data, uart_packet_link_t link);
-void Cmd_UART_Arm_Calibrate(uint8_t* data, uart_packet_link_t link);
-void Cmd_UART_Arm_GetVoltageRequest(uint8_t* data, uart_packet_link_t link);
-
 // --- Arm 6DoF ---
 void Cmd_UART_Arm6DOF_SetPos(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Arm6DOF_SetPosVel(uint8_t* data, uart_packet_link_t link);
@@ -116,10 +110,6 @@ void Cmd_UART_Master_GetDetailedStatus(void);
 
 // --- Motor ---
 void Cmd_UART_Motor_GetWheels(void);
-
-// --- Arm ---
-void Cmd_UART_Arm_GetPos(void);
-void Cmd_UART_Arm_GetVoltage(uart_packet_link_t link);
 
 // --- Arm 6DoF ---
 //TODO: change name
