@@ -3,7 +3,6 @@
 //=====================================================================
 
 #include "uart_cmd.h"
-#include "../can/can_cmd.h"
 
 /**
  * Żądanie odczytania aktualnych wartości temperatur i wilgotności próbek pomiarowych. W odpowiedzi Master zwraca serię ramek SCIENCE_GET_SAMPLES,

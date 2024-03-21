@@ -1,10 +1,8 @@
 //=====================================================================
 //                          UEUOS v2 Module
 //=====================================================================
-#include <string.h>
 #include "uart_cmd.h"
 #include "../can/can_cmd.h"
-#include "../../shared/logic.h"
 
 /**
  * Ustawia jeden z 4 stanów UEUOSA

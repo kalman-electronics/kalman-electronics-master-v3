@@ -2,7 +2,7 @@
 #define KALMAN_ELECTRONICS_MASTER_V3_UART_PACKET_H
 
 #include "stdint.h"
-#include "../shared/uart_def.h"
+#include "config.h"
 
 typedef enum {
     // Packets coming from UART parsers
@@ -50,14 +50,6 @@ typedef enum {
     UART_CMD_DRILL_B_BRIDGE_SET              = 0x46,     //!< [TX]
     UART_CMD_DRILL_GET_WEIGHT                = 0x47,     //!< [TX]
     UART_CMD_DRILL_SEND_WEIGHT               = 0x48,     //!< [TX]
-
-    //Arm Controller v2
-    UART_CMD_ARM_SET_POS                     = 0x50,     //!< [TX]
-    UART_CMD_ARM_SET_MAGNET                  = 0x51,     //!< [TX]
-    UART_CMD_ARM_CALIBRATE                   = 0x52,     //!< [TX]
-    UART_CMD_ARM_GET_VOLTAGE_REQUEST         = 0x53,     //!< [TX]
-    UART_CMD_ARM_GET_VOLTAGE                 = 0x5E,     //!< [RX]
-    UART_CMD_ARM_GET_POS                     = 0x5F,     //!< [RX]
 
     //UEUOS v2
     UART_CMD_UEUOS_SET_STATE                 = 0x60,     //!< [TX]

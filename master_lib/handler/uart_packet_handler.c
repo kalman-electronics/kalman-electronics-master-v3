@@ -2,10 +2,7 @@
 #include "FreeRTOS.h"
 #include "queue.h"
 #include "../shared/queues.h"
-#include "../commands/uart_packet.h"
 #include "../commands/uart_packet_defs.h"
-#include "stdio.h"
-#include "../shared/uart_def.h"
 
 void UARTHandler_ProcessPacket(uart_packet_t* msg);
 

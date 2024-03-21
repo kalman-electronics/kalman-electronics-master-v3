@@ -3,7 +3,7 @@
 
 #include "fdcan.h"
 #include "../commands/can_packet.h"
-#include "../shared/common.h"
+#include "shared/common.h"
 #include "spi.h"
 #include "gpio.h"
 

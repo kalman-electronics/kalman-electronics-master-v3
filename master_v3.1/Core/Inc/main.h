@@ -75,6 +75,8 @@ void Error_Handler(void);
 #define PC_RX_GPIO_Port GPIOB
 #define PC_TX_Pin GPIO_PIN_11
 #define PC_TX_GPIO_Port GPIOB
+#define TCAN2_CS_Pin GPIO_PIN_14
+#define TCAN2_CS_GPIO_Port GPIOB
 #define SCL_Pin GPIO_PIN_6
 #define SCL_GPIO_Port GPIOC
 #define SDA_Pin GPIO_PIN_7

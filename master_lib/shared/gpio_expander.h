@@ -2,6 +2,7 @@
 #define INC_GPIO_EXPANDER_H_
 
 #include "i2c.h"
+#include "common.h"
 
 #define GPIOEXPANDER_I2C_ADDR (0b1110100 << 1)
 #define GPIOEXPANDER_CHANNEL_COUNT 16

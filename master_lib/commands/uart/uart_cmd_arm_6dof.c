@@ -5,7 +5,6 @@
 #include <string.h>
 #include "uart_cmd.h"
 #include "../can/can_cmd.h"
-#include "../../shared/logic.h"
 
 /*
  *  RX Frames

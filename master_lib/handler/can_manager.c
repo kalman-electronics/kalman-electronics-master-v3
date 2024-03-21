@@ -20,44 +20,34 @@ const uint8_t canlib_rx_list[CANLIB_RX_LIST_COUNT] = {
 void CanManager_FilterConfig();
 
 void CanManager_Task() {
-    /* setup number of STD can filters */
-    HAL_FDCAN_DeInit(&hfdcan1);
-    hfdcan1.Init.StdFiltersNbr = CANLIB_RX_LIST_COUNT;
-    HAL_FDCAN_Init(&hfdcan1);
 
-    //configure filters
-    CanManager_FilterConfig();
+	for(int i = 0; i < FDCAN_DEFS_COUNT; i++) {
+		HAL_FDCAN_DeInit(fdcan_defs[i].fdcan_handle);
+		fdcan_defs[i].fdcan_handle->Init.StdFiltersNbr = CANLIB_RX_LIST_COUNT;
+		HAL_FDCAN_Init(fdcan_defs[i].fdcan_handle);
 
-    //start FDCAN periphery
-    HAL_FDCAN_Start(&hfdcan1);
+		//configure filters
+		CanManager_FilterConfig(fdcan_defs[i].fdcan_handle);
 
-    // setup notifications
-    HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_LIST_RX_FIFO0, 0);
-    HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_LIST_TX_FIFO_ERROR, 0);
-    HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_LIST_PROTOCOL_ERROR, 0);
+		//start FDCAN periphery
+		HAL_FDCAN_Start(fdcan_defs[i].fdcan_handle);
 
-    //TCAN_114x initialization
-	HAL_GPIO_WritePin(TCAN_CS_GPIO_Port, TCAN_CS_Pin, GPIO_PIN_SET);
-	TCAN114x_Init(&tcan, &hspi1, TCAN_CS_GPIO_Port, TCAN_CS_Pin); // pass communication periphs to hw proxy struct
-	TCAN114x_getDeviceID(&tcan); // get device id, for debug
-	TCAN114x_setMode(&tcan, normal); // set normal mode, for normal transceiver operation
+		// setup notifications
+		HAL_FDCAN_ActivateNotification(fdcan_defs[i].fdcan_handle, FDCAN_IT_LIST_RX_FIFO0, 0);
+		HAL_FDCAN_ActivateNotification(fdcan_defs[i].fdcan_handle, FDCAN_IT_LIST_TX_FIFO_ERROR, 0);
+		HAL_FDCAN_ActivateNotification(fdcan_defs[i].fdcan_handle, FDCAN_IT_LIST_PROTOCOL_ERROR, 0);
 
-    /*
-    FDCAN_TxHeaderTypeDef canHead;
-    uint8_t data[] = {0, 0};
+		//TODO: enable support for 2 TCANs, currently only one is supported
+		//TCAN_114x initialization
+		HAL_GPIO_WritePin(tcan_defs[i].cs.port, tcan_defs[i].cs.pin, GPIO_PIN_SET);
+		TCAN114x_Init(&tcan, spi_defs[TCAN_SPI_ID].spi_handle, tcan_defs[i].cs.port, tcan_defs[i].cs.pin); // pass communication periphs to hw proxy struct
+		TCAN114x_getDeviceID(&tcan); // get device id, for debug
+		TCAN114x_setMode(&tcan, normal); // set normal mode, for normal transceiver operation
+		HAL_GPIO_WritePin(tcan_defs[i].cs.port, tcan_defs[i].cs.pin, GPIO_PIN_RESET);
 
-    canHead.Identifier = CAN_CMD_MUX_SET_POWER; // CAN_CMD_MUX_SET_CAM
-    canHead.IdType = FDCAN_STANDARD_ID;
-    canHead.TxFrameType = FDCAN_DATA_FRAME;
-    canHead.DataLength = CAN_CMD_MUX_SET_POWER << 16; // CAN_ARG_MUX_SET_CAM
-    canHead.ErrorStateIndicator = FDCAN_ESI_PASSIVE;
-    canHead.BitRateSwitch = FDCAN_BRS_OFF;
-    canHead.FDFormat = FDCAN_CLASSIC_CAN;
-    canHead.TxEventFifoControl = FDCAN_NO_TX_EVENTS;
-    canHead.MessageMarker = 0;
 
-    HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan1, &canHead, data);
-    */
+	}
+
 
     while (1) {
         can_packet_t msg;
@@ -88,9 +78,9 @@ void CanManager_Task() {
     }
 }
 
-void CanManager_FilterConfig() {
+void CanManager_FilterConfig(FDCAN_HandleTypeDef *hfdcan) {
     //configure global filter - behaviour of frames non matching any filters
-    HAL_FDCAN_ConfigGlobalFilter(&hfdcan1, FDCAN_REJECT, FDCAN_REJECT,
+    HAL_FDCAN_ConfigGlobalFilter(hfdcan, FDCAN_REJECT, FDCAN_REJECT,
                                  FDCAN_REJECT_REMOTE, FDCAN_REJECT_REMOTE);
 
     FDCAN_FilterTypeDef filter;

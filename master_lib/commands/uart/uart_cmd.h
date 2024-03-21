@@ -119,9 +119,6 @@ void Cmd_UART_Arm6DOF_GetGripper();
 // --- Universal ---
 void Cmd_UART_Universal_GetWeight(uint8_t id, uint8_t loadcell_index);
 
-// --- Party ---
-void Cmd_UART_Party_GetDetectors(void);
-
 // --- Science ---
 void Cmd_UART_Science_GetAtmosphere(uint8_t id);
 void Cmd_UART_Science_GetWeight(uint8_t id, uint8_t loadcell_index);

@@ -1,13 +1,12 @@
 #ifndef KALMAN_ELECTRONICS_MASTER_V3_ARM_6DOF_H
 #define KALMAN_ELECTRONICS_MASTER_V3_ARM_6DOF_H
 
+#include "stdint.h"
+
 typedef enum {
     ARM_6DOF_VELOCITY_MODE,
     ARM_6DOF_POSITION_MODE
 } arm_6dof_mode_t;
-
-
-#include "stdint.h"
 
 // per joint vel control in pos control
 typedef struct __attribute__((packed)) {

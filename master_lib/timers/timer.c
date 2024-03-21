@@ -3,8 +3,7 @@
 #include "../shared/logic.h"
 #include "../commands/can/can_cmd.h"
 #include "../commands/uart/uart_cmd.h"
-#include "spi.h"
-#include "gpio.h"
+
 
 TimerHandle_t timer_defs[TIMER_COUNT];
 
@@ -73,12 +72,6 @@ void Timer_Init() {
             pdFALSE,
             0,
             Timer_ArmTimeout);
-
-    // --- TCAN ---
-//    HAL_GPIO_WritePin(TCAN_CS_GPIO_Port, TCAN_CS_Pin, GPIO_PIN_SET);
-//    TCAN114x_Init(&tcan, &hspi1, TCAN_CS_GPIO_Port, TCAN_CS_Pin);
-//    TCAN114x_getDeviceID(&tcan);
-//    TCAN114x_setMode(&tcan, normal);
 
     timer_defs[TIMER_TCAN] = xTimerCreate(
             "TCAN_Update",
@@ -198,6 +191,20 @@ void Timer_ArmTimeout() {
 // --- TCAN ---
 
 void Timer_TCANUpdate() {
+
+//	for(int i = 0; i < TCAN_DEFS_COUNT; i++) {
+//		// Read and clear CAN interrupts
+//		TCAN114x_getInterrupts(tcan_defs[i].tcan);
+//		TCAN114x_clearInterrupts(tcan_defs[i].tcan);
+//		TCAN114x_getMode(tcan_defs[i].tcan);
+//
+//		// reset TCAN after error condition
+//		if(tcan_defs[i].tcan->mode != normal) {
+//			TCAN114x_setMode(tcan_defs[i].tcan, normal);
+//		}
+//	}
+
+
     // Read and clear CAN interrupts
     TCAN114x_getInterrupts(&tcan);
     TCAN114x_clearInterrupts(&tcan);

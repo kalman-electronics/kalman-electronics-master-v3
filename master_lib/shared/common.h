@@ -4,10 +4,10 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
-#include "uart_def.h"
 #include "queues.h"
 #include "../TCAN114x/TCAN114x.h"
 #include "gpio_expander.h"
+#include "config.h"
 
 #define UART_MESSAGE_MAX_SIZE 256 + 4
 #define UART_RX_BUF_SIZE UART_MESSAGE_MAX_SIZE * 2

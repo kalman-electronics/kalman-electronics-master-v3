@@ -1,7 +1,5 @@
 #include <string.h>
 #include "uart_encoder.h"
-#include "../commands/uart_packet.h"
-#include "dma.h"
 #include "usart.h"
 
 uart_encoder_t encoder_defs[UART_DEFS_COUNT];

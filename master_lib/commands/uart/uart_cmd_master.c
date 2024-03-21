@@ -2,7 +2,6 @@
 //                 komendy dodatkowe modulu Master v2
 //=====================================================================
 
-#include <string.h>
 #include "uart_cmd.h"
 
 
@@ -70,27 +69,6 @@ void Cmd_UART_Master_SetStatusMode(uint8_t *data, uart_packet_link_t link_type) 
 }
 
 /**
- * Wybór żądanego widoku wizji analogowej. Dane przekazywane są do Raspberry obsługującego konwersję strumienia IP na sygnał analogowy.
- * @param data      wskaźnik na bufor odebranych danych
- * @param link_type łącze komunikacyjne, na którym odebrano ramkę
- *//*
-void Cmd_Master_SetVideoChannel(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type)) {
-        //if (logic_flash.debug_info & debug_comm_control) {
-            printf("[%s] Master SetVideoChannel: %d\r\n",
-                    (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
-                    data[0]);
-        //}
-
-        //przekierowanie ramki do Raspberry przez uart pomocniczy
-        Uarts_Aux_SendFrame(CMD_MASTER_SET_VIDEO_CHANNEL, ARG_MASTER_SET_VIDEO_CHANNEL, data);
-        Uarts_Aux_SendBuf((uint8_t*)"\n", 1); //dodatkowy znak konca linii, zgodnie z wytycznymi
-
-        Cmd_UART_BlinkLed(link_type);
-    }
-}*/
-
-/**
  * "Wciśnięcie" przycisku zasilania komputera pokładowego.
  * @param data      wskaznik na bufor odebranych danych
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
@@ -107,8 +85,6 @@ void Cmd_UART_Master_ComputerPowerOn(uint8_t *data, uart_packet_link_t link_type
         Cmd_UART_BlinkLed(link_type);
     }
 }
-
-
 
 /**
  * "Wciśnięcie" przycisku resetu komputera pokładowego.
@@ -127,29 +103,6 @@ void Cmd_UART_Master_ComputerReset(uint8_t *data, uart_packet_link_t link_type) 
         Cmd_UART_BlinkLed(link_type);
     }
 }
-
-
-#warning "Should it even be here?"
-
-/**
- * Reset Raspberry Pi 3 odpowiedzialnego za wizję analogową.
- * @param data      wskaźnik na bufor odebranych danych
- * @param link_type łącze komunikacyjne, na którym odebrano ramkę
- *//*
-void Cmd_UART_Master_RaspberryReset(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type)) {
-        //if (logic_flash.debug_info & debug_comm_control) {
-            printf("[%s] Master RaspberryReset\r\n",
-                    (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"));
-        }//
-
-        //Logic_Gpio_RaspberryReset();
-
-        Cmd_UART_BlinkLed(link_type);
-    }
-}*/
-
-
 
 /**
  * Wybór informacji wysyłanych na debugowym UART modułu Master.
@@ -174,51 +127,6 @@ void Cmd_UART_Master_SetDebugInfo(uint8_t *data, uart_packet_link_t link_type) {
         Cmd_UART_BlinkLed(link_type);
     }
 }
-
-
-
-/**
- * Zmiana stanu wyjścia odpowiedzialnego za lampę sygnalizacyjną.
- * @warning aktualnie nieużywane - patrz Cmd_Arm_SetMagnet
- * @param data      wskaźnik na bufor odebranych danych
- * @param link_type łącze komunikacyjne, na którym odebrano ramkę
- *//*
-void Cmd_Master_SetIndicator(uint8_t *data, uart_packet_link_t link_type) {
-    if (link_type == logic.link_type) {
-        //if (logic_flash.debug_info & debug_comm_control) {
-            printf("[%s] Master SetIndicator: %d\r\n",
-                    (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
-                    data[0]);
-
-            printf("   Funkcja przestarzala, uzyj Arm SetMagnet.\r\n");
-        }
-
-        Cmd_UART_BlinkLed(link_type);
-    }
-}*/
-
-
-
-/**
- * Zadawanie prędkości kamery PTZ (x, y, zoom). Ramka przekazywana przez Mastera do Raspberry Pi, następnie przez ONVIF do kamer z funkcją PTZ.
- * @param data      wskaźnik na bufor odebranych danych
- * @param link_type łącze komunikacyjne, na którym odebrano ramkę
- *//*
-void Cmd_Master_SetPtzMove(uint8_t *data, uart_packet_link_t link_type) {
-    if (((link_type == LINK_RF_UART) || (link_type == LINK_AUTO_UART)) && (link_type == logic.link_type)) {
-        //if (logic_flash.debug_info & debug_comm_control) {
-            printf("[%s] Master SetPtzMove: %d %d %d %d\r\n",
-                    (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
-                    data[0], data[1], data[2], data[3]);
-        //}
-
-        //przekierowanie ramki do Raspberry przez uart pomocniczy
-        Uarts_Aux_SendFrame(CMD_MASTER_SET_PTZ_MOVE, ARG_MASTER_SET_PTZ_MOVE, data);
-        Uarts_Aux_SendBuf((uint8_t*)"\n", 1); //dodatkowy znak konca linii, zgodnie z wytycznymi
-
-        Cmd_UART_BlinkLed(link_type);
-    }
-}*/
 
 
 

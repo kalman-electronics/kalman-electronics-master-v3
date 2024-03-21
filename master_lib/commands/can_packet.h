@@ -97,17 +97,6 @@ typedef enum {
 	CAN_ARG_MOTOR_GET_STATUS        = 4,
 	CAN_ARG_MOTOR_DEBUG_RX          = 8,
 
-	CAN_ARG_ARM_SET_POS1            = 8,
-	CAN_ARG_ARM_SET_POS2            = 4,
-	CAN_ARG_ARM_SET_MAGNET          = 1,
-	CAN_ARG_ARM_CALIBRATE           = 6,
-	CAN_ARG_ARM_DEBUG_TX            = 8,
-	CAN_ARG_ARM_GET_POS1            = 8,
-	CAN_ARG_ARM_GET_POS2            = 4,
-	CAN_ARG_ARM_GET_24V             = 2,
-	CAN_ARG_ARM_GET_STATUS          = 5,
-	CAN_ARG_ARM_DEBUG_RX            = 8,
-
 	CAN_ARG_ARM_6DOF_SET_POS1            = 8,
 	CAN_ARG_ARM_6DOF_SET_POS2            = 8,
 	CAN_ARG_ARM_6DOF_SET_POS_VEL1        = 8,

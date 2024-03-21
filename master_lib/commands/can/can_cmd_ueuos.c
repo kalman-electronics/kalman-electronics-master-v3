@@ -1,7 +1,4 @@
-#include <string.h>
 #include "can_cmd.h"
-#include "../../hw/hw.h"
-#include "../uart/uart_cmd.h"
 
 /**
  * Ramka ustawia jeden z 4 podstawowych stanow ueuosa
