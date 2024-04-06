@@ -33,7 +33,7 @@ typedef struct {
 
 typedef struct {
 	uint8_t id;
-	TCAN114x_Dev *tcan;
+	TCAN114x_Dev tcan;
 	pin_t cs;
 
 } tcan_def_t;

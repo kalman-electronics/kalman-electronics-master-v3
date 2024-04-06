@@ -192,28 +192,27 @@ void Timer_ArmTimeout() {
 
 void Timer_TCANUpdate() {
 
-//	for(int i = 0; i < TCAN_DEFS_COUNT; i++) {
-//		// Read and clear CAN interrupts
-//		TCAN114x_getInterrupts(tcan_defs[i].tcan);
-//		TCAN114x_clearInterrupts(tcan_defs[i].tcan);
-//		TCAN114x_getMode(tcan_defs[i].tcan);
-//
-//		// reset TCAN after error condition
-//		if(tcan_defs[i].tcan->mode != normal) {
-//			TCAN114x_setMode(tcan_defs[i].tcan, normal);
-//		}
-//	}
+    for(int i = 0; i < TCAN_DEFS_COUNT; i++) {
+        TCAN114x_getInterrupts(&(tcan_defs[i].tcan));
+        TCAN114x_clearInterrupts(&(tcan_defs[i].tcan));
+        TCAN114x_getMode(&(tcan_defs[i].tcan));
+
+        if(tcan_defs[i].tcan.mode != normal) {
+            TCAN114x_setMode(&(tcan_defs[i].tcan), normal);
+        }
+
+    }
 
 
     // Read and clear CAN interrupts
-    TCAN114x_getInterrupts(&tcan);
-    TCAN114x_clearInterrupts(&tcan);
-    TCAN114x_getMode(&tcan);
+//    TCAN114x_getInterrupts(&tcan);
+//    TCAN114x_clearInterrupts(&tcan);
+//    TCAN114x_getMode(&tcan);
 
     // reset TCAN after error condition
-    if(tcan.mode != normal) {
-	    TCAN114x_setMode(&tcan, normal);
-    }
+//    if(tcan.mode != normal) {
+//	    TCAN114x_setMode(&tcan, normal);
+//    }
 
     //TODO: process CAN IT / call CAN Manager notify error function
 }
