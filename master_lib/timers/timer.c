@@ -196,24 +196,13 @@ void Timer_TCANUpdate() {
         TCAN114x_getInterrupts(&(tcan_defs[i].tcan));
         TCAN114x_clearInterrupts(&(tcan_defs[i].tcan));
         TCAN114x_getMode(&(tcan_defs[i].tcan));
+        TCAN114x_getDeviceID(&(tcan_defs[i].tcan));
 
         if(tcan_defs[i].tcan.mode != normal) {
             TCAN114x_setMode(&(tcan_defs[i].tcan), normal);
         }
 
     }
-
-
-    // Read and clear CAN interrupts
-//    TCAN114x_getInterrupts(&tcan);
-//    TCAN114x_clearInterrupts(&tcan);
-//    TCAN114x_getMode(&tcan);
-
-    // reset TCAN after error condition
-//    if(tcan.mode != normal) {
-//	    TCAN114x_setMode(&tcan, normal);
-//    }
-
     //TODO: process CAN IT / call CAN Manager notify error function
 }
 

@@ -144,7 +144,7 @@ void MX_FREERTOS_Init(void) {
   idleTaskHandle = osThreadNew(StartIdleTask, NULL, &idleTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
-    configASSERT(xTaskCreate(CanManager_Task,  "CAN_Manager",  256, NULL, 9,  NULL));
+    configASSERT(xTaskCreate(CanManager_Task,  "CAN_Manager",  512, NULL, 9,  NULL));
     configASSERT(xTaskCreate(CANHandler_Task,  "CAN_Handler",  256, NULL, 10, NULL));
     configASSERT(xTaskCreate(UARTParser_Task,  "UART_Parser",  512, NULL, 6,  &UARTParser_TaskHandle));
     configASSERT(xTaskCreate(UARTEncoder_Task, "UART_Encoder", 512, NULL, 8,  NULL));

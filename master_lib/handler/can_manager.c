@@ -37,18 +37,10 @@ void CanManager_Task() {
 		HAL_FDCAN_ActivateNotification(fdcan_defs[i].fdcan_handle, FDCAN_IT_LIST_TX_FIFO_ERROR, 0);
 		HAL_FDCAN_ActivateNotification(fdcan_defs[i].fdcan_handle, FDCAN_IT_LIST_PROTOCOL_ERROR, 0);
 
-		//TODO: enable support for 2 TCANs, currently only one is supported
-		//TCAN_114x initialization
-
-//		TCAN114x_Init(&tcan, spi_defs[TCAN_SPI_ID].spi_handle, tcan_defs[i].cs.port, tcan_defs[i].cs.pin); // pass communication periphs to hw proxy struct
-//		TCAN114x_getDeviceID(&tcan); // get device id, for debug
-//		TCAN114x_setMode(&tcan, normal); // set normal mode, for normal transceiver operation
-
         HAL_GPIO_WritePin(tcan_defs[i].cs.port, tcan_defs[i].cs.pin, GPIO_PIN_SET);
         TCAN114x_Init(&(tcan_defs[i].tcan), spi_defs[TCAN_SPI_ID].spi_handle, tcan_defs[i].cs.port, tcan_defs[i].cs.pin);
         TCAN114x_getDeviceID(&(tcan_defs[i].tcan));
         TCAN114x_setMode(&(tcan_defs[i].tcan), normal);
-        HAL_GPIO_WritePin(tcan_defs[i].cs.port, tcan_defs[i].cs.pin, GPIO_PIN_RESET);
 
 
 	}
@@ -70,6 +62,9 @@ void CanManager_Task() {
         can_header.TxEventFifoControl = FDCAN_NO_TX_EVENTS;
         can_header.MessageMarker = 0;
 
+
+
+
         // Wait for space in CAN TX FIFO
         while(!HAL_FDCAN_GetTxFifoFreeLevel(&hfdcan1) && !HAL_FDCAN_GetTxFifoFreeLevel(&hfdcan2)) {
         	vTaskDelay(1 / portTICK_PERIOD_MS);
@@ -77,8 +72,9 @@ void CanManager_Task() {
 
         // Add the packet to be sent from the TX FIFO
         HAL_StatusTypeDef res = HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan1, &can_header, msg.args);
-//        HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan2, &can_header, msg.args);
+        res = HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan2, &can_header, msg.args);
         if (res != HAL_OK) {
+            __asm__("nop");
         	//GpioExpander_SetLed(LED_CAN_ERR, on, 50); //TODO: can err led is not working
         }
     }
@@ -111,7 +107,7 @@ void CanManager_FilterConfig(FDCAN_HandleTypeDef *hfdcan) {
         filter.FilterConfig = FDCAN_FILTER_TO_RXFIFO0;
         filter.FilterID1 = canlib_rx_list[filter_number];
         filter.FilterID2 = CAN_FILTER_MASK;
-        HAL_FDCAN_ConfigFilter(&hfdcan1, &filter);
+        HAL_FDCAN_ConfigFilter(hfdcan, &filter);
     }
 #endif
 }
