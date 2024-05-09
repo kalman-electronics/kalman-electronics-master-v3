@@ -17,6 +17,7 @@ _deps
 
 ### Clion/MX ###
 cmake-build-debug/
+cmake-build-release/
 Debug/
 Release/
 *.launch

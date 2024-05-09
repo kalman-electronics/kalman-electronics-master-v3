@@ -35,7 +35,9 @@ void CanManager_Task() {
 		// setup notifications
 		HAL_FDCAN_ActivateNotification(fdcan_defs[i].fdcan_handle, FDCAN_IT_LIST_RX_FIFO0, 0);
 		HAL_FDCAN_ActivateNotification(fdcan_defs[i].fdcan_handle, FDCAN_IT_LIST_TX_FIFO_ERROR, 0);
-		HAL_FDCAN_ActivateNotification(fdcan_defs[i].fdcan_handle, FDCAN_IT_LIST_PROTOCOL_ERROR, 0);
+
+        /* Disabling arbitration protocol error */ #warning FDCAN_FLAG_ARB_PROTOCOL_ERROR disabled
+		HAL_FDCAN_ActivateNotification(fdcan_defs[i].fdcan_handle, FDCAN_IT_LIST_PROTOCOL_ERROR & ~FDCAN_FLAG_ARB_PROTOCOL_ERROR, 0);
 
         HAL_GPIO_WritePin(tcan_defs[i].cs.port, tcan_defs[i].cs.pin, GPIO_PIN_SET);
         TCAN114x_Init(&(tcan_defs[i].tcan), spi_defs[TCAN_SPI_ID].spi_handle, tcan_defs[i].cs.port, tcan_defs[i].cs.pin);
