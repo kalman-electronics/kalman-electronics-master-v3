@@ -67,10 +67,16 @@ void Error_Handler(void);
 #define ADC_5V_GPIO_Port GPIOC
 #define ADC_3V3_Pin GPIO_PIN_2
 #define ADC_3V3_GPIO_Port GPIOC
+#define RS485_TX_Pin GPIO_PIN_2
+#define RS485_TX_GPIO_Port GPIOA
+#define RS485_RX_Pin GPIO_PIN_3
+#define RS485_RX_GPIO_Port GPIOA
 #define SATEL_TX_Pin GPIO_PIN_4
 #define SATEL_TX_GPIO_Port GPIOC
 #define SATEL_RX_Pin GPIO_PIN_5
 #define SATEL_RX_GPIO_Port GPIOC
+#define RS485_DE_Pin GPIO_PIN_1
+#define RS485_DE_GPIO_Port GPIOB
 #define PC_RX_Pin GPIO_PIN_10
 #define PC_RX_GPIO_Port GPIOB
 #define PC_TX_Pin GPIO_PIN_11
