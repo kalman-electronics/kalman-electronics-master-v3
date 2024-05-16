@@ -292,7 +292,18 @@ static uart_packet_def_t uart_packet_defs[] = {
             .cmd = UART_CMD_ESP32_TO_RF,
             .arg_count = UART_ARG_MAX,
             .execute = Cmd_UART_ESP32_To_RF,
-        }
+        },
+        {
+            .cmd = UART_CMD_CUSTOM_ARM_TO_UART,
+            .arg_count = UART_ARG_MAX,
+            .execute = Cmd_UART_ARM_CustomToUART,
+        },
+        {
+                .cmd = UART_CMD_CUSTOM_ARM_TO_RF,
+                .arg_count = UART_ARG_MAX,
+                .execute = Cmd_UART_ARM_CustomToRF,
+        },
+
 };
 
 //TODO: add message traits / fields such as custom_frame or ack_required changing handler behaviour

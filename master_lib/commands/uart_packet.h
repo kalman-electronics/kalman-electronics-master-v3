@@ -9,7 +9,8 @@ typedef enum {
     LINK_RF_UART    = 1 << RF_UART_ID,
     LINK_AUTO_UART  = 1 << AUTO_UART_ID,
     LINK_DEBUG_UART = 1 << DEBUG_UART_ID,
-    LINK_UART_ANY   = LINK_RF_UART | LINK_AUTO_UART | LINK_DEBUG_UART,
+    LINK_RS485_UART = 1 << RS485_UART_ID,
+    LINK_UART_ANY   = LINK_RF_UART | LINK_AUTO_UART | LINK_DEBUG_UART | LINK_RS485_UART,
 
     // Packet was generated / received by the CAN bus and forwarded to UART handler
     LINK_CAN        = 1 << 7,
@@ -108,6 +109,8 @@ typedef enum {
     UART_CMD_SUPERVISOR_TO_RF                = 0x83,     //!< [TX, RX]
     UART_CMD_RF_TO_ESP32                     = 0x84,     //!< [TX, RX]
     UART_CMD_ESP32_TO_RF                     = 0x85,     //!< [TX, RX]
+    UART_CMD_CUSTOM_ARM_TO_UART              = 0x86,
+    UART_CMD_CUSTOM_ARM_TO_RF                = 0x87
 } uart_cmd_t;
 
 /**
