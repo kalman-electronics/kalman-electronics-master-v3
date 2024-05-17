@@ -118,6 +118,9 @@ void Cmd_UART_Motor_GetWheels(void);
 void Cmd_UART_Arm6DOF_GetPos_helper(uart_packet_link_t link_type);
 void Cmd_UART_Arm6DOF_GetGripper();
 
+
+void Cmd_UART_ARM_CM4(uint8_t* data, uart_packet_link_t link_type);
+
 // --- Universal ---
 void Cmd_UART_Universal_GetWeight(uint8_t id, uint8_t loadcell_index);
 

@@ -57,12 +57,15 @@
 /* External variables --------------------------------------------------------*/
 extern FDCAN_HandleTypeDef hfdcan1;
 extern FDCAN_HandleTypeDef hfdcan2;
+extern DMA_HandleTypeDef hdma_lpuart1_rx;
+extern DMA_HandleTypeDef hdma_lpuart1_tx;
 extern DMA_HandleTypeDef hdma_usart1_rx;
 extern DMA_HandleTypeDef hdma_usart1_tx;
 extern DMA_HandleTypeDef hdma_usart2_rx;
 extern DMA_HandleTypeDef hdma_usart2_tx;
 extern DMA_HandleTypeDef hdma_usart3_rx;
 extern DMA_HandleTypeDef hdma_usart3_tx;
+extern UART_HandleTypeDef hlpuart1;
 extern UART_HandleTypeDef huart1;
 extern UART_HandleTypeDef huart2;
 extern UART_HandleTypeDef huart3;
@@ -255,6 +258,20 @@ void DMA1_Channel6_IRQHandler(void)
 }
 
 /**
+  * @brief This function handles DMA1 channel7 global interrupt.
+  */
+void DMA1_Channel7_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA1_Channel7_IRQn 0 */
+
+  /* USER CODE END DMA1_Channel7_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_lpuart1_rx);
+  /* USER CODE BEGIN DMA1_Channel7_IRQn 1 */
+
+  /* USER CODE END DMA1_Channel7_IRQn 1 */
+}
+
+/**
   * @brief This function handles FDCAN1 interrupt 0.
   */
 void FDCAN1_IT0_IRQHandler(void)
@@ -336,6 +353,34 @@ void FDCAN2_IT0_IRQHandler(void)
   /* USER CODE BEGIN FDCAN2_IT0_IRQn 1 */
 
   /* USER CODE END FDCAN2_IT0_IRQn 1 */
+}
+
+/**
+  * @brief This function handles LPUART1 global interrupt.
+  */
+void LPUART1_IRQHandler(void)
+{
+  /* USER CODE BEGIN LPUART1_IRQn 0 */
+
+  /* USER CODE END LPUART1_IRQn 0 */
+  HAL_UART_IRQHandler(&hlpuart1);
+  /* USER CODE BEGIN LPUART1_IRQn 1 */
+
+  /* USER CODE END LPUART1_IRQn 1 */
+}
+
+/**
+  * @brief This function handles DMA1 channel8 global interrupt.
+  */
+void DMA1_Channel8_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA1_Channel8_IRQn 0 */
+
+  /* USER CODE END DMA1_Channel8_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_lpuart1_tx);
+  /* USER CODE BEGIN DMA1_Channel8_IRQn 1 */
+
+  /* USER CODE END DMA1_Channel8_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */

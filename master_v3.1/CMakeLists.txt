@@ -50,12 +50,12 @@ else ()
 endif ()
 
 include_directories(Core Src)
-include_directories(../master_lib)
+include_directories(master_lib)
 include_directories(Core/Inc Drivers/STM32G4xx_HAL_Driver/Inc Drivers/STM32G4xx_HAL_Driver/Inc/Legacy Middlewares/Third_Party/FreeRTOS/Source/include Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F Drivers/CMSIS/Device/ST/STM32G4xx/Include Drivers/CMSIS/Include)
 
 add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx)
 
-file(GLOB_RECURSE SOURCES "Core/*.*" "Src/*.*" "Middlewares/*.*" "Drivers/*.*" "../master_lib/*.*")
+file(GLOB_RECURSE SOURCES "Core/*.*" "Src/*.*" "Middlewares/*.*" "Drivers/*.*" "master_lib/*.*")
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32G474RETX_FLASH.ld)
 

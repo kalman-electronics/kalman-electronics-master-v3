@@ -14,7 +14,7 @@ typedef enum {
 	LED_BLANK1     = 1 << 1,
 	LED_UNIVERSAL2 = 1 << 2,
 	LED_UNIVERSAL1 = 1 << 3,
-	LED_POWER      = 1 << 4,
+	LED_RS422      = 1 << 4,
 	LED_MUX        = 1 << 5,
 	LED_ARM        = 1 << 6,
 	LED_MOTOR      = 1 << 7,

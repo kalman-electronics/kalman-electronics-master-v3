@@ -5,6 +5,7 @@ void Cmd_UART_BlinkLed(uart_packet_link_t link) {
         case    LINK_RF_UART: GpioExpander_SetLed(LED_RF, on, 20); break;
         case LINK_DEBUG_UART: GpioExpander_SetLed(LED_AUTO, on, 20); break;
         case  LINK_AUTO_UART: GpioExpander_SetLed(LED_AUTO, on, 20); break;
+        case LINK_RS422_UART: GpioExpander_SetLed(LED_RS422, on, 20); break;
         default: break;
     }
 }

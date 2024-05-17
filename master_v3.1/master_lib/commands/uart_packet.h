@@ -103,6 +103,10 @@ typedef enum {
     UART_CMD_MUX_SET_CHANNEL                 = 0xB2,     //!< [TX]
     UART_CMD_MUX_SET_POWER                   = 0xB3,     //!< [TX]
 
+    //rpi cm4
+    UART_CMD_ARM_CM4                         = 0xB4,
+
+
     UART_CMD_CUSTOM_TO_UART                  = 0x80,     //!< [TX, RX]
     UART_CMD_CUSTOM_TO_RF                    = 0x81,     //!< [TX, RX]
     UART_CMD_SUPERVISOR_TO_UART              = 0x82,     //!< [TX, RX]
@@ -203,6 +207,10 @@ typedef enum {
     UART_ARG_MUX_SET_CAM                = 2,
     UART_ARG_MUX_SET_CHANNEL            = 2,
     UART_ARG_MUX_SET_POWER              = 2,
+
+    //rpi cm4
+    UART_ARG_ARM_CM4                 = 6,
+
 
 
     // Custom commands

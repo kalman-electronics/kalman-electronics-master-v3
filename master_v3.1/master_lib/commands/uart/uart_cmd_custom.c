@@ -78,6 +78,7 @@ void Cmd_UART_ARM_CustomToUART(uint8_t* data, uint8_t len) {
             .origin = LINK_RS422_UART
     };
     memcpy(msg.args, data, len);
+    Cmd_UART_BlinkLed(LINK_RS422_UART);
 
     Queues_SendUARTFrame(&msg);
 
@@ -89,6 +90,7 @@ void Cmd_UART_ARM_CustomToRF(uint8_t* data, uint8_t len) {
             .origin = LINK_RF_UART
     };
     memcpy(msg.args, data, len);
+    Cmd_UART_BlinkLed(LINK_RS422_UART);
 
     Queues_SendUARTFrame(&msg);
 

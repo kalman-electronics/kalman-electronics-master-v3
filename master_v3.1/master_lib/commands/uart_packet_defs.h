@@ -262,6 +262,13 @@ static uart_packet_def_t uart_packet_defs[] = {
             .execute = Cmd_UART_Mux_SetPower,
         },
 
+        //ARM CM4
+        {
+            .cmd = UART_CMD_ARM_CM4,
+            .arg_count = UART_ARG_ARM_CM4,
+            .execute = Cmd_UART_ARM_CM4,
+        },
+
         // --- Custom ---
         {
             .cmd = UART_CMD_CUSTOM_TO_RF,
@@ -313,7 +320,9 @@ static uart_packet_def_t uart_packet_defs[] = {
     (cmd == UART_CMD_SUPERVISOR_TO_RF)   || \
     (cmd == UART_CMD_SUPERVISOR_TO_UART) || \
     (cmd == UART_CMD_ESP32_TO_RF)        || \
-    (cmd == UART_CMD_RF_TO_ESP32))       ? 1 : 0)
+    (cmd == UART_CMD_RF_TO_ESP32)        || \
+    (cmd == UART_CMD_CUSTOM_ARM_TO_UART)        || \
+    (cmd == UART_CMD_CUSTOM_ARM_TO_RF))       ? 1 : 0)
 
 
 #endif //KALMAN_ELECTRONICS_MASTER_V3_UART_PACKET_DEFS_H
