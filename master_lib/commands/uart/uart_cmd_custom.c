@@ -75,7 +75,7 @@ void Cmd_UART_ARM_CustomToUART(uint8_t* data, uint8_t len) {
     uart_packet_t msg = {
             .cmd = UART_CMD_CUSTOM_ARM_TO_UART,
             .arg_count = len,
-            .origin = LINK_RS485_UART
+            .origin = LINK_RS422_UART
     };
     memcpy(msg.args, data, len);
 

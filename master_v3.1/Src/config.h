@@ -79,7 +79,7 @@ typedef struct {
 #define RF_UART_ID    0
 #define AUTO_UART_ID  1
 #define DEBUG_UART_ID 2
-#define RS485_UART_ID 3
+#define RS422_UART_ID 3
 
 // UART used for debug printf
 #define PRINTF_UART     DEBUG_UART_ID

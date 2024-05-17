@@ -9,8 +9,8 @@ typedef enum {
     LINK_RF_UART    = 1 << RF_UART_ID,
     LINK_AUTO_UART  = 1 << AUTO_UART_ID,
     LINK_DEBUG_UART = 1 << DEBUG_UART_ID,
-    LINK_RS485_UART = 1 << RS485_UART_ID,
-    LINK_UART_ANY   = LINK_RF_UART | LINK_AUTO_UART | LINK_DEBUG_UART | LINK_RS485_UART,
+    LINK_RS422_UART = 1 << RS422_UART_ID,
+    LINK_UART_ANY   = LINK_RF_UART | LINK_AUTO_UART | LINK_DEBUG_UART | LINK_RS422_UART,
 
     // Packet was generated / received by the CAN bus and forwarded to UART handler
     LINK_CAN        = 1 << 7,

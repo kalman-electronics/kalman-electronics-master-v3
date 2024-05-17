@@ -58,7 +58,7 @@ void MX_LPUART1_UART_Init(void)
   hlpuart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
   hlpuart1.Init.ClockPrescaler = UART_PRESCALER_DIV1;
   hlpuart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
-  if (HAL_RS485Ex_Init(&hlpuart1, UART_DE_POLARITY_HIGH, 0, 0) != HAL_OK)
+  if (HAL_UART_Init(&hlpuart1) != HAL_OK)
   {
     Error_Handler();
   }
@@ -283,25 +283,16 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
     __HAL_RCC_LPUART1_CLK_ENABLE();
 
     __HAL_RCC_GPIOA_CLK_ENABLE();
-    __HAL_RCC_GPIOB_CLK_ENABLE();
     /**LPUART1 GPIO Configuration
     PA2     ------> LPUART1_TX
     PA3     ------> LPUART1_RX
-    PB1     ------> LPUART1_DE
     */
-    GPIO_InitStruct.Pin = RS485_TX_Pin|RS485_RX_Pin;
+    GPIO_InitStruct.Pin = RS422_TX_Pin|RS422_RX_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
     GPIO_InitStruct.Alternate = GPIO_AF12_LPUART1;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-    GPIO_InitStruct.Pin = RS485_DE_Pin;
-    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    GPIO_InitStruct.Alternate = GPIO_AF12_LPUART1;
-    HAL_GPIO_Init(RS485_DE_GPIO_Port, &GPIO_InitStruct);
 
   /* USER CODE BEGIN LPUART1_MspInit 1 */
 
@@ -573,11 +564,8 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
     /**LPUART1 GPIO Configuration
     PA2     ------> LPUART1_TX
     PA3     ------> LPUART1_RX
-    PB1     ------> LPUART1_DE
     */
-    HAL_GPIO_DeInit(GPIOA, RS485_TX_Pin|RS485_RX_Pin);
-
-    HAL_GPIO_DeInit(RS485_DE_GPIO_Port, RS485_DE_Pin);
+    HAL_GPIO_DeInit(GPIOA, RS422_TX_Pin|RS422_RX_Pin);
 
   /* USER CODE BEGIN LPUART1_MspDeInit 1 */
 
