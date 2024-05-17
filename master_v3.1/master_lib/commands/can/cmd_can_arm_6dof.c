@@ -182,15 +182,3 @@ void Cmd_Bus_Arm6DOF_Autoclick_SetPos(uint8_t pos){
 
     Queues_SendCANFrame(&msg);
 }
-
-void Cmd_UART_ARM_CM4(uint8_t* data, uart_packet_link_t link_type) {
-    uart_packet_t msg = {
-            .cmd = UART_CMD_ARM_CM4,
-            .arg_count = UART_ARG_ARM_CM4
-    };
-
-    memcpy(msg.args, data, UART_ARG_ARM_CM4);
-    Cmd_UART_BlinkLed(LINK_RS422_UART);
-
-    Queues_SendUARTFrame(&msg);
-}
