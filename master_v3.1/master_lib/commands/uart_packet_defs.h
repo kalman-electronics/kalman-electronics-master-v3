@@ -269,6 +269,14 @@ static uart_packet_def_t uart_packet_defs[] = {
             .execute = Cmd_UART_ARM_CM4,
         },
 
+        //SILENT MODE
+        {
+            .cmd = UART_CMD_SILENT_MODE,
+            .arg_count = UART_CMD_SILENT_MODE,
+            .execute = Cmd_UART_SILENT_MODE
+
+        },
+
         // --- Custom ---
         {
             .cmd = UART_CMD_CUSTOM_TO_RF,

@@ -106,6 +106,10 @@ typedef enum {
     //rpi cm4
     UART_CMD_ARM_CM4                         = 0xB4,
 
+    //rf switch
+    UART_CMD_SILENT_MODE                     = 0xB5,
+
+
 
     UART_CMD_CUSTOM_TO_UART                  = 0x80,     //!< [TX, RX]
     UART_CMD_CUSTOM_TO_RF                    = 0x81,     //!< [TX, RX]
@@ -210,6 +214,9 @@ typedef enum {
 
     //rpi cm4
     UART_ARG_ARM_CM4                 = 6,
+
+    //rf switch
+    UART_ARG_SILENT_MODE = 1,
 
 
 

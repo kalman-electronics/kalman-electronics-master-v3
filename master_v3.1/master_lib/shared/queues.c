@@ -1,4 +1,5 @@
 #include "queues.h"
+#include "common.h"
 
 QueueHandle_t uart_handler_incoming_packet_queue;
 QueueHandle_t uart_handler_outgoing_packet_queue;
@@ -23,7 +24,14 @@ BaseType_t Queues_SendCANFrame(can_packet_t* packet) {
     return res;
 }
 BaseType_t Queues_SendUARTFrame(uart_packet_t* packet) {
-	BaseType_t res = xQueueSend(uart_handler_outgoing_packet_queue, packet, 0);
+    BaseType_t res;
+
+    // check if silent mode detected
+    if(RF_status == OFF && packet->origin == LINK_RF_UART) {
+        return res;
+    }
+
+    res = xQueueSend(uart_handler_outgoing_packet_queue, packet, 0);
 
     if(!res)
     	debug_printf("UART encode queue full\n");

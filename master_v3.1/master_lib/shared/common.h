@@ -9,6 +9,7 @@
 #include "gpio_expander.h"
 #include "config.h"
 
+
 #define UART_MESSAGE_MAX_SIZE 256 + 4
 #define UART_RX_BUF_SIZE UART_MESSAGE_MAX_SIZE * 2
 
@@ -20,5 +21,14 @@
 extern TaskHandle_t UARTParser_TaskHandle;
 extern TaskHandle_t IO_TaskHandle;
 extern TCAN114x_Dev tcan;
+
+typedef enum {
+    ON = 1,
+    OFF = 0
+} rf_status_t;
+
+extern rf_status_t RF_status;
+
+
 
 #endif //KALMAN_ELECTRONICS_MASTER_V3_COMMON_H
