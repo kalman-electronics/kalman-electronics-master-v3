@@ -24,6 +24,18 @@ void Cmd_Bus_Drill_B_Bridge_Set(uint8_t direction, uint8_t speed){
     Queues_SendCANFrame(&msg);
 }
 
+void Cmd_Bus_Drill_C_Bridge_Set(uint8_t direction, uint8_t speed){
+	can_packet_t msg = {
+			.cmd = CAN_CMD_DRILL_C_BRIDGE_SET,
+			.arg_count = CAN_ARG_DRILL_C_BRIDGE_SET,
+			.args[0] = direction,
+			.args[1] = speed
+	};
+
+	Queues_SendCANFrame(&msg);
+}
+
+
 void Cmd_Bus_Drill_GetWeightRequest(){
     can_packet_t msg = {
             .cmd = CAN_CMD_DRILL_GET_WEIGHT,

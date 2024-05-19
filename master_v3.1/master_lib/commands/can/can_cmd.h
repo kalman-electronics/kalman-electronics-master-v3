@@ -81,6 +81,7 @@ void Cmd_Bus_Arm6DOF_Autoclick_SetPos(uint8_t pos);
 // --- Drill ---
 void Cmd_Bus_Drill_A_Bridge_Set(uint8_t direction, uint8_t speed);
 void Cmd_Bus_Drill_B_Bridge_Set(uint8_t direction, uint8_t speed);
+void Cmd_Bus_Drill_C_Bridge_Set(uint8_t direction, uint8_t speed);
 void Cmd_Bus_Drill_GetWeightRequest();
 
 // --- UEUOS v2 ---
