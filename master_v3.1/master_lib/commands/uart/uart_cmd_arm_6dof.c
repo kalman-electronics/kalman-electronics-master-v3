@@ -249,7 +249,7 @@ void Cmd_UART_Arm6DOF_GetGripper() {
 void Cmd_UART_ARM_CM4(uint8_t* data, uart_packet_link_t link_type) {
     uart_packet_t msg = {
             .cmd = UART_CMD_ARM_CM4,
-            .arg_count = UART_ARG_ARM_CM4
+            .arg_count = UART_ARG_ARM_CM4,
             .origin = LINK_RS422_UART
     };
 
