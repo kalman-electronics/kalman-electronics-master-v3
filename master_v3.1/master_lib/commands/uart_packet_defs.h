@@ -225,21 +225,7 @@ static uart_packet_def_t uart_packet_defs[] = {
             .arg_count = UART_ARG_UNIVERSAL_STEPPER_POSITION_REQUEST,
             .execute = Cmd_UART_Universal_StepperPositionRequest
         },
-        {
-            .cmd = UART_CMD_UNIVERSAL_WEIGHT_RESPONSE,
-            .arg_count = UART_ARG_UNIVERSAL_WEIGHT_RESPONSE,
-            .execute = Cmd_UART_Universal_WeightResponse
-        },
-        {
-            .cmd = UART_CMD_UNIVERSAL_INPUT_RESPONSE,
-            .arg_count = UART_ARG_UNIVERSAL_INPUT_RESPONSE,
-            .execute = Cmd_UART_Universal_InputResponse
-        },
-        {
-            .cmd = UART_CMD_UNIVERSAL_STEPPER_POSITION_RESPONSE,
-            .arg_count = UART_ARG_UNIVERSAL_STEPPER_POSITION_RESPONSE,
-            .execute = Cmd_UART_Universal_StepperPositionResponse
-        },
+
         {
             .cmd = UART_CMD_UNIVERSAL_SET_BRIDGE,
             .arg_count = UART_ARG_UNIVERSAL_SET_BRIDGE,

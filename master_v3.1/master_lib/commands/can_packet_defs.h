@@ -65,51 +65,7 @@ const can_packet_def_t can_packet_defs[] = {
         },
 
         // --- Universal ---
-        {
-            .cmd = CAN_CMD_UNIVERSAL_SET_DIGITAL_OUTPUT,
-            .arg_count = CAN_ARG_UNIVERSAL_SET_DIGITAL_OUTPUT,
-            .execute = Cmd_Bus_Universal_SetDigitalOutput,
-        },
-        {
-            .cmd = CAN_CMD_UNIVERSAL_SET_PWM_OUTPUT,
-            .arg_count = CAN_ARG_UNIVERSAL_SET_PWM_OUTPUT,
-            .execute = Cmd_Bus_Universal_SetPWMOutput
-        },
-        {
-            .cmd = CAN_CMD_UNIVERSAL_SET_LED_DRIVER,
-            .arg_count = CAN_ARG_UNIVERSAL_SET_LED_DRIVER,
-            .execute = Cmd_Bus_Universal_SetLEDDriver
-        },
-        {
-          .cmd = CAN_CMD_UNIVERSAL_SET_HBRIDGE,
-          .arg_count = CAN_ARG_UNIVERSAL_SET_HBRIDGE,
-          .execute = Cmd_Bus_Universal_SetHBridge
-        },
-        {
-            .cmd = CAN_CMD_UNIVERSAL_SET_STEPPER_POSITION,
-            .arg_count = CAN_ARG_UNIVERSAL_SET_STEPPER_POSITION,
-            .execute = Cmd_Bus_Universal_SetStepperPosition
-        },
-        {
-            .cmd = CAN_CMD_UNIVERSAL_STEPPER_HOMING_REQUEST,
-            .arg_count = CAN_ARG_UNIVERSAL_STEPPER_HOMING_REQUEST,
-            .execute = Cmd_Bus_Universal_StepperHomingRequest
-        },
-        {
-            .cmd = CAN_CMD_UNIVERSAL_WEIGHT_REQUEST,
-            .arg_count = CAN_ARG_UNIVERSAL_WEIGHT_REQUEST,
-            .execute = Cmd_Bus_Universal_WeightRequest
-        },
-        {
-            .cmd = CAN_CMD_UNIVERSAL_INPUT_REQUEST,
-            .arg_count = CAN_ARG_UNIVERSAL_INPUT_REQUEST,
-            .execute = Cmd_Bus_Universal_InputRequest
-        },
-        {
-            .cmd = CAN_CMD_UNIVERSAL_STEPPER_POSITION_REQUEST,
-            .arg_count = CAN_ARG_UNIVERSAL_STEPPER_POSITION_REQUEST,
-            .execute = Cmd_Bus_Universal_StepperPositionRequest
-        },
+
         {
             .cmd = CAN_CMD_UNIVERSAL_WEIGHT_RESPONSE,
             .arg_count = CAN_ARG_UNIVERSAL_WEIGHT_RESPONSE,

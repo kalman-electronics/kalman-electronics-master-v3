@@ -146,8 +146,8 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN RTOS_THREADS */
     configASSERT(xTaskCreate(CanManager_Task,  "CAN_Manager",  512, NULL, 9,  NULL));
     configASSERT(xTaskCreate(CANHandler_Task,  "CAN_Handler",  256, NULL, 10, NULL));
-    configASSERT(xTaskCreate(UARTParser_Task,  "UART_Parser",  512, NULL, 6,  &UARTParser_TaskHandle));
-    configASSERT(xTaskCreate(UARTEncoder_Task, "UART_Encoder", 512, NULL, 8,  NULL));
+    configASSERT(xTaskCreate(UARTParser_Task,  "UART_Parser",  1024, NULL, 6,  &UARTParser_TaskHandle));
+    configASSERT(xTaskCreate(UARTEncoder_Task, "UART_Encoder", 1024, NULL, 8,  NULL));
     configASSERT(xTaskCreate(UARTHandler_Task, "UART_Handler", 512, NULL, 7,  NULL));
     configASSERT(xTaskCreate(GpioExpander_Task,"GpioExpander", 128, NULL, 5,  NULL));
     //configASSERT(xTaskCreate(StatusTask,       "status", 512, NULL, 5,  NULL));
