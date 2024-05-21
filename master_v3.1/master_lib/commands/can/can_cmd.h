@@ -25,6 +25,11 @@ void Cmd_Bus_Arm6DOF_GetGripper(uint8_t *data, uint8_t count);
 void Cmd_Bus_Arm6DOF_GetSmartKutongData(uint8_t *data);
 
 // --- Universal ---
+
+void Cmd_Bus_Universal_WeightResponse(uint8_t *data);
+void Cmd_Bus_Universal_InputResponse(uint8_t *data);
+void Cmd_Bus_Universal_StepperPositionResponse(uint8_t *data);
+
 void Cmd_Bus_Universal_GetWeight(uint8_t* data);
 void Cmd_Bus_Universal_GetStatus(uint8_t* data);
 void Cmd_Bus_Universal_DebugRx(uint8_t* data);
@@ -90,6 +95,17 @@ void Cmd_Bus_Ueuos_SetColor(const uint8_t* data);
 void Cmd_Bus_Ueuos_SetEffect(const uint8_t* data);
 
 // --- Universal ---
+
+void Cmd_Bus_Universal_SetDigitalOutput(uint8_t* data);
+void Cmd_Bus_Universal_SetPWMOutput(uint8_t* data);
+void Cmd_Bus_Universal_SetLEDDriver(uint8_t* data);
+void Cmd_Bus_Universal_SetHBridge(uint8_t* data);
+void Cmd_Bus_Universal_SetStepperPosition(uint8_t* data);
+void Cmd_Bus_Universal_StepperHomingRequest(uint8_t* data);
+void Cmd_Bus_Universal_WeightRequest(uint8_t* data);
+void Cmd_Bus_Universal_InputRequest(uint8_t* data);
+void Cmd_Bus_Universal_StepperPositionRequest(uint8_t* data);
+
 void Cmd_Bus_Universal_SetBridge(uint8_t id, uint8_t flags, uint8_t* data);
 void Cmd_Bus_Universal_SetServo(uint8_t id, uint8_t flags, uint8_t* data);
 void Cmd_Bus_Universal_SetPwm(uint8_t id, uint8_t flags, uint8_t *data);

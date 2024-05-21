@@ -181,6 +181,66 @@ static uart_packet_def_t uart_packet_defs[] = {
 
         // --- Universal ---
         {
+          .cmd = UART_CMD_UNIVERSAL_SET_DIGITAL_OUTPUT,
+          .arg_count = UART_ARG_UNIVERSAL_SET_DIGITAL_OUTPUT,
+          .execute = Cmd_UART_Universal_SetDigitalOutput
+        },
+        {
+            .cmd = UART_CMD_UNIVERSAL_SET_PWM_OUTPUT,
+            .arg_count = UART_ARG_UNIVERSAL_SET_PWM_OUTPUT,
+            .execute = Cmd_UART_Universal_SetPWMOutput
+        },
+        {
+            .cmd = UART_CMD_UNIVERSAL_SET_LED_DRIVER,
+            .arg_count = UART_ARG_UNIVERSAL_SET_LED_DRIVER,
+            .execute = Cmd_UART_Universal_SetLEDDriver
+        },
+        {
+            .cmd = UART_CMD_UNIVERSAL_SET_HBRIDGE,
+            .arg_count = UART_ARG_UNIVERSAL_SET_HBRIDGE,
+            .execute = Cmd_UART_Universal_SetHBridge
+        },
+        {
+            .cmd = UART_CMD_UNIVERSAL_SET_STEPPER_POSITION,
+            .arg_count = UART_ARG_UNIVERSAL_SET_STEPPER_POSITION,
+            .execute = Cmd_UART_Universal_SetStepperPosition
+        },
+        {
+            .cmd = UART_CMD_UNIVERSAL_STEPPER_HOMING_REQUEST,
+            .arg_count = UART_ARG_UNIVERSAL_STEPPER_HOMING_REQUEST,
+            .execute = Cmd_UART_Universal_StepperHomingRequest
+        },
+        {
+            .cmd = UART_CMD_UNIVERSAL_WEIGHT_REQUEST,
+            .arg_count = UART_ARG_UNIVERSAL_WEIGHT_REQUEST,
+            .execute = Cmd_UART_Universal_WeightRequest
+        },
+        {
+            .cmd = UART_CMD_UNIVERSAL_INPUT_REQUEST,
+            .arg_count = UART_ARG_UNIVERSAL_INPUT_REQUEST,
+            .execute = Cmd_UART_Universal_InputRequest
+        },
+        {
+            .cmd = UART_CMD_UNIVERSAL_STEPPER_POSITION_REQUEST,
+            .arg_count = UART_ARG_UNIVERSAL_STEPPER_POSITION_REQUEST,
+            .execute = Cmd_UART_Universal_StepperPositionRequest
+        },
+        {
+            .cmd = UART_CMD_UNIVERSAL_WEIGHT_RESPONSE,
+            .arg_count = UART_ARG_UNIVERSAL_WEIGHT_RESPONSE,
+            .execute = Cmd_UART_Universal_WeightResponse
+        },
+        {
+            .cmd = UART_CMD_UNIVERSAL_INPUT_RESPONSE,
+            .arg_count = UART_ARG_UNIVERSAL_INPUT_RESPONSE,
+            .execute = Cmd_UART_Universal_InputResponse
+        },
+        {
+            .cmd = UART_CMD_UNIVERSAL_STEPPER_POSITION_RESPONSE,
+            .arg_count = UART_ARG_UNIVERSAL_STEPPER_POSITION_RESPONSE,
+            .execute = Cmd_UART_Universal_StepperPositionResponse
+        },
+        {
             .cmd = UART_CMD_UNIVERSAL_SET_BRIDGE,
             .arg_count = UART_ARG_UNIVERSAL_SET_BRIDGE,
             .execute = Cmd_UART_Universal_SetBridge,

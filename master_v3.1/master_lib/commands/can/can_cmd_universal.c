@@ -61,6 +61,104 @@ void Cmd_Bus_Universal_DebugRx(uint8_t* data) {
 /*
  *  TX Frames
  */
+void Cmd_Bus_Universal_SetDigitalOutput(uint8_t* data) {
+    can_packet_t msg = {
+            .cmd = CAN_CMD_UNIVERSAL_SET_DIGITAL_OUTPUT,
+            .arg_count = CAN_ARG_UNIVERSAL_SET_DIGITAL_OUTPUT
+    };
+    memcpy(&msg.args, data, CAN_ARG_UNIVERSAL_SET_DIGITAL_OUTPUT);
+
+    Queues_SendCANFrame(&msg);
+}
+
+void Cmd_Bus_Universal_SetPWMOutput(uint8_t* data) {
+    can_packet_t msg = {
+            .cmd  = CAN_CMD_UNIVERSAL_SET_PWM_OUTPUT,
+            .arg_count = CAN_ARG_UNIVERSAL_SET_PWM_OUTPUT
+    };
+    memcpy(&msg.args, data, CAN_ARG_UNIVERSAL_SET_PWM_OUTPUT);
+
+    Queues_SendCANFrame(&msg);
+}
+
+void Cmd_Bus_Universal_SetLEDDriver(uint8_t* data){
+    can_packet_t msg = {
+            .cmd = CAN_CMD_UNIVERSAL_SET_LED_DRIVER,
+            .arg_count =  CAN_ARG_UNIVERSAL_SET_LED_DRIVER
+    };
+    memcpy(&msg.args, data, CAN_ARG_UNIVERSAL_SET_LED_DRIVER);
+
+    Queues_SendCANFrame(&msg);
+}
+
+void Cmd_Bus_Universal_SetHBridge(uint8_t* data){
+    can_packet_t msg = {
+            .cmd = CAN_CMD_UNIVERSAL_SET_HBRIDGE,
+            .arg_count = CAN_ARG_UNIVERSAL_SET_HBRIDGE
+    };
+    memcpy(&msg.args, data, CAN_ARG_UNIVERSAL_SET_HBRIDGE);
+
+    Queues_SendCANFrame(&msg);
+}
+
+void Cmd_Bus_Universal_SetStepperPosition(uint8_t* data) {
+    can_packet_t msg = {
+            .cmd = CAN_CMD_UNIVERSAL_SET_STEPPER_POSITION,
+            .arg_count = CAN_ARG_UNIVERSAL_SET_STEPPER_POSITION
+    };
+    memcpy(&msg.args, data, CAN_ARG_UNIVERSAL_SET_STEPPER_POSITION);
+
+    Queues_SendCANFrame(&msg);
+}
+
+void Cmd_Bus_Universal_StepperHomingRequest(uint8_t* data) {
+    can_packet_t msg = {
+            .cmd = CAN_CMD_UNIVERSAL_STEPPER_HOMING_REQUEST,
+            .arg_count = CAN_ARG_UNIVERSAL_STEPPER_HOMING_REQUEST,
+    };
+    memcpy(&msg.args, data, CAN_ARG_UNIVERSAL_STEPPER_HOMING_REQUEST);
+
+    Queues_SendCANFrame(&msg);
+}
+void Cmd_Bus_Universal_WeightRequest(uint8_t* data) {
+    can_packet_t msg = {
+            .cmd = CAN_CMD_UNIVERSAL_WEIGHT_REQUEST,
+            .arg_count = CAN_ARG_UNIVERSAL_WEIGHT_REQUEST
+    };
+    memcpy(&msg.args, data, CAN_ARG_UNIVERSAL_WEIGHT_REQUEST);
+
+    Queues_SendCANFrame(&msg);
+}
+void Cmd_Bus_Universal_InputRequest(uint8_t* data) {
+    can_packet_t msg = {
+            .cmd = CAN_CMD_UNIVERSAL_INPUT_REQUEST,
+            .arg_count = CAN_ARG_UNIVERSAL_INPUT_REQUEST
+    };
+    memcpy(&msg.args, data, CAN_ARG_UNIVERSAL_INPUT_REQUEST);
+
+    Queues_SendCANFrame(&msg);
+}
+void Cmd_Bus_Universal_StepperPositionRequest(uint8_t* data) {
+    can_packet_t msg = {
+            .cmd = CAN_CMD_UNIVERSAL_STEPPER_POSITION_REQUEST,
+            .arg_count = CAN_ARG_UNIVERSAL_STEPPER_POSITION_REQUEST
+    };
+    memcpy(&msg.args, data, CAN_ARG_UNIVERSAL_STEPPER_POSITION_REQUEST);
+
+    Queues_SendCANFrame(&msg);
+}
+
+void Cmd_Bus_Universal_WeightResponse(uint8_t *data) {
+    Cmd_UART_Universal_WeightResponse(data, LINK_RF_UART);
+}
+void Cmd_Bus_Universal_InputResponse(uint8_t *data) {
+    Cmd_UART_Universal_InputResponse(data, LINK_RF_UART);
+}
+void Cmd_Bus_Universal_StepperPositionResponse(uint8_t *data) {
+    Cmd_UART_Universal_StepperPositionResponse(data, LINK_RF_UART);
+}
+
+
 
 /**
  * Ustawianie zadanych kierunków i prędkości mostków H. Na każdy mostek przypadają 2 bajty, kodowane jako 16-bitowe inty w formacie U2. Dozwolone zakresy: od -1000 do +1000.
