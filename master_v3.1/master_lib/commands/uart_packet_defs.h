@@ -323,7 +323,7 @@ static uart_packet_def_t uart_packet_defs[] = {
         //SILENT MODE
         {
             .cmd = UART_CMD_SILENT_MODE,
-            .arg_count = UART_CMD_SILENT_MODE,
+            .arg_count = UART_ARG_SILENT_MODE,
             .execute = Cmd_UART_SILENT_MODE
 
         },
