@@ -225,6 +225,16 @@ static uart_packet_def_t uart_packet_defs[] = {
             .arg_count = UART_ARG_UNIVERSAL_STEPPER_POSITION_REQUEST,
             .execute = Cmd_UART_Universal_StepperPositionRequest
         },
+        {
+            .cmd = UART_CMD_UNIVERSAL_AUTOMATION_SEQUENCE_BEGIN_REQUEST,
+            .arg_count = UART_ARG_UNIVERSAL_AUTOMATION_SEQUENCE_BEGIN_REQUEST,
+            .execute = Cmd_UART_Universal_AutomationSequenceBeginRequest
+        },
+        {
+            .cmd = UART_CMD_UNIVERSAL_AUTOMATION_SEQUENCE_STATE_REQUEST,
+            .arg_count = UART_ARG_UNIVERSAL_AUTOMATION_SEQUENCE_STATE_REQUEST,
+            .execute = Cmd_UART_Universal_AutomationSequenceStateRequest
+        },
 
         {
             .cmd = UART_CMD_UNIVERSAL_SET_BRIDGE,

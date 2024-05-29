@@ -44,7 +44,30 @@ void Cmd_UART_Universal_StepperPositionRequest(uint8_t* data, uart_packet_link_t
     Cmd_UART_BlinkLed(link_type);
 }
 
-void Cmd_UART_Universal_WeightResponse(uint8_t* data, uart_packet_link_t link_type){
+void Cmd_UART_Universal_AutomationSequenceBeginRequest(uint8_t* data, uart_packet_link_t link_type) {
+    Cmd_Bus_Universal_AutomationSequenceBeginRequest(data);
+    Cmd_UART_BlinkLed(link_type);
+}
+
+void Cmd_UART_Universal_AutomationSequenceStateRequest(uint8_t* data, uart_packet_link_t link_type) {
+    Cmd_Bus_Universal_AutomationSequenceStateRequest(data);
+    Cmd_UART_BlinkLed(link_type);
+}
+
+void Cmd_UART_Universal_SetResponse(uint8_t* data) {
+    uart_packet_t msg = {
+        .cmd = UART_CMD_UNIVERSAL_SET_RESPONSE,
+        .arg_count = UART_ARG_UNIVERSAL_SET_RESPONSE,
+        .origin = logic.link_type
+};
+
+    memcpy(&msg.args, data, UART_ARG_UNIVERSAL_SET_RESPONSE);
+
+    Queues_SendUARTFrame(&msg);
+    Cmd_UART_BlinkLed(logic.link_type);
+}
+
+void Cmd_UART_Universal_WeightResponse(uint8_t* data){
     uart_packet_t msg = {
             .cmd = UART_CMD_UNIVERSAL_WEIGHT_RESPONSE,
             .arg_count = UART_ARG_UNIVERSAL_WEIGHT_RESPONSE,
@@ -54,9 +77,9 @@ void Cmd_UART_Universal_WeightResponse(uint8_t* data, uart_packet_link_t link_ty
     memcpy(&msg.args, data, UART_ARG_UNIVERSAL_WEIGHT_RESPONSE);
 
     Queues_SendUARTFrame(&msg);
-    Cmd_UART_BlinkLed(link_type);
+    Cmd_UART_BlinkLed(logic.link_type);
 }
-void Cmd_UART_Universal_InputResponse(uint8_t* data, uart_packet_link_t link_type){
+void Cmd_UART_Universal_InputResponse(uint8_t* data){
     uart_packet_t msg = {
             .cmd = UART_CMD_UNIVERSAL_INPUT_RESPONSE,
             .arg_count = UART_ARG_UNIVERSAL_INPUT_RESPONSE,
@@ -66,9 +89,9 @@ void Cmd_UART_Universal_InputResponse(uint8_t* data, uart_packet_link_t link_typ
     memcpy(&msg.args, data, UART_ARG_UNIVERSAL_INPUT_RESPONSE);
 
     Queues_SendUARTFrame(&msg);
-    Cmd_UART_BlinkLed(link_type);
+    Cmd_UART_BlinkLed(logic.link_type);
 }
-void Cmd_UART_Universal_StepperPositionResponse(uint8_t* data, uart_packet_link_t link_type){
+void Cmd_UART_Universal_StepperPositionResponse(uint8_t* data){
     uart_packet_t msg = {
             .cmd = UART_CMD_UNIVERSAL_STEPPER_POSITION_RESPONSE,
             .arg_count = UART_ARG_UNIVERSAL_STEPPER_POSITION_RESPONSE,
@@ -78,6 +101,20 @@ void Cmd_UART_Universal_StepperPositionResponse(uint8_t* data, uart_packet_link_
     memcpy(&msg.args, data, UART_ARG_UNIVERSAL_STEPPER_POSITION_RESPONSE);
 
     Queues_SendUARTFrame(&msg);
+    Cmd_UART_BlinkLed(logic.link_type);
+}
+
+void Cmd_UART_Universal_AutomationSequenceStateResponse(uint8_t* data){
+    uart_packet_t msg = {
+        .cmd = UART_CMD_UNIVERSAL_STEPPER_POSITION_RESPONSE,
+        .arg_count = UART_ARG_UNIVERSAL_STEPPER_POSITION_RESPONSE,
+        .origin = logic.link_type
+};
+
+    memcpy(&msg.args, data, UART_ARG_UNIVERSAL_STEPPER_POSITION_RESPONSE);
+
+    Queues_SendUARTFrame(&msg);
+    Cmd_UART_BlinkLed(logic.link_type);
 }
 
 /**

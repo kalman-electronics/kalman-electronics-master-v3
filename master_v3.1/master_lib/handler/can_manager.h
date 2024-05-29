@@ -17,7 +17,7 @@
 #define CAN_FILTER_ID_MOTOR             0x10
 #define CAN_FILTER_ID_ARM               0x20
 #define CAN_FILTER_ID_DEBUG             0x70
-#define CAN_FILTER_ID_PARTY             0x50
+#define CAN_FILTER_ID_UNIVERSAL2        0x50
 #define CAN_FILTER_ID_UEUOS             0x60
 #define CAN_FILTER_ID_UNIVERSAL         0x80
 #define CAN_FILTER_ID_SCIENCE           0x90

@@ -147,9 +147,10 @@ void Timer_UART_TrafficMotorTemp() {
 }
 
 void Timer_UART_TrafficMobilab(){
-    Cmd_UART_Mobilab_GetTemperature(0);
-    Cmd_UART_Mobilab_GetTemperature(1);
-    Cmd_UART_Mobilab_GetTemperature(2);
+#warning Disable mobilab v2 frames
+    //Cmd_UART_Mobilab_GetTemperature(0);
+    //Cmd_UART_Mobilab_GetTemperature(1);
+    //Cmd_UART_Mobilab_GetTemperature(2);
 }
 
 // --- Timeouts ---

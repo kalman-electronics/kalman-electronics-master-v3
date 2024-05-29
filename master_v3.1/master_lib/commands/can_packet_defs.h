@@ -65,7 +65,11 @@ const can_packet_def_t can_packet_defs[] = {
         },
 
         // --- Universal ---
-
+        {
+                .cmd = CAN_CMD_UNIVERSAL_SET_RESPONSE,
+                .arg_count = CAN_ARG_UNIVERSAL_SET_RESPONSE,
+                .execute = Cmd_Bus_Universal_SetResponse
+        },
         {
             .cmd = CAN_CMD_UNIVERSAL_WEIGHT_RESPONSE,
             .arg_count = CAN_ARG_UNIVERSAL_WEIGHT_RESPONSE,
@@ -81,6 +85,13 @@ const can_packet_def_t can_packet_defs[] = {
             .arg_count = CAN_ARG_UNIVERSAL_STEPPER_POSITION_RESPONSE,
             .execute = Cmd_Bus_Universal_StepperPositionResponse
         },
+        {
+                .cmd = CAN_CMD_UNIVERSAL_AUTOMATION_SEQUENCE_STATE_RESPONSE,
+                .arg_count = CAN_ARG_UNIVERSAL_AUTOMATION_SEQUENCE_STATE_RESPONSE,
+                .execute = Cmd_Bus_Universal_SetResponse
+        },
+
+
         {
                 .cmd = CAN_CMD_UNIVERSAL_GET_WEIGHT,
                 .arg_count = CAN_ARG_UNIVERSAL_GET_WEIGHT,

@@ -72,8 +72,8 @@ void Cmd_UART_Universal_StepperHomingRequest(uint8_t* data, uart_packet_link_t l
 void Cmd_UART_Universal_WeightRequest(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Universal_InputRequest(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Universal_StepperPositionRequest(uint8_t* data, uart_packet_link_t link_type);
-
-
+void Cmd_UART_Universal_AutomationSequenceBeginRequest(uint8_t* data, uart_packet_link_t link_type);
+void Cmd_UART_Universal_AutomationSequenceStateRequest(uint8_t* data, uart_packet_link_t link_type);
 
 void Cmd_UART_Universal_SetBridge(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Universal_SetServo(uint8_t* data, uart_packet_link_t link);
@@ -139,9 +139,11 @@ void Cmd_UART_SILENT_MODE(uint8_t* data, uart_packet_link_t link_type);
 
 // --- Universal ---
 
-void Cmd_UART_Universal_WeightResponse(uint8_t* data, uart_packet_link_t link_type);
-void Cmd_UART_Universal_InputResponse(uint8_t* data, uart_packet_link_t link_type);
-void Cmd_UART_Universal_StepperPositionResponse(uint8_t* data, uart_packet_link_t link_type);
+void Cmd_UART_Universal_SetResponse(uint8_t* data);
+void Cmd_UART_Universal_WeightResponse(uint8_t* data);
+void Cmd_UART_Universal_InputResponse(uint8_t* data);
+void Cmd_UART_Universal_StepperPositionResponse(uint8_t* data);
+void Cmd_UART_Universal_AutomationSequenceStateResponse(uint8_t* data);
 
 void Cmd_UART_Universal_GetWeight(uint8_t id, uint8_t loadcell_index);
 

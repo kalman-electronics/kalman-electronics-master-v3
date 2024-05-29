@@ -148,16 +148,43 @@ void Cmd_Bus_Universal_StepperPositionRequest(uint8_t* data) {
     Queues_SendCANFrame(&msg);
 }
 
-void Cmd_Bus_Universal_WeightResponse(uint8_t *data) {
-    Cmd_UART_Universal_WeightResponse(data, LINK_RF_UART);
-}
-void Cmd_Bus_Universal_InputResponse(uint8_t *data) {
-    Cmd_UART_Universal_InputResponse(data, LINK_RF_UART);
-}
-void Cmd_Bus_Universal_StepperPositionResponse(uint8_t *data) {
-    Cmd_UART_Universal_StepperPositionResponse(data, LINK_RF_UART);
+void Cmd_Bus_Universal_AutomationSequenceBeginRequest(uint8_t* data) {
+    can_packet_t msg = {
+        .cmd = CAN_CMD_UNIVERSAL_AUTOMATION_SEQUENCE_BEGIN_REQUEST,
+        .arg_count = CAN_ARG_UNIVERSAL_AUTOMATION_SEQUENCE_BEGIN_REQUEST
+    };
+
+    memcpy(&msg.args, data, CAN_ARG_UNIVERSAL_AUTOMATION_SEQUENCE_BEGIN_REQUEST);
+
+    Queues_SendCANFrame(&msg);
 }
 
+void Cmd_Bus_Universal_AutomationSequenceStateRequest(uint8_t* data) {
+    can_packet_t msg = {
+        .cmd = CAN_CMD_UNIVERSAL_AUTOMATION_SEQUENCE_STATE_REQUEST,
+        .arg_count = CAN_ARG_UNIVERSAL_AUTOMATION_SEQUENCE_STATE_REQUEST
+    };
+
+    memcpy(&msg.args, data, CAN_ARG_UNIVERSAL_AUTOMATION_SEQUENCE_STATE_REQUEST);
+
+    Queues_SendCANFrame(&msg);
+}
+
+void Cmd_Bus_Universal_SetResponse(uint8_t* data) {
+    Cmd_UART_Universal_SetResponse(data);
+}
+void Cmd_Bus_Universal_WeightResponse(uint8_t *data) {
+    Cmd_UART_Universal_WeightResponse(data);
+}
+void Cmd_Bus_Universal_InputResponse(uint8_t *data) {
+    Cmd_UART_Universal_InputResponse(data);
+}
+void Cmd_Bus_Universal_StepperPositionResponse(uint8_t *data) {
+    Cmd_UART_Universal_StepperPositionResponse(data);
+}
+void Cmd_Bus_Universal_AutomationSequenceStateResponse(uint8_t* data) {
+    Cmd_UART_Universal_AutomationSequenceStateResponse(data);
+}
 
 
 /**

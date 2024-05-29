@@ -26,9 +26,11 @@ void Cmd_Bus_Arm6DOF_GetSmartKutongData(uint8_t *data);
 
 // --- Universal ---
 
+void Cmd_Bus_Universal_SetResponse(uint8_t* data);
 void Cmd_Bus_Universal_WeightResponse(uint8_t *data);
 void Cmd_Bus_Universal_InputResponse(uint8_t *data);
 void Cmd_Bus_Universal_StepperPositionResponse(uint8_t *data);
+void Cmd_Bus_Universal_AutomationSequenceStateResponse(uint8_t* data);
 
 void Cmd_Bus_Universal_GetWeight(uint8_t* data);
 void Cmd_Bus_Universal_GetStatus(uint8_t* data);
@@ -105,6 +107,8 @@ void Cmd_Bus_Universal_StepperHomingRequest(uint8_t* data);
 void Cmd_Bus_Universal_WeightRequest(uint8_t* data);
 void Cmd_Bus_Universal_InputRequest(uint8_t* data);
 void Cmd_Bus_Universal_StepperPositionRequest(uint8_t* data);
+void Cmd_Bus_Universal_AutomationSequenceBeginRequest(uint8_t* data);
+void Cmd_Bus_Universal_AutomationSequenceStateRequest(uint8_t* data);
 
 void Cmd_Bus_Universal_SetBridge(uint8_t id, uint8_t flags, uint8_t* data);
 void Cmd_Bus_Universal_SetServo(uint8_t id, uint8_t flags, uint8_t* data);
