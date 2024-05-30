@@ -118,6 +118,8 @@ typedef enum {
 	UART_CMD_ARM_6DOF_SOFT_RESET             = 0xFA,     //!< [TX]
     UART_CMD_ARM_6DOF_GET_PROBE              = 0xFC,     //!< [RX]
     UART_CMD_ARM_6DOF_GET_PROBE_REQUEST      = 0xFD,     //!< [TX]
+	UART_CMD_ARM_6DOF_GET_PROBE_ESP			 = 0xFE,
+
 
     //analog visiom mux
     UART_CMD_MUX_SET_CAM                     = 0xB1,     //!< [TX]
@@ -247,6 +249,7 @@ typedef enum {
 	UART_ARG_ARM_6DOF_SOFT_RESET           = 0,
     UART_ARG_ARM_6DOF_GET_PROBE_REQUEST    = 0,
     UART_ARG_ARM_6DOF_GET_PROBE            = 4,
+	UART_ARG_ARM_6DOF_GET_PROBE_ESP		   = 4,
 
 
     //analog visiom mux

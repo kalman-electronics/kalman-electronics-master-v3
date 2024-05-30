@@ -214,6 +214,10 @@ void Cmd_UART_Arm6DOF_GetProbeRequest(uint8_t* data, uart_packet_link_t link_typ
     }
 }
 
+void Cmd_UART_Arm6DOF_GetProbeEsp(uint8_t* data, uart_packet_link_t link_type) {
+	memcpy((void*) &(bus_arm_6dof.kutong), (void*) data, sizeof(bus_arm_6dof.kutong));
+}
+
 /*
  *  TX Frames
  */

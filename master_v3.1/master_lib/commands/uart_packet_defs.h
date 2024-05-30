@@ -139,6 +139,11 @@ static uart_packet_def_t uart_packet_defs[] = {
             .arg_count = UART_ARG_ARM_6DOF_AUTOCLICK_SET_POS,
             .execute = Cmd_UART_Arm6DOF_Autoclick_SetPos,
         },
+		{
+			.cmd = UART_CMD_ARM_6DOF_GET_PROBE_ESP,
+			.arg_count = UART_ARG_ARM_6DOF_GET_PROBE_ESP,
+			.execute = Cmd_UART_Arm6DOF_GetProbeEsp,
+		}
 
         // --- Drill ---
         {
