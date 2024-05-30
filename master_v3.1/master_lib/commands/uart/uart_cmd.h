@@ -49,6 +49,7 @@ void Cmd_UART_Arm6DOF_SetActualPos(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Arm6DOF_KeyboardClick(uint8_t *data, uart_packet_link_t link_type);
 void Cmd_UART_Arm6DOF_SoftReset(uint8_t *data, uart_packet_link_t link_type);
 void Cmd_UART_Arm6DOF_GetProbeRequest(uint8_t* data, uart_packet_link_t link_type);
+void Cmd_UART_Arm6DOF_GetProbeRequest(uint8_t* data, uart_packet_link_t link_type);
 
 // --- Drill ---
 void Cmd_UART_Drill_A_Bridge_Set(uint8_t* data, uart_packet_link_t link_type);
@@ -73,7 +74,7 @@ void Cmd_UART_Universal_WeightRequest(uint8_t* data, uart_packet_link_t link_typ
 void Cmd_UART_Universal_InputRequest(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Universal_StepperPositionRequest(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Universal_AutomationSequenceBeginRequest(uint8_t* data, uart_packet_link_t link_type);
-void Cmd_UART_Universal_AutomationSequenceStateRequest(uint8_t* data, uart_packet_link_t link_type);
+void Cmd_UART_Arm6DOF_GetProbeEsp(uint8_t* data, uart_packet_link_t link_type);
 
 void Cmd_UART_Universal_SetBridge(uint8_t* data, uart_packet_link_t link);
 void Cmd_UART_Universal_SetServo(uint8_t* data, uart_packet_link_t link);

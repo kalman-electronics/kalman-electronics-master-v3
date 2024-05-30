@@ -25,7 +25,8 @@ void Cmd_Bus_Arm6DOF_GetGripper(uint8_t *data, uint8_t count) {
 }
 
 void Cmd_Bus_Arm6DOF_GetSmartKutongData(uint8_t *data) {
-    memcpy((void*) &(bus_arm_6dof.kutong), data, sizeof(bus_arm_6dof.kutong));
+#warning smartkutong memcpy disabled
+    //memcpy((void*) &(bus_arm_6dof.kutong), data, sizeof(bus_arm_6dof.kutong));
 }
 
 /*

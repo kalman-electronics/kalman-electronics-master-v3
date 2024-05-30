@@ -91,7 +91,7 @@ void UARTParser_ParseBuf(uart_parser_t* parser) {
 			case UART_PARSER_HEADER_CRC:
 				crc = PARSER_READ_BYTE();
 
-				if (crc != parser->packet.cmd + parser->packet.arg_count) {
+				if (crc != (uint8_t)(parser->packet.cmd + parser->packet.arg_count)) {
 					parser->state = UART_PARSER_WAITING;
 					break;
 				}
