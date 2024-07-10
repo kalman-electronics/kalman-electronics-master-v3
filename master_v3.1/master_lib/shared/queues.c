@@ -8,11 +8,11 @@ QueueHandle_t can_handler_incoming_packet_queue;
 QueueHandle_t can_handler_outgoing_packet_queue;
 
 void Queues_Init() {
-    uart_handler_incoming_packet_queue = xQueueCreate(32, sizeof(uart_packet_t));
-    uart_handler_outgoing_packet_queue = xQueueCreate(32, sizeof(uart_packet_t));
+    uart_handler_incoming_packet_queue = xQueueCreate(16, sizeof(uart_packet_t));
+    uart_handler_outgoing_packet_queue = xQueueCreate(16, sizeof(uart_packet_t));
 
-    can_handler_incoming_packet_queue = xQueueCreate(32, sizeof(can_packet_t));
-	can_handler_outgoing_packet_queue = xQueueCreate(32, sizeof(can_packet_t));
+    can_handler_incoming_packet_queue = xQueueCreate(16, sizeof(can_packet_t));
+	can_handler_outgoing_packet_queue = xQueueCreate(16, sizeof(can_packet_t));
 }
 
 BaseType_t Queues_SendCANFrame(can_packet_t* packet) {
