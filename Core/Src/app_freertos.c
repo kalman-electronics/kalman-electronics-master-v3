@@ -25,6 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+
 #include "handler/uart_parser.h"
 #include "handler/uart_encoder.h"
 #include "handler/uart_packet_handler.h"
@@ -149,7 +150,7 @@ void MX_FREERTOS_Init(void) {
     configASSERT(xTaskCreate(UARTParser_Task,  "UART_Parser",  1024, NULL, 6,  &UARTParser_TaskHandle));
     configASSERT(xTaskCreate(UARTEncoder_Task, "UART_Encoder", 1024, NULL, 8,  NULL));
     configASSERT(xTaskCreate(UARTHandler_Task, "UART_Handler", 512, NULL, 7,  NULL));
-    configASSERT(xTaskCreate(GpioExpander_Task,"GpioExpander", 128, NULL, 5,  NULL));
+    configASSERT(xTaskCreate(GpioExpander_Task, "GpioExpander", 128, NULL, 5,  NULL));
     //configASSERT(xTaskCreate(StatusTask,       "status", 512, NULL, 5,  NULL));
   /* USER CODE END RTOS_THREADS */
 

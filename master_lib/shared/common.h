@@ -7,7 +7,7 @@
 #include "queues.h"
 #include "../TCAN114x/TCAN114x.h"
 #include "gpio_expander.h"
-#include "config.h"
+#include "../../Src/config.h" //idk why, but it just didn't work normally
 
 
 #define UART_MESSAGE_MAX_SIZE 256 + 4

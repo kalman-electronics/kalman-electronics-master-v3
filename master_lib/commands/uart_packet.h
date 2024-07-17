@@ -2,7 +2,7 @@
 #define KALMAN_ELECTRONICS_MASTER_V3_UART_PACKET_H
 
 #include "stdint.h"
-#include "config.h"
+#include "../../Src/config.h"
 
 typedef enum {
     // Packets coming from UART parsers
