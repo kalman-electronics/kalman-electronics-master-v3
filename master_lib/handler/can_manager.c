@@ -57,7 +57,7 @@ void CanManager_Task() {
         can_header.Identifier = msg.cmd;
         can_header.IdType = FDCAN_STANDARD_ID;
         can_header.TxFrameType = FDCAN_DATA_FRAME; // Master never sends a CAN remote frame
-        can_header.DataLength = msg.arg_count << 16;
+        can_header.DataLength = msg.arg_count;
         can_header.ErrorStateIndicator = FDCAN_ESI_PASSIVE;
         can_header.BitRateSwitch = FDCAN_BRS_OFF;
         can_header.FDFormat = FDCAN_CLASSIC_CAN;   // Using CAN 2.0 for now
