@@ -75,11 +75,12 @@ typedef struct {
 #define FDCAN2_ID 1
 
 /** UART **/
-#define UART_DEFS_COUNT 4
+#define UART_DEFS_COUNT 5
 #define RF_UART_ID    0
 #define AUTO_UART_ID  1
 #define DEBUG_UART_ID 2
 #define RS422_UART_ID 3
+#define WIFI_UART_ID  4
 
 // UART used for debug printf
 #define PRINTF_UART     DEBUG_UART_ID

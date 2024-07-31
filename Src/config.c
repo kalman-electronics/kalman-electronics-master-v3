@@ -30,6 +30,7 @@ fdcan_def_t fdcan_defs[FDCAN_DEFS_COUNT] = {
 uart_def_t uart_defs[UART_DEFS_COUNT] = {
 		{.id = RF_UART_ID,    .uart_handle = &huart1,},
 		{.id = AUTO_UART_ID,  .uart_handle = &huart3,},
-		{.id = DEBUG_UART_ID, .uart_handle = &huart2,},
-		{.id = RS422_UART_ID, .uart_handle = &hlpuart1}
+		{.id = DEBUG_UART_ID, .uart_handle = &huart4,},
+		{.id = RS422_UART_ID, .uart_handle = &hlpuart1},
+		{.id = WIFI_UART_ID,  .uart_handle = &huart2,},
 };
