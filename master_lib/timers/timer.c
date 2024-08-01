@@ -1,8 +1,8 @@
 #include "timer.h"
 #include "../shared/common.h"
 #include "../shared/logic.h"
-#include "../commands/can/can_cmd.h"
-#include "../commands/uart/uart_cmd.h"
+#include "can/commands/can_cmd.h"
+#include "uart/commands/uart_cmd.h"
 
 
 TimerHandle_t timer_defs[TIMER_COUNT];

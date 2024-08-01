@@ -1,8 +1,8 @@
 #ifndef KALMAN_ELECTRONICS_MASTER_V3_UART_PARSER_H
 #define KALMAN_ELECTRONICS_MASTER_V3_UART_PARSER_H
 
-#include "../shared/common.h"
-#include "../commands/uart_packet.h"
+#include "shared/common.h"
+#include "uart/uart_packet.h"
 
 #define UART_PARSER_KBX_START_CHAR '<'
 

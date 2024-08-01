@@ -1,7 +1,7 @@
 #include <string.h>
 #include "can_cmd.h"
-#include "../../hw/hw.h"
-#include "../uart/uart_cmd.h"
+#include "hw/hw.h"
+#include "uart/commands/uart_cmd.h"
 
 /*
  *  RX Frames

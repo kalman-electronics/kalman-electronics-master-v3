@@ -2,7 +2,7 @@
 #define KALMAN_ELECTRONICS_MASTER_V3_UART_ENCODER_H
 
 #include <stdint.h>
-#include "../shared/common.h"
+#include "shared/common.h"
 
 #define UART_ENCODER_DMA_BUF_SIZE 8192
 

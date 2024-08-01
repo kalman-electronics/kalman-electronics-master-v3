@@ -2,7 +2,7 @@
 #define KALMAN_ELECTRONICS_MASTER_V3_CAN_PACKET_DEFS_H
 
 #include "can_packet.h"
-#include "can/can_cmd.h"
+#include "can/commands/can_cmd.h"
 
 #define CAN_PACKET_DEFS_LEN (sizeof(can_packet_defs)/sizeof(can_packet_def_t))
 

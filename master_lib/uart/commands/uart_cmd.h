@@ -1,12 +1,12 @@
 #ifndef KALMAN_ELECTRONICS_MASTER_V3_UART_CMD_H
 #define KALMAN_ELECTRONICS_MASTER_V3_UART_CMD_H
 
-#include "../uart_packet.h"
-#include "../../shared/common.h"
-#include "../../shared/logic.h"
-#include "../../hw/hw.h"
-#include "../../timers/timer.h"
-#include "../../shared/io.h"
+#include "uart/uart_packet.h"
+#include "shared/common.h"
+#include "shared/logic.h"
+#include "hw/hw.h"
+#include "timers/timer.h"
+#include "shared/io.h"
 
 /*
  *  RX Frames

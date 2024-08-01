@@ -1,9 +1,9 @@
 #include "can_packet_handler.h"
-#include "../commands/can_packet.h"
+#include "can/can_packet.h"
 #include "FreeRTOS.h"
 #include "queue.h"
-#include "../shared/common.h"
-#include "../commands/can_packet_defs.h"
+#include "shared/common.h"
+#include "can/can_packet_defs.h"
 
 void CANHandler_ProcessPacket(can_packet_t* msg);
 

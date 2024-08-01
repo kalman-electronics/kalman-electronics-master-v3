@@ -4,7 +4,7 @@
 
 #include <string.h>
 #include "uart_cmd.h"
-#include "../can/can_cmd.h"
+#include "can/commands/can_cmd.h"
 
 
 void Cmd_UART_Universal_SetDigitalOutput(uint8_t* data, uart_packet_link_t link_type) {

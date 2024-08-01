@@ -2,7 +2,7 @@
 #define KALMAN_ELECTRONICS_MASTER_V3_UART_PACKET_DEFS_H
 
 #include "uart_packet.h"
-#include "uart/uart_cmd.h"
+#include "uart/commands/uart_cmd.h"
 
 #define UART_PACKET_DEFS_LEN (sizeof(uart_packet_defs)/sizeof(uart_packet_def_t))
 

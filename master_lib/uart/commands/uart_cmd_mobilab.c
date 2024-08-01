@@ -4,7 +4,7 @@
 
 #include <string.h>
 #include "uart_cmd.h"
-#include "../can/can_cmd.h"
+#include "can/commands/can_cmd.h"
 
 /**
  * Ustawia PWM pompki w mobilabie 0-255

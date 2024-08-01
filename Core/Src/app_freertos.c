@@ -26,11 +26,11 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
-#include "handler/uart_parser.h"
-#include "handler/uart_encoder.h"
-#include "handler/uart_packet_handler.h"
-#include "handler/can_manager.h"
-#include "handler/can_packet_handler.h"
+#include "uart/handler/uart_parser.h"
+#include "uart/handler/uart_encoder.h"
+#include "uart/handler/uart_packet_handler.h"
+#include "can/handler/can_manager.h"
+#include "can/handler/can_packet_handler.h"
 #include "shared/gpio_expander.h"
 #include "shared/common.h"
 #include "stdio.h"

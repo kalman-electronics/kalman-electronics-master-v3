@@ -1,6 +1,6 @@
 #include <string.h>
 #include "can_cmd.h"
-#include "../../hw/hw.h"
+#include "hw/hw.h"
 
 /*
  *  RX Frames

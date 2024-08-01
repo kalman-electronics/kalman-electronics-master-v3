@@ -2,7 +2,7 @@
 //                          UEUOS v2 Module
 //=====================================================================
 #include "uart_cmd.h"
-#include "../can/can_cmd.h"
+#include "can/commands/can_cmd.h"
 
 /**
  * Ustawia jeden z 4 stanów UEUOSA

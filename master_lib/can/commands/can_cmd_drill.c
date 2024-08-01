@@ -1,6 +1,6 @@
 #include <string.h>
 #include "can_cmd.h"
-#include "../uart/uart_cmd.h"
+#include "uart/commands/uart_cmd.h"
 
 void Cmd_Bus_Drill_A_Bridge_Set(uint8_t direction, uint8_t speed){
     can_packet_t msg = {

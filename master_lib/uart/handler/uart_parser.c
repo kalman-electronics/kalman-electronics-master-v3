@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include "uart_parser.h"
-#include "../commands/uart_packet_defs.h"
+#include "uart/uart_packet_defs.h"
 #include "usart.h"
 #include "string.h"
 #include "FreeRTOS.h"

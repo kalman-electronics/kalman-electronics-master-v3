@@ -2,7 +2,7 @@
 #define KALMAN_ELECTRONICS_MASTER_V3_CAN_MANAGER_H
 
 #include "fdcan.h"
-#include "../commands/can_packet.h"
+#include "can/can_packet.h"
 #include "shared/common.h"
 #include "spi.h"
 #include "gpio.h"

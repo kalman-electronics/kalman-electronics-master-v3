@@ -4,7 +4,7 @@
 
 #include <string.h>
 #include "can_cmd.h"
-#include "../../hw/hw.h"
+#include "hw/hw.h"
 
 //=====================================================================
 //           obsluga odebranych ramek CAN - mobilab 2.0

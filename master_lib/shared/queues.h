@@ -4,8 +4,8 @@
 
 #include "FreeRTOS.h"
 #include "queue.h"
-#include "../commands/uart_packet.h"
-#include "../commands/can_packet.h"
+#include "uart/uart_packet.h"
+#include "can/can_packet.h"
 
 extern QueueHandle_t uart_handler_incoming_packet_queue;
 extern QueueHandle_t uart_handler_outgoing_packet_queue;

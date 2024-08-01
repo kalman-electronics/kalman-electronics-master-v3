@@ -1,9 +1,9 @@
 #include "uart_packet_handler.h"
-#include "../commands/uart_packet.h"
+#include "uart/uart_packet.h"
 #include "FreeRTOS.h"
 #include "queue.h"
-#include "../shared/common.h"
-#include "../commands/uart_packet_defs.h"
+#include "shared/common.h"
+#include "uart/uart_packet_defs.h"
 
 void UARTHandler_ProcessPacket(uart_packet_t* msg);
 

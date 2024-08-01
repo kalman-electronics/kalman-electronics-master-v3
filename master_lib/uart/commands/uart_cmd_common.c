@@ -4,8 +4,8 @@
 
 #include <string.h>
 #include "uart_cmd.h"
-#include "../can/can_cmd.h"
-#include "../../shared/common.h"
+#include "can/commands/can_cmd.h"
+#include "shared/common.h"
 
 rf_status_t RF_status = ON;
 

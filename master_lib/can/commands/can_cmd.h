@@ -1,8 +1,8 @@
 #ifndef KALMAN_ELECTRONICS_MASTER_V3_CAN_CMD_H
 #define KALMAN_ELECTRONICS_MASTER_V3_CAN_CMD_H
 
-#include "../can_packet.h"
-#include "../../shared/common.h"
+#include "can/can_packet.h"
+#include "shared/common.h"
 
 /*
  *  RX Frames
