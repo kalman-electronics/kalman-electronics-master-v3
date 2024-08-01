@@ -128,12 +128,17 @@ void Cmd_UART_Arm6DOF_Autoclick_SetPos(uint8_t *data, uart_packet_link_t link_ty
 
 void Cmd_UART_Arm6DOF_GetPos(uint8_t *data, uart_packet_link_t link_type) {
     if ((link_type == LINK_RF_UART) ||  (link_type == logic.link_type)) {
-        //if (logic_flash.debug_info & debug_comm_control) {
-            //debug_printf("[%s] Arm GetVoltageRequest\r\n",
-                    //(link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"));
-        //}
+	    uart_packet_t msg = {
+			    .cmd = UART_CMD_ARM_6DOF_GET_POS,
+			    .arg_count = UART_ARG_ARM_6DOF_GET_POS,
+			    .origin = link_type,
+	    };
 
-        Cmd_UART_Arm6DOF_GetPos_helper(link_type);
+	    memcpy(msg.args, (void*)&bus_arm_6dof.current.position, UART_ARG_ARM_6DOF_GET_POS);
+
+	    Queues_SendUARTFrame(&msg);
+
+
 
         Cmd_UART_BlinkLed(link_type);
     }
@@ -250,7 +255,7 @@ void Cmd_UART_Arm6DOF_GetGripper() {
 	}
 }
 
-void Cmd_UART_ARM_CM4(uint8_t* data, uart_packet_link_t link_type) {
+void Cmd_UART_Arm6DOF_CM4(uint8_t* data, uart_packet_link_t link_type) {
     uart_packet_t msg = {
             .cmd = UART_CMD_ARM_CM4,
             .arg_count = UART_ARG_ARM_CM4,

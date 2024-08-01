@@ -5,13 +5,10 @@
 #include "task.h"
 
 #include "queues.h"
-#include "../TCAN114x/TCAN114x.h"
+#include "TCAN114x/TCAN114x.h"
 #include "gpio_expander.h"
-#include "../../Src/config.h" //idk why, but it just didn't work normally
+#include "config.h"
 
-
-#define UART_MESSAGE_MAX_SIZE 256 + 4
-#define UART_RX_BUF_SIZE UART_MESSAGE_MAX_SIZE * 2
 
 #define TIMER_COMM_TIMEOUT_BYPASS 0
 #if TIMER_COMM_TIMEOUT_BYPASS != 0
@@ -19,8 +16,6 @@
 #endif
 
 extern TaskHandle_t UARTParser_TaskHandle;
-extern TaskHandle_t IO_TaskHandle;
-extern TCAN114x_Dev tcan;
 
 typedef enum {
     ON = 1,

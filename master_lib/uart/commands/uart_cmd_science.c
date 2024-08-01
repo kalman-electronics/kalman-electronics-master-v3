@@ -8,12 +8,6 @@
  */
 void Cmd_UART_Science_GetSamplesRequest(uint8_t *data, uart_packet_link_t link_type) {
     if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
-        //if (logic_flash.debug_info & debug_comm_control) {
-            debug_printf("[%s] Science GetSamplesRequest: %d\r\n",
-                    (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
-                    data[0]);
-        //}
-
         Cmd_UART_Science_GetSamples(data[0], 0);
         Cmd_UART_Science_GetSamples(data[0], 1);
 
@@ -28,12 +22,6 @@ void Cmd_UART_Science_GetSamplesRequest(uint8_t *data, uart_packet_link_t link_t
  */
 void Cmd_UART_Science_GetWeightRequest(uint8_t *data, uart_packet_link_t link_type) {
     if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
-        //if (logic_flash.debug_info & debug_comm_control) {
-            debug_printf("[%s] Science GetWeightRequest: %d\r\n",
-                    (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
-                    data[0]);
-        //}
-
         Cmd_UART_Science_GetWeight(data[0], 0);
 
         Cmd_UART_BlinkLed(link_type);
@@ -47,12 +35,6 @@ void Cmd_UART_Science_GetWeightRequest(uint8_t *data, uart_packet_link_t link_ty
  */
 void Cmd_UART_Science_GetAtmosphereRequest(uint8_t *data, uart_packet_link_t link_type) {
     if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
-        //if (logic_flash.debug_info & debug_comm_control) {
-            debug_printf("[%s] Science GetAtmosphereRequest: %d\r\n",
-                    (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
-                    data[0]);
-        //}
-
         Cmd_UART_Science_GetAtmosphere(data[0]);
 
         Cmd_UART_BlinkLed(link_type);

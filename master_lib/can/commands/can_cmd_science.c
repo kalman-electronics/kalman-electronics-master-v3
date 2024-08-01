@@ -118,47 +118,6 @@ void Cmd_Bus_Science_GetStatus(uint8_t* data) {
     GpioExpander_SetLed(LED_UNIVERSAL1, on, 20);
 }
 
-/**
- * Ramka na potrzeby testów i rozwoju oprogramowania. Przekazywana na świat transparentnie, bez ingerencji.
- * @param data      wskaźnik na bufor odebranych danych
- * @param count     ilość odebranych danych w ramce
- */
-void Cmd_Bus_Science_DebugRx(uint8_t* data) {
-    Cmd_UART_Common_DebugRx(data, DEVICE_SCIENCE);
-
-    GpioExpander_SetLed(LED_UNIVERSAL1, on, 20);
-}
-
 /*
  *  TX Frames
  */
-
-/**
- * Ramka testowa, używana do sprawdzania poprawności komunikacji Mastera z modułem.
- * @param id        bajt identyfikacji urządzenia odbiorczego
- */
-void Cmd_Bus_Science_Poll(uint8_t id) {
-    can_packet_t msg = {
-        .cmd = CAN_CMD_SCIENCE_POLL,
-        .arg_count = CAN_ARG_SCIENCE_POLL,
-        .args = {id},
-    };
-
-    Queues_SendCANFrame(&msg);
-}
-
-
-
-/**
- * Ramka na potrzeby testów i rozwoju oprogramowania. Przekazywana kontrolerowi transparentnie, bez ingerencji.
- * @param data      wskaźnik na 8-bajtowy bufor danych
- */
-void Cmd_Bus_Science_DebugTx(uint8_t* data) {
-    can_packet_t msg = {
-        .cmd = CAN_CMD_SCIENCE_DEBUG_TX,
-        .arg_count = CAN_ARG_SCIENCE_DEBUG_TX,
-    };
-    memcpy(msg.args, data, 8);
-
-    Queues_SendCANFrame(&msg);
-}

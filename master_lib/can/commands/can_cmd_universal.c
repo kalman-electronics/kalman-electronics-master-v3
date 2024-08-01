@@ -47,17 +47,6 @@ void Cmd_Bus_Universal_GetStatus(uint8_t* data) {
     GpioExpander_SetLed(LED_UNIVERSAL2, on, 20);
 }
 
-/**
- * Ramka na potrzeby testów i rozwoju oprogramowania. Przekazywana na świat transparentnie, bez ingerencji.
- * @param data      wskaźnik na bufor odebranych danych
- * @param count     ilość odebranych danych w ramce
- */
-void Cmd_Bus_Universal_DebugRx(uint8_t* data) {
-    Cmd_UART_Common_DebugRx(data, DEVICE_UNIVERSAL);
-
-    GpioExpander_SetLed(LED_UNIVERSAL2, on, 20);
-}
-
 /*
  *  TX Frames
  */

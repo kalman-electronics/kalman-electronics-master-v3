@@ -8,33 +8,6 @@
 
 // it's not unused, but it's included in multiple files, so it's not detected. __unused is used to suppress the warning
 __unused static uart_packet_def_t uart_packet_defs[] = {
-        // --- Common ---
-        {
-            .cmd = UART_CMD_COMMON_RESET_ALL,
-            .arg_count = UART_ARG_COMMON_RESET_ALL,
-            .execute = Cmd_UART_Common_ResetAll,
-        },
-        {
-            .cmd = UART_CMD_COMMON_RESET_DEVICE,
-            .arg_count = UART_ARG_COMMON_RESET_DEVICE,
-            .execute = Cmd_UART_Common_ResetDevice,
-        },
-        {
-            .cmd = UART_CMD_COMMON_SET_PID,
-            .arg_count = UART_ARG_COMMON_SET_PID,
-            .execute = Cmd_UART_Common_SetPid,
-        },
-        {
-            .cmd = UART_CMD_COMMON_GET_PID_REQUEST,
-            .arg_count = UART_ARG_COMMON_GET_PID_REQUEST,
-            .execute = Cmd_UART_Common_GetPidRequest,
-        },
-        {
-            .cmd = UART_CMD_COMMON_DEBUG_TX,
-            .arg_count = UART_ARG_COMMON_DEBUG_TX,
-            .execute = Cmd_UART_Common_DebugTx,
-        },
-
         // --- Master ---
         {
             .cmd = UART_CMD_MASTER_SET_LINK,
@@ -46,22 +19,6 @@ __unused static uart_packet_def_t uart_packet_defs[] = {
             .arg_count = UART_ARG_MASTER_SET_STATUS_MODE,
             .execute = Cmd_UART_Master_SetStatusMode,
         },
-        {
-            .cmd = UART_CMD_MASTER_COMPUTER_POWER_ON,
-            .arg_count = UART_ARG_MASTER_COMPUTER_POWER_ON,
-            .execute = Cmd_UART_Master_ComputerPowerOn,
-        },
-        {
-            .cmd = UART_CMD_MASTER_COMPUTER_RESET,
-            .arg_count = UART_ARG_MASTER_COMPUTER_RESET,
-            .execute = Cmd_UART_Master_ComputerReset,
-        },
-        {
-            .cmd = UART_CMD_MASTER_SET_DEBUG_INFO,
-            .arg_count = UART_ARG_MASTER_SET_DEBUG_INFO,
-            .execute = Cmd_UART_Master_SetDebugInfo,
-        },
-
         // --- Motor ---
         {
             .cmd = UART_CMD_MOTOR_SET_WHEELS,
@@ -187,9 +144,9 @@ __unused static uart_packet_def_t uart_packet_defs[] = {
 
         // --- Universal ---
         {
-          .cmd = UART_CMD_UNIVERSAL_SET_DIGITAL_OUTPUT,
-          .arg_count = UART_ARG_UNIVERSAL_SET_DIGITAL_OUTPUT,
-          .execute = Cmd_UART_Universal_SetDigitalOutput
+			.cmd = UART_CMD_UNIVERSAL_SET_DIGITAL_OUTPUT,
+			.arg_count = UART_ARG_UNIVERSAL_SET_DIGITAL_OUTPUT,
+			.execute = Cmd_UART_Universal_SetDigitalOutput
         },
         {
             .cmd = UART_CMD_UNIVERSAL_SET_PWM_OUTPUT,
@@ -327,7 +284,7 @@ __unused static uart_packet_def_t uart_packet_defs[] = {
         {
             .cmd = UART_CMD_ARM_CM4,
             .arg_count = UART_ARG_ARM_CM4,
-            .execute = Cmd_UART_ARM_CM4,
+            .execute = Cmd_UART_Arm6DOF_CM4,
         },
 
         //SILENT MODE
@@ -375,9 +332,9 @@ __unused static uart_packet_def_t uart_packet_defs[] = {
             .execute = Cmd_UART_ARM_CustomToUART,
         },
         {
-                .cmd = UART_CMD_CUSTOM_ARM_TO_RF,
-                .arg_count = UART_ARG_MAX,
-                .execute = Cmd_UART_ARM_CustomToRF,
+            .cmd = UART_CMD_CUSTOM_ARM_TO_RF,
+            .arg_count = UART_ARG_MAX,
+            .execute = Cmd_UART_ARM_CustomToRF,
         },
 
 };

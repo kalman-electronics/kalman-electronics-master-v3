@@ -1,14 +1,6 @@
-//=====================================================================
-//                          MOBILAB v2 Module
-//=====================================================================
-
 #include <string.h>
 #include "can_cmd.h"
 #include "hw/hw.h"
-
-//=====================================================================
-//           obsluga odebranych ramek CAN - mobilab 2.0
-//=====================================================================
 
 /**
  * Odbiera zwrotkę z tempertaturą mobilaba i zapisuje ją w structie mobilaba
@@ -23,10 +15,6 @@ void Cmd_Bus_Mobilab_GetTemperature(uint8_t* data){
     }
 }
 
-
-//=====================================================================
-//            generowanie wysylanych ramek - mobilab
-//=====================================================================
 
 /**
  * Ustawia PWM pompki w mobilabie 0-255

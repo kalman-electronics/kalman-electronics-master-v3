@@ -5,28 +5,15 @@
 #include "config.h"
 
 typedef enum {
-    // Packets coming from UART parsers
     LINK_RF_UART    = 1 << RF_UART_ID,
     LINK_AUTO_UART  = 1 << AUTO_UART_ID,
     LINK_DEBUG_UART = 1 << DEBUG_UART_ID,
     LINK_RS422_UART = 1 << RS422_UART_ID,
     LINK_UART_ANY   = LINK_RF_UART | LINK_AUTO_UART | LINK_DEBUG_UART | LINK_RS422_UART,
-
-    // Packet was generated / received by the CAN bus and forwarded to UART handler
-    LINK_CAN        = 1 << 7,
 } uart_packet_link_t;
 
 typedef enum {
-    //komendy wspolne dla modulow systemu elektroniki
-    UART_CMD_COMMON_RESET_ALL                = 0x00,     //!< [TX]
-    UART_CMD_COMMON_RESET_DEVICE             = 0x01,     //!< [TX]
-    UART_CMD_COMMON_SET_PID                  = 0x02,     //!< [TX]
-    UART_CMD_COMMON_GET_PID_REQUEST          = 0x03,     //!< [TX]
-    UART_CMD_COMMON_DEBUG_TX                 = 0x04,     //!< [TX]
-    UART_CMD_COMMON_GET_PID                  = 0x1E,     //!< [RX]
-    UART_CMD_COMMON_DEBUG_RX                 = 0x1F,     //!< [RX]
-
-    //komendy dodatkowe modulu Master v2
+    //komendy dodatkowe modulu Master
     UART_CMD_MASTER_SET_LINK                 = 0x20,     //!< [TX]
     UART_CMD_MASTER_SET_STATUS_MODE          = 0x21,     //!< [TX]
     UART_CMD_MASTER_SET_VIDEO_CHANNEL        = 0x22,     //!< [TX]

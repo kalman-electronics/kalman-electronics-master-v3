@@ -8,13 +8,6 @@
 
 // CAN RX packet callback registration
 const can_packet_def_t can_packet_defs[] = {
-        // --- Common ---
-        {
-                .cmd = CAN_CMD_GET_PID,
-                .arg_count = CAN_ARG_GET_PID,
-                .execute = Cmd_Bus_Common_GetPid,
-        },
-
         // --- Motor ---
         {
                 .cmd = CAN_CMD_MOTOR_GET_WHEELS1,
@@ -30,11 +23,6 @@ const can_packet_def_t can_packet_defs[] = {
                 .cmd = CAN_CMD_MOTOR_GET_STATUS,
                 .arg_count = CAN_ARG_MOTOR_GET_STATUS,
                 .execute = Cmd_Bus_Motor_GetStatus,
-        },
-        {
-                .cmd = CAN_CMD_MOTOR_DEBUG_RX,
-                .arg_count = CAN_ARG_MOTOR_DEBUG_RX,
-                .execute = Cmd_Bus_Motor_DebugRx,
         },
         {
                 .cmd = CAN_CMD_MOTOR_GET_TEMPERATURE,
@@ -102,12 +90,6 @@ const can_packet_def_t can_packet_defs[] = {
                 .arg_count = CAN_ARG_UNIVERSAL_GET_STATUS,
                 .execute = Cmd_Bus_Universal_GetStatus,
         },
-        {
-                .cmd = CAN_CMD_UNIVERSAL_DEBUG_RX,
-                .arg_count = CAN_ARG_UNIVERSAL_DEBUG_RX,
-                .execute = Cmd_Bus_Universal_DebugRx,
-        },
-
         // --- Science ---
         {
                 .cmd = CAN_CMD_SCIENCE_GET_TEMPERATURE1,
@@ -138,11 +120,6 @@ const can_packet_def_t can_packet_defs[] = {
                 .cmd = CAN_CMD_SCIENCE_GET_STATUS,
                 .arg_count = CAN_ARG_SCIENCE_GET_STATUS,
                 .execute = Cmd_Bus_Science_GetStatus,
-        },
-        {
-                .cmd = CAN_CMD_SCIENCE_DEBUG_RX,
-                .arg_count = CAN_ARG_SCIENCE_DEBUG_RX,
-                .execute = Cmd_Bus_Science_DebugRx,
         },
 
         // --- Mobilab v2 ---

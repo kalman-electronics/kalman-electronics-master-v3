@@ -68,58 +68,6 @@ void Cmd_UART_Master_SetStatusMode(uint8_t *data, uart_packet_link_t link_type) 
 }
 
 /**
- * "Wciśnięcie" przycisku zasilania komputera pokładowego.
- * @param data      wskaznik na bufor odebranych danych
- * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
- */
-void Cmd_UART_Master_ComputerPowerOn(uint8_t *data, uart_packet_link_t link_type) {
-    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
-        //if (logic_flash.debug_info & debug_comm_control) {
-            printf("[%s] Master ComputerPowerOn\r\n",
-                    (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"));
-        //}
-
-        IO_Request_PC_PowerOn();
-
-        Cmd_UART_BlinkLed(link_type);
-    }
-}
-
-/**
- * "Wciśnięcie" przycisku resetu komputera pokładowego.
- * @param data      wskaźnik na bufor odebranych danych
- * @param link_type łącze komunikacyjne, na którym odebrano ramkę
- */
-void Cmd_UART_Master_ComputerReset(uint8_t *data, uart_packet_link_t link_type) {
-    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
-        //if (logic_flash.debug_info & debug_comm_control) {
-            printf("[%s] Master ComputerReset\r\n",
-                    (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"));
-        //}
-
-        IO_Request_PC_Reset();
-
-        Cmd_UART_BlinkLed(link_type);
-    }
-}
-
-/**
- * Wybór informacji wysyłanych na debugowym UART modułu Master.
- * @param data      wskaźnik na bufor odebranych danych
- * @param link_type łącze komunikacyjne, na którym odebrano ramkę
- */
-//TODO: verbosity select
-void Cmd_UART_Master_SetDebugInfo(uint8_t *data, uart_packet_link_t link_type) {
-    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
-
-		Cmd_UART_BlinkLed(link_type);
-
-	}
-}
-
-
-
-/**
  * Zwracanie potwierdzenia zmiany łącza komunikacyjnego, po odebraniu komendy Cmd_Master_SetLink. Ramka zwracana jest jeszcze na poprzednim łączu (tzn. odsyłana jest przed zmianą).
  */
 void Cmd_UART_Master_SetLinkResponse(uart_packet_link_t new_link) {

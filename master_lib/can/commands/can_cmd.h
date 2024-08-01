@@ -8,14 +8,10 @@
  *  RX Frames
  */
 
-// --- Common ---
-void Cmd_Bus_Common_GetPid(uint8_t *data);
-
 // --- Motor ---
 void Cmd_Bus_Motor_GetWheels1(uint8_t *data);
 void Cmd_Bus_Motor_GetWheels2(uint8_t *data);
 void Cmd_Bus_Motor_GetStatus(uint8_t* data);
-void Cmd_Bus_Motor_DebugRx(uint8_t* data);
 void Cmd_Bus_Motor_GetTemperature(uint8_t* data);
 
 // --- Arm 6DoF ---
@@ -25,7 +21,6 @@ void Cmd_Bus_Arm6DOF_GetGripper(uint8_t *data, uint8_t count);
 void Cmd_Bus_Arm6DOF_GetSmartKutongData(uint8_t *data);
 
 // --- Universal ---
-
 void Cmd_Bus_Universal_SetResponse(uint8_t* data);
 void Cmd_Bus_Universal_WeightResponse(uint8_t *data);
 void Cmd_Bus_Universal_InputResponse(uint8_t *data);
@@ -34,7 +29,6 @@ void Cmd_Bus_Universal_AutomationSequenceStateResponse(uint8_t* data);
 
 void Cmd_Bus_Universal_GetWeight(uint8_t* data);
 void Cmd_Bus_Universal_GetStatus(uint8_t* data);
-void Cmd_Bus_Universal_DebugRx(uint8_t* data);
 
 // --- Science ---
 void Cmd_Bus_Science_GetTemperature1(uint8_t* data);
@@ -43,7 +37,6 @@ void Cmd_Bus_Science_GetHumidity(uint8_t* data);
 void Cmd_Bus_Science_GetAtmosphere(uint8_t* data);
 void Cmd_Bus_Science_GetWeight(uint8_t* data);
 void Cmd_Bus_Science_GetStatus(uint8_t* data);
-void Cmd_Bus_Science_DebugRx(uint8_t* data);
 
 // --- Mobilab v2 ---
 void Cmd_Bus_Mobilab_GetTemperature(uint8_t* data);
@@ -59,16 +52,10 @@ void Cmd_Bus_Drill_GetWeight(uint8_t* data);
  *  TX Frames
  */
 
-// --- Common ---
-void Cmd_Bus_Common_ResetAll();
-void Cmd_Bus_Common_ResetDevice(can_device_t id);
-void Cmd_Bus_Common_SetPid(uint16_t p, uint8_t i, uint8_t d, uint8_t min, uint8_t max, can_device_t id, uint8_t flags);
-void Cmd_Bus_Common_GetPidRequest(can_device_t id);
-
 // --- Motor ---
 void Cmd_Bus_Motor_SetWheels();
 void Cmd_Bus_Motor_Calibrate(uint8_t channel);
-void Cmd_Bus_Motor_DebugTx(uint8_t* data);
+//void Cmd_Bus_Motor_DebugTx(uint8_t* data);
 
 // --- Arm 6DoF
 void Cmd_Bus_Arm6DOF_SetPosVel();
@@ -114,11 +101,8 @@ void Cmd_Bus_Universal_SetBridge(uint8_t id, uint8_t flags, uint8_t* data);
 void Cmd_Bus_Universal_SetServo(uint8_t id, uint8_t flags, uint8_t* data);
 void Cmd_Bus_Universal_SetPwm(uint8_t id, uint8_t flags, uint8_t *data);
 void Cmd_Bus_Universal_SetGpio(uint8_t id, uint8_t flags1, uint8_t flags2, uint8_t gpio1, uint8_t gpio2);
-void Cmd_Bus_Universal_DebugTx(uint8_t* data);
 
 // --- Science ---
-void Cmd_Bus_Science_Poll(uint8_t id);
-void Cmd_Bus_Science_DebugTx(uint8_t* data);
 
 // --- Mobilab v2 ---
 void Cmd_Bus_Mobilab_SetPump(const uint8_t* data);

@@ -15,8 +15,6 @@ int __io_putchar(int ch) {
 }
 
 
-TCAN114x_Dev tcan;
-
 void Init() {
 	Queues_Init();
 	HW_Init();

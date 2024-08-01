@@ -120,12 +120,6 @@ void Cmd_UART_Universal_AutomationSequenceStateResponse(uint8_t* data){
  */
 void Cmd_UART_Universal_SetBridge(uint8_t *data, uart_packet_link_t link_type) {
     if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
-        //if (logic_flash.debug_info & debug_comm_control) {
-            debug_printf("[%s] Universal SetBridge: %d %d %d %d %d %d\r\n",
-                    (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
-                    data[0], data[1], data[2], data[3], data[4], data[5]);
-        //}
-
         //tylko po regulaminowym czasie bezczynnosci
         if (Logic_GetUptime() >= LOGIC_COMM_START_TIME) {
             Cmd_Bus_Universal_SetBridge(data[0], data[1], &(data[2]));
@@ -144,13 +138,7 @@ void Cmd_UART_Universal_SetBridge(uint8_t *data, uart_packet_link_t link_type) {
  */
 void Cmd_UART_Universal_SetServo(uint8_t *data, uart_packet_link_t link_type) {
     if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
-        //if (logic_flash.debug_info & debug_comm_control) {
-            debug_printf("[%s] Universal SetServo: %d %d %d %d %d %d\r\n",
-                    (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
-                    data[0], data[1], data[2], data[3], data[4], data[5]);
-        //}
-
-        //tylko po regulaminowym czasie bezczynnosci
+         //tylko po regulaminowym czasie bezczynnosci
         if (Logic_GetUptime() >= LOGIC_COMM_START_TIME) {
             Cmd_Bus_Universal_SetServo(data[0], data[1], &(data[2]));
         }
@@ -168,12 +156,6 @@ void Cmd_UART_Universal_SetServo(uint8_t *data, uart_packet_link_t link_type) {
  */
 void Cmd_UART_Universal_SetPwm(uint8_t *data, uart_packet_link_t link_type) {
     if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
-        //if (logic_flash.debug_info & debug_comm_control) {
-            debug_printf("[%s] Universal SetPwm: %d %d %d %d %d %d %d %d\r\n",
-                    (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
-                    data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]);
-        //}
-
         //tylko po regulaminowym czasie bezczynnosci
         if (Logic_GetUptime() >= LOGIC_COMM_START_TIME) {
             Cmd_Bus_Universal_SetPwm(data[0], data[1], &(data[2]));
@@ -192,12 +174,6 @@ void Cmd_UART_Universal_SetPwm(uint8_t *data, uart_packet_link_t link_type) {
  */
 void Cmd_UART_Universal_SetGpio(uint8_t *data, uart_packet_link_t link_type) {
     if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
-        //if (logic_flash.debug_info & debug_comm_control) {
-            debug_printf("[%s] Universal SetGpio: %d %d %d %d %d\r\n",
-                    (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
-                    data[0], data[1], data[2], data[3], data[4]);
-        //}
-
         //tylko po regulaminowym czasie bezczynnosci
         if (Logic_GetUptime() >= LOGIC_COMM_START_TIME) {
             Cmd_Bus_Universal_SetGpio(data[0], data[1], data[2], data[3], data[4]);
@@ -216,12 +192,6 @@ void Cmd_UART_Universal_SetGpio(uint8_t *data, uart_packet_link_t link_type) {
  */
 void Cmd_UART_Universal_GetWeightRequest(uint8_t *data, uart_packet_link_t link_type) {
     if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
-        //if (logic_flash.debug_info & debug_comm_control) {
-            debug_printf("[%s] Universal GetWeightRequest: %d\r\n",
-                    (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
-                    data[0]);
-        //}
-
         uint8_t id = data[0];
         for (uint8_t index=0; index<BUS_UNIVERSAL_COUNT; index++) {
             if (id == bus_universal[index].id) {
