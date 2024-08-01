@@ -36,6 +36,6 @@ typedef struct {
 
 extern uart_parser_t parser_defs[UART_DEFS_COUNT];
 
-void UARTParser_Task();
+void UARTParser_Task(void *argument);
 
 #endif //KALMAN_ELECTRONICS_MASTER_V3_UART_PARSER_H

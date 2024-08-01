@@ -1,6 +1,5 @@
 #include <string.h>
 #include "uart_encoder.h"
-#include "usart.h"
 
 uart_encoder_t encoder_defs[UART_DEFS_COUNT];
 
@@ -40,7 +39,7 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef* huart) {
     }
 }
 
-void UARTEncoder_Task() {
+void UARTEncoder_Task(void *argument) {
     // Disable DMA HT interrupt and prepare encoder structure
     for (int i = 0; i < UART_DEFS_COUNT; i++) {
         encoder_defs[i].uart = &uart_defs[i];

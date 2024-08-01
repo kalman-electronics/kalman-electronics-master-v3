@@ -10,7 +10,7 @@
 #include "FreeRTOS.h"
 #include "timers.h"
 
-#define TIMER_COUNT 11
+#define TIMER_COUNT 9
 
 #define TIMER_MOTOR_TIMEOUT_TIME 1100
 #define TIMER_ARM_TIMEOUT_TIME   500
@@ -23,39 +23,35 @@ typedef enum {
     TIMER_CAN_TRAFFIC_SET_ARM,
     TIMER_CAN_TRAFFIC_SET_MOTOR,
     TIMER_UART_TRAFFIC_6DOF,
-    TIMER_UART_TRAFFIC_STATUS,
     TIMER_UART_TRAFFIC_MOTOR,
     TIMER_MOTOR_TIMEOUT,
     TIMER_ARM_TIMEOUT,
     TIMER_TCAN,
     TIMER_HEALTH_CHECK,
-    TIMER_UART_TRAFFIC_MOBILAB,
     TIMER_UART_TRAFFIC_MOTOR_TEMP,
 } timer_id;
 
-void Timer_Init();
-void Timer_Start();
+void Timer_Init(void);
+void Timer_Start(void);
 void Timer_ResetTimeout(timer_id timer);
 
 // --- Timer callbacks ---
 
 // --- Traffic ---
-void Timer_CAN_TrafficSetArm();
-void Timer_CAN_TrafficSetMotor();
-void Timer_UART_Traffic6DoF();
-void Timer_UART_TrafficStatus();
-void Timer_UART_TrafficMotor();
-void Timer_UART_TrafficMotorTemp();
-void Timer_UART_TrafficMobilab();
+void Timer_CAN_TrafficSetArm(TimerHandle_t xTimer);
+void Timer_CAN_TrafficSetMotor(TimerHandle_t xTimer);
+void Timer_UART_Traffic6DoF(TimerHandle_t xTimer);
+void Timer_UART_TrafficMotor(TimerHandle_t xTimer);
+void Timer_UART_TrafficMotorTemp(TimerHandle_t xTimer);
 
 // --- Timeouts ---
-void Timer_MotorTimeout();
-void Timer_ArmTimeout();
+void Timer_MotorTimeout(TimerHandle_t xTimer);
+void Timer_ArmTimeout(TimerHandle_t xTimer);
 
 // --- TCAN update ---
-void Timer_TCANUpdate();
+void Timer_TCANUpdate(TimerHandle_t xTimer);
 
 // --- Health check ---
-void Timer_HealthCheck();
+void Timer_HealthCheck(TimerHandle_t xTimer);
 
 #endif //KALMAN_ELECTRONICS_MASTER_V3_TIMER_H

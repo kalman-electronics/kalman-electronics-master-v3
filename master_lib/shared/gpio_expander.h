@@ -33,6 +33,6 @@ typedef enum {
 void GpioExpander_Init(I2C_HandleTypeDef* hi2c);
 void GpioExpander_SetLed(led_t led, uint8_t state, uint16_t timeout);
 void GpioExpander_Toggle(led_t led);
-void GpioExpander_Task();
+void GpioExpander_Task(void *argument);
 
 #endif /* INC_GPIO_EXPANDER_H_ */

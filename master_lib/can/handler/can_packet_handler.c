@@ -7,7 +7,7 @@
 
 void CANHandler_ProcessPacket(can_packet_t* msg);
 
-void CANHandler_Task() {
+void CANHandler_Task(void *argument) {
     can_packet_t msg;
 
     while(1) {
@@ -19,7 +19,7 @@ void CANHandler_Task() {
 
 void CANHandler_ProcessPacket(can_packet_t* msg) {
     // Find and validate handler
-    for (int i = 0; i < CAN_PACKET_DEFS_LEN; i ++) {
+    for (uint32_t i = 0; i < CAN_PACKET_DEFS_LEN; i ++) {
         if (can_packet_defs[i].cmd == msg->cmd) {
             if (can_packet_defs[i].arg_count != msg->arg_count) {
                 debug_printf("Invalid packet arg len\n");

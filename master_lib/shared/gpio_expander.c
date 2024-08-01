@@ -57,7 +57,7 @@ void GpioExpander_Toggle(led_t led) {
 	gpio_reg = ~gpio_reg & led;
 }
 
-_Noreturn void GpioExpander_Task() {
+void GpioExpander_Task(void *argument) {
 	GpioExpander_Init(i2c_defs[GPIO_EXPANDER_I2C_ID].i2c_handle);
     GpioExpander_SetLed(LED_ALL, off, 0);
     vTaskDelay(500 / portTICK_PERIOD_MS);

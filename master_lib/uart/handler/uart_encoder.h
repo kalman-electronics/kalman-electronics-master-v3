@@ -25,6 +25,6 @@ typedef struct {
 
 extern uart_encoder_t encoder_defs[UART_DEFS_COUNT];
 
-void UARTEncoder_Task();
+void UARTEncoder_Task(void *argument);
 
 #endif //KALMAN_ELECTRONICS_MASTER_V3_UART_ENCODER_H

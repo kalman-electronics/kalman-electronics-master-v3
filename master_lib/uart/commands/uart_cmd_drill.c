@@ -1,7 +1,3 @@
-//=====================================================================
-//         ramki uart dla modulu wiertla
-//=====================================================================
-
 #include <string.h>
 #include "uart_cmd.h"
 #include "can/commands/can_cmd.h"

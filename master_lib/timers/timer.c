@@ -1,13 +1,13 @@
 #include "timer.h"
-#include "../shared/common.h"
-#include "../shared/logic.h"
+#include "shared/common.h"
+#include "shared/logic.h"
 #include "can/commands/can_cmd.h"
 #include "uart/commands/uart_cmd.h"
 
 
 TimerHandle_t timer_defs[TIMER_COUNT];
 
-void Timer_Init() {
+void Timer_Init(void) {
     timer_defs[TIMER_CAN_TRAFFIC_SET_ARM] = xTimerCreate(
             "CAN_TrafficSetArm",
             150 / portTICK_PERIOD_MS,
@@ -29,13 +29,6 @@ void Timer_Init() {
             0,
             Timer_UART_Traffic6DoF);
 
-    timer_defs[TIMER_UART_TRAFFIC_STATUS] = xTimerCreate(
-            "UART_TrafficStatus",
-            100 / portTICK_PERIOD_MS,
-            pdTRUE,
-            0,
-            Timer_UART_TrafficStatus);
-
     timer_defs[TIMER_UART_TRAFFIC_MOTOR] = xTimerCreate(
             "UART_TrafficMotor",
             500 / portTICK_PERIOD_MS,
@@ -49,13 +42,6 @@ void Timer_Init() {
             pdTRUE,
             0,
             Timer_UART_TrafficMotorTemp);
-
-    timer_defs[TIMER_UART_TRAFFIC_MOBILAB] = xTimerCreate(
-            "UART_TrafficMobilab",
-            1000 / portTICK_PERIOD_MS,
-            pdTRUE,
-            0,
-            Timer_UART_TrafficMobilab);
 
     // --- Timeouts ---
 
@@ -91,7 +77,7 @@ void Timer_Init() {
     Timer_Start();
 }
 
-void Timer_Start() {
+void Timer_Start(void) {
     // Start all timers
     for (int i = 0; i < TIMER_COUNT; i++) {
         configASSERT(xTimerStart(timer_defs[i], portMAX_DELAY));
@@ -115,49 +101,38 @@ void Timer_ResetTimeout(timer_id timer) {
 
 // --- Traffic ---
 
-void Timer_CAN_TrafficSetArm() {
+void Timer_CAN_TrafficSetArm(TimerHandle_t xTimer) {
     if (Logic_GetUptime() < LOGIC_COMM_START_TIME)
         return;
 
     Cmd_Bus_Arm6DOF_SetParams();
 }
 
-void Timer_CAN_TrafficSetMotor() {
+void Timer_CAN_TrafficSetMotor(TimerHandle_t xTimer) {
     if (Logic_GetUptime() < LOGIC_COMM_START_TIME)
         return;
 
     Cmd_Bus_Motor_SetWheels();
 }
 
-void Timer_UART_Traffic6DoF() {
+void Timer_UART_Traffic6DoF(TimerHandle_t xTimer) {
     Cmd_UART_Arm6DOF_GetPos(NULL, logic.link_type);
     Cmd_UART_Arm6DOF_GetGripper();
 }
 
-void Timer_UART_TrafficStatus() {
-
-}
-
-void Timer_UART_TrafficMotor() {
+void Timer_UART_TrafficMotor(TimerHandle_t xTimer) {
     Cmd_UART_Motor_GetWheels();
 }
 
-void Timer_UART_TrafficMotorTemp() {
+void Timer_UART_TrafficMotorTemp(TimerHandle_t xTimer) {
     Cmd_UART_Motor_GetTemperature();
-}
-
-void Timer_UART_TrafficMobilab(){
-#warning Disable mobilab v2 frames
-    //Cmd_UART_Mobilab_GetTemperature(0);
-    //Cmd_UART_Mobilab_GetTemperature(1);
-    //Cmd_UART_Mobilab_GetTemperature(2);
 }
 
 // --- Timeouts ---
 
-void Timer_MotorTimeout() {
+void Timer_MotorTimeout(TimerHandle_t xTimer) {
     #if TIMER_COMM_TIMEOUT_BYPASS == 0
-    debug_printf("[COMM] Przekroczono czas oczekiwania na cykliczna ramke Motor Controllera - zatrzymanie silnikow.\r\n");
+    debug_printf("Przekroczono czas oczekiwania na cykliczna ramke Motor Controllera - zatrzymanie silnikow.\n");
     for (uint8_t i=0; i<4; i++) {
         bus_motor.required_angle[i] = bus_motor.current_angle[i];
         bus_motor.required_speed[i] = 0;
@@ -167,13 +142,9 @@ void Timer_MotorTimeout() {
     #endif
 }
 
-//TODO: stop 6dof
-void Timer_ArmTimeout() {
+void Timer_ArmTimeout(TimerHandle_t xTimer) {
     #if TIMER_COMM_TIMEOUT_BYPASS == 0
-    debug_printf("[COMM] Przekroczono czas oczekiwania na cykliczna ramke Arm Controllera - zatrzymanie silnikow.\r\n");
-    // for (uint8_t i=0; i<6; i++) {
-    //     bus_arm.required_pos[i] = bus_arm.current_pos[i];
-    // }
+    debug_printf("Przekroczono czas oczekiwania na cykliczna ramke Arm Controllera - zatrzymanie silnikow.\n");
 
     // Switch 6DoF to velocity mode and hold in last state to prevent collision
     bus_arm_6dof.mode = ARM_6DOF_VELOCITY_MODE;
@@ -191,7 +162,7 @@ void Timer_ArmTimeout() {
 
 // --- TCAN ---
 
-void Timer_TCANUpdate() {
+void Timer_TCANUpdate(TimerHandle_t xTimer) {
 
     for(int i = 0; i < TCAN_DEFS_COUNT; i++) {
         TCAN114x_getInterrupts(&(tcan_defs[i].tcan));
@@ -209,10 +180,7 @@ void Timer_TCANUpdate() {
 
 // --- Health check ---
 
-void Timer_HealthCheck() {
+void Timer_HealthCheck(TimerHandle_t xTimer) {
     // Toggle LED
     GpioExpander_SetLed(LED_OK, on, 500);
-
-    // Report FreeRTOS memory usage
-    //debug_printf("Free: %0.2fKB / Worst: %0.2f\n", xPortGetFreeHeapSize() / 1024.f, xPortGetMinimumEverFreeHeapSize() / 1024.f);
 }

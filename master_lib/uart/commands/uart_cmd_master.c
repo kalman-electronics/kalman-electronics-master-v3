@@ -1,8 +1,7 @@
-//=====================================================================
-//                 komendy dodatkowe modulu Master v2
-//=====================================================================
-
 #include "uart_cmd.h"
+
+
+rf_status_t RF_status = ON;
 
 
 /**
@@ -112,20 +111,10 @@ void Cmd_UART_Master_ComputerReset(uint8_t *data, uart_packet_link_t link_type) 
 //TODO: verbosity select
 void Cmd_UART_Master_SetDebugInfo(uint8_t *data, uart_packet_link_t link_type) {
     if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
-        //if (logic_flash.debug_info & debug_comm_control) {
-            printf("[%s] Master SetDebugInfo INOP!: %d\r\n",
-                    (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
-                    data[0]);
-        //}
 
-        uint8_t info = data[0];
-        //if (info != logic_flash.debug_info) {
-        //    logic_flash.debug_info = data[0];
-        //    Logic_Flash_Write();
-        //}
+		Cmd_UART_BlinkLed(link_type);
 
-        Cmd_UART_BlinkLed(link_type);
-    }
+	}
 }
 
 
@@ -175,4 +164,9 @@ void Cmd_UART_Master_GetDetailedStatus(void) {
 
         //Uarts_SendFrame(link, CMD_MASTER_GET_DETAILED_STATUS, ARG_MASTER_GET_DETAILED_STATUS, args);
     }
+}
+
+//silent mode to limit interference
+void Cmd_UART_SilentMode(uint8_t* data, uart_packet_link_t link_type) {
+	RF_status = data[0];
 }

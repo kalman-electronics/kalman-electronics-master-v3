@@ -1,7 +1,7 @@
 #ifndef KALMAN_ELECTRONICS_MASTER_V3_UART_PACKET_H
 #define KALMAN_ELECTRONICS_MASTER_V3_UART_PACKET_H
 
-#include "stdint.h"
+#include <stdint.h>
 #include "config.h"
 
 typedef enum {

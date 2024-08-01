@@ -1,12 +1,9 @@
-#include <string.h>
 #include "can_cmd.h"
 #include "hw/hw.h"
 
 /*
  *  RX Frames
  */
-
-//TODO: ramki RESET_ALL i RESET_DEVICE obsluzone wewnatrz modulu CANlib_v2 - patrz CANlib_ResetAll i CANlib_ResetDevice
 
 /**
  * Zwraca informacje o konfiguracji PID modułu. Jedna ramka dotyczy jednego silnika. Po odebraniu ramki typu GET_PID_REQUEST, kontroler musi wysłać po jednej ramce dla każdego użytego regulatora PID.
@@ -15,20 +12,9 @@
  * @param count     ilość odebranych danych w ramce
  */
 void Cmd_Bus_Common_GetPid(uint8_t *data) {
-    debug_printf("[CAN] GetPid, args=");
-    for (uint16_t i=0; i < CAN_ARG_GET_PID; i++) {
-        debug_printf("%02x ", data[i]);
-    }
-    debug_printf("\r\n");
-
-    uint16_t p = ((uint16_t)data[0] << 8) + data[1];
-    uint8_t i = data[2],
-            d = data[3],
-            min = data[4],
-            max = data[5];
+	//TODO: delete this
     can_device_t id = data[6];
-    uint8_t flags = data[7];
-    //TODO:CMD Cmd_Common_GetPid(p, i, d, min, max, id, flags);
+
 
     if      (id == DEVICE_MOTOR)    { GpioExpander_SetLed(LED_MOTOR, on, 20);; }
     else if (id == DEVICE_ARM)      { GpioExpander_SetLed(LED_ARM, on, 20); }

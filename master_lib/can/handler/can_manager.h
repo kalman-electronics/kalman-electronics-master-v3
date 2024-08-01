@@ -27,6 +27,6 @@
 
 #define CANLIB_RX_LIST_COUNT            10
 
-void CanManager_Task();
+void CanManager_Task(void *argument);
 
 #endif //KALMAN_ELECTRONICS_MASTER_V3_CAN_MANAGER_H

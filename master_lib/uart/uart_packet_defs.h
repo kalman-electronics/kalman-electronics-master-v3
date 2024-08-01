@@ -6,7 +6,8 @@
 
 #define UART_PACKET_DEFS_LEN (sizeof(uart_packet_defs)/sizeof(uart_packet_def_t))
 
-static uart_packet_def_t uart_packet_defs[] = {
+// it's not unused, but it's included in multiple files, so it's not detected. __unused is used to suppress the warning
+__unused static uart_packet_def_t uart_packet_defs[] = {
         // --- Common ---
         {
             .cmd = UART_CMD_COMMON_RESET_ALL,
@@ -333,7 +334,7 @@ static uart_packet_def_t uart_packet_defs[] = {
         {
             .cmd = UART_CMD_SILENT_MODE,
             .arg_count = UART_ARG_SILENT_MODE,
-            .execute = Cmd_UART_SILENT_MODE
+            .execute = Cmd_UART_SilentMode
 
         },
 

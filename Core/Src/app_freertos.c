@@ -89,16 +89,6 @@ void vApplicationStackOverflowHook(TaskHandle_t xTask, signed char *pcTaskName)
 /* USER CODE END 4 */
 
 /* USER CODE BEGIN 5 */
-void StatusTask() {
-	while (1) {
-		debug_printf("Queue backlog RX: %d TX: %d\n", (int)uxQueueMessagesWaiting(uart_handler_incoming_packet_queue), (int)uxQueueMessagesWaiting(uart_handler_outgoing_packet_queue));
-		debug_printf("Parser  [0] head: %d tail: %d\n", parser_defs[0].rx_parser_buf_head, parser_defs[0].rx_parser_buf_tail);
-		debug_printf("Encoder [0] head: %d tail: %d\n", encoder_defs[0].tx_dma_buf_head, encoder_defs[0].tx_dma_buf_tail);
-
-		vTaskDelay(500 / portTICK_PERIOD_MS);
-	}
-}
-
 void vApplicationMallocFailedHook(void)
 {
    /* vApplicationMallocFailedHook() will only be called if

@@ -1,7 +1,6 @@
 #include <string.h>
 #include "can_cmd.h"
 #include "hw/hw.h"
-#include "uart/commands/uart_cmd.h"
 
 //TODO: rename
 
@@ -104,7 +103,7 @@ void Cmd_Bus_Arm6DOF_SetGripper() {
 		.arg_count = CAN_ARG_ARM_6DOF_SET_GRIPPER,
 	};
 
-	memcpy(msg.args, &bus_arm_6dof.gripper, CAN_ARG_ARM_6DOF_SET_GRIPPER);
+	memcpy(msg.args, (const void*)&bus_arm_6dof.gripper, CAN_ARG_ARM_6DOF_SET_GRIPPER);
 
 	Queues_SendCANFrame(&msg);
 }

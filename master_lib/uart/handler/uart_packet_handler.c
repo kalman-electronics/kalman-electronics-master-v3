@@ -7,7 +7,7 @@
 
 void UARTHandler_ProcessPacket(uart_packet_t* msg);
 
-void UARTHandler_Task() {
+void UARTHandler_Task(void *argument) {
     uart_packet_t msg;
 
     while(1) {
@@ -22,7 +22,7 @@ void UARTHandler_Task() {
 //TODO: Fix different args in custom callback functions
 void UARTHandler_ProcessPacket(uart_packet_t* msg) {
     // Find and validate packet handler
-    for (int i = 0; i < UART_PACKET_DEFS_LEN; i ++) {
+    for (uint32_t i = 0; i < UART_PACKET_DEFS_LEN; i ++) {
         if (uart_packet_defs[i].cmd == msg->cmd) {
             // Check packet arguments (skip on custom frame)
         	if (UART_PACKET_IS_CUSTOM(msg->cmd)) {

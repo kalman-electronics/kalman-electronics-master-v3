@@ -1,10 +1,7 @@
 #include <stdlib.h>
 #include "uart_parser.h"
 #include "uart/uart_packet_defs.h"
-#include "usart.h"
 #include "string.h"
-#include "FreeRTOS.h"
-#include "task.h"
 
 #define MIN(a, b) ((a) > (b) ? (b) : (a))
 #define PARSER_READ_BYTE() (parser->rx_parser_buf[parser->rx_parser_buf_tail++])
@@ -103,13 +100,6 @@ void UARTParser_ParseBuf(uart_parser_t* parser) {
                 	break;
                 }
 
-                // Drop regular packets over 16 bytes long as they SHOULD not appear
-				#warning "Parser drops frames over 16 bytes long - URC hotfix"
-                if (parser->packet.arg_count > 16 && !UART_PACKET_IS_CUSTOM(parser->packet.cmd)) {
-                	parser->state = UART_PARSER_WAITING;
-                	break;
-                }
-
                 // For packet without arguments skip data acq phase
                 if (parser->packet.arg_count != 0) {
                     parser->state = UART_PARSER_DATA;
@@ -154,10 +144,9 @@ void UARTParser_ParseBuf(uart_parser_t* parser) {
                 if (crc == PARSER_READ_BYTE()) {
                 	parser->packet.origin = UARTPacket_UARTIDToLink(parser->uart->id);
 
-					if (!xQueueSend(uart_handler_incoming_packet_queue, &(parser->packet), 0))
+					if (!xQueueSend(uart_handler_incoming_packet_queue, &(parser->packet), 0)) {
 						debug_printf("UART msg queue full\n");
-
-
+					}
                 } else {
 					debug_printf("CRC Error\n");
                 }
@@ -167,12 +156,13 @@ void UARTParser_ParseBuf(uart_parser_t* parser) {
         }
 
         // Loop over
-        if (parser->rx_parser_buf_tail == UART_PARSER_PARSER_BUF_SIZE)
-            parser->rx_parser_buf_tail = 0;
+        if (parser->rx_parser_buf_tail == UART_PARSER_PARSER_BUF_SIZE) {
+	        parser->rx_parser_buf_tail = 0;
+        }
 	}
 }
 
-void UARTParser_Task() {
+void UARTParser_Task(void *argument) {
 	// Start DMA reception and disable HT interrupt
 	for (int i = 0; i < UART_DEFS_COUNT; i++) {
         parser_defs[i].uart = &uart_defs[i];

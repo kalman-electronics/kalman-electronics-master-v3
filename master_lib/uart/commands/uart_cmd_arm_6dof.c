@@ -239,8 +239,8 @@ void Cmd_UART_Arm6DOF_GetPos_helper(uart_packet_link_t link_type) {
 void Cmd_UART_Arm6DOF_GetGripper() {
 	if ((logic.link_type == LINK_RF_UART) || (logic.link_type == LINK_AUTO_UART)) {
 		uart_packet_t msg = {
-			.cmd = CAN_CMD_ARM_6DOF_GET_GRIPPER,
-			.arg_count = CAN_ARG_ARM_6DOF_GET_GRIPPER,
+			.cmd = UART_CMD_ARM_6DOF_GET_GRIPPER,
+			.arg_count = UART_ARG_ARM_6DOF_GET_GRIPPER,
 			.origin = logic.link_type,
 		};
 

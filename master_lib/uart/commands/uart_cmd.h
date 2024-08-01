@@ -124,6 +124,7 @@ void Cmd_UART_Common_DebugRx(uint8_t *data, can_device_t id);
 void Cmd_UART_Master_SetLinkResponse(uart_packet_link_t new_link);
 void Cmd_UART_Master_GetBasicStatus(void);
 void Cmd_UART_Master_GetDetailedStatus(void);
+void Cmd_UART_SilentMode(uint8_t* data, uart_packet_link_t link_type);
 
 // --- Motor ---
 void Cmd_UART_Motor_GetWheels(void);
@@ -136,7 +137,7 @@ void Cmd_UART_Arm6DOF_GetGripper();
 
 void Cmd_UART_ARM_CM4(uint8_t* data, uart_packet_link_t link_type);
 
-void Cmd_UART_SILENT_MODE(uint8_t* data, uart_packet_link_t link_type);
+
 
 // --- Universal ---
 

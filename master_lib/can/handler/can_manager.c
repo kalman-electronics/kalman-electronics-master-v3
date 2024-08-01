@@ -19,7 +19,7 @@ const uint8_t canlib_rx_list[CANLIB_RX_LIST_COUNT] = {
 
 void CanManager_FilterConfig();
 
-void CanManager_Task() {
+void CanManager_Task(void *argument) {
 
 	for(int i = 0; i < FDCAN_DEFS_COUNT; i++) {
 		HAL_FDCAN_DeInit(fdcan_defs[i].fdcan_handle);
@@ -36,7 +36,7 @@ void CanManager_Task() {
 		HAL_FDCAN_ActivateNotification(fdcan_defs[i].fdcan_handle, FDCAN_IT_LIST_RX_FIFO0, 0);
 		HAL_FDCAN_ActivateNotification(fdcan_defs[i].fdcan_handle, FDCAN_IT_LIST_TX_FIFO_ERROR, 0);
 
-        /* Disabling arbitration protocol error */ #warning FDCAN_FLAG_ARB_PROTOCOL_ERROR disabled
+        /* Disabling arbitration protocol error */
 		HAL_FDCAN_ActivateNotification(fdcan_defs[i].fdcan_handle, FDCAN_IT_LIST_PROTOCOL_ERROR & ~FDCAN_FLAG_ARB_PROTOCOL_ERROR, 0);
 
         HAL_GPIO_WritePin(tcan_defs[i].cs.port, tcan_defs[i].cs.pin, GPIO_PIN_SET);

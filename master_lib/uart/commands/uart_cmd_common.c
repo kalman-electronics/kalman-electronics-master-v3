@@ -7,8 +7,6 @@
 #include "can/commands/can_cmd.h"
 #include "shared/common.h"
 
-rf_status_t RF_status = ON;
-
 /*
  *  RX Frames
  */
@@ -200,7 +198,3 @@ void Cmd_UART_Common_DebugRx(uint8_t *data, can_device_t id) {
 }
 
 
-//silent mode to limit interference
-void Cmd_UART_SILENT_MODE(uint8_t* data, uart_packet_link_t link_type) {
-    RF_status = data[0];
-}
