@@ -5,6 +5,9 @@
 #include "shared/common.h"
 #include "uart/uart_packet_defs.h"
 
+StaticTask_t UARTHandlerTaskBuffer;
+StackType_t UARTHandlerTaskStack[UART_HANDLER_TASK_STACK_SIZE];
+
 void UARTHandler_ProcessPacket(uart_packet_t* msg);
 
 void UARTHandler_Task(void *argument) {

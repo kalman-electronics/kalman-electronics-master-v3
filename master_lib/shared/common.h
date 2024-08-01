@@ -15,7 +15,18 @@
     #warning "Arm & Motor timeouts disabled on master, if you don't know what are you doing change TIMER_COMM_TIMEOUT_BYPASS to 0!"
 #endif
 
-extern TaskHandle_t UARTParser_TaskHandle;
+// GPIO Expander
+extern TaskHandle_t GpioExpanderTaskHandle;
+// UART
+extern TaskHandle_t UARTParserTaskHandle;
+extern TaskHandle_t UARTHandlerTaskHandle;
+extern TaskHandle_t UARTEncoderTaskHandle;
+// CAN
+extern TaskHandle_t CANManagerTaskHandle;
+extern TaskHandle_t CANHandlerTaskHandle;
+
+
+
 
 typedef enum {
     ON = 1,

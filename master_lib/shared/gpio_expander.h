@@ -6,6 +6,13 @@
 
 #define GPIOEXPANDER_I2C_ADDR (0b1110100 << 1)
 #define GPIOEXPANDER_CHANNEL_COUNT 16
+
+#define GPIO_EXPANDER_TASK_PRIORITY 5
+#define GPIO_EXPANDER_TASK_STACK_SIZE 128
+extern StaticTask_t GPIOExpanderTaskBuffer;
+extern StackType_t GPIOExpanderTaskStack[GPIO_EXPANDER_TASK_STACK_SIZE];
+
+
 #define on 1
 #define off 0
 

@@ -12,12 +12,15 @@
 
 #define TIMER_COUNT 9
 
+typedef struct {
+	TimerHandle_t handle;
+	StaticTimer_t buffer;
+} timer_t;
+
 #define TIMER_MOTOR_TIMEOUT_TIME 1100
 #define TIMER_ARM_TIMEOUT_TIME   500
 
-//TODO: timer struct and dynamic init
-
-extern TimerHandle_t timer_defs[TIMER_COUNT];
+extern timer_t timer_defs[TIMER_COUNT];
 
 typedef enum {
     TIMER_CAN_TRAFFIC_SET_ARM,

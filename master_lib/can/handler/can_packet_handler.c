@@ -1,9 +1,11 @@
 #include "can_packet_handler.h"
 #include "can/can_packet.h"
-#include "FreeRTOS.h"
 #include "queue.h"
 #include "shared/common.h"
 #include "can/can_packet_defs.h"
+
+StaticTask_t CANHandlerTaskBuffer;
+StackType_t CANHandlerTaskStack[CAN_HANDLER_TASK_STACK_SIZE];
 
 void CANHandler_ProcessPacket(can_packet_t* msg);
 

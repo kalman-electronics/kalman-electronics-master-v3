@@ -4,6 +4,11 @@
 #include "shared/common.h"
 #include "uart/uart_packet.h"
 
+#define UART_PARSER_TASK_PRIORITY 6
+#define UART_PARSER_TASK_STACK_SIZE 1024
+extern StaticTask_t UARTParserTaskBuffer;
+extern StackType_t UARTParserTaskStack[UART_PARSER_TASK_STACK_SIZE];
+
 #define UART_PARSER_KBX_START_CHAR '<'
 
 #define UART_PARSER_DMA_BUF_SIZE    32
