@@ -4,7 +4,6 @@
 #include "arm_6dof.h"
 #include "motor.h"
 #include "science.h"
-#include "universal.h"
 #include "mobilab.h"
 
 #define BUS_UNIVERSAL_COUNT 1
@@ -13,7 +12,6 @@
 
 extern volatile motor_controller_t bus_motor;
 extern volatile arm_6dof_controller_t bus_arm_6dof;
-extern volatile universal_t bus_universal[BUS_UNIVERSAL_COUNT];
 extern volatile science_t bus_science[BUS_SCIENCE_COUNT];
 extern volatile mobilab_t bus_mobilab[BUS_MOBILAB_COUNT];
 

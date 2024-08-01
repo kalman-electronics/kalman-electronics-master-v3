@@ -14,11 +14,6 @@ __unused static uart_packet_def_t uart_packet_defs[] = {
             .arg_count = UART_ARG_MASTER_SET_LINK,
             .execute = Cmd_UART_Master_SetLink,
         },
-        {
-            .cmd = UART_CMD_MASTER_SET_STATUS_MODE,
-            .arg_count = UART_ARG_MASTER_SET_STATUS_MODE,
-            .execute = Cmd_UART_Master_SetStatusMode,
-        },
         // --- Motor ---
         {
             .cmd = UART_CMD_MOTOR_SET_WHEELS,
@@ -212,11 +207,6 @@ __unused static uart_packet_def_t uart_packet_defs[] = {
             .cmd = UART_CMD_UNIVERSAL_SET_GPIO,
             .arg_count = UART_ARG_UNIVERSAL_SET_GPIO,
             .execute = Cmd_UART_Universal_SetGpio,
-        },
-        {
-            .cmd = UART_CMD_UNIVERSAL_GET_WEIGHT_REQUEST,
-            .arg_count = UART_ARG_UNIVERSAL_GET_WEIGHT_REQUEST,
-            .execute = Cmd_UART_Universal_GetWeightRequest,
         },
 
         // --- Science ---

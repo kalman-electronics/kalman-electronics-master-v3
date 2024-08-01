@@ -36,37 +36,6 @@ void Cmd_UART_Master_SetLink(uint8_t *data, uart_packet_link_t link_type) {
     Cmd_UART_BlinkLed(link_type);
 }
 
-
-
-/**
- * Wybór trybu zwracania przez moduł Master ramek statusowych.
- * @param data      wskaźnik na bufor odebranych danych
- * @param link_type łącze komunikacyjne, na którym odebrano ramkę
- */
-void Cmd_UART_Master_SetStatusMode(uint8_t *data, uart_packet_link_t link_type) {
-    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
-        //if (logic_flash.debug_info & debug_comm_control) {
-            printf("[%s] Master SetStatusMode INOP!: %d\r\n",
-                    (link_type == LINK_RF_UART ? "RF" : "WiFi/Auto"),
-                    data[0]);
-        //}
-
-        //TODO: verbosity select
-        uint8_t mode = data[0];
-        if (mode == 0) {
-            //logic.status_mode = status_mode_none;
-        }
-        else if (mode == 1) {
-            //logic.status_mode = status_mode_basic;
-        }
-        else if (mode == 2) {
-            //logic.status_mode = status_mode_detailed;
-        }
-
-        Cmd_UART_BlinkLed(link_type);
-    }
-}
-
 /**
  * Zwracanie potwierdzenia zmiany łącza komunikacyjnego, po odebraniu komendy Cmd_Master_SetLink. Ramka zwracana jest jeszcze na poprzednim łączu (tzn. odsyłana jest przed zmianą).
  */
@@ -79,39 +48,6 @@ void Cmd_UART_Master_SetLinkResponse(uart_packet_link_t new_link) {
     };
 
     Queues_SendUARTFrame(&msg);
-}
-
-
-
-/**
- * Zwracanie podstawowych statusów pracy systemu elektroniki. Ramka wysyłana jest tylko wtedy, gdy ustawiono odpowiedni tryb (patrz Cmd_Master_SetStatusMode).
- */
-void Cmd_UART_Master_GetBasicStatus(void) {
-    uart_packet_link_t link = logic.link_type;
-    if ((link == LINK_RF_UART) || (link == LINK_AUTO_UART)) {
-        //static uint8_t args[ARG_MASTER_GET_BASIC_STATUS];
-
-        //todo uzupelnic komende Master_GetBasicStatus
-        //widze ze nie tylko mi sie nie chcialo ~mily
-
-        //Uarts_SendFrame(link, CMD_MASTER_GET_BASIC_STATUS, ARG_MASTER_GET_BASIC_STATUS, args);
-    }
-}
-
-
-
-/**
- * Zwracanie szczegółowych statusów pracy systemu elektroniki. Ramka wysyłana jest tylko wtedy, gdy ustawiono odpowiedni tryb (patrz Cmd_Master_SetStatusMode).
- */
-void Cmd_UART_Master_GetDetailedStatus(void) {
-    uart_packet_link_t link = logic.link_type;
-    if ((link == LINK_RF_UART) || (link == LINK_AUTO_UART)) {
-        //static uint8_t args[ARG_MASTER_GET_DETAILED_STATUS];
-
-        //todo uzupelnic komende Master_GetDetailedStatus
-
-        //Uarts_SendFrame(link, CMD_MASTER_GET_DETAILED_STATUS, ARG_MASTER_GET_DETAILED_STATUS, args);
-    }
 }
 
 //silent mode to limit interference

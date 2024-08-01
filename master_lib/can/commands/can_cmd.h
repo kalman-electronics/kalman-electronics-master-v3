@@ -27,9 +27,6 @@ void Cmd_Bus_Universal_InputResponse(uint8_t *data);
 void Cmd_Bus_Universal_StepperPositionResponse(uint8_t *data);
 void Cmd_Bus_Universal_AutomationSequenceStateResponse(uint8_t* data);
 
-void Cmd_Bus_Universal_GetWeight(uint8_t* data);
-void Cmd_Bus_Universal_GetStatus(uint8_t* data);
-
 // --- Science ---
 void Cmd_Bus_Science_GetTemperature1(uint8_t* data);
 void Cmd_Bus_Science_GetTemperature2(uint8_t* data);
@@ -55,7 +52,6 @@ void Cmd_Bus_Drill_GetWeight(uint8_t* data);
 // --- Motor ---
 void Cmd_Bus_Motor_SetWheels();
 void Cmd_Bus_Motor_Calibrate(uint8_t channel);
-//void Cmd_Bus_Motor_DebugTx(uint8_t* data);
 
 // --- Arm 6DoF
 void Cmd_Bus_Arm6DOF_SetPosVel();
@@ -84,7 +80,6 @@ void Cmd_Bus_Ueuos_SetColor(const uint8_t* data);
 void Cmd_Bus_Ueuos_SetEffect(const uint8_t* data);
 
 // --- Universal ---
-
 void Cmd_Bus_Universal_SetDigitalOutput(uint8_t* data);
 void Cmd_Bus_Universal_SetPWMOutput(uint8_t* data);
 void Cmd_Bus_Universal_SetLEDDriver(uint8_t* data);
@@ -96,7 +91,6 @@ void Cmd_Bus_Universal_InputRequest(uint8_t* data);
 void Cmd_Bus_Universal_StepperPositionRequest(uint8_t* data);
 void Cmd_Bus_Universal_AutomationSequenceBeginRequest(uint8_t* data);
 void Cmd_Bus_Universal_AutomationSequenceStateRequest(uint8_t* data);
-
 void Cmd_Bus_Universal_SetBridge(uint8_t id, uint8_t flags, uint8_t* data);
 void Cmd_Bus_Universal_SetServo(uint8_t id, uint8_t flags, uint8_t* data);
 void Cmd_Bus_Universal_SetPwm(uint8_t id, uint8_t flags, uint8_t *data);

@@ -7,45 +7,7 @@
  *  RX Frames
  */
 
-/**
- * Zwracanie aktualnej surowej wartości odczytu z belki tensometrycznej. Jedna ramka dotyczy tylko jednej belki
- * @param data      wskaznik na bufor odebranych danych
- * @param count     ilosc odebranych danych w ramce
- */
-void Cmd_Bus_Universal_GetWeight(uint8_t* data) {
-    for (uint16_t index = 0; index < BUS_UNIVERSAL_COUNT; index++) {
-        if (data[0] == bus_universal[index].id) {
-            //znaleziono strukture odpowiadajaca modulowi o ID odczytanym z ramki
 
-            //indeks belki - nieuzywany
-            bus_universal[index].loadcell_value = (int32_t)(((uint32_t)data[2] << 24UL) | ((uint32_t)data[3] << 16UL) | ((uint32_t)data[4] << 8UL) | ((uint32_t)data[5]));
-
-            break;
-        }
-    }
-
-    GpioExpander_SetLed(LED_UNIVERSAL2, on, 20);
-}
-
-/**
- * Odczytywanie aktualnych statusów podsystemów i danych kontrolnych.
- * @param data      wskaźnik na bufor odebranych danych
- * @param count     ilość odebranych danych w ramce
- */
-void Cmd_Bus_Universal_GetStatus(uint8_t* data) {
-    for (uint16_t index = 0; index < BUS_UNIVERSAL_COUNT; index++) {
-        if (data[0] == bus_universal[index].id) {
-            //znaleziono strukture odpowiadajaca modulowi o ID odczytanym z ramki
-
-            bus_universal[index].status = data[1];
-            bus_universal[index].supply_voltage = data[2];
-
-            break;
-        }
-    }
-
-    GpioExpander_SetLed(LED_UNIVERSAL2, on, 20);
-}
 
 /*
  *  TX Frames
@@ -248,22 +210,6 @@ void Cmd_Bus_Universal_SetGpio(uint8_t id, uint8_t flags1, uint8_t flags2, uint8
         .arg_count = CAN_ARG_UNIVERSAL_SET_GPIO,
         .args = {id, flags1, flags2, gpio1, gpio2},
     };
-
-    Queues_SendCANFrame(&msg);
-}
-
-
-
-/**
- * Ramka na potrzeby testów i rozwoju oprogramowania. Przekazywana kontrolerowi transparentnie, bez ingerencji.
- * @param data      wskaźnik na 8-bajtowy bufor danych
- */
-void Cmd_Bus_Universal_DebugTx(uint8_t* data) {
-    can_packet_t msg = {
-            .cmd = CAN_CMD_UNIVERSAL_DEBUG_TX,
-            .arg_count = CAN_ARG_UNIVERSAL_DEBUG_TX,
-    };
-    memcpy(msg.args, data, 8);
 
     Queues_SendCANFrame(&msg);
 }

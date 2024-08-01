@@ -12,7 +12,6 @@
 
 // --- Master ---
 void Cmd_UART_Master_SetLink(uint8_t* data, uart_packet_link_t link_type);
-void Cmd_UART_Master_SetStatusMode(uint8_t* data, uart_packet_link_t link_type);
 
 // --- Motor ---
 void Cmd_UART_Motor_SetWheels(uint8_t* data, uart_packet_link_t link_type);
@@ -61,7 +60,6 @@ void Cmd_UART_Universal_SetBridge(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Universal_SetServo(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Universal_SetPwm(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Universal_SetGpio(uint8_t* data, uart_packet_link_t link_type);
-void Cmd_UART_Universal_GetWeightRequest(uint8_t* data, uart_packet_link_t link_type);
 
 // --- Science ---
 void Cmd_UART_Science_GetSamplesRequest(uint8_t* data, uart_packet_link_t link_type);
@@ -114,9 +112,6 @@ void Cmd_UART_Universal_WeightResponse(uint8_t* data);
 void Cmd_UART_Universal_InputResponse(uint8_t* data);
 void Cmd_UART_Universal_StepperPositionResponse(uint8_t* data);
 void Cmd_UART_Universal_AutomationSequenceStateResponse(uint8_t* data);
-
-void Cmd_UART_Universal_GetWeight(uint8_t id, uint8_t loadcell_index);
-
 // --- Science ---
 void Cmd_UART_Science_GetAtmosphere(uint8_t id);
 void Cmd_UART_Science_GetWeight(uint8_t id, uint8_t loadcell_index);
