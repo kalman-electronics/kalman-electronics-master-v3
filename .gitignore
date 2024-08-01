@@ -26,6 +26,9 @@ Release/
 .idea/
 .vscode/
 
+### CubeIDE ###
+config_default/
+
 
 ### Utils python venv ###
 venv/
