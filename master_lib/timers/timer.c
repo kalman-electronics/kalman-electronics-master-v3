@@ -5,74 +5,92 @@
 #include "uart/commands/uart_cmd.h"
 
 
-TimerHandle_t timer_defs[TIMER_COUNT];
+timer_t timer_defs[TIMER_COUNT];
 
 void Timer_Init(void) {
-    timer_defs[TIMER_CAN_TRAFFIC_SET_ARM] = xTimerCreate(
+    timer_defs[TIMER_CAN_TRAFFIC_SET_ARM].handle = xTimerCreateStatic(
             "CAN_TrafficSetArm",
             150 / portTICK_PERIOD_MS,
             pdTRUE,
             0,
-            Timer_CAN_TrafficSetArm);
+            Timer_CAN_TrafficSetArm,
+			&timer_defs[TIMER_CAN_TRAFFIC_SET_ARM].buffer
+	);
 
-    timer_defs[TIMER_CAN_TRAFFIC_SET_MOTOR] = xTimerCreate(
+    timer_defs[TIMER_CAN_TRAFFIC_SET_MOTOR].handle = xTimerCreateStatic(
             "CAN_TrafficSetMotor",
             150 / portTICK_PERIOD_MS,
             pdTRUE,
             0,
-            Timer_CAN_TrafficSetMotor);
+            Timer_CAN_TrafficSetMotor,
+			&timer_defs[TIMER_CAN_TRAFFIC_SET_MOTOR].buffer
+	);
 
-    timer_defs[TIMER_UART_TRAFFIC_6DOF] = xTimerCreate(
+    timer_defs[TIMER_UART_TRAFFIC_6DOF].handle = xTimerCreateStatic(
             "CAN_Traffic6DoF",
             100 / portTICK_PERIOD_MS,
             pdTRUE,
             0,
-            Timer_UART_Traffic6DoF);
+            Timer_UART_Traffic6DoF,
+			&timer_defs[TIMER_UART_TRAFFIC_6DOF].buffer
+	);
 
-    timer_defs[TIMER_UART_TRAFFIC_MOTOR] = xTimerCreate(
+    timer_defs[TIMER_UART_TRAFFIC_MOTOR].handle = xTimerCreateStatic(
             "UART_TrafficMotor",
             500 / portTICK_PERIOD_MS,
             pdTRUE,
             0,
-            Timer_UART_TrafficMotor);
+            Timer_UART_TrafficMotor,
+			&timer_defs[TIMER_UART_TRAFFIC_MOTOR].buffer
+	);
 
-    timer_defs[TIMER_UART_TRAFFIC_MOTOR_TEMP] = xTimerCreate(
+    timer_defs[TIMER_UART_TRAFFIC_MOTOR_TEMP].handle = xTimerCreateStatic(
             "UART_TrafficMotorTemp",
             2000 / portTICK_PERIOD_MS,
             pdTRUE,
             0,
-            Timer_UART_TrafficMotorTemp);
+            Timer_UART_TrafficMotorTemp,
+			&timer_defs[TIMER_UART_TRAFFIC_MOTOR_TEMP].buffer
+	);
 
     // --- Timeouts ---
 
-    timer_defs[TIMER_MOTOR_TIMEOUT] = xTimerCreate(
+    timer_defs[TIMER_MOTOR_TIMEOUT].handle = xTimerCreateStatic(
             "Timeout_Motor",
             TIMER_MOTOR_TIMEOUT_TIME / portTICK_PERIOD_MS,
             pdFALSE,
             0,
-            Timer_MotorTimeout);
+            Timer_MotorTimeout,
+			&timer_defs[TIMER_MOTOR_TIMEOUT].buffer
+	);
 
-    timer_defs[TIMER_ARM_TIMEOUT] = xTimerCreate(
+    timer_defs[TIMER_ARM_TIMEOUT].handle = xTimerCreateStatic(
             "Timeout_Arm",
             TIMER_ARM_TIMEOUT_TIME / portTICK_PERIOD_MS,
             pdFALSE,
             0,
-            Timer_ArmTimeout);
+            Timer_ArmTimeout,
+			&timer_defs[TIMER_ARM_TIMEOUT].buffer
+	);
 
-    timer_defs[TIMER_TCAN] = xTimerCreate(
+    timer_defs[TIMER_TCAN].handle = xTimerCreateStatic(
             "TCAN_Update",
             1000 / portTICK_PERIOD_MS,
             pdTRUE,
             0,
-            Timer_TCANUpdate);
+            Timer_TCANUpdate,
+			&timer_defs[TIMER_TCAN].buffer
+	);
 
     // --- Health check ---
-    timer_defs[TIMER_HEALTH_CHECK] = xTimerCreate(
+    timer_defs[TIMER_HEALTH_CHECK].handle = xTimerCreateStatic(
             "HealthCheck",
             1000 / portTICK_PERIOD_MS,
             pdTRUE,
             0,
-            Timer_HealthCheck);
+            Timer_HealthCheck,
+			&timer_defs[TIMER_HEALTH_CHECK].buffer
+	);
 
     Timer_Start();
 }
@@ -80,17 +98,17 @@ void Timer_Init(void) {
 void Timer_Start(void) {
     // Start all timers
     for (int i = 0; i < TIMER_COUNT; i++) {
-        configASSERT(xTimerStart(timer_defs[i], portMAX_DELAY));
+        configASSERT(xTimerStart(timer_defs[i].handle, portMAX_DELAY));
     }
 }
 
 void Timer_ResetTimeout(timer_id timer) {
     //TODO: timer validation
-    TimerHandle_t t_handle = timer_defs[timer];
+    TimerHandle_t t_handle = timer_defs[timer].handle;
 
     // Reset timer timeout
     if (xTimerIsTimerActive(t_handle)) {
-        xTimerReset(timer_defs[timer], portMAX_DELAY);
+        xTimerReset(t_handle, portMAX_DELAY);
     }
     else { // Timeout has already fired, restart timer
         xTimerStart(t_handle, portMAX_DELAY);

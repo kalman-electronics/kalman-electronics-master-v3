@@ -9,8 +9,16 @@
 
 #define CANMANAGER_ACCEPT_ALL_FRAMES 0
 
+#define CAN_MANAGER_TASK_PRIORITY 9
+#define CAN_MANAGER_TASK_STACK_SIZE 1024
+
+extern StaticTask_t CANManagerTaskBuffer;
+extern StackType_t CANManagerTaskStack[CAN_MANAGER_TASK_STACK_SIZE];
+
+void CANManager_Task(void *argument);
+
+
 // --- CAN Filters
-//przyklad: filtr ramek Motor Controllera przepusci odebrana ramke tylko wtedy, gdy jej kod komendy zamaskowany wartoscia 0xF0 da wartosc 0x10
 
 #define CAN_FILTER_MASK                 0xF0
 #define CAN_FILTER_ID_COMMON            0x30
@@ -27,6 +35,5 @@
 
 #define CANLIB_RX_LIST_COUNT            10
 
-void CanManager_Task(void *argument);
 
 #endif //KALMAN_ELECTRONICS_MASTER_V3_CAN_MANAGER_H

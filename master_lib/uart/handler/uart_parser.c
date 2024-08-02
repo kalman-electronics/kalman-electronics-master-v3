@@ -8,6 +8,9 @@
 
 uart_parser_t parser_defs[UART_DEFS_COUNT];
 
+StaticTask_t UARTParserTaskBuffer;
+StackType_t UARTParserTaskStack[UART_PARSER_TASK_STACK_SIZE];
+
 void UARTParser_ParseBuf(uart_parser_t* parser);
 
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef* huart, uint16_t Size) {
@@ -56,7 +59,7 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef* huart, uint16_t Size) {
 
 	// Notify parser about new data on specific UART channel to be processed and yield
 	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
-	xTaskNotifyFromISR(UARTParser_TaskHandle,   1 << parser->uart->id, eSetBits, &xHigherPriorityTaskWoken);
+	xTaskNotifyFromISR(UARTParserTaskHandle, 1 << parser->uart->id, eSetBits, &xHigherPriorityTaskWoken);
 	portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 }
 

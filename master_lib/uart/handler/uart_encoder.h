@@ -4,6 +4,13 @@
 #include <stdint.h>
 #include "shared/common.h"
 
+
+#define UART_ENCODER_TASK_PRIORITY 8
+#define UART_ENCODER_TASK_STACK_SIZE 1024
+extern StaticTask_t UARTEncoderTaskBuffer;
+extern StackType_t UARTEncoderTaskStack[UART_ENCODER_TASK_STACK_SIZE];
+
+
 #define UART_ENCODER_DMA_BUF_SIZE 8192
 
 typedef enum {

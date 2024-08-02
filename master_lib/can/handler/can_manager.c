@@ -1,5 +1,8 @@
 #include "can_manager.h"
 
+
+StaticTask_t CANManagerTaskBuffer;
+StackType_t CANManagerTaskStack[CAN_MANAGER_TASK_STACK_SIZE];
 uint32_t can_status = 0;
 
 // --- CAN Filters
@@ -19,7 +22,7 @@ const uint8_t canlib_rx_list[CANLIB_RX_LIST_COUNT] = {
 
 void CanManager_FilterConfig();
 
-void CanManager_Task(void *argument) {
+void CANManager_Task(void *argument) {
 
 	for(int i = 0; i < FDCAN_DEFS_COUNT; i++) {
 		HAL_FDCAN_DeInit(fdcan_defs[i].fdcan_handle);

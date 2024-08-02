@@ -1,6 +1,10 @@
 #include <string.h>
 #include "uart_encoder.h"
 
+
+StaticTask_t UARTEncoderTaskBuffer;
+StackType_t UARTEncoderTaskStack[UART_ENCODER_TASK_STACK_SIZE];
+
 uart_encoder_t encoder_defs[UART_DEFS_COUNT];
 
 void UARTEncoder_EncodePacket(uart_encoder_t* encoder, uart_packet_t* msg);

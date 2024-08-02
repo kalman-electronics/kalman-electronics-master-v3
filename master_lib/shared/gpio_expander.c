@@ -1,8 +1,7 @@
 #include "gpio_expander.h"
-#include "FreeRTOS.h"
-#include "task.h"
 
-//TODO: code copied from HAL v3 project, cleanup this shit
+StaticTask_t GPIOExpanderTaskBuffer;
+StackType_t GPIOExpanderTaskStack[GPIO_EXPANDER_TASK_STACK_SIZE];
 
 I2C_HandleTypeDef* gpio_hi2c;
 uint16_t gpio_reg = 0;

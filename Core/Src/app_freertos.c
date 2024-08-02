@@ -26,14 +26,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
-#include "uart/handler/uart_parser.h"
-#include "uart/handler/uart_encoder.h"
-#include "uart/handler/uart_packet_handler.h"
-#include "can/handler/can_manager.h"
-#include "can/handler/can_packet_handler.h"
-#include "shared/gpio_expander.h"
-#include "shared/common.h"
-#include "stdio.h"
+#include "shared/tasks.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -55,7 +48,6 @@
 /* USER CODE BEGIN Variables */
 
 // Task handles
-TaskHandle_t UARTParser_TaskHandle;
 
 /* USER CODE END Variables */
 /* Definitions for idleTask */
@@ -135,13 +127,8 @@ void MX_FREERTOS_Init(void) {
   idleTaskHandle = osThreadNew(StartIdleTask, NULL, &idleTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
-    configASSERT(xTaskCreate(CanManager_Task,  "CAN_Manager",  512, NULL, 9,  NULL));
-    configASSERT(xTaskCreate(CANHandler_Task,  "CAN_Handler",  256, NULL, 10, NULL));
-    configASSERT(xTaskCreate(UARTParser_Task,  "UART_Parser",  1024, NULL, 6,  &UARTParser_TaskHandle));
-    configASSERT(xTaskCreate(UARTEncoder_Task, "UART_Encoder", 1024, NULL, 8,  NULL));
-    configASSERT(xTaskCreate(UARTHandler_Task, "UART_Handler", 512, NULL, 7,  NULL));
-    configASSERT(xTaskCreate(GpioExpander_Task, "GpioExpander", 128, NULL, 5,  NULL));
-    //configASSERT(xTaskCreate(StatusTask,       "status", 512, NULL, 5,  NULL));
+  createTasks();
+
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */
