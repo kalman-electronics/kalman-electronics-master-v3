@@ -47,9 +47,12 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 
 # Add sources to executable
 file(GLOB_RECURSE SOURCES "master_lib/*.c" "Src/*.c")
+# CubeMX randomly deletes the sources from the CMakeLists.txt file, so we need to add them manually
+file(GLOB_RECURSE STM32_SOURCES "Drivers/STM32G4xx_HAL_Driver/Src/*.c" "Core/Src/*.c" "Middlewares/Third_Party/FreeRTOS/Source/*.c")
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user sources here
     ${SOURCES}
+    ${STM32_SOURCES}
 )
 
 # Add include paths

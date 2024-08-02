@@ -25,6 +25,8 @@ extern TaskHandle_t UARTEncoderTaskHandle;
 extern TaskHandle_t CANManagerTaskHandle;
 extern TaskHandle_t CANHandlerTaskHandle;
 
+extern TaskHandle_t StatusInfoTaskHandle;
+
 
 
 

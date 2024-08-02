@@ -9,11 +9,16 @@
 #include "hw/hw.h"
 #include "timers/timer.h"
 
+// Redirect printf to debug UART
 int __io_putchar(int ch) {
-	HAL_UART_Transmit(PRINTF_UART_DEF, (uint8_t*)&ch, 1, 0xFFFF);
-	return ch;
-}
+	if (ch == '\n') {
+		uint8_t ch2 = '\r';
+		HAL_UART_Transmit(uart_defs[DEBUG_UART_ID].uart_handle, &ch2, 1, HAL_MAX_DELAY);
+	}
 
+	HAL_UART_Transmit(uart_defs[DEBUG_UART_ID].uart_handle, (uint8_t *) &ch, 1, HAL_MAX_DELAY);
+	return 1;
+}
 
 void Init() {
 	Queues_Init();

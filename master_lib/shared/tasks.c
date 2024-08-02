@@ -13,12 +13,16 @@
 #include "can/handler/can_manager.h"
 #include "can/handler/can_packet_handler.h"
 
+#include "status_info.h"
+
 TaskHandle_t GpioExpanderTaskHandle;
 TaskHandle_t UARTParserTaskHandle;
 TaskHandle_t UARTHandlerTaskHandle;
 TaskHandle_t UARTEncoderTaskHandle;
 TaskHandle_t CANManagerTaskHandle;
 TaskHandle_t CANHandlerTaskHandle;
+TaskHandle_t StatusInfoTaskHandle;
+
 
 void createTasks(void) {
 	GpioExpanderTaskHandle = xTaskCreateStatic(
@@ -81,10 +85,21 @@ void createTasks(void) {
 			&CANHandlerTaskBuffer
 	);
 
+	StatusInfoTaskHandle = xTaskCreateStatic(
+			StatusInfo_Task,
+			"Status Info Task",
+			STATUS_INFO_TASK_STACK_SIZE,
+			NULL,
+			STATUS_INFO_TASK_PRIORITY,
+			StatusInfoTaskStack,
+			&StatusInfoTaskBuffer
+	);
+
 	configASSERT(GpioExpanderTaskHandle);
 	configASSERT(UARTParserTaskHandle);
 	configASSERT(UARTHandlerTaskHandle);
 	configASSERT(UARTEncoderTaskHandle);
 	configASSERT(CANManagerTaskHandle);
 	configASSERT(CANHandlerTaskHandle);
+	configASSERT(StatusInfoTaskHandle);
 }
