@@ -5,7 +5,7 @@
 #include "task.h"
 
 #include "queues.h"
-#include "TCAN114x/TCAN114x.h"
+#include "tcan114x-driver//TCAN114x.h"
 #include "gpio_expander.h"
 #include "config.h"
 

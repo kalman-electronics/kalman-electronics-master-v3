@@ -13,7 +13,7 @@
 #include "main.h"
 #include <stdint.h>
 #include <stdio.h>
-#include "TCAN114x/TCAN114x.h"
+#include "tcan114x-driver//TCAN114x.h"
 
 
 typedef struct {
