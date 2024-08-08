@@ -1,0 +1,4 @@
+[submodule "master_lib/tcan114x-driver"]
+	path = master_lib/tcan114x-driver
+	#url = https://github.com/kalman-electronics/tcan114x-driver
+	url = git@github.com:kalman-electronics/tcan114x-driver.git
