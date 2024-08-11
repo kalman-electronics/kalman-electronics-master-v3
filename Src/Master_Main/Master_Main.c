@@ -3,7 +3,7 @@
 * @date 15.03.2024
 */
 
-#include "Program.h"
+#include "Master_Main.h"
 #include "shared/common.h"
 #include "shared/logic.h"
 #include "hw/hw.h"

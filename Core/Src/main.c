@@ -29,7 +29,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "Program.h"
+#include "Master_Main/Master_Main.h"
 
 /* USER CODE END Includes */
 
