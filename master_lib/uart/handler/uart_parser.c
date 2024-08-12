@@ -24,6 +24,7 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef* huart, uint16_t Size) {
 		}
 	}
 
+
 	// Check if parser is valid
 	if (parser == NULL) {
 		debug_printf("Unknown UART ID\n");

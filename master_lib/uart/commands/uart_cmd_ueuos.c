@@ -7,11 +7,8 @@
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Ueuos_SetState(uint8_t *data, uart_packet_link_t link_type) {
-    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
-        Cmd_Bus_Ueuos_SetState(data);
-
-        Cmd_UART_BlinkLed(link_type);
-    }
+    Cmd_Bus_Ueuos_SetState(data);
+    Cmd_UART_BlinkLed(link_type);
 }
 
 /**
@@ -20,11 +17,8 @@ void Cmd_UART_Ueuos_SetState(uint8_t *data, uart_packet_link_t link_type) {
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Ueuos_SetColor(uint8_t *data, uart_packet_link_t link_type) {
-    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
-        Cmd_Bus_Ueuos_SetColor(data);
-
-        Cmd_UART_BlinkLed(link_type);
-    }
+    Cmd_Bus_Ueuos_SetColor(data);
+    Cmd_UART_BlinkLed(link_type);
 }
 
 /**
@@ -33,9 +27,6 @@ void Cmd_UART_Ueuos_SetColor(uint8_t *data, uart_packet_link_t link_type) {
  * @param link_type lacze komunikacyjne, na ktorym odebrano ramke
  */
 void Cmd_UART_Ueuos_SetEffect(uint8_t *data, uart_packet_link_t link_type) {
-    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
-        Cmd_Bus_Ueuos_SetEffect(data);
-
-        Cmd_UART_BlinkLed(link_type);
-    }
+    Cmd_Bus_Ueuos_SetEffect(data);
+    Cmd_UART_BlinkLed(link_type);
 }

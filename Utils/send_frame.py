@@ -1,103 +1,66 @@
-import os
-import re
+#!/bin/python3
+
 from ctypes import c_uint8
 import serial
-import serial.tools.list_ports
+from typing import List, Deque
+import time
+import struct
 
-def list_available_ports():
-    if os.name == "nt":  # Windows
-        pattern = r"COM[0-9]+"
-    elif os.name == "posix":  # Linux
-        pattern = r"/dev/ttyACM[0-9]+|/dev/ttyUSB[0-9]+"
-    else:
-        pattern = ""
-
-    return [
-        port for port in serial.tools.list_ports.comports() if re.match(pattern, port.device)
-    ]
-
-def select_serial_port(ports):
-    print("Choose a serial port:")
-    for i, port in enumerate(ports):
-        print(f"\t{i}: {port.device} - {port.description}")
+with serial.Serial('/dev/ttyACM0', 115200, timeout=1) as ser:
     while True:
-        try:
-            port_index = int(input("Index: "))
-            if 0 <= port_index < len(ports):
-                return ports[port_index]
-            else:
-                print("Invalid index. Please try again.")
-        except ValueError:
-            print("Invalid input. Please enter a valid index.")
+        crc_data = []
+        crc = 0
 
-def calculate_crc_and_urc(cmd, args_uint8):
-    crc = c_uint8(cmd.value)
-    urc = c_uint8(0)
-    for arg in args_uint8:
-        crc = c_uint8(crc.value ^ arg.value)
-        urc = c_uint8((urc.value + arg.value) * ((arg.value & 0b11) + 1))
-    return crc, urc
-    
-def main():
-    ports = list_available_ports()
+        cmd = c_uint8(int(input("cmd:  ")))
+        #cmd = c_uint8(69)
+        crc_data.append(cmd)
 
-    if not ports:
-        print("No appropriate serial port found.")
-        exit(1)
 
-    port = select_serial_port(ports)
-    print(f"Chosen port: {port.device}")
+        args = input("args: ").split(' ')
+        #args = [0, 50]
+        if args[0] == "":
+            args = []
 
-    try:
-        with serial.Serial(port.device, 115200, timeout=1) as ser:
-            while True:
-                try:
-                    crc_data = []
-                    crc = 0
+        pos_str = input("pos: ")
 
-                    cmd = c_uint8(int(input("cmd:  ")))
-                    crc_data.append(cmd)
+        args_num = c_uint8(len(args))
+        args_uint8 = []
 
-                    args = input("args: ").split(' ')
-                    if args[0] == "":
-                        args = []
+        for arg in args:
+            args_uint8.append(c_uint8(int(arg)))
 
-                    args_num = c_uint8(len(args))
-                    args_uint8 = []
+        if pos_str != "":
+            pos = float(pos_str)
+            pos_args = bytearray(struct.pack("f", pos))
+            args_num = c_uint8(args_num.value + len(pos_args)) \
 
-                    for arg in args:
-                        args_uint8.append(c_uint8(int(arg)))
+            for arg in pos_args:
+                args_uint8.append(c_uint8(arg))
 
-                    crc = c_uint8(cmd.value ^ args_num.value)
-                    for arg in args_uint8:
-                        crc = c_uint8(crc.value ^ arg.value)
+        crc = c_uint8(cmd.value ^ args_num.value)
+        for arg in args_uint8:
+            crc = c_uint8(crc.value ^ arg.value)
 
-                    urc = c_uint8(0)
-                    for arg in args_uint8:
-                        urc = c_uint8((urc.value + arg.value) * ((arg.value & 0b11) + 1))
+        urc = c_uint8(0)
+        for i, arg in enumerate(args_uint8):
+            urc = c_uint8(urc.value + (i + arg.value) * ((i & 0b11) + 1))
 
-                    frame = [
-                        ord('<'),
-                        cmd.value,
-                        args_num.value,
-                        c_uint8(cmd.value + args_num.value).value
-                    ]
+        frame = [
+            ord('<'),
+            cmd.value,
+            args_num.value,
+            c_uint8(cmd.value + args_num.value).value
+        ]
 
-                    for arg in args_uint8:
-                        frame.append(arg.value)
+        for arg in args_uint8:
+            frame.append(arg.value)
 
-                    frame.append(crc.value)
-                    frame.append(urc.value)
+        frame.append(crc.value)
+        frame.append(urc.value)
 
-                    print(frame)
-                    ser.write(frame)
-                except ValueError:
-                    print("Invalid command or arguments. Please enter integers only.")
-                except serial.SerialException as e:
-                    print(f"Serial communication error: {e}")
-                    break
-    except serial.SerialException as e:
-        print(f"Failed to open serial port: {e}")
+        print(frame)
+        ser.write(frame)
 
-if __name__ == "__main__":
-    main()
+       # time.sleep(0.25)
+
+
