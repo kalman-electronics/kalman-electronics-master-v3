@@ -69,7 +69,7 @@ typedef struct {
 #define TCAN2_ID 1
 
 /** FDCAN **/
-cd#define FDCAN_DEFS_COUNT 2
+#define FDCAN_DEFS_COUNT 2
 #define FDCAN1_ID 0
 #define FDCAN2_ID 1
 
