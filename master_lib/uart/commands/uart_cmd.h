@@ -51,6 +51,7 @@ void Cmd_UART_Universal_SetHBridge(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Universal_SetStepperPosition(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Universal_StepperHomingRequest(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Universal_WeightRequest(uint8_t* data, uart_packet_link_t link_type);
+void Cmd_UART_Universal_WeightTareRequest(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Universal_InputRequest(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Universal_StepperPositionRequest(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Universal_AutomationSequenceBeginRequest(uint8_t* data, uart_packet_link_t link_type);

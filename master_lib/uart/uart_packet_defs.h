@@ -174,6 +174,11 @@ __unused static uart_packet_def_t uart_packet_defs[] = {
             .execute = Cmd_UART_Universal_WeightRequest
         },
         {
+            .cmd = UART_CMD_UNIVERSAL_WEIGHT_TARE_REQUEST,
+            .arg_count = UART_ARG_UNIVERSAL_WEIGHT_TARE_REQUEST,
+            .execute = Cmd_UART_Universal_WeightTareRequest
+        },
+        {
             .cmd = UART_CMD_UNIVERSAL_INPUT_REQUEST,
             .arg_count = UART_ARG_UNIVERSAL_INPUT_REQUEST,
             .execute = Cmd_UART_Universal_InputRequest

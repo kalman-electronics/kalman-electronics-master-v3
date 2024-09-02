@@ -31,6 +31,10 @@ void Cmd_UART_Universal_WeightRequest(uint8_t* data, uart_packet_link_t link_typ
     Cmd_Bus_Universal_WeightRequest(data);
     Cmd_UART_BlinkLed(link_type);
 }
+void Cmd_UART_Universal_WeightTareRequest(uint8_t* data, uart_packet_link_t link_type) {
+    Cmd_Bus_Universal_WeightTareRequest(data);
+    Cmd_UART_BlinkLed(link_type);
+}
 void Cmd_UART_Universal_InputRequest(uint8_t* data, uart_packet_link_t link_type) {
     Cmd_Bus_Universal_InputRequest(data);
     Cmd_UART_BlinkLed(link_type);

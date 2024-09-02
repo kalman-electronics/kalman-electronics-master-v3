@@ -80,6 +80,15 @@ void Cmd_Bus_Universal_WeightRequest(uint8_t* data) {
 
     Queues_SendCANFrame(&msg);
 }
+void Cmd_Bus_Universal_WeightTareRequest(uint8_t* data) {
+    can_packet_t msg = {
+            .cmd = CAN_CMD_UNIVERSAL_WEIGHT_TARE_REQUEST,
+            .arg_count = CAN_ARG_UNIVERSAL_WEIGHT_TARE_REQUEST
+    };
+    memcpy(&msg.args, data, CAN_ARG_UNIVERSAL_WEIGHT_TARE_REQUEST);
+
+    Queues_SendCANFrame(&msg);
+}
 void Cmd_Bus_Universal_InputRequest(uint8_t* data) {
     can_packet_t msg = {
             .cmd = CAN_CMD_UNIVERSAL_INPUT_REQUEST,

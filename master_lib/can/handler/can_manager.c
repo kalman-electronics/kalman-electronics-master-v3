@@ -11,8 +11,8 @@ const uint8_t canlib_rx_list[CANLIB_RX_LIST_COUNT] = {
         CAN_FILTER_ID_COMMON,   //! obowiazkowe dla kazdego modulu!
         CAN_FILTER_ID_MOTOR,
         CAN_FILTER_ID_ARM,
-        CAN_FILTER_ID_UNIVERSAL2,
-        CAN_FILTER_ID_UNIVERSAL,
+        CAN_FILTER_ID_UNIVERSAL2_1,
+        CAN_FILTER_ID_UNIVERSAL2_2,
         CAN_FILTER_ID_SCIENCE,
         CAN_FILTER_ID_MUX,
         CAN_FILTER_ID_6DOF,
