@@ -72,6 +72,7 @@ void Cmd_Bus_Arm6DOF_Autoclick_SetPos(uint8_t pos);
 void Cmd_Bus_Drill_A_Bridge_Set(uint8_t direction, uint8_t speed);
 void Cmd_Bus_Drill_B_Bridge_Set(uint8_t direction, uint8_t speed);
 void Cmd_Bus_Drill_C_Bridge_Set(uint8_t direction, uint8_t speed);
+void Cmd_Bus_Drill_Autonomy(uint8_t* data);
 void Cmd_Bus_Drill_GetWeightRequest();
 
 // --- UEUOS v2 ---
@@ -91,10 +92,7 @@ void Cmd_Bus_Universal_InputRequest(uint8_t* data);
 void Cmd_Bus_Universal_StepperPositionRequest(uint8_t* data);
 void Cmd_Bus_Universal_AutomationSequenceBeginRequest(uint8_t* data);
 void Cmd_Bus_Universal_AutomationSequenceStateRequest(uint8_t* data);
-void Cmd_Bus_Universal_SetBridge(uint8_t id, uint8_t flags, uint8_t* data);
-void Cmd_Bus_Universal_SetServo(uint8_t id, uint8_t flags, uint8_t* data);
-void Cmd_Bus_Universal_SetPwm(uint8_t id, uint8_t flags, uint8_t *data);
-void Cmd_Bus_Universal_SetGpio(uint8_t id, uint8_t flags1, uint8_t flags2, uint8_t gpio1, uint8_t gpio2);
+void Cmd_Bus_Universal_WeightTareRequest(uint8_t* data);
 
 // --- Science ---
 

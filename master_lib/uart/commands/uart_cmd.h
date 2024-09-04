@@ -36,6 +36,7 @@ void Cmd_UART_Drill_A_Bridge_Set(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Drill_B_Bridge_Set(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Drill_C_Bridge_Set(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Drill_GetWeightRequest(uint8_t* data, uart_packet_link_t link_type);
+void Cmd_UART_Drill_Autonomy(uint8_t* data, uart_packet_link_t link_type);
 
 // --- UEUOS v2 ---
 void Cmd_UART_Ueuos_SetState(uint8_t* data, uart_packet_link_t link_type);
@@ -51,15 +52,11 @@ void Cmd_UART_Universal_SetHBridge(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Universal_SetStepperPosition(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Universal_StepperHomingRequest(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Universal_WeightRequest(uint8_t* data, uart_packet_link_t link_type);
+void Cmd_UART_Universal_WeightTareRequest(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Universal_InputRequest(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Universal_StepperPositionRequest(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Universal_AutomationSequenceBeginRequest(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Arm6DOF_GetProbeEsp(uint8_t* data, uart_packet_link_t link_type);
-
-void Cmd_UART_Universal_SetBridge(uint8_t* data, uart_packet_link_t link_type);
-void Cmd_UART_Universal_SetServo(uint8_t* data, uart_packet_link_t link_type);
-void Cmd_UART_Universal_SetPwm(uint8_t* data, uart_packet_link_t link_type);
-void Cmd_UART_Universal_SetGpio(uint8_t* data, uart_packet_link_t link_type);
 
 // --- Science ---
 void Cmd_UART_Science_GetSamplesRequest(uint8_t* data, uart_packet_link_t link_type);

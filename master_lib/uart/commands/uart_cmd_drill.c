@@ -36,6 +36,14 @@ void Cmd_UART_Drill_GetWeightRequest(uint8_t* data, uart_packet_link_t link_type
     }
 }
 
+void Cmd_UART_Drill_Autonomy(uint8_t* data, uart_packet_link_t link_type) {
+    if ((link_type == LINK_RF_UART) || (link_type == logic.link_type)) {
+        Cmd_Bus_Drill_Autonomy(data);
+
+        Cmd_UART_BlinkLed(link_type);
+    }
+}
+
 
 void Cmd_UART_Drill_GetWeight(int32_t weight){
     uart_packet_t msg = {
