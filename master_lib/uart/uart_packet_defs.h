@@ -119,6 +119,11 @@ __unused static uart_packet_def_t uart_packet_defs[] = {
             .arg_count = UART_ARG_DRILL_GET_WEIGHT,
             .execute = Cmd_UART_Drill_GetWeightRequest
         },
+     {
+            .cmd = UART_CMD_DRILL_AUTONOMY,
+            .arg_count = UART_ARG_DRILL_AUTONOMY,
+            .execute = Cmd_UART_Drill_Autonomy
+        },
 
         // --- UEUOS v2 ---
         {
@@ -192,26 +197,6 @@ __unused static uart_packet_def_t uart_packet_defs[] = {
             .cmd = UART_CMD_UNIVERSAL_AUTOMATION_SEQUENCE_BEGIN_REQUEST,
             .arg_count = UART_ARG_UNIVERSAL_AUTOMATION_SEQUENCE_BEGIN_REQUEST,
             .execute = Cmd_UART_Universal_AutomationSequenceBeginRequest
-        },
-        {
-            .cmd = UART_CMD_UNIVERSAL_SET_BRIDGE,
-            .arg_count = UART_ARG_UNIVERSAL_SET_BRIDGE,
-            .execute = Cmd_UART_Universal_SetBridge,
-        },
-        {
-            .cmd = UART_CMD_UNIVERSAL_SET_SERVO,
-            .arg_count = UART_ARG_UNIVERSAL_SET_SERVO,
-            .execute = Cmd_UART_Universal_SetServo,
-        },
-        {
-            .cmd = UART_CMD_UNIVERSAL_SET_PWM,
-            .arg_count = UART_ARG_UNIVERSAL_SET_PWM,
-            .execute = Cmd_UART_Universal_SetPwm,
-        },
-        {
-            .cmd = UART_CMD_UNIVERSAL_SET_GPIO,
-            .arg_count = UART_ARG_UNIVERSAL_SET_GPIO,
-            .execute = Cmd_UART_Universal_SetGpio,
         },
 
         // --- Science ---
