@@ -23,7 +23,8 @@ void CANHandler_ProcessPacket(can_packet_t* msg) {
     // Find and validate handler
     for (uint32_t i = 0; i < CAN_PACKET_DEFS_LEN; i ++) {
         if (can_packet_defs[i].cmd == msg->cmd) {
-            if (can_packet_defs[i].arg_count != msg->arg_count) {
+			//TODO: SOLVE THIS SHIT IMMEDIATELY
+            if ((can_packet_defs[i].arg_count != msg->arg_count) && (can_packet_defs[i].cmd != CAN_CMD_UNIVERSAL_WEIGHT_RESPONSE)) {
                 debug_printf("Invalid packet arg len\n");
                 return;
             }

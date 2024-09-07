@@ -31,8 +31,9 @@ void CANManager_Task(void *argument);
 #define CAN_FILTER_ID_MUX               0xA0
 #define CAN_FILTER_ID_6DOF              0xB0
 #define CAN_FILTER_ID_MOBILAB           0xC0
+#define CAN_FILTER_ID_DRILL			    0xD0
 
-#define CANLIB_RX_LIST_COUNT            11
+#define CANLIB_RX_LIST_COUNT            12
 
 
 #endif //KALMAN_ELECTRONICS_MASTER_V3_CAN_MANAGER_H
