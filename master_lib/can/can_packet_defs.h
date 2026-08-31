@@ -148,10 +148,12 @@ const can_packet_def_t can_packet_defs[] = {
 				.execute = Cmd_Bus_Drill_Telemetry
 		},
 		{
-				.cmd = CAN_CMD_DRILL_TELEMETRY,
-				.arg_count = CAN_ARG_DRILL_TELEMETRY,
-				.execute = Cmd_Bus_Drill_Telemetry
+				.cmd = CAN_CMD_DRILL_WEIGHT_RESPONSE,
+				.arg_count = CAN_ARG_DRILL_WEIGHT_RESPONSE,
+				.execute = Cmd_Bus_Drill_WeightResponse
+
 		},
+
 
 
 

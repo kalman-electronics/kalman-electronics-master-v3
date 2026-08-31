@@ -27,7 +27,7 @@ void UARTHandler_ProcessPacket(uart_packet_t* msg) {
     // Find and validate packet handler
 
 
-    for (uint32_t i = 0; i < UART_PACKET_DEFS_LEN; i ++) {
+   for (uint32_t i = 0; i < UART_PACKET_DEFS_LEN; i ++) {
         if (uart_packet_defs[i].cmd == msg->cmd) {
             // Check packet arguments (skip on custom frame)
         	if (UART_PACKET_IS_CUSTOM(msg->cmd)) {

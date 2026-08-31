@@ -105,24 +105,24 @@ __unused static uart_packet_def_t uart_packet_defs[] = {
 
         // --- Drill ---
         {
-            .cmd = UART_CMD_DRILL_A_BRIDGE_SET,
-            .arg_count = UART_ARG_DRILL_A_BRIDE_SET,
-            .execute = Cmd_UART_Drill_A_Bridge_Set
+            .cmd = UART_CMD_DRILL_RACK_SET,
+            .arg_count = UART_ARG_DRILL_RACK_SET,
+            .execute = Cmd_UART_Drill_Rack_Set
         },
         {
-            .cmd = UART_CMD_DRILL_B_BRIDGE_SET,
-            .arg_count = UART_ARG_DRILL_B_BRIDE_SET,
-            .execute = Cmd_UART_Drill_B_Bridge_Set
+            .cmd = UART_CMD_DRILL_SPINDLE_SET,
+            .arg_count = UART_ARG_DRILL_SPINDLE_SET,
+            .execute = Cmd_UART_Drill_Spindle_Set
         },
         {
-			.cmd = UART_CMD_DRILL_C_BRIDGE_SET,
-			.arg_count = UART_ARG_DRILL_C_BRIDE_SET,
-			.execute = Cmd_UART_Drill_C_Bridge_Set
+			.cmd = UART_CMD_DRILL_SERVO_SET,
+			.arg_count = UART_ARG_DRILL_SERVO_SET,
+			.execute = Cmd_UART_Drill_Servo_Set
 		},
         {
-            .cmd = UART_CMD_DRILL_SET_GEAR,
-            .arg_count = UART_ARG_DRILL_SET_GEAR,
-            .execute = Cmd_UART_Drill_SetGear
+            .cmd = UART_CMD_DRILL_WEIGHT_REQUEST,
+            .arg_count = UART_ARG_DRILL_WEIGHT_REQUEST,
+            .execute = Cmd_UART_Drill_Weight_Request
         },
      {
             .cmd = UART_CMD_DRILL_AUTONOMY,

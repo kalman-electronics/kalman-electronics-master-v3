@@ -44,7 +44,7 @@ void Cmd_Bus_UnknownHandler(can_packet_t* msg);
 void Cmd_Bus_EmptyHandler(uint8_t* msg);
 
 // --- Drill ---
-void Cmd_Bus_Drill_GetWeight(uint8_t* data);
+void Cmd_Bus_Drill_WeightResponse(uint8_t* data);
 void Cmd_Bus_Drill_Telemetry(uint8_t* data);
 
 // -- Power Distribution ---
@@ -74,9 +74,9 @@ void Cmd_Bus_Arm6DOF_SmartKutongToggle();
 void Cmd_Bus_Arm6DOF_Autoclick_SetPos(uint8_t pos);
 
 // --- Drill ---
-void Cmd_Bus_Drill_A_Bridge_Set(uint8_t direction, uint8_t speed);
-void Cmd_Bus_Drill_B_Bridge_Set(uint8_t direction, uint8_t speed);
-void Cmd_Bus_Drill_C_Bridge_Set(uint8_t direction, uint8_t speed);
+void Cmd_Bus_Drill_Rack_Set(uint8_t direction, uint8_t speed);
+void Cmd_Bus_Drill_Spindle_Set(uint8_t direction, uint8_t speed);
+void Cmd_Bus_Drill_C_Bridge_Set(uint8_t channel, uint8_t angle_hi, uint8_t angle_lo);
 void Cmd_Bus_Drill_Autonomy(uint8_t* data);
 void Cmd_Bus_Drill_SetGear(uint8_t* data);
 

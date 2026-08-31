@@ -38,10 +38,10 @@ void Cmd_UART_Arm6DOF_SoftReset(uint8_t *data, uart_packet_link_t link_type);
 void Cmd_UART_Arm6DOF_GetProbeRequest(uint8_t* data, uart_packet_link_t link_type);
 
 // --- Drill ---
-void Cmd_UART_Drill_A_Bridge_Set(uint8_t* data, uart_packet_link_t link_type);
-void Cmd_UART_Drill_B_Bridge_Set(uint8_t* data, uart_packet_link_t link_type);
-void Cmd_UART_Drill_C_Bridge_Set(uint8_t* data, uart_packet_link_t link_type);
-void Cmd_UART_Drill_SetGear(uint8_t* data, uart_packet_link_t link_type);
+void Cmd_UART_Drill_Rack_Set(uint8_t* data, uart_packet_link_t link_type);
+void Cmd_UART_Drill_Spindle_Set(uint8_t* data, uart_packet_link_t link_type);
+void Cmd_UART_Drill_Servo_Set(uint8_t* data, uart_packet_link_t link_type);
+void Cmd_UART_Drill_Weight_Request(uint8_t* data, uart_packet_link_t link_type);
 void Cmd_UART_Drill_Autonomy(uint8_t* data, uart_packet_link_t link_type);
 
 // --- UEUOS v2 ---
@@ -125,7 +125,7 @@ void Cmd_UART_Science_GetSamples(uint8_t id, uint8_t sample_index);
 void Cmd_UART_Mobilab_GetTemperature(uint8_t id);
 
 // --- Drill ---
-void Cmd_UART_Drill_GetWeight(int32_t weight);
+void Cmd_UART_Drill_WeightResponse(uint8_t* data);
 void Cmd_UART_Drill_Telemetry(uint8_t* data);
 
 

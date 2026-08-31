@@ -77,7 +77,7 @@ void Cmd_UART_Universal_WeightResponse(uint8_t* data){
     uart_packet_t msg = {
             .cmd = UART_CMD_UNIVERSAL_WEIGHT_RESPONSE,
             .arg_count = UART_ARG_UNIVERSAL_WEIGHT_RESPONSE,
-            .origin = logic.link_type
+            .origin = LINK_RF_UART
     };
 
     memcpy(&msg.args, data, UART_ARG_UNIVERSAL_WEIGHT_RESPONSE);
